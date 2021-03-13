@@ -1,0 +1,25 @@
+<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702.87 247.56">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 90.9px;
+        fill: #fff;
+        stroke: #fff;
+        stroke-width: 3px;
+        font-family: AgencyFB-Reg, Agency FB;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fc1c08;
+        stroke-width: 15px;
+      }
+    </style>
+  </defs>
+  <text class="cls-1" transform="translate(277.98 162.37) scale(1.69 1)">PYRAMID</text>
+  <path class="cls-2" d="M244.11,211.45l-35.84,62.08,72.94.73ZM129.69,153.58l53,92.9L204.31,209l-52.48-93.85Zm49.23,153.26-69-119.15ZM170.35,80.33,300.28,305.38H40.41ZM89,223.35,117.5,272.8H60.4Z" transform="translate(-27.42 -65.33)"/>
+</svg>

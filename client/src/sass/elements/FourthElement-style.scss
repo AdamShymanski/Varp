@@ -1,0 +1,122 @@
+@import "../../variables.scss";
+
+.hvr-grow {
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transition-duration: 0.3s;
+  transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+  transform: scale(1.04);
+}
+
+.wrapper-3 {
+  width: 95vw;
+  height: 170vh;
+
+  z-index: 1;
+  margin: 12vh 2.5vw 0 2.5vw;
+
+  display: flex;
+  flex-direction: column;
+  .headersContainer {
+    h1 {
+      color: white;
+      font-size: 6vw;
+      font-family: $agency-bold-font;
+    }
+    h2 {
+      color: white;
+      font-size: 3vw;
+      font-family: $agency-bold-font;
+
+      width: 50vw;
+
+      right: 0;
+      position: absolute;
+      span {
+        color: $accent;
+      }
+    }
+  }
+  .cardContainer {
+    // top: 40vh;
+    // position: absolute;
+
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    .card {
+      width: 83vw;
+      padding: 0 2vw;
+
+      border-radius: 5px;
+      background-color: $foreground;
+
+      margin: 2.4vh 0;
+
+      -webkit-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+      h1 {
+        color: white;
+        font-size: 3vw;
+        font-family: $agency-bold-font;
+        span {
+          color: $accent;
+          font-size: 5vw;
+        }
+        .addendum {
+          color: $accent;
+          font-size: 1.5vw;
+        }
+      }
+      p {
+        color: $main-text;
+        font-size: 1.5vw;
+        font-family: $agency-bold-font;
+
+        position: relative;
+      }
+    }
+    .firstCard {
+      height: 23vh;
+    }
+    .secondCard {
+      height: 43vh;
+      .cp-3 {
+        margin-top: 2vh;
+      }
+      ul {
+        margin-top: 1.2vh;
+        li {
+          list-style: none;
+          p {
+            span {
+              color: $accent;
+            }
+          }
+        }
+      }
+    }
+    .thirdCard {
+      height: 20vh;
+    }
+  }
+}
+
+.visible {
+  display: inherit;
+  transition: 200ms;
+}
+.notVisible {
+  display: none;
+  transition: 200ms;
+}

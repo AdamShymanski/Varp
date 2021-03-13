@@ -1,0 +1,125 @@
+@import "../variables.scss";
+
+.poppinsFont {
+  font-weight: 400;
+  font-size: 0.8vw;
+  font-family: $poppins-font;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper {
+  background: $background;
+  height: 200vh;
+  .navbar {
+    width: 100%;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    .logo {
+      margin: 20px;
+      width: 5vw;
+    }
+    ul {
+      padding: 2vh 2vw;
+      li {
+        list-style: none;
+        margin: 0 0.8vw;
+        color: $second-text;
+      }
+      .suButton {
+        background: $accent;
+        padding: 0.8vh 1.8vw;
+        border-radius: 5vh;
+        font-weight: 700;
+        color: $dark-gray;
+      }
+    }
+  }
+  .scrollIndicator {
+    left: 0;
+    position: absolute;
+
+    width: 30vw;
+    height: 100%;
+    .dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 100%;
+    }
+    .line {
+      width: 4px;
+      height: 2.2vw;
+      border-radius: 8px;
+    }
+    .accent {
+      background: #ff1d00;
+    }
+    .gray {
+      background: $gray;
+    }
+  }
+  main {
+    right: 0;
+    position: absolute;
+
+    width: 70vw;
+    height: 100%;
+    article {
+      margin: 6vh 0;
+      width: 55vw;
+      .title {
+        .accentLine {
+          height: 4px;
+          width: 2.2vw;
+
+          border-radius: 8px;
+          background: #ff1d00;
+        }
+        p {
+          margin-left: 1vw;
+
+          font-size: 2.5vw;
+          font-weight: 700;
+          color: $main-text;
+        }
+      }
+      .body {
+        margin-left: 3.5vw;
+        margin-top: 2vh;
+        p {
+          color: $second-text;
+        }
+      }
+      .bottom {
+        // width: 45vw;
+        margin-top: 6vh;
+
+        justify-content: space-evenly;
+        .card {
+          width: 12vw;
+          height: 12vw;
+
+          border-radius: 1.4vh;
+          background: $dark-gray;
+          .number {
+            color: $accent;
+            font-size: 1.9vw;
+            font-weight: 700;
+          }
+          .description {
+            padding: 0 1vw;
+            text-align: center;
+            color: $main-text;
+          }
+        }
+      }
+    }
+  }
+}

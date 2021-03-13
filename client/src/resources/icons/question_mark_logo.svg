@@ -1,0 +1,25 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334.1 258.8">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #ff1d00;
+        stroke-miterlimit: 10;
+        stroke-width: 15px;
+      }
+
+      .cls-2 {
+        font-size: 179.39px;
+        fill: #00a6ff;
+        font-family: AgencyFB-Bold, Agency FB;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="Layer_3" data-name="Layer 3">
+      <path class="cls-1" d="M220.35,151.1l-35.8,62.1,72.9.7ZM106,93.3l53,92.9,21.6-37.5-52.5-93.8Zm49.2,153.2-69-119.1ZM146.65,20l129.9,225.1H16.65ZM65.25,163l28.5,49.5H36.65Z"/>
+    </g>
+  </g>
+  <text class="cls-2" transform="translate(226 158.1)">?</text>
+</svg>

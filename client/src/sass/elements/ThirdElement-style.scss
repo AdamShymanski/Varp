@@ -1,0 +1,35 @@
+@import "../../variables.scss";
+
+.wrapper-2 {
+  section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4vh;
+    .card {
+      position: relative;
+      padding: 2vh 2vw;
+      margin: 1                                                 vh 0;
+      background: $foreground;
+      h1 {
+        color: white;
+        font-family: $agency-bold-font;
+        font-size: 3vw;
+      }
+      p {
+        color: white;
+        font-family: $agency-bold-font;
+        font-size: 1vw;
+        width: 30vw;
+      }
+    }
+    .c0 {
+      right: -60vw;
+    }
+    .c1 {
+      left: 2vw;
+    }
+    .c2 {
+      left: 50vw;
+    }
+  }
+}

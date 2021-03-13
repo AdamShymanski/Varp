@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+.appComponent {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  overflow: hidden;
+  z-index: 0;
+
+  .top-background {
+    z-index: 0;
+
+    width: 100vw;
+
+    top: 0;
+    right: 0;
+    position: absolute;
+  }
+}

@@ -1,0 +1,232 @@
+@font-face {
+  font-family: "Atari";
+  src: url("./../resources/atari.ttf") format("truetype");
+}
+$atari-font: "Atari", sans;
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+$pixel-font: "VT323", monospace;
+$agency-bold-font: "Agency FB Bold", arial;
+$roboto-con-font: "Roboto Condensed", sans-serif;
+
+$accent: #ff1d00;
+$bright: #232323;
+
+$foreground: #0f0f0f;
+$main-text: #e6e6e6;
+
+.CAP {
+  .goBackArrow {
+    width: 5vw;
+  }
+  padding-bottom: 5vh;
+  .action-window {
+    z-index: 1;
+    width: 25vw;
+    margin-top: 20vh;
+    margin-left: 37.5vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 2px solid $bright;
+    border-radius: 0.4vw;
+
+    background: $foreground;
+    position: relative;
+    padding-bottom: 1.2vw;
+
+    -webkit-box-shadow: 10px 13px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 13px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 13px 5px 0px rgba(0, 0, 0, 0.75);
+
+    .paragraph-hide {
+      display: none;
+    }
+
+    .aw-top {
+      display: flex;
+      align-items: center;
+      position: relative;
+      justify-content: space-between;
+      width: 11vw;
+      height: 2.2vw;
+      border-radius: 0.4vw;
+      margin-top: 2.2vh;
+      padding-left: 0.1vw;
+      border: 2px solid $bright;
+
+      .btn {
+        width: 6vw;
+        height: 1.9vw;
+        outline-style: none;
+        border-radius: 0.4vw;
+        font-family: $atari-font;
+        font-size: 1.1vw;
+        text-align: center;
+        letter-spacing: 0.7px;
+        border: none;
+        transition: 0.3s;
+        color: $main-text;
+      }
+      .toggle-border {
+        width: 5.4vw;
+        height: 2.2vw;
+        position: absolute;
+        border: 2px solid $accent;
+        border-radius: 0.4vw;
+        background: transparent;
+      }
+      .left-tb {
+        left: 0px;
+      }
+      .right-tb {
+        right: 0px;
+      }
+    }
+    .action-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 3vh 2vw 0 2vw;
+      width: 90%;
+      height: auto;
+      .siemContainer {
+        p {
+          margin-top: 0.4vw;
+          font-size: 1vw;
+          font-family: $agency-bold-font;
+          color: $main-text;
+        }
+      }
+      .siemContainerShow {
+        display: inherit;
+      }
+      .siemContainerHide {
+        display: none;
+      }
+      .input-wrapper {
+        width: 90%;
+        height: auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .icon {
+          width: 1.5vw;
+          height: 1.5vw;
+
+          top: 0.75vw;
+          left: 0.4vw;
+          position: absolute;
+          path {
+            fill: $bright !important;
+            width: 1.5vw;
+            transition: 400ms;
+          }
+        }
+        .f-input {
+          width: 100%;
+          margin: 1vh 0;
+          outline: none;
+          height: 2vw;
+          border: 2px solid $bright;
+          border-radius: 6px;
+          color: $main-text;
+          text-align: left;
+          font-family: $roboto-con-font;
+          font-weight: 700;
+          font-size: 1.2vw;
+          padding-left: 2.4vw;
+          transition: 400ms;
+        }
+        .f-input:focus {
+          border: 2px solid $accent;
+          -webkit-box-shadow: 0px 0px 10px 2px rgba(255, 29, 0, 1);
+          -moz-box-shadow: 0px 0px 10px 2px rgba(255, 29, 0, 1);
+          box-shadow: 0px 0px 10px 2px rgba(255, 29, 0, 1);
+          transition: 400ms;
+        }
+        .f-input:focus + .icon {
+          path {
+            fill: $accent !important;
+            transition: 400ms;
+          }
+
+          color: $accent;
+          transition: 400ms;
+        }
+        .f-input::placeholder {
+          color: $bright;
+        }
+        .f-input:focus::placeholder {
+          color: transparent;
+        }
+
+        p {
+          color: $main-text;
+          font-size: 0.9vw;
+          font-family: $atari-font;
+          background: transparent;
+
+          display: flex;
+          flex-direction: row;
+          .visible {
+            display: block;
+            color: $accent;
+          }
+          .hide {
+            display: none;
+          }
+        }
+      }
+
+      .hide-input {
+        display: none;
+      }
+      .show-input {
+        display: inherit;
+      }
+    }
+    .show-paragraph {
+      display: inherit;
+      color: $main-text;
+      font-family: $pixel-font;
+      font-weight: 400;
+      letter-spacing: 0.1px;
+      font-size: 30px;
+    }
+    .hide-paragraph {
+      display: none;
+      color: $main-text;
+      font-family: $roboto-con-font;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .submit-button {
+      width: 6vw;
+      height: 2vw;
+      padding-left: 4px;
+      padding-top: 1.2px;
+      background-color: transparent;
+      outline: none;
+      border: 2px solid $accent;
+      border-radius: 8px;
+      margin-top: 2vh;
+      font-size: 1.7vw;
+      font-weight: 400;
+      text-align: center;
+      font-family: $atari-font;
+      color: $main-text;
+      span {
+        background: transparent;
+      }
+    }
+    .span-accent {
+      color: $accent;
+    }
+    .span-white {
+      color: $main-text;
+    }
+  }
+}

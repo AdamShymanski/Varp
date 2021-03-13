@@ -1,0 +1,215 @@
+@import "../../variables.scss";
+
+.wrapper-1 {
+  width: 100vw;
+  height: 110vh;
+  margin-top: 2vh;
+
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: 200ms;
+  aside {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100vw;
+
+    margin-top: 3vh;
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 2.5vw;
+      .topCard {
+        margin-bottom: 0.4vw;
+        width: 20vw;
+        height: 13vh;
+
+        background-color: $foreground;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        -webkit-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+      }
+      .titleCard {
+        width: 20vw;
+        margin-bottom: 1vw;
+
+        padding: 1vh 0 2.4vh 0;
+
+        background-color: $foreground;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        -webkit-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        h1 {
+          color: white;
+          font-family: $agency-bold-font;
+          font-size: 3vw;
+        }
+        P {
+          width: 16vw;
+          margin-top: 1vh;
+
+          color: white;
+          font-size: 1vw;
+          text-align: center;
+          font-family: $agency-bold-font;
+        }
+      }
+      .bottomCard {
+        width: 20vw;
+
+        position: relative;
+        padding: 1vw 0 0 0;
+
+        background-color: $foreground;
+        border-bottom: 3px solid $accent;
+        border-radius: 5px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        transition: 800ms;
+
+        overflow: hidden;
+
+        -webkit-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 11px 11px 12px 0px rgba(0, 0, 0, 0.75);
+
+        p {
+          z-index: 1;
+          color: white;
+          font-size: 1.1vw;
+          font-family: $agency-bold-font;
+          text-align: center;
+          margin: 0.8vw 1vw 0 1vw;
+        }
+        ul {
+          margin-top: 0.4vw;
+          list-style: url("./../../resources/icons/arrow-accent.svg");
+
+          li {
+            color: white;
+            font-size: 1.1vw;
+            font-family: $agency-bold-font;
+          }
+        }
+
+        .curtain {
+          height: 4.6vh;
+          width: 20vw;
+          border-radius: 5px;
+
+          background-color: $foreground;
+
+          z-index: 2;
+          bottom: 0;
+          position: absolute;
+        }
+        .arrow {
+          z-index: 3;
+          fill: $blue !important;
+        }
+      }
+      .hide {
+        height: 6vh;
+        transition: 800ms;
+
+        .arrow {
+          width: 2.1vw;
+          bottom: 0.5vh;
+          position: absolute;
+          transform: rotate(180deg);
+
+          transition: 800ms;
+        }
+      }
+      .show1 {
+        height: 21vh;
+        transition: 800ms;
+
+        .arrow {
+          width: 2.1vw;
+          position: absolute;
+          bottom: 0.5vh;
+          transition: 800ms;
+        }
+      }
+      .show2 {
+        height: 42vh;
+        transition: 800ms;
+
+        .arrow {
+          width: 2.1vw;
+          position: absolute;
+          bottom: 0.5vh;
+          transition: 800ms;
+        }
+      }
+      .show3 {
+        height: 57vh;
+        transition: 800ms;
+
+        .arrow {
+          width: 2.1vw;
+          position: absolute;
+          bottom: 0.5vh;
+          transition: 800ms;
+        }
+      }
+      .show4 {
+        height: 26vh;
+        transition: 800ms;
+
+        .arrow {
+          width: 2.1vw;
+          position: absolute;
+          bottom: 0.5vh;
+          transition: 800ms;
+        }
+      }
+      .act {
+        width: 4.6vw;
+      }
+      .game {
+        width: 6vw;
+      }
+      .money {
+        width: 6vw;
+      }
+      .searching {
+        width: 6vw;
+      }
+    }
+  }
+}
+
+.visible {
+  display: inherit;
+  transition: 200ms;
+}
+.notVisible {
+  display: none;
+  transition: 200ms;
+}
