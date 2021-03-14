@@ -21,6 +21,7 @@ function App() {
 
         <Route path='/' exact component={LandingPageNew} />
         <Route path='/create-account' component={CreateAccountPage} />
+        <Route path='/formpage' component={FormPage} />
       </div>
     </Router>
   );

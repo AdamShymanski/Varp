@@ -2,12 +2,30 @@ import React, { useState, useEffect } from "react";
 import "./../sass/FormPage-style.scss";
 
 import Axios from "axios";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import Slider from "@material-ui/core/Slider";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import NavigationIcon from "@material-ui/icons/Navigation";
+
+const schema = yup
+  .object()
+  .shape({
+    a: yup.string().required(),
+    b: yup.number().required().default(1),
+    c: yup.number().min(1).max(10).required(),
+    d: yup.number().min(1).max(10).required(),
+    e: yup.number().min(1).max(10).required(),
+    f: yup.string(),
+  })
+  .typeError("Please enter a response");
 
 const useStyles = makeStyles({
   slider: {
@@ -41,157 +59,165 @@ const muiTheme = createMuiTheme({
 });
 
 export default function FormPage(props) {
-  const [a, setA] = useState("empty");
-  const [b, setB] = useState(true);
-  const [c, setC] = useState(6);
-  const [d, setD] = useState(6);
-  const [e, setE] = useState(6);
-  const [f, setF] = useState("empty");
+  const { control, handleSubmit, register, errors } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  async function sendReply() {
+  const onSubmit = async (data) => {
     try {
       const token = localStorage.getItem("auth-token");
-      console.log(token);
-      await Axios.post("http://localhost:5000/questionnaire/send_reply", {
+      await Axios.post("/questionnaire/send_reply", {
         authToken: token,
-        first: a,
-        second: b,
-        third: c,
-        fourth: d,
-        fifth: e,
-        sixth: f,
+        ...data,
       });
-      console.log(a, b, c, d, e, f);
     } catch (err) {
-      console.log(err.message);
+      console.error(err);
     }
-  }
-
-  const updateValue1 = (e, data) => {
-    setC((c) => (c = data));
-  };
-  const updateValue2 = (e, data) => {
-    setD((e) => (e = data));
-  };
-  const updateValue3 = (e, data) => {
-    setE((e) => (e = data));
   };
 
   const classes = useStyles();
   return (
-    <main className='FA center'>
-      <section className='center'>
-        <p className='robotoFont'>QUESTIONNAIRE</p>
-        <h1 className='robotoFont'>Congratulations!</h1>
-        <h3 className='robotoFont'>
-          You've just made the dream a little closer to the reality. Now we would like to to ask you for some more
-          questions!
+    <main className="FA center">
+      <section className="center">
+        <p className="robotoFont">QUESTIONNAIRE</p>
+        <h1 className="robotoFont">Congratulations!</h1>
+        <h3 className="robotoFont">
+          You've just made the dream a little closer to the reality. Now we
+          would like to to ask you for some more questions!
         </h3>
         <NavigationIcon className={classes.arrow} />
       </section>
-      <div className=' form'>
-        <div className='card'>
-          <h1 className='robotoFont'>How much time do you spend on social media?</h1>
-          <input className='textBox' type='text' onChange={(e) => setA(e.target.value)}></input>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="card">
+          <h1 className="robotoFont">
+            How much time do you spend on social media?
+          </h1>
+          <input className="textBox" type="text" name="a" />
+          <p className="error">{errors.a && errors.a.message}</p>
         </div>
-        <div className='card'>
-          <h1 className='robotoFont'>Are you using an ad blocker in your browser?</h1>
-          <ul className='radioBox'>
-            <li>
-              <input id='r1' type='radio' name='radio' className='robotoFont' value='1' onChange={(e) => setB(true)} />
-              <label for='r1' className='robotoFont'>
-                Yes
-              </label>
-            </li>
-            <li>
-              <input
-                id='r2'
-                type='radio'
-                name='radio'
-                value='2'
-                className='robotoFont'
-                checked
-                onChange={(e) => setB(false)}
-              />
-              <label for='r2' className='robotoFont'>
-                No
-              </label>
-            </li>
-          </ul>
+        <div className="card">
+          <h1 className="robotoFont">
+            Are you using an ad blocker in your browser?
+          </h1>
+          <Controller
+            as={
+              <RadioGroup aria-label="ad-blocker" defaultValue="1">
+                <FormControlLabel value="1" control={<Radio />} label="Yes" />
+                <FormControlLabel value="2" control={<Radio />} label="No" />
+              </RadioGroup>
+            }
+            name="b"
+            control={control}
+          />
+          <p className="error">{errors.b && errors.b.message}</p>
         </div>
-        <div className='card'>
-          <h1 className='robotoFont suo'>
-            How do you rate the effectiveness of Google Ads from the perspective of the person who's the recipient of
-            the ad?
+        <div className="card">
+          <h1 className="robotoFont suo">
+            How do you rate the effectiveness of Google Ads from the perspective
+            of the person who's the recipient of the ad?
           </h1>
           <ThemeProvider theme={muiTheme}>
-            <Slider
-              onChange={updateValue1}
-              className={classes.slider}
+            <Controller
+              name="c"
+              control={control}
               defaultValue={6}
-              aria-labelledby='discrete-slider'
-              valueLabelDisplay='auto'
-              step={1}
-              marks
-              min={1}
-              max={10}
+              render={(props) => (
+                <Slider
+                  {...props}
+                  onChange={(_, value) => {
+                    props.onChange(value);
+                  }}
+                  className={classes.slider}
+                  defaultValue={6}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={1}
+                  marks
+                  min={1}
+                  max={10}
+                />
+              )}
             />
           </ThemeProvider>
+          <p className="error">{errors.c && errors.c.message}</p>
         </div>
-        <div className='card'>
-          <h1 className='robotoFont suo'>Did the Pyramid interest you?</h1>
+        <div className="card">
+          <h1 className="robotoFont suo">Did the Pyramid interest you?</h1>
           <ThemeProvider theme={muiTheme}>
-            <Slider
-              onChange={updateValue2}
-              className={classes.slider}
+            <Controller
+              name="d"
+              control={control}
               defaultValue={6}
-              aria-labelledby='discrete-slider'
-              valueLabelDisplay='auto'
-              step={1}
-              marks
-              min={1}
-              max={10}
+              render={(props) => (
+                <Slider
+                  {...props}
+                  onChange={(_, value) => {
+                    props.onChange(value);
+                  }}
+                  className={classes.slider}
+                  defaultValue={6}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={1}
+                  marks
+                  min={1}
+                  max={10}
+                />
+              )}
             />
           </ThemeProvider>
+          <p className="error">{errors.d && errors.d.message}</p>
         </div>
-        <div className='card'>
-          <h1 className='robotoFont suo'>Will you recommend Pyramid to your friends?</h1>
+        <div className="card">
+          <h1 className="robotoFont suo">
+            Will you recommend Pyramid to your friends?
+          </h1>
           <ThemeProvider theme={muiTheme}>
-            <Slider
-              onChange={updateValue3}
-              className={classes.slider}
+            <Controller
+              name="e"
+              control={control}
               defaultValue={6}
-              aria-labelledby='discrete-slider'
-              valueLabelDisplay='auto'
-              step={1}
-              marks
-              min={1}
-              max={10}
+              render={(props) => (
+                <Slider
+                  {...props}
+                  onChange={(_, value) => {
+                    props.onChange(value);
+                  }}
+                  className={classes.slider}
+                  defaultValue={6}
+                  aria-labelledby="discrete-slider"
+                  valueLabelDisplay="auto"
+                  step={1}
+                  marks
+                  min={1}
+                  max={10}
+                />
+              )}
             />
           </ThemeProvider>
+          <p className="error">{errors.e && errors.e.message}</p>
         </div>
-        <div className='card'>
-          <h1 className='robotoFont'>
-            What questions do you have for us as the creators of this project, or is it unclear to you in the game
-            mechanics?
+        <div className="card">
+          <h1 className="robotoFont">
+            What questions do you have for us as the creators of this project,
+            or is it unclear to you in the game mechanics?
           </h1>
           <textarea
-            className='high textBox'
-            type='text'
-            cols='40'
-            rows='5'
-            onChange={(e) => setF(e.target.value)}></textarea>
+            className="high textBox"
+            type="text"
+            cols="40"
+            rows="5"
+            name="f"
+            ref={register}
+          ></textarea>
+          <p className="error">{errors.f && errors.f.message}</p>
         </div>
-        <div className='buttonContainer center'>
-          <button
-            className='robotoFont'
-            onClick={() => {
-              sendReply();
-            }}>
+        <div className="buttonContainer center">
+          <button type="submit" className="robotoFont">
             Submit
           </button>
         </div>
-      </div>
+      </form>
     </main>
   );
 }
