@@ -28,14 +28,11 @@ const schema = yup
   .typeError("Please enter a response");
 
 const useStyles = makeStyles({
-  slider: {
-    width: "20vw",
-  },
   arrow: {
-    marginTop: "2vh",
+    marginTop: "1em",
     transform: "rotate(180deg)",
     color: "#ff1d00",
-    fontSize: "3.5vw",
+    fontSize: "3em",
   },
 });
 
@@ -90,9 +87,10 @@ export default function FormPage(props) {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="card">
           <h1 className="robotoFont">
-            How much time do you spend on social media?
+            How much time (in hours per day) do you spend on social media on
+            twitter, fb, instagram, tiktok?
           </h1>
-          <input className="textBox" type="text" name="a" ref={register}/>
+          <input className="textBox" type="text" name="a" ref={register} />
           <p className="error">{errors.a && errors.a.message}</p>
         </div>
         <div className="card">
