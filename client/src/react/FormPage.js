@@ -92,7 +92,7 @@ export default function FormPage(props) {
           <h1 className="robotoFont">
             How much time do you spend on social media?
           </h1>
-          <input className="textBox" type="text" name="a" />
+          <input className="textBox" type="text" name="a" ref={register}/>
           <p className="error">{errors.a && errors.a.message}</p>
         </div>
         <div className="card">
@@ -100,8 +100,9 @@ export default function FormPage(props) {
             Are you using an ad blocker in your browser?
           </h1>
           <Controller
+            defaultValue="1"
             as={
-              <RadioGroup aria-label="ad-blocker" defaultValue="1">
+              <RadioGroup aria-label="ad-blocker">
                 <FormControlLabel value="1" control={<Radio />} label="Yes" />
                 <FormControlLabel value="2" control={<Radio />} label="No" />
               </RadioGroup>
