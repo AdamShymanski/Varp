@@ -27,7 +27,7 @@
     "client": "cd client && npm start",
     "start-client": "cd client && react-scripts start",
     "server": "nodemon server.js",
-    "start": "concurrently --kill-others \"npm run server\" \"npm run client\""
+    "start": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
   }
 }
