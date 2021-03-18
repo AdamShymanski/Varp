@@ -1,210 +1,116 @@
 import React, { useState } from "react";
 import "./../../sass/elements/SecondElement-style.scss";
 
-//icons
-import act from "./../../resources/icons/act.svg";
-import game from "./../../resources/icons/game.svg";
-import arrow from "./../../resources/icons/arrow.svg";
-import money from "./../..//resources/icons/money.svg";
-import searching from "./../../resources/icons/searching.svg";
-
-//material UI
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import { makeStyles } from "@material-ui/core/styles";
 
+//material UI icons
+import VideogameAssetOutlinedIcon from "@material-ui/icons/VideogameAssetOutlined";
+import AttachMoneyOutlinedIcon from "@material-ui/icons/AttachMoneyOutlined";
+import FindInPageOutlinedIcon from "@material-ui/icons/FindInPageOutlined";
+import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
+
+//icons
+import expandIcon from "../../resources/icons/expand.svg";
+import shrinkIcon from "../../resources/icons/shrink.svg";
+
 const useStyles = makeStyles({
-  downwardsArrow: {
-    color: "#0082ff",
-    fontSize: "3.4vw",
-    position: "absolute",
-    top: "2.5vh",
-    right: "-4.4vw",
-  },
-  searchIcon: {
-    color: "#ff1d00",
-    fontSize: "6.5vw",
-    fontWeight: "400",
+  icon: {
+    color: "#f4f4f4",
+    fontSize: "5vw",
+    marginTop: "1vh",
+    fontWeight: "300",
   },
 });
 
-export default function CardsElement(props) {
+const handleCardsClass = (state) => {
+  if (state) {
+    return "card expanded";
+  } else return "shrinked card flexColumn ";
+};
+const changeCardsSize = (setFunction) => {
+  setFunction();
+};
+
+function SecondElement(props) {
   const classes = useStyles();
 
-  const [isDisabled1, setDisabled1] = useState(false);
-  const [isDisabled2, setDisabled2] = useState(false);
-  const [isDisabled3, setDisabled3] = useState(false);
-  const [isDisabled4, setDisabled4] = useState(false);
-
-  const [firstCardToggle, setFirstCard] = useState(false);
-  const [secondCardToggle, setSecondCard] = useState(false);
-  const [thirdCardToggle, setThirdCard] = useState(false);
-  const [fourthCardToggle, setFourthCard] = useState(false);
-
-  function toggleCard(card) {
-    switch (card) {
-      case 1:
-        setFirstCard((firstCardToggle) => !firstCardToggle);
-
-        setDisabled1((isDisabled1) => !isDisabled1);
-        setTimeout(() => {
-          setDisabled1((isDisabled1) => !isDisabled1);
-        }, 210);
-        break;
-      case 2:
-        setSecondCard((secondCardToggle) => !secondCardToggle);
-
-        setDisabled2((isDisabled2) => !isDisabled2);
-        setTimeout(() => {
-          setDisabled2((isDisabled2) => !isDisabled2);
-        }, 210);
-        break;
-      case 3:
-        setThirdCard((thirdCardToggle) => !thirdCardToggle);
-
-        setDisabled3((isDisabled3) => !isDisabled3);
-        setTimeout(() => {
-          setDisabled3((isDisabled3) => !isDisabled3);
-        }, 210);
-        break;
-      case 4:
-        setFourthCard((fourthCardToggle) => !fourthCardToggle);
-
-        setDisabled4((isDisabled4) => !isDisabled4);
-        setTimeout(() => {
-          setDisabled4((isDisabled4) => !isDisabled4);
-        }, 210);
-        break;
-    }
-  }
-
+  const [aState, setA] = useState(false);
+  const [bState, setB] = useState(false);
+  const [cState, setC] = useState(false);
+  const [dState, setD] = useState(false);
   return (
-    <section className={`wrapper-1 ${props.visible ? "visible" : "notVisible"}`}>
-      <aside>
-        <div className='card'>
-          <div className='topCard'>
-            <img src={act} alt='Act Icon' className='act' />
-            <ArrowForwardIcon className={classes.downwardsArrow} />
-          </div>
-          <div className='titleCard'>
-            <h1>Collaboration</h1>
-            <p>We work with many companies to raise money for the pools</p>
-          </div>
-          <div className={`bottomCard ${firstCardToggle ? "show1" : "hide"}`}>
-            <p>
+    <main className={`${props.visibility() ? " visible" : "invisible"}`}>
+      <article>
+        <div className='title poppinsFont flexRow'>
+          <div className='accentLine' />
+          <p>How it works?</p>
+        </div>
+      </article>
+      <article>
+        <div className='bottom flexRow'>
+          <div className={handleCardsClass(aState)}>
+            <div className='topWrapper flexColumn'>
+              <WorkOutlinedIcon className={classes.icon} />
+              <h1 className='title poppinsFont'>Collaboration</h1>
+            </div>
+            <p className='description poppinsFont'>We work with many companies to raise money for the pools</p>
+            <p className='bigDescription poppinsFont'>
               This is my job, I'm looking for companys which want to colaborate with Pyramid. It's source of money for
               prizes for winners, but more on that later.
             </p>
-            <img
-              src={arrow}
-              alt='Arrow Icon'
-              className='arrow'
-              disabled={isDisabled1}
-              onClick={() => {
-                toggleCard(1);
-              }}
-            />
-            <div className='curtain'></div>
+            <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setA((aState) => !aState)} />
+            <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setA((aState) => !aState)} />
           </div>
-        </div>
-        <div className='card'>
-          <div className='topCard'>
-            <img src={searching} alt='searching Icon' className='searching' />
-            <ArrowForwardIcon className={classes.downwardsArrow} />
-          </div>
-          <div className='titleCard'>
-            <h1>Your job</h1>
-            <p>Complete the tasks to get the tokens needed to join the game</p>
-          </div>
-          <div className={`bottomCard ${secondCardToggle ? "show2" : "hide"}`}>
-            <p>
+          <div className={handleCardsClass(bState)}>
+            <div className='topWrapper flexColumn'>
+              <FindInPageOutlinedIcon className={classes.icon} />
+              <h1 className='title poppinsFont'>Your Job</h1>
+            </div>
+            <p className='description poppinsFont'>Complete the tasks to get the tokens needed to join the game</p>
+            <p className='bigDescription poppinsFont'>
               Your task is to get acquainted with Pyramid's collaborators and their offer, as part of the task you could
               be requested to express your opinion about them, create an account on their website or just leave them
-              your contact details.
+              your contact details. After completing the task, you receive tokens that will allow you to join the game.
+              Remember that the amount tokens required to join the game is different each time, and largely depends on
+              the pool of money allocated for the prize.
             </p>
-            <p>
-              After completing the task, you receive tokens that will allow you to join the game. Remember that the
-              amount tokens required to join the game is different each time, and largely depends on the pool of money
-              allocated for the prize.
-            </p>
-            <img
-              src={arrow}
-              alt='Arrow Icon'
-              className='arrow'
-              disabled={isDisabled2}
-              onClick={() => {
-                toggleCard(2);
-              }}
-            />
-            <div className='curtain'></div>
+            <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setB((bState) => !bState)} />
+            <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setB((bState) => !bState)} />
           </div>
-        </div>
-        <div className='card'>
-          <div className='topCard'>
-            <img src={game} alt='Game Icon' className='game' />
-            <ArrowForwardIcon className={classes.downwardsArrow} />
-          </div>
-          <div className='titleCard'>
-            <h1>Game</h1>
-            <p>Enjoy competition and play with other players in arcade games</p>
-          </div>
-          <div className={`bottomCard ${thirdCardToggle ? "show3" : "hide"}`}>
-            <p>
+          <div className={handleCardsClass(cState)}>
+            <div className='topWrapper flexColumn'>
+              <VideogameAssetOutlinedIcon className={classes.icon} />
+              <h1 className=' title poppinsFont'>Game</h1>
+            </div>
+
+            <p className='description poppinsFont'>Enjoy competition and play with other players in arcade games</p>
+            <p className='bigDescription poppinsFont'>
               The game is very simple, you need to score as many points as possible in mini-games. When finished, the
-              scores are compared and the few people with the most points win the pot of money.
+              scores are compared and the few people with the most points win the pot of money. Mini-games are usually
+              arcade games, board games and other games of this type. The most important feature is their simplicity
             </p>
-            <p>
-              Mini-games are usually arcade games, board games and other games of this type. The most important feature
-              is their simplicity
+            <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setC((cState) => !cState)} />
+            <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setC((cState) => !cState)} />
+          </div>
+          <div className={handleCardsClass(dState)}>
+            <div className='topWrapper flexColumn'>
+              <AttachMoneyOutlinedIcon className={classes.icon} />
+              <h1 className='title poppinsFont'>Prize</h1>
+            </div>
+            <p className='description poppinsFont'>
+              If you are among the winners, collect your prize in cash on the same day
             </p>
-            <p>For example...</p>
-            <ul>
-              <li>Mario</li>
-              <li>Pac-Man</li>
-              <li>Galaga</li>
-              <li>Doneky Kong</li>
-              <li>Icu Tower</li>
-              <li>Snake</li>
-              <li>And so on...</li>
-            </ul>
-            <img
-              src={arrow}
-              alt='Arrow Icon'
-              className='arrow'
-              disabled={isDisabled3}
-              onClick={() => {
-                toggleCard(3);
-              }}
-            />
-            <div className='curtain'></div>
-          </div>
-        </div>
-        <div className='card'>
-          <div className='topCard'>
-            <img src={money} alt='Money Icon' className='money' />
-          </div>
-          <div className='titleCard'>
-            <h1>Prize</h1>
-            <p>If you are among the winners, collect your prize in cash on the same day</p>
-          </div>
-          <div className={`bottomCard ${fourthCardToggle ? "show4" : "hide"}`}>
-            <p>
+            <p className='bigDescription poppinsFont'>
               The prize is a pool of money, usually around $300, if you find yourself in the group of winners you will
               receive cash in your bank account or PayPal. It is worth noting that you receive actual cash with your
               withdrawal, not gift cards or other such rewards.
             </p>
-            <img
-              src={arrow}
-              alt='Arrow Icon'
-              className='arrow'
-              disabled={isDisabled4}
-              onClick={() => {
-                toggleCard(4);
-              }}
-            />
-            <div className='curtain'></div>
+            <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setD((dState) => !dState)} />
+            <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setD((dState) => !dState)} />
           </div>
         </div>
-      </aside>
-    </section>
+      </article>
+    </main>
   );
 }
+export default SecondElement;

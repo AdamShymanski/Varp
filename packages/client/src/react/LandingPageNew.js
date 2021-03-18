@@ -6,40 +6,15 @@ import "./../sass/LandingPageNew-style.scss";
 //resources
 import logo from "./../resources/icons/logo.svg";
 
-//material UI
-import { makeStyles } from "@material-ui/core/styles";
-import AlarmIcon from "@material-ui/icons/Alarm";
-import BusinessIcon from "@material-ui/icons/Business";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
-
-const useStyles = makeStyles({
-  accountIcon: {
-    color: "#f4f4f4",
-    fontSize: "4.8vw",
-    marginTop: "1vh",
-  },
-});
+//elements
+import FirstElement from "./elements/FirstElement";
+import SecondElement from "./elements/SecondElement";
+import ThirdElement from "./elements/ThirdElement";
 
 function LandingPageNew() {
-  const classes = useStyles();
+  const [visibilityState, setVisibilityState] = useState(2);
 
-  const [displayElement, setDisplayedElement] = useState(1);
-
-  function manageIndicatorColors(element, number) {
-    switch (number) {
-      case number === 1: {
-        return element + " accent";
-      }
-      case number === 2: {
-      }
-      case number === 3: {
-      }
-      case number === 4: {
-      }
-    }
-  }
-
+  const handleElementsVisibility = () => {};
   return (
     <div className='wrapper'>
       <div className='navbar flexRow'>
@@ -60,7 +35,26 @@ function LandingPageNew() {
         <div className='line' />
         <div className='dot' />
       </div>
-      <main>
+      <FirstElement
+        visibility={() => {
+          if (visibilityState == 1) return true;
+          else return false;
+        }}
+      />
+      <SecondElement
+        visibility={() => {
+          if (visibilityState == 2) return true;
+          else return false;
+        }}
+      />
+      <ThirdElement
+        visibility={() => {
+          if (visibilityState == 3) return true;
+          else return false;
+        }}
+      />
+
+      {/* <main>
         <article>
           <div className='title poppinsFont flexRow'>
             <div className='accentLine' />
@@ -108,7 +102,7 @@ function LandingPageNew() {
             </div>
           </div>
         </article>
-      </main>
+      </main> */}
     </div>
   );
 }

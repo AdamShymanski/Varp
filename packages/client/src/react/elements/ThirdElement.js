@@ -3,46 +3,67 @@ import "./../../sass/elements/ThirdElement-style.scss";
 
 export default function FourthElement(props) {
   return (
-    <section className={`wrapper-2 ${props.visible ? "visible" : "notVisible"}`}>
-      <section>
-        <div className='card c0'>
-          <h1>1. The power of our users</h1>
-          <p>
-            Our users can perform much more demanding tasks than users of, say, YouTube. This is due to the rewards they
-            can receive for completing these tasks. YouTube can only offer to watch another video, while Pyramid offers
-            players the chance to win a lot of money. This is a significant advantage of Pyramid over other services
-            offering advertising or, for example, filling out surveys.
-          </p>
+    <main className={`${props.visibility() ? " visible" : "invisible"}`}>
+      <section className={`wrapper-3 ${props.visible ? "visible" : "notVisible"}`}>
+        <div className='headersContainer'>
+          <h1>I need your help!</h1>
+          <h2>
+            There are <span>3 ways</span> you can help me build this project and create
+            <span> reality out of a dream</span>
+          </h2>
         </div>
-        <div className='card c1'>
-          <h1>2. Other companies need us</h1>
-          <p>
-            Pyramid offers access to its own users who are difficult to reach through conventional methods. Our players
-            are young people who block Google ads. They are also not sensitive to Facebook ads. This is the reason why
-            Pyramid will be a great source of access to young people for other companies that care about this group.
-          </p>
-        </div>
-        <div className='card c2'>
-          <h1>3. Pyramid has a much higher quality of its services</h1>
-          <p>
-            The quality of service, and the efficiency and effectiveness behind it, is much higher than the competition.
-            This is due to the fact that players are rewarded for performing tasks. A person who fills out a survey for
-            our collaborator, pays much more attention to the questions he asks because he knows that if he wins the
-            game, his answers will be checked by one of our administrators. And if it turns out that a user is filling
-            out the survey incorrectly, his prize will be rejected and will be given to another person.
-          </p>
-        </div>
-        <div className='card c3'>
-          <h1>4. Pyramid is something new and interesting</h1>
-          <p>
-            Pyramid is something completely new to the market. It allows you to compete with other people for money,
-            without any input from you. This is much more exciting and interesting for young people than previous ways
-            of earning money for people who are under age and do not have any capital accumulated. In addition Pyramid
-            is very pleasant to play. One game can be joined by a group of friends, who will compete with each other for
-            the prize.
-          </p>
+        <div className='cardContainer'>
+          <div className='card firstCard hvr-grow'>
+            <h1>
+              <span>1.</span> Express your opinion about this project
+            </h1>
+            <p>Yes, it's really that simple. I'm working alone and I miss other people's opinions about my idea.</p>
+            <p>
+              Just write if you think Pyramid has a chance, what do you like and what not, what would you improve and so
+              on ...
+            </p>
+          </div>
+          <div className='card secondCard hvr-grow'>
+            <h1>
+              <span>2.</span> Create an account -{" "}
+              <span className='addendum'> DO IT NOW AND GET PREMIUM PRIVILAGES</span>
+            </h1>
+            <p>This is very important.</p>
+            <p>
+              Registered users show that the project has interest. This makes companies more likely to collaborate with
+              us, which gives Pyramid a chance to grow. Money from cooperation is a source of income for Pyramid and a
+              source of money for rewards for you. The more registered users the better.
+            </p>
+            <p className='cp-3'>If you create an account at this stage, your account will have premium privileges :</p>
+            <ul>
+              <li>
+                <p>
+                  <span>- </span>You will be able to join the first few games <span> for free</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>- </span>In the future, you will have to do fewer tasks to get a lot of points
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span>- </span>And I will definitely pay you back for your help
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div className='card thirdCard hvr-grow'>
+            <h1>
+              <span>3.</span> Tell your friends about Pyramid
+            </h1>
+            <p>
+              Just send them a link to our site and summarize what you already know about us. It's the best thing you
+              can do for me :)
+            </p>
+          </div>
         </div>
       </section>
-    </section>
+    </main>
   );
 }

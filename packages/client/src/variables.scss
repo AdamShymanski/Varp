@@ -25,3 +25,19 @@ $back-text: #7f7f7f;
 $gray: #5c5c5c;
 $input-background: #121212;
 $dark-gray: #121212;
+
+.poppinsFont {
+  font-weight: 400;
+  font-size: 0.8vw;
+  font-family: $poppins-font;
+}
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
