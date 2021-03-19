@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 const handleCardsClass = (state) => {
   if (state) {
     return "card expanded";
-  } else return "shrinked card flexColumn ";
+  } else return "shrinked card ";
 };
 const changeCardsSize = (setFunction) => {
   setFunction();

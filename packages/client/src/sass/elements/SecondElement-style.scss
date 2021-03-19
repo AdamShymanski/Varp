@@ -12,16 +12,17 @@ main {
       justify-content: flex-start;
       width: 100%;
       .card {
+        width: 26vw;
         height: 40vh;
         margin-right: 4vw;
 
         position: relative;
-        transition: 400ms;
 
         .bigDescription {
           margin: 2vh 0 0 2vw;
           width: 38vw;
           color: $main-text;
+          transition: 200ms;
         }
 
         .title {
@@ -49,7 +50,6 @@ main {
         }
       }
       .shrinked {
-        width: 23vw;
         transition: 400ms;
 
         .expandIcon {
@@ -58,16 +58,19 @@ main {
         .shrinkIcon {
           display: none;
         }
+        .description {
+          display: block;
+        }
         .bigDescription {
           display: none;
         }
       }
       .expanded {
         width: 66vw;
+        transition: 400ms;
         position: absolute;
 
-        transition: 400ms;
-        z-index: 1;
+        z-index: 2;
 
         .expandIcon {
           display: none;

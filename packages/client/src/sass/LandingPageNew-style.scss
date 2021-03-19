@@ -33,15 +33,20 @@
 
     width: 30vw;
     height: 100%;
+
+    margin-top: 9.8vh;
     .dot {
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
       border-radius: 100%;
+      background: #ff1d00;
+      margin: -0.2vh 0;
     }
     .line {
-      width: 4px;
+      width: 3px;
       height: 2.2vw;
       border-radius: 8px;
+      background: #ff1d00;
     }
     .accent {
       background: #ff1d00;
@@ -50,5 +55,4 @@
       background: $gray;
     }
   }
- 
 }
