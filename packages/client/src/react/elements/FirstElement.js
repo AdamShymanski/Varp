@@ -47,18 +47,18 @@ function FirstElement(props) {
             people trust us and how engaged community we create. You can join it today!
           </p>
         </div>
-        <div className='bottom flexRow'>
-          <div className='card flexColumn'>
+        <div className='cardWrapper flexRow'>
+          <div className='cardF flexColumn'>
             <AccountBoxIcon className={classes.accountIcon} />
             <p className='number poppinsFont'>2,000+</p>
             <p className='description poppinsFont'>Users who have already signed up</p>
           </div>
-          <div className='card flexColumn'>
+          <div className='cardF flexColumn'>
             <BusinessIcon className={classes.accountIcon} />
             <p className='number poppinsFont'>21</p>
             <p className='description poppinsFont'>Trusted cooperating companies</p>
           </div>
-          <div className='card flexColumn'>
+          <div className='cardF flexColumn'>
             <AlarmIcon className={classes.accountIcon} />
             <p className='number poppinsFont'>3123 H</p>
             <p className='description poppinsFont'>Hours spent on Pyramid by our users</p>

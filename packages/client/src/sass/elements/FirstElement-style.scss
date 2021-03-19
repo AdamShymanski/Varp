@@ -32,12 +32,12 @@ main {
         color: $second-text;
       }
     }
-    .bottom {
+    .cardWrapper {
       // width: 45vw;
-      margin-top: 6vh;
+      margin-top: 2vh;
 
       justify-content: space-evenly;
-      .card {
+      .cardF {
         width: 12vw;
         height: 12vw;
 

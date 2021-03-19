@@ -6,16 +6,67 @@ import "./../sass/LandingPageNew-style.scss";
 //resources
 import logo from "./../resources/icons/logo.svg";
 
+//icons
+import { makeStyles } from "@material-ui/core/styles";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
 //elements
 import FirstElement from "./elements/FirstElement";
 import SecondElement from "./elements/SecondElement";
 import ThirdElement from "./elements/ThirdElement";
 
-function LandingPageNew() {
-  const [visibilityState, setVisibilityState] = useState(1);
+const useStyles = makeStyles({
+  arrowF: {
+    position: "absolute",
+    right: "0.6vw",
+    fontSize: "1.2vw",
+    fontWeight: "700",
+  },
+  arrowGb: {
+    position: "absolute",
+    left: "0.6vw",
+    fontSize: "1.2vw",
+    fontWeight: "700",
+  },
+});
 
-  // const handleElementsVisibility = () => {};
-  const handleScrollIndicator = (element, case) => {
+function LandingPageNew() {
+  const classes = useStyles();
+
+  const [visibilityState, setVisibilityState] = useState(2);
+
+  const handleScrollIndicator = (element, index) => {
+    switch (visibilityState) {
+      case 1: {
+        if (element === "dot") {
+          if (index === 1) return "dot accent";
+          return "dot";
+        }
+        return "line";
+      }
+      case 2: {
+        if (element === "dot") {
+          switch (index) {
+            case 1:
+              return "dot accent";
+            case 2:
+              return "dot accent";
+          }
+          return "dot";
+        }
+        if (element === "line") {
+          if (index === 1) return "line accent";
+          return "line";
+        }
+      }
+      case 3: {
+        if (element === "dot") {
+          return "dot accent";
+        }
+        return "line accent";
+      }
+    }
   };
 
   return (
@@ -30,11 +81,21 @@ function LandingPageNew() {
         </ul>
       </div>
       <div className='scrollIndicator flexColumn'>
-        <div className='dot' />
-        <div className='line' />
-        <div className='dot' />
-        <div className='line' />
-        <div className='dot' />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 1)} />
+          <p className='poppinsFont'>What is Pyramid?</p>
+        </div>
+
+        <div className={handleScrollIndicator("line", 1)} />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 2)} />
+          <p className='poppinsFont'>How It Works?</p>
+        </div>
+        <div className={handleScrollIndicator("line", 2)} />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 3)} />
+          <p className='poppinsFont'>How You Can Help?</p>
+        </div>
       </div>
       <FirstElement
         visibility={() => {
@@ -54,6 +115,20 @@ function LandingPageNew() {
           else return false;
         }}
       />
+      <div className='navigationButtons '>
+        <button
+          className={`poppinsFont gbBtn flexRow ${visibilityState === 1 ? "invisible" : ""}`}
+          onClick={() => setVisibilityState((visibilityState) => visibilityState - 1)}>
+          <ArrowBackIosIcon className={classes.arrowGb} />
+          Go Back
+        </button>
+        <button
+          className={`poppinsFont nBtn flexRow ${visibilityState === 3 ? "invisible" : ""}`}
+          onClick={() => setVisibilityState((visibilityState) => visibilityState + 1)}>
+          Next
+          <ArrowForwardIosIcon className={classes.arrowF} />
+        </button>
+      </div>
     </div>
   );
 }
