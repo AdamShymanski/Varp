@@ -7,6 +7,7 @@ const User = require("../models/user_model");
 const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const specialCharactersRegEx = /[^A-Za-z0-9]/;
+const onlyLettersRegEx = /[^A-Za-z/s]/; //! Have to improve, it's not working
 
 router.post("/register", async (req, res) => {
   let errorContainer = [];
@@ -18,12 +19,12 @@ router.post("/register", async (req, res) => {
       let fullNameLenght = fullName.length;
       if (fullNameLenght <= 3) {
         errorContainer.push({ fnf: "Name is too short. It muste be above 3 characters" });
-        if (fullNameLenght >= 25) {
-          errorContainer.push({ fnf: "Name is too long. It muste be below 25 characters" });
-          if (!onlyLettersRegEx.test(fullName)) {
-            errorContainer.push({ fnf: "Name contains not allowed special characters" });
-          }
-        }
+      }
+      if (fullNameLenght >= 25) {
+        errorContainer.push({ fnf: "Name is too long. It muste be below 25 characters" });
+      }
+      if (onlyLettersRegEx.test(fullName)) {
+        errorContainer.push({ fnf: "Name contains not allowed special characters" });
       }
     } else errorContainer.push({ fnf: "This field is required" });
 
