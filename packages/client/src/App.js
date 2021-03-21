@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.scss";
 
 //pages
-// import LandingPage from "./react/LandingPage";
+//import LandingPage from "./react/LandingPage";
 import LandingPageNew from "./react/LandingPageNew";
 import CreateAccountPage from "./react/CreateAccountPage";
 import FormPage from "./react/FormPage";

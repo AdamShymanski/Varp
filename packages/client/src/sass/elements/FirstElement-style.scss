@@ -1,180 +1,65 @@
 @import "../../variables.scss";
 
-.hvr-grow {
-  display: inline-block;
-  vertical-align: middle;
-  transform: translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
-  transition-duration: 0.3s;
-  transition-property: transform;
-}
+main {
+  right: 0;
+  position: absolute;
 
-.hvr-grow:hover,
-.hvr-grow:focus,
-.hvr-grow:active {
-  transform: scale(1.08);
-}
+  width: 70vw;
+  height: 100%;
+  article {
+    margin: 6vh 0;
+    width: 55vw;
+    .title {
+      .accentLine {
+        height: 4px;
+        width: 2.2vw;
 
-.wrapper-0 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: 2vh;
-  z-index: 1;
-
-  .cardsWrapper {
-    width: 100vw;
-    height: 85vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .horizontalCard0 {
-      width: 80vw;
-      margin-left: 3.1vw;
-      padding: 2vh 1.5vw;
-
-      background-color: $foreground;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      -webkit-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-
-      transition: 200ms;
-
-      h1 {
-        font-size: 3.4vw;
-        color: white;
-        font-family: $agency-bold-font;
-
-        margin-bottom: 2vh;
-        span {
-          color: $accent;
-        }
+        border-radius: 8px;
+        background: #ff1d00;
       }
-
-      ul {
+      p {
         margin-left: 1vw;
-        margin-bottom: 2vh;
-        list-style: none;
-        li {
-          text-align: left;
-          font-size: 1.4vw;
-          color: $main-text;
-          font-family: $agency-bold-font;
-          margin: 1.7vh 0;
-        }
-        li::before {
-          content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
-          color: $blue; /* Change the color */
-          font-weight: bold; /* If you want it to be bold */
-          display: inline-block; /* Needed to add space between the bullet and the text */
-          width: 1em; /* Also needed for space (tweak if needed) */
-          margin-left: -1em; /* Also needed for space (tweak if needed) */
-        }
+
+        font-size: 2.5vw;
+        font-weight: 700;
+        color: $main-text;
       }
     }
-    .bottomCards {
-      width: 100vw;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-
-      .verticalCard {
-        width: 28vw;
-        height: 32vh;
-        border-radius: 5px;
-        background-color: $foreground;
-
-        display: flex;
-        flex-direction: column;
-
-        -webkit-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-
-        transition: 200ms;
-
-        .hearderTextWrapper {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          h1 {
-            color: $accent;
-            font-size: 6vw;
-            font-family: $agency-bold-font;
-
-            margin-left: 1vw;
-          }
-        }
-
-        p {
-          color: $main-text;
-          font-size: 1.7vw;
-          font-family: $agency-bold-font;
-          text-align: center;
-          margin-bottom: 2vh;
-          span {
-            color: $accent;
-          }
-        }
+    .body {
+      margin-left: 3.5vw;
+      margin-top: 2vh;
+      p {
+        color: $second-text;
       }
+    }
+    .cardWrapper {
+      // width: 45vw;
+      margin-top: 2vh;
 
-      .horizontalCard1 {
-        width: 62vw;
+      justify-content: space-evenly;
+      .cardF {
+        width: 12vw;
+        height: 12vw;
 
-        border-radius: 5px;
-
-        background-color: $foreground;
-        padding-top: 2vh;
-        padding-left: 1vw;
-        padding: 2vh 0 1vw 2vh;
-
-        h1 {
-          width: 70%;
-          height: 10vh;
-          margin-bottom: 1vh;
-
-          font-size: 3.4vw;
-          color: $main-text;
-          font-family: $agency-bold-font;
-          border-bottom: 3px solid $blue;
+        border-radius: 1.4vh;
+        background: $dark-gray;
+        .number {
+          color: $accent;
+          font-size: 1.9vw;
+          font-weight: 700;
         }
-        p {
+        .description {
+          padding: 0 1vw;
+          text-align: center;
           color: $main-text;
-          font-size: 1.4vw;
-          font-family: $agency-bold-font;
-          span {
-            color: $accent;
-            font-size: 1.8vw;
-          }
         }
-        // transition: 280ms;
-
-        -webkit-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 7px 7px 9px 0px rgba(0, 0, 0, 0.75);
-
-        display: inline-block;
-        vertical-align: middle;
       }
     }
   }
 }
 .visible {
   display: inherit;
-  transition: 200ms;
 }
-.notVisible {
+.invisible {
   display: none;
-  transition: 200ms;
 }

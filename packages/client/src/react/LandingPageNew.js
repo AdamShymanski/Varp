@@ -6,39 +6,68 @@ import "./../sass/LandingPageNew-style.scss";
 //resources
 import logo from "./../resources/icons/logo.svg";
 
-//material UI
+//icons
 import { makeStyles } from "@material-ui/core/styles";
-import AlarmIcon from "@material-ui/icons/Alarm";
-import BusinessIcon from "@material-ui/icons/Business";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+
+//elements
+import FirstElement from "./elements/FirstElement";
+import SecondElement from "./elements/SecondElement";
+import ThirdElement from "./elements/ThirdElement";
 
 const useStyles = makeStyles({
-  accountIcon: {
-    color: "#f4f4f4",
-    fontSize: "4.8vw",
-    marginTop: "1vh",
+  arrowF: {
+    position: "absolute",
+    right: "0.6vw",
+    fontSize: "1.2vw",
+    fontWeight: "700",
+  },
+  arrowGb: {
+    position: "absolute",
+    left: "0.6vw",
+    fontSize: "1.2vw",
+    fontWeight: "700",
   },
 });
 
 function LandingPageNew() {
   const classes = useStyles();
 
-  const [displayElement, setDisplayedElement] = useState(1);
+  const [visibilityState, setVisibilityState] = useState(2);
 
-  function manageIndicatorColors(element, number) {
-    switch (number) {
-      case number === 1: {
-        return element + " accent";
+  const handleScrollIndicator = (element, index) => {
+    switch (visibilityState) {
+      case 1: {
+        if (element === "dot") {
+          if (index === 1) return "dot accent";
+          return "dot";
+        }
+        return "line";
       }
-      case number === 2: {
+      case 2: {
+        if (element === "dot") {
+          switch (index) {
+            case 1:
+              return "dot accent";
+            case 2:
+              return "dot accent";
+          }
+          return "dot";
+        }
+        if (element === "line") {
+          if (index === 1) return "line accent";
+          return "line";
+        }
       }
-      case number === 3: {
-      }
-      case number === 4: {
+      case 3: {
+        if (element === "dot") {
+          return "dot accent";
+        }
+        return "line accent";
       }
     }
-  }
+  };
 
   return (
     <div className='wrapper'>
@@ -52,63 +81,54 @@ function LandingPageNew() {
         </ul>
       </div>
       <div className='scrollIndicator flexColumn'>
-        <div className='dot' />
-        <div className='line' />
-        <div className='dot' />
-        <div className='line' />
-        <div className='dot' />
-        <div className='line' />
-        <div className='dot' />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 1)} />
+          <p className='poppinsFont'>What is Pyramid?</p>
+        </div>
+
+        <div className={handleScrollIndicator("line", 1)} />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 2)} />
+          <p className='poppinsFont'>How It Works?</p>
+        </div>
+        <div className={handleScrollIndicator("line", 2)} />
+        <div className='dotWrapper flexRow'>
+          <div className={handleScrollIndicator("dot", 3)} />
+          <p className='poppinsFont'>How You Can Help?</p>
+        </div>
       </div>
-      <main>
-        <article>
-          <div className='title poppinsFont flexRow'>
-            <div className='accentLine' />
-            <p>What Pyramid is?</p>
-          </div>
-          <div className='body poppinsFont'>
-            <p>
-              It's a platform where users can compete against each other for a pot of money in mini-games like Galaga,
-              Pac Man, Snake and other simple arcade games. To join the game, each player must complete several tasks
-              that do not take more than 10 minutes. Tasks are, for example, visiting the sponsor's website, leaving him
-              your email address, sharing your opinion about his product or filling out a short questionnaire. For
-              completing tasks, the user receives tokens that can later be exchanged for participation in the game. The
-              number of tokens needed to join the game is different each time and depends on the size of the money pool
-              that can be won.
-            </p>
-          </div>
-        </article>
-        <article>
-          <div className='title poppinsFont flexRow'>
-            <div className='accentLine' />
-            <p>What Pyramid've already achieved?</p>
-          </div>
-          <div className='body poppinsFont'>
-            <p>
-              Pyramid is very new. We started about 3 months ago. You can see our latest developments below. We are very
-              proud of them and want to share them with you, but that's not the only goal. They also show how many fim
-              and people trust us and how engaged community we create. You can join it today!
-            </p>
-          </div>
-          <div className='bottom flexRow'>
-            <div className='card flexColumn'>
-              <AccountBoxIcon className={classes.accountIcon} />
-              <p className='number poppinsFont'>2,000+</p>
-              <p className='description poppinsFont'>Users who have already signed up</p>
-            </div>
-            <div className='card flexColumn'>
-              <BusinessIcon className={classes.accountIcon} />
-              <p className='number poppinsFont'>21</p>
-              <p className='description poppinsFont'>Trusted cooperating companies</p>
-            </div>
-            <div className='card flexColumn'>
-              <AlarmIcon className={classes.accountIcon} />
-              <p className='number poppinsFont'>3123 H</p>
-              <p className='description poppinsFont'>Hours spent on Pyramid by our users</p>
-            </div>
-          </div>
-        </article>
-      </main>
+      <FirstElement
+        visibility={() => {
+          if (visibilityState == 1) return true;
+          else return false;
+        }}
+      />
+      <SecondElement
+        visibility={() => {
+          if (visibilityState == 2) return true;
+          else return false;
+        }}
+      />
+      <ThirdElement
+        visibility={() => {
+          if (visibilityState == 3) return true;
+          else return false;
+        }}
+      />
+      <div className='navigationButtons '>
+        <button
+          className={`poppinsFont gbBtn flexRow ${visibilityState === 1 ? "invisible" : ""}`}
+          onClick={() => setVisibilityState((visibilityState) => visibilityState - 1)}>
+          <ArrowBackIosIcon className={classes.arrowGb} />
+          Go Back
+        </button>
+        <button
+          className={`poppinsFont nBtn flexRow ${visibilityState === 3 ? "invisible" : ""}`}
+          onClick={() => setVisibilityState((visibilityState) => visibilityState + 1)}>
+          Next
+          <ArrowForwardIosIcon className={classes.arrowF} />
+        </button>
+      </div>
     </div>
   );
 }

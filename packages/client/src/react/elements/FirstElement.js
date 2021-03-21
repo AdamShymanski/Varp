@@ -1,95 +1,71 @@
 import React, { useState, useEffect } from "react";
 import "./../../sass/elements/FirstElement-style.scss";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import { makeStyles } from "@material-ui/core/styles";
 
-import Axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
+import AlarmIcon from "@material-ui/icons/Alarm";
+import BusinessIcon from "@material-ui/icons/Business";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 const useStyles = makeStyles({
   accountIcon: {
-    color: "#ffffff",
+    color: "#f4f4f4",
     fontSize: "4.8vw",
-    position: "absolute",
-    left: "4vw",
-  },
-  timerIcon: {
-    color: "#ffffff",
-    fontSize: "4.8vw",
-    position: "absolute",
-    left: "0.3vw",
-    marginTop: "2vh",
+    marginTop: "1vh",
   },
 });
-
 function FirstElement(props) {
   const classes = useStyles();
-  const [accountsNumber, setAccountsNumber] = useState();
-
-  useEffect(async () => {
-    try {
-      const response = await Axios.post("http://localhost:5000/set_up_data/get_data");
-      setAccountsNumber((accountsNumber) => (accountsNumber = response.data.response));
-    } catch (err) {
-      // console.log(err.response.data);
-    }
-  }, []);
 
   return (
-    <section className={`wrapper-0 ${props.visible ? "visible" : "notVisible"}`}>
-      <div className='cardsWrapper'>
-        <div className='horizontalCard0 hvr-grow'>
-          <h1>
-            Pyramid is<span>...............</span>
-          </h1>
-          <ul>
-            <li>
-              A platform where users can compete against each other for a pot of money in mini-games like Galaga, Pac
-              Man, Snake and other simple arcade games.
-            </li>
-            <li>To joining the game, each player must complete several tasks that do not take more than 10 minutes.</li>
-            <li>
-              Tasks are, for example, visiting the sponsor's website, leaving him your e-mail address, sharing your
-              opinion about his product or filling out a short questionnaire.
-            </li>
-            <li>
-              For completing tasks, the user receives tokens that can later be exchanged for participation in the game.
-              The number of tokens needed to join the game is different each time and depends on the size of the money
-              pool that can be won.
-            </li>
-          </ul>
+    <main className={`${props.visibility() ? " visible" : "invisible"}`}>
+      <article>
+        <div className='title poppinsFont flexRow'>
+          <div className='accentLine' />
+          <p>What Pyramid is?</p>
         </div>
-        <div className='bottomCards'>
-          <div className='verticalCard hvr-grow'>
-            <div className='hearderTextWrapper'>
-              <AccountBoxIcon className={classes.accountIcon} />
-              <h1 className='accountsNumberHeader'>{accountsNumber}</h1>
-            </div>
-            <p>
-              Number of people who trusted Pyramid and <br></br>have already created an account
-            </p>
-            <p>
-              All of them earned an <span>premium account</span>
-            </p>
+        <div className='body poppinsFont'>
+          <p>
+            It's a platform where users can compete against each other for a pot of money in mini-games like Galaga, Pac
+            Man, Snake and other simple arcade games. To join the game, each player must complete several tasks that do
+            not take more than 10 minutes. Tasks are, for example, visiting the sponsor's website, leaving him your
+            email address, sharing your opinion about his product or filling out a short questionnaire. For completing
+            tasks, the user receives tokens that can later be exchanged for participation in the game. The number of
+            tokens needed to join the game is different each time and depends on the size of the money pool that can be
+            won.
+          </p>
+        </div>
+      </article>
+      <article>
+        <div className='title poppinsFont flexRow'>
+          <div className='accentLine' />
+          <p>What Pyramid've already achieved?</p>
+        </div>
+        <div className='body poppinsFont'>
+          <p>
+            Pyramid is very new. We started about 3 months ago. You can see our latest developments below. We are very
+            proud of them and want to share them with you, but that's not the only goal. They also show how many fim and
+            people trust us and how engaged community we create. You can join it today!
+          </p>
+        </div>
+        <div className='cardWrapper flexRow'>
+          <div className='cardF flexColumn'>
+            <AccountBoxIcon className={classes.accountIcon} />
+            <p className='number poppinsFont'>2,000+</p>
+            <p className='description poppinsFont'>Users who have already signed up</p>
           </div>
-
-          <div className='horizontalCard1 hvr-grow'>
-            <h1>What problem does Pyramid solve?</h1>
-            <p>
-              <span>- </span>With <span>Pyramid</span> it's now possible, you can compete with others for up to{" "}
-              <span>$500</span> in prizes <span>without any contribution</span>
-            </p>
-            <p>
-              <span>- </span>The games take place <span>several times a day</span> and are comprised of mini arcade
-              games
-            </p>
-            <p>
-              <span>- </span>You only need to <span>complete the few tasks</span> to enter the game. For more
-              information, go to "<span>How it works?</span>"
-            </p>
+          <div className='cardF flexColumn'>
+            <BusinessIcon className={classes.accountIcon} />
+            <p className='number poppinsFont'>21</p>
+            <p className='description poppinsFont'>Trusted cooperating companies</p>
+          </div>
+          <div className='cardF flexColumn'>
+            <AlarmIcon className={classes.accountIcon} />
+            <p className='number poppinsFont'>3123 H</p>
+            <p className='description poppinsFont'>Hours spent on Pyramid by our users</p>
           </div>
         </div>
-      </div>
-    </section>
+      </article>
+    </main>
   );
 }
 
