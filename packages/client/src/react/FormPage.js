@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Slider from "@material-ui/core/Slider";
+import {Slider} from "@pyramid/ui";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -23,19 +23,16 @@ const schema = yup
     c: yup.number().min(1).max(10).required(),
     d: yup.number().min(1).max(10).required(),
     e: yup.number().min(1).max(10).required(),
-    f: yup.string(),
+    f: yup.string().required(),
   })
   .typeError("Please enter a response");
 
 const useStyles = makeStyles({
-  slider: {
-    width: "20vw",
-  },
   arrow: {
-    marginTop: "2vh",
+    marginTop: "1em",
     transform: "rotate(180deg)",
     color: "#ff1d00",
-    fontSize: "3.5vw",
+    fontSize: "3em",
   },
 });
 
@@ -90,9 +87,10 @@ export default function FormPage(props) {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <div className="card">
           <h1 className="robotoFont">
-            How much time do you spend on social media?
+            How much time (in hours per day) do you spend on social media on
+            twitter, fb, instagram, tiktok?
           </h1>
-          <input className="textBox" type="text" name="a" ref={register}/>
+          <input className="textBox" type="text" name="a" ref={register} />
           <p className="error">{errors.a && errors.a.message}</p>
         </div>
         <div className="card">
@@ -117,85 +115,19 @@ export default function FormPage(props) {
             How do you rate the effectiveness of Google Ads from the perspective
             of the person who's the recipient of the ad?
           </h1>
-          <ThemeProvider theme={muiTheme}>
-            <Controller
-              name="c"
-              control={control}
-              defaultValue={6}
-              render={(props) => (
-                <Slider
-                  {...props}
-                  onChange={(_, value) => {
-                    props.onChange(value);
-                  }}
-                  className={classes.slider}
-                  defaultValue={6}
-                  aria-labelledby="discrete-slider"
-                  valueLabelDisplay="auto"
-                  step={1}
-                  marks
-                  min={1}
-                  max={10}
-                />
-              )}
-            />
-          </ThemeProvider>
+          <Slider min={1} max={10} defaultValue={6} name="c" innerRef={register}/>
           <p className="error">{errors.c && errors.c.message}</p>
         </div>
         <div className="card">
           <h1 className="robotoFont suo">Did the Pyramid interest you?</h1>
-          <ThemeProvider theme={muiTheme}>
-            <Controller
-              name="d"
-              control={control}
-              defaultValue={6}
-              render={(props) => (
-                <Slider
-                  {...props}
-                  onChange={(_, value) => {
-                    props.onChange(value);
-                  }}
-                  className={classes.slider}
-                  defaultValue={6}
-                  aria-labelledby="discrete-slider"
-                  valueLabelDisplay="auto"
-                  step={1}
-                  marks
-                  min={1}
-                  max={10}
-                />
-              )}
-            />
-          </ThemeProvider>
+          <Slider min={1} max={10} defaultValue={6} name="d" innerRef={register}/>
           <p className="error">{errors.d && errors.d.message}</p>
         </div>
         <div className="card">
           <h1 className="robotoFont suo">
             Will you recommend Pyramid to your friends?
           </h1>
-          <ThemeProvider theme={muiTheme}>
-            <Controller
-              name="e"
-              control={control}
-              defaultValue={6}
-              render={(props) => (
-                <Slider
-                  {...props}
-                  onChange={(_, value) => {
-                    props.onChange(value);
-                  }}
-                  className={classes.slider}
-                  defaultValue={6}
-                  aria-labelledby="discrete-slider"
-                  valueLabelDisplay="auto"
-                  step={1}
-                  marks
-                  min={1}
-                  max={10}
-                />
-              )}
-            />
-          </ThemeProvider>
+          <Slider min={1} max={10} defaultValue={6} name="e" innerRef={register}/>
           <p className="error">{errors.e && errors.e.message}</p>
         </div>
         <div className="card">
