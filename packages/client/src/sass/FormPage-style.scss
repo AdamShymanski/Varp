@@ -10,44 +10,42 @@
   font-family: $roboto-font;
 }
 
+
 .FA {
-  height: 150vh;
   background-color: $background;
   section {
-    margin-top: 4vh;
+    margin-top: 3em;
     p {
-      height: 2.8vh;
-
+      padding: 0 0 1em 0;
       border-bottom: 2px solid $accent;
-
       color: $back-text;
-      font-size: 0.8vw;
+      font-size: 1em;
     }
     h1 {
-      margin-top: 1vh;
+      margin-top: 0.3em;
       color: $main-text;
-      font-size: 5vw;
+      font-size: 3em;
     }
     h3 {
-      width: 25vw;
-      margin-top: 2vh;
+      width: 70%;
+      margin-top: 1.5em;
 
       font-weight: 400;
-      font-size: 0.8vw;
+      font-size: 1em;
       color: $main-text;
       text-align: center;
     }
   }
   .form {
-    margin-top: 4vh;
+    margin-top: 3em;
+    color: $second-text;
+    max-width: 700px;
     .card {
-      margin: 3vh 0;
-      padding: 0 3vw;
+      margin: 3em;
 
       h1 {
-        font-size: 0.9vw;
-        font-weight: 700;
-        color: $second-text;
+        font-size: 1em;
+        font-weight: 300;
       }
       .suo {
         margin-bottom: 3vh;
@@ -58,16 +56,14 @@
       }
 
       .textBox {
-        width: 30vw;
-        height: 2vw;
-        
-        margin-top: 2vh;
-        padding-left: 1vw;
+        width: 100%;
+        font-size: 1em;
+        padding: 0.8em;
+        margin: 1em 0;
 
         outline: none;
         border-style: none;
 
-        border-radius: 4px;
         border-left: 3px solid $gray;
 
         background-color: $input-background;
@@ -75,138 +71,22 @@
         color: $main-text;
         text-align: left;
         font-family: $roboto-font;
-        font-weight: 300;
-        font-size: 1.2vw;
-
         transition: 300ms;
       }
       .textBox:focus {
         border-left: 3px solid $accent;
         transition: 300ms;
       }
-      .radioBox {
-        list-style: none;
-
-        li {
-          margin: 2vh 0 1.5vh 0;
-          label {
-            color: $main-text;
-          }
-          input[type="radio"] {
-            --active: #ff1d00;
-            --active-inner: #fff;
-            --focus: 2px #d61900b9;
-            --border: #bbc1e1;
-            --border-hover: #ff1d00;
-            --background: #fff;
-            --disabled: #f6f8ff;
-            --disabled-inner: #e1e6f9;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            height: 21px;
-            outline: none;
-            display: inline-block;
-            vertical-align: top;
-            position: relative;
-            margin: 0;
-            cursor: pointer;
-            border: 1px solid var(--bc, var(--border));
-            background: var(--b, var(--background));
-            transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
-            &:after {
-              content: "";
-              display: block;
-              left: 0;
-              top: 0;
-              position: absolute;
-              transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
-            }
-            &:checked {
-              --b: var(--active);
-              --bc: var(--active);
-              --d-o: 0.3s;
-              --d-t: 0.6s;
-              --d-t-e: cubic-bezier(0.2, 0.85, 0.32, 1.2);
-            }
-            &:disabled {
-              --b: var(--disabled);
-              cursor: not-allowed;
-              opacity: 0.9;
-              &:checked {
-                --b: var(--disabled-inner);
-                --bc: var(--border);
-              }
-              & + label {
-                cursor: not-allowed;
-              }
-            }
-            &:hover {
-              &:not(:checked) {
-                &:not(:disabled) {
-                  --bc: var(--border-hover);
-                }
-              }
-            }
-            &:focus {
-              box-shadow: 0 0 0 var(--focus);
-            }
-            &:not(.switch) {
-              width: 21px;
-              &:after {
-                opacity: var(--o, 0);
-              }
-              &:checked {
-                --o: 1;
-              }
-            }
-            & + label {
-              font-size: 14px;
-              line-height: 21px;
-              display: inline-block;
-              vertical-align: top;
-              cursor: pointer;
-              margin-left: 4px;
-            }
-          }
-          input[type="radio"] {
-            border-radius: 50%;
-            &:after {
-              width: 19px;
-              height: 19px;
-              border-radius: 50%;
-              background: var(--active-inner);
-              opacity: 0;
-              transform: scale(var(--s, 0.7));
-            }
-            &:checked {
-              --s: 0.5;
-            }
-          }
-        }
-      }
-      .slidecontainer {
-        width: 100%; /* Width of the outside container */
-      }
-      .high {
-        width: 100%;
-        height: 20vh;
-
-        margin-top: 2vh;
-        padding: 0.5vh 0.5vw;
-
-        font-size: 1vw;
-      }
 
       /* The slider itself */
     }
     .buttonContainer {
-      margin-top: 2vh;
+      margin: 1em 0 2em 0;
       button {
         color: $main-text;
-        font-size: 1vw;
+        font-size: 1em;
+        padding: 0.5em 1.5em;
 
-        margin-top: 6vh;
-        padding: 0.6vh 1.7vw;
         background: $accent;
 
         outline: none;
