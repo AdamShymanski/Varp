@@ -1,5 +1,9 @@
 @import "../variables.scss";
 
+html, body {
+  background: $background;
+}
+
 .poppinsFont {
   font-weight: 400;
   font-size: 0.8vw;
@@ -16,8 +20,6 @@
   align-items: center;
 }
 .wrapper {
-  background: $background;
-  height: 200vh;
   .navbar {
     width: 100%;
     padding-bottom: 20px;
@@ -70,7 +72,6 @@
     position: absolute;
 
     width: 70vw;
-    height: 100%;
     article {
       margin: 6vh 0;
       width: 55vw;

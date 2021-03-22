@@ -12,6 +12,7 @@ import AlarmIcon from "@material-ui/icons/Alarm";
 import BusinessIcon from "@material-ui/icons/Business";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import ThirdElementLanding from './elements/ThirdElementLanding';
 
 const useStyles = makeStyles({
   accountIcon: {
@@ -108,6 +109,7 @@ function LandingPageNew() {
             </div>
           </div>
         </article>
+        <ThirdElementLanding/>
       </main>
     </div>
   );
