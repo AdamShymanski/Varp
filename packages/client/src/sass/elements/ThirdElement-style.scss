@@ -1,35 +1,26 @@
 @import "../../variables.scss";
 
-.wrapper-2 {
-  section {
+.cardwrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     margin-top: 4vh;
-    .card {
-      position: relative;
-      padding: 2vh 2vw;
-      margin: 1                                                 vh 0;
-      background: $foreground;
-      h1 {
-        color: white;
-        font-family: $agency-bold-font;
-        font-size: 3vw;
-      }
-      p {
-        color: white;
-        font-family: $agency-bold-font;
-        font-size: 1vw;
-        width: 30vw;
-      }
-    }
-    .c0 {
-      right: -60vw;
-    }
-    .c1 {
-      left: 2vw;
-    }
-    .c2 {
-      left: 50vw;
-    }
-  }
+    flex-wrap: wrap;
+}
+
+.cardNew__title {
+  padding: 0.5em 0;
+  color: $accent;
+  font-family: $agency-bold-font;
+  font-size: 2em;
+}
+.cardNew__description {
+  color: white;
+  font-family: $agency-bold-font;
+  font-size: 1em;
+}
+
+.cardNew__symbol {
+  width: 6em;
+  padding: 0.5em;
 }

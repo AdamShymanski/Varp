@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.scss";
 
 //pages
-// import LandingPage from "./react/LandingPage";
+import LandingPage from "./react/LandingPage";
 import LandingPageNew from "./react/LandingPageNew";
 import CreateAccountPage from "./react/CreateAccountPage";
 import FormPage from "./react/FormPage";
@@ -20,6 +20,7 @@ function App() {
         {/* <img src={background} className='top-background' /> */}
 
         <Route path='/' exact component={LandingPageNew} />
+        <Route path='/old' exact component={LandingPage} />
         <Route path='/create-account' component={CreateAccountPage} />
         <Route path='/questionnaire' component={FormPage} />
       </div>
