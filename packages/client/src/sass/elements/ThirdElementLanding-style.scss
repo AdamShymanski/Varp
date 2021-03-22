@@ -7,7 +7,7 @@
         margin-top: 1vh;
     }
     width: 13vw;
-    height: 36vw;
+
     border-radius: 1.4vh;
     background: $dark-gray;
     .cardTitleWrapper {
@@ -19,10 +19,27 @@
       text-align: center;
       font-weight: 700;
     }
-    .description {
-      padding: 0 1vw;
-      font-size: 0.7vw;
-      text-align: center;
-      color: $main-text;
-    }
-  }
+}
+
+.initial {
+    height: 36vw;
+}
+.collapsed {
+    height: 11vw;
+}
+.expanded {
+    height: 12vw;
+    border-bottom-left-radius: 0vh;
+    border-bottom-right-radius: 0vh;
+}
+
+.descExpanded {
+    background: $dark-gray;
+    padding: 2vw 1vw;
+    font-size: w;
+    text-align: center;
+    color: $main-text;
+    border-radius: 1.4vh;
+    border-top-left-radius: 0;
+    margin: 0 0.6vw
+}
