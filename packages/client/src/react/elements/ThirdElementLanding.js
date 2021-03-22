@@ -6,34 +6,14 @@ import GradeIcon from '@material-ui/icons/Grade';
 import FlareIcon from '@material-ui/icons/Flare';
 
 
-function Card({ id, icon, title, description, expand, setExpand}) {
-    if (expand == null) {
-        var appendClass = "initial"
-    } else if (expand === id){
-        var appendClass = "expanded"
-    } else {
-        var appendClass = "collapsed"
-    }
-    const clickHandler = (e) => {
-        if ( expand == id ) {
-            setExpand(null)
-        } else {
-            setExpand(id)
-        }
-    }
+function Card({ id, icon, title, description}) {
     return (
-    <div className={`thirdCard flexColumn ${appendClass}`}
-        onClick={clickHandler}>
+    <div className='thirdCard flexColumn'>
         {icon}
-            <div className='cardTitleWrapper'>
-                <p className='cardTitle poppinsFont'>{title}</p>
-            </div>
-            {appendClass=="initial" ?
+            <p className='cardTitle poppinsFont'>{title}</p>
             <p className='description poppinsFont'>
                 {description}
             </p>
-            :
-            null}
     </div>)
 }
 
@@ -67,39 +47,24 @@ function ThirdElementLanding() {
                         is very pleasant to play. One game can be joined by a group of friends, who will compete with each other for \                    the prize."
                     },
                  ]
-    const [expand, setExpand] = useState(null)
     return (
         <article>
         <div className='title poppinsFont flexRow'>
             <div className='accentLine' />
-            <p>Third Element</p>
+            <p>How you can help</p>
           </div>
           <div className='body poppinsFont'>
-            <p>
-              fill third element description here. fill third element description here .
-              fill third element description here .fill third element description here .
-              fill third element description here .fill third element description here
-            </p>
           </div>
-        <div className='bottom flexRow'>
+        <div className='bottom flexColumn'>
             {data.map((each, i)=>
                 <Card
                     id={i}
-                    expand={expand}
-                    setExpand={setExpand}
                     icon={each.icon}
                     title={each.title}
                     description={each.description}
             />
             )}
-            
           </div>
-          {expand != null ? 
-            <div className='descExpanded poppinsFont'>
-                {data[expand].description}
-            </div>
-            :
-            null}
         </article>
 
     )
