@@ -12,7 +12,8 @@ main {
       justify-content: flex-start;
       width: 100%;
       .card {
-        width: 26vw;
+        // min-width: 26vw;
+        min-width: calc(100% / 4 - 4vw);
         height: 40vh;
         margin-right: 4vw;
 
@@ -73,7 +74,7 @@ main {
         }
       }
       .expanded {
-        width: 66vw;
+        min-width: 66vw;
         transition: 400ms;
         position: absolute;
 
