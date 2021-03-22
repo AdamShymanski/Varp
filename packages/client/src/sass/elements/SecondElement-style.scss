@@ -12,7 +12,6 @@ main {
       justify-content: flex-start;
       width: 100%;
       .card {
-        // min-width: 26vw;
         min-width: calc(100% / 4 - 4vw);
         height: 40vh;
         margin-right: 4vw;
