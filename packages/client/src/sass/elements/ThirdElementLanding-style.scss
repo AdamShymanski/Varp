@@ -19,18 +19,27 @@
       text-align: center;
       font-weight: 700;
     }
+    .description {
+        padding: 0 1vw;
+        font-size: 0.7vw;
+        text-align: center;
+        color: $main-text;
+    }
 }
 
 .initial {
     height: 36vw;
+    transition: 700ms;
 }
 .collapsed {
     height: 11vw;
+    transition: 700ms;
 }
 .expanded {
     height: 12vw;
     border-bottom-left-radius: 0vh;
     border-bottom-right-radius: 0vh;
+    // transition: 700ms;
 }
 
 .descExpanded {
@@ -41,5 +50,6 @@
     color: $main-text;
     border-radius: 1.4vh;
     border-top-left-radius: 0;
-    margin: 0 0.6vw
+    margin: 0 0.6vw;
+    height: 10em;
 }
