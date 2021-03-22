@@ -3,53 +3,23 @@
 .thirdCard{
     .icon {
         color: #f4f4f4;
-        font-size: 4.8vw;
-        margin-top: 1vh;
+        font-size: 4vw;
+        margin: 1vh;
     }
-    width: 13vw;
-
+    align-items: flex-start;
+    margin: 0.5em 0;
+    padding: 1em 3vw;
     border-radius: 1.4vh;
     background: $dark-gray;
-    .cardTitleWrapper {
-      min-height: 6vw;
-    }
     .cardTitle{
       color: $accent;
-      font-size: 1.2vw;
+      font-size: 1.6vw;
       text-align: center;
       font-weight: 700;
     }
     .description {
-        padding: 0 1vw;
         font-size: 0.7vw;
-        text-align: center;
+        text-align: left;
         color: $main-text;
     }
-}
-
-.initial {
-    height: 36vw;
-    transition: 700ms;
-}
-.collapsed {
-    height: 11vw;
-    transition: 700ms;
-}
-.expanded {
-    height: 12vw;
-    border-bottom-left-radius: 0vh;
-    border-bottom-right-radius: 0vh;
-    // transition: 700ms;
-}
-
-.descExpanded {
-    background: $dark-gray;
-    padding: 2vw 1vw;
-    font-size: w;
-    text-align: center;
-    color: $main-text;
-    border-radius: 1.4vh;
-    border-top-left-radius: 0;
-    margin: 0 0.6vw;
-    height: 10em;
 }
