@@ -8,7 +8,7 @@ import "./App.scss";
 //import LandingPage from "./react/LandingPage";
 import LandingPageNew from "./react/LandingPageNew";
 import CreateAccountPage from "./react/CreateAccountPage";
-import FormPage from "./react/FormPage";
+// import FormPage from "./react/FormPage";
 
 //background image
 import background from "./resources/background-triangle1c.jpg";
@@ -21,7 +21,7 @@ function App() {
 
         <Route path='/' exact component={LandingPageNew} />
         <Route path='/create-account' component={CreateAccountPage} />
-        <Route path='/questionnaire' component={FormPage} />
+        {/* <Route path='/questionnaire' component={FormPage} /> */}
       </div>
     </Router>
   );

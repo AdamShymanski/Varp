@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./../sass/CreateAccountPage-style.scss";
 
 //page
-import FormPage from "./FormPage";
+// import FormPage from "./FormPage";
 
 import Axios from "axios";
 
