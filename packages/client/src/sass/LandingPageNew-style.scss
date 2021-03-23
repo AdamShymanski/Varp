@@ -1,8 +1,10 @@
 @import "../variables.scss";
 
-.wrapper {
+html, body {
   background: $background;
-  height: 100vh;
+}
+
+.wrapper {
   .navbar {
     width: 100%;
     padding-bottom: 20px;
