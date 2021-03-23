@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./../../sass/elements/ThirdElement-style.scss";
+import Card from './Card';
+import GearsSvg from "./../../resources/icons/gears.svg";
+import MoneySvg from "./../../resources/icons/money.svg";
+import LineChartSvg from "./../../resources/icons/line-chart.svg";
+import GameSvg from "./../../resources/icons/game.svg";
 
-export default function FourthElement(props) {
+function SingleCard({ symbol, title, description, expand, setExpand}) {
+  let expandBool = false
+  if (expand === title) {
+    expandBool = true
+  }
+  const clickHandler = (e) =>{if (expand == title) {setExpand(null)} else { setExpand(title)}}
   return (
     <main className={`${props.visibility() ? " visible" : "invisible"}`}>
       <section className={`wrapper-3 ${props.visible ? "visible" : "notVisible"}`}>

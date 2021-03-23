@@ -13,3 +13,20 @@ main {
 .invisible {
   display: none;
 }
+
+.cardNew__title {
+  padding: 0.5em 0;
+  color: $accent;
+  font-family: $agency-bold-font;
+  font-size: 2em;
+}
+.cardNew__description {
+  color: white;
+  font-family: $agency-bold-font;
+  font-size: 1em;
+}
+
+.cardNew__symbol {
+  width: 6em;
+  padding: 0.5em;
+}
