@@ -6,27 +6,60 @@ main {
 
   width: 70vw;
   height: 100%;
-}
-.visible {
-  display: inherit;
-}
-.invisible {
-  display: none;
-}
+  article.third  {
+    margin: 6vh 0;
+    width: 55vw;
+    .title {
+      .accentLine {
+        height: 4px;
+        width: 2.2vw;
 
-.cardNew__title {
-  padding: 0.5em 0;
-  color: $accent;
-  font-family: $agency-bold-font;
-  font-size: 2em;
-}
-.cardNew__description {
-  color: white;
-  font-family: $agency-bold-font;
-  font-size: 1em;
-}
+        border-radius: 8px;
+        background: #ff1d00;
+      }
+      p {
+        margin-left: 1vw;
 
-.cardNew__symbol {
-  width: 6em;
-  padding: 0.5em;
+        font-size: 2.5vw;
+        font-weight: 700;
+        color: $main-text;
+      }
+    }
+    .body {
+      margin-left: 3.5vw;
+      margin-top: 2vh;
+      p {
+        color: $second-text;
+      }
+    }
+    .cardWrapper {
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+
+      .card {
+        width:100%;
+        .card__icon {
+            color: #f4f4f4;
+            font-size: 4vw;
+            margin: 1vh;
+        }
+        align-items: flex-start;
+        margin: 0.5em 0;
+        padding: 1em 3vw;
+        border-radius: 1.4vh;
+        text-align: left;
+        background: $dark-gray;
+        .card__title {
+          color: $accent;
+          font-size: 1.6vw;
+          font-weight: 700;
+        }
+        .card__description {
+          font-size: 0.7vw;
+          color: $main-text;
+        }
+      }
+    }
+  }
 }
