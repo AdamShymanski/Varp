@@ -28,10 +28,11 @@ function ThirdElement(props) {
                     'icon': <MonetizationOnIcon className='card__icon' />,
                     'description': <p>This is very important. <br/><br/>
                         Registered users show that the project has interest. This makes companies more likely to collaborate with us, which gives Pyramid a chance to grow. Money from cooperation is a source of income for Pyramid and a source of money for rewards for you. The more registered users the better.
-                        If you create an account at this stage, your account will have premium privileges :
-                        - You will be able to join the first few games for free
-                        - In the future, you will have to do fewer tasks to get a lot of points 
-                        - And I will definitely pay you back for your help </p>
+                        <br/><br/>If you create an account at this stage, your account will have premium privileges :
+                        
+                        <li> You will be able to join the first few games for free </li>
+                        <li> In the future, you will have to do fewer tasks to get a lot of points </li>
+                        <li> And I will definitely pay you back for your help </li></p>
                   },
                   { 'title': <h3>3. Tell your friends about Pyramid</h3>,
                     'icon': <GradeIcon className='card__icon' />,
