@@ -20,6 +20,7 @@ function App() {
         {/* <img src={background} className='top-background' /> */}
 
         <Route path='/' exact component={LandingPageNew} />
+        <Route path='/old' exact component={LandingPage} />
         <Route path='/create-account' component={CreateAccountPage} />
         <Route path='/questionnaire' component={FormPage} />
       </div>
