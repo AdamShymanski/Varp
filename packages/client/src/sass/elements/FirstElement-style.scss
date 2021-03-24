@@ -1,35 +1,23 @@
 @import "../../variables.scss";
 
-main {
+.feWrapper {
   right: 0;
   position: absolute;
 
   width: 70vw;
-  height: 100%;
   article {
     margin: 6vh 0;
     width: 55vw;
-    .title {
-      .accentLine {
-        height: 4px;
-        width: 2.2vw;
 
-        border-radius: 8px;
-        background: #ff1d00;
-      }
-      p {
-        margin-left: 1vw;
-
-        font-size: 2.5vw;
-        font-weight: 700;
-        color: $main-text;
-      }
-    }
     .body {
       margin-left: 3.5vw;
       margin-top: 2vh;
       p {
         color: $second-text;
+        margin: 1vh 0;
+        span {
+          color: $accent;
+        }
       }
     }
     .cardWrapper {
@@ -56,10 +44,4 @@ main {
       }
     }
   }
-}
-.visible {
-  display: inherit;
-}
-.invisible {
-  display: none;
 }
