@@ -3,14 +3,16 @@
   "private": true,
   "scripts": {
     "start": "lerna run start",
-    "lint": "eslint --ext .js,.jsx ./",
+    "lint": "eslint",
     "prepare": "husky install",
     "postinstall": "husky install",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "*.(js|jsx)": [
-      "npm run lint"
+      "prettier --write",
+      "npm run lint",
+      "git add"
     ]
   },
   "devDependencies": {
