@@ -5,9 +5,14 @@
     "start": "lerna run start"
   },
   "devDependencies": {
+    "eslint": "^7.22.0",
     "lerna": "^4.0.0",
+    "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "client": "file:packages/client",
     "server": "file:packages/server"
