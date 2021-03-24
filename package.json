@@ -5,7 +5,13 @@
     "start": "lerna run start",
     "lint": "eslint --ext .js,.jsx ./",
     "prepare": "husky install",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.(js|jsx)": [
+      "npm run lint"
+    ]
   },
   "devDependencies": {
     "eslint": "^7.22.0",
