@@ -16,6 +16,8 @@ build:
     - yarn
     - npx lerna bootstrap
     - yarn run build
+  artifacts:
+    - packages/*/dist/
 
 test:
   script:
