@@ -1,0 +1,57 @@
+default:
+  image: node:latest
+
+stages:
+  - initialize
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+initialize:
+  stage: initialize
+  script:
+    - yarn
+    - npx lerna bootstrap
+
+build:ui:
+  stage: build
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - npx lerna run --scope @pyramid/ui build --stream
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - packages/ui/dist/
+
+build:client:
+  stage: build
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - npx lerna run --scope @pyramid/client build --stream
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - packages/client/dist/
+
+test:
+  stage: test
+  script:
+    - echo test
+
+deploy:
+  stage: deploy
+  only:
+    refs:
+      - master
+  script:
+    - echo deploy
