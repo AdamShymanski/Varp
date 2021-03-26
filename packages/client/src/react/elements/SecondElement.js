@@ -39,11 +39,11 @@ function SecondElement(props) {
   const [cState, setC] = useState(false);
   const [dState, setD] = useState(false);
   return (
-    <main className={`${props.visibility() ? " visible" : "invisible"}`}>
+    <main className={`seWrapper ${props.visibility() ? " visible" : "invisible"}`}>
       <article>
-        <div className='title poppinsFont flexRow'>
+        <div className='title flexRow'>
           <div className='accentLine' />
-          <p>How it works?</p>
+          <p className='poppinsFont'>How it works?</p>
         </div>
       </article>
       <article>
