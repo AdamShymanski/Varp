@@ -17,8 +17,13 @@ build:
     - npx lerna bootstrap
     - yarn run build
 
+test:
+  script:
+    - echo test
 
 deploy:
   only:
     refs:
       - master
+  script:
+    - echo deploy
