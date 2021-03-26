@@ -25,8 +25,6 @@ build:ui:
     name: "$CI_JOB_NAME"
     paths:
       - packages/ui/dist/
-  dependencies:
-    - build
 
 build:client:
   stage: build
@@ -36,8 +34,6 @@ build:client:
     name: "$CI_JOB_NAME"
     paths:
       - packages/ui/dist/
-  dependencies:
-    - build
 
 test:
   stage: test
