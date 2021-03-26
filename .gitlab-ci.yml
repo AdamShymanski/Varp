@@ -11,19 +11,41 @@ cache:
     - node_modules/
 
 build:
+  stage: build
   image: node:latest
   script:
     - yarn
     - npx lerna bootstrap
-    - yarn run build
+
+build:ui:
+  stage: build
+  script:
+    - npx lerna run --scope @pyramid/ui build --stream
   artifacts:
-    - packages/*/dist/
+    name: "$CI_JOB_NAME"
+    paths:
+      - packages/ui/dist/
+  dependencies:
+    - build
+
+build:client:
+  stage: build
+  script:
+    - npx lerna run --scope @pyramid/client build --stream
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - packages/ui/dist/
+  dependencies:
+    - build
 
 test:
+  stage: test
   script:
     - echo test
 
 deploy:
+  stage: deploy
   only:
     refs:
       - master
