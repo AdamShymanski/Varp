@@ -19,6 +19,8 @@ initialize:
 
 build:ui:
   stage: build
+  cache:
+    policy: pull
   script:
     - npx lerna run --scope @pyramid/ui build --stream
   artifacts:
@@ -28,12 +30,14 @@ build:ui:
 
 build:client:
   stage: build
+  cache:
+    policy: pull
   script:
     - npx lerna run --scope @pyramid/client build --stream
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
-      - packages/ui/dist/
+      - packages/client/dist/
 
 test:
   stage: test
