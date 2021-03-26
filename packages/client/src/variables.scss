@@ -27,6 +27,8 @@ $gray: #5c5c5c;
 $input-background: #121212;
 $dark-gray: #121212;
 
+$speech-bubble-background: #313131;
+
 .poppinsFont {
   font-weight: 400;
   font-size: 0.8vw;
@@ -41,4 +43,10 @@ $dark-gray: #121212;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.robotoFont {
+  font-weight: 700;
+  color: $main-text;
+  font-family: $roboto-font;
 }

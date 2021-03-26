@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import {Slider} from "@pyramid/ui";
+import { Slider } from "@pyramid/ui";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -74,79 +74,67 @@ export default function FormPage(props) {
 
   const classes = useStyles();
   return (
-    <main className="FA center">
-      <section className="center">
-        <p className="robotoFont">QUESTIONNAIRE</p>
-        <h1 className="robotoFont">Congratulations!</h1>
-        <h3 className="robotoFont">
-          You've just made the dream a little closer to the reality. Now we
-          would like to to ask you for some more questions!
+    <main className='FA center'>
+      <section className='center'>
+        <p className='robotoFont'>QUESTIONNAIRE</p>
+        <h1 className='robotoFont'>Congratulations!</h1>
+        <h3 className='robotoFont'>
+          You've just made the dream a little closer to the reality. Now we would like to to ask you for some more
+          questions!
         </h3>
         <NavigationIcon className={classes.arrow} />
       </section>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="card">
-          <h1 className="robotoFont">
-            How much time (in hours per day) do you spend on social media on
-            twitter, fb, instagram, tiktok?
+      <form className='form' onSubmit={handleSubmit(onSubmit)}>
+        <div className='card'>
+          <h1 className='robotoFont'>
+            How much time (in hours per day) do you spend on social media on twitter, fb, instagram, tiktok?
           </h1>
-          <input className="textBox" type="text" name="a" ref={register} />
-          <p className="error">{errors.a && errors.a.message}</p>
+          <input className='textBox' type='text' name='a' ref={register} />
+          <p className='error'>{errors.a && errors.a.message}</p>
         </div>
-        <div className="card">
-          <h1 className="robotoFont">
-            Are you using an ad blocker in your browser?
-          </h1>
+        <div className='card'>
+          <h1 className='robotoFont'>Are you using an ad blocker in your browser?</h1>
           <Controller
-            defaultValue="1"
+            defaultValue='1'
             as={
-              <RadioGroup aria-label="ad-blocker">
-                <FormControlLabel value="1" control={<Radio />} label="Yes" />
-                <FormControlLabel value="2" control={<Radio />} label="No" />
+              <RadioGroup aria-label='ad-blocker'>
+                <FormControlLabel value='1' control={<Radio />} label='Yes' />
+                <FormControlLabel value='2' control={<Radio />} label='No' />
               </RadioGroup>
             }
-            name="b"
+            name='b'
             control={control}
           />
-          <p className="error">{errors.b && errors.b.message}</p>
+          <p className='error'>{errors.b && errors.b.message}</p>
         </div>
-        <div className="card">
-          <h1 className="robotoFont suo">
-            How do you rate the effectiveness of Google Ads from the perspective
-            of the person who's the recipient of the ad?
+        <div className='card'>
+          <h1 className='robotoFont suo'>
+            How do you rate the effectiveness of Google Ads from the perspective of the person who's the recipient of
+            the ad?
           </h1>
-          <Slider min={1} max={10} defaultValue={6} name="c" innerRef={register}/>
-          <p className="error">{errors.c && errors.c.message}</p>
+          <Slider min={1} max={10} defaultValue={6} name='c' innerRef={register} />
+          <p className='error'>{errors.c && errors.c.message}</p>
         </div>
-        <div className="card">
-          <h1 className="robotoFont suo">Did the Pyramid interest you?</h1>
-          <Slider min={1} max={10} defaultValue={6} name="d" innerRef={register}/>
-          <p className="error">{errors.d && errors.d.message}</p>
+        <div className='card'>
+          <h1 className='robotoFont suo'>Did the Pyramid interest you?</h1>
+          <Slider min={1} max={10} defaultValue={6} name='d' innerRef={register} />
+          <p className='error'>{errors.d && errors.d.message}</p>
         </div>
-        <div className="card">
-          <h1 className="robotoFont suo">
-            Will you recommend Pyramid to your friends?
+        <div className='card'>
+          <h1 className='robotoFont suo'>Will you recommend Pyramid to your friends?</h1>
+          <Slider min={1} max={10} defaultValue={6} name='e' innerRef={register} />
+          <p className='error'>{errors.e && errors.e.message}</p>
+        </div>
+        <div className='card'>
+          <h1 className='robotoFont'>
+            What questions do you have for us as the creators of this project, or is it unclear to you in the game
+            mechanics?
           </h1>
-          <Slider min={1} max={10} defaultValue={6} name="e" innerRef={register}/>
-          <p className="error">{errors.e && errors.e.message}</p>
+          <textarea className='high textBox' type='text' cols='40' rows='5' name='f' ref={register}></textarea>
+          <p className='error'>{errors.f && errors.f.message}</p>
         </div>
-        <div className="card">
-          <h1 className="robotoFont">
-            What questions do you have for us as the creators of this project,
-            or is it unclear to you in the game mechanics?
-          </h1>
-          <textarea
-            className="high textBox"
-            type="text"
-            cols="40"
-            rows="5"
-            name="f"
-            ref={register}
-          ></textarea>
-          <p className="error">{errors.f && errors.f.message}</p>
-        </div>
-        <div className="buttonContainer center">
-          <button type="submit" className="robotoFont">
+        <div className='buttonContainer center'>
+          <button type='submit' className='robotoFont'>
             Submit
           </button>
         </div>

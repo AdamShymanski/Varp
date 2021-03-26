@@ -20,19 +20,22 @@ const useStyles = makeStyles({
   arrowF: {
     position: "absolute",
     right: "0.6vw",
-    fontSize: "1.2vw",
+    fontSize: "1.38em",
     fontWeight: "700",
   },
   arrowGb: {
     position: "absolute",
     left: "0.6vw",
-    fontSize: "1.2vw",
+    fontSize: "1.38em",
     fontWeight: "700",
   },
 });
 
 function LandingPageNew() {
   const classes = useStyles();
+  const history = useHistory();
+
+  const pushToSignUp = () => history.push("/sign-up");
 
   const [visibilityState, setVisibilityState] = useState(2);
 
@@ -77,7 +80,9 @@ function LandingPageNew() {
           <li className='poppinsFont'>Home</li>
           <li className='poppinsFont'>For Developers</li>
           <li className='poppinsFont'>Contact</li>
-          <li className='poppinsFont suButton'>Sign Up</li>
+          <li className='poppinsFont suButton' onClick={pushToSignUp}>
+            Sign Up
+          </li>
         </ul>
       </div>
       <div className='scrollIndicator flexColumn'>
