@@ -26,7 +26,8 @@
   },
   "proxy": "http://localhost:5000",
   "scripts": {
-    "start": "craco start"
+    "start": "craco start",
+    "build": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
