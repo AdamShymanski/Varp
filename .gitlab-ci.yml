@@ -2,6 +2,7 @@ default:
   image: node:latest
 
 stages:
+  - initialize
   - build
   - test
   - deploy
@@ -10,9 +11,8 @@ cache:
   paths:
     - node_modules/
 
-build:
-  stage: build
-  image: node:latest
+initialize:
+  stage: initialize
   script:
     - yarn
     - npx lerna bootstrap
