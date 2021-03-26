@@ -12,7 +12,7 @@
       justify-content: flex-start;
       width: 100%;
       position: relative;
-      @media (max-width: 900px) {
+      @media (max-width: 800px) {
         flex-wrap: wrap;
       }
       .card {
@@ -20,7 +20,7 @@
         height: 40vh;
         margin: 6vh 4vw 0 0;
         // margin-right: 4vw;
-        @media (max-width: 900px) {
+        @media (max-width: 800px) {
           width: calc(50% - 4vw);
           height: 30vh;
         }
@@ -82,7 +82,7 @@
         }
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 800px) {
         #landingCard_1, #landingCard_2 {
           top:0;
         }
