@@ -15,8 +15,7 @@ build:
   script:
     - yarn
     - npx lerna bootstrap
-    - ls -al
-    - yarn run
+    - yarn run build
 
 
 deploy:
