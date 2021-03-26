@@ -35,19 +35,19 @@ body {
     justify-content: space-between;
     .logo {
       margin: 20px;
-      width: 5vw;
+      width: 50px;
     }
     ul {
-      padding: 2vh 2vw;
+      padding: 2rem;
       li {
         list-style: none;
-        margin: 0 0.8vw;
+        margin: 0 1rem;
         color: $second-text;
       }
       .suButton {
         background: $accent;
-        padding: 0.8vh 1.8vw;
-        border-radius: 5vh;
+        padding: 0.25rem 1rem;
+        border-radius: 2rem;
         font-weight: 700;
         color: $dark-gray;
       }
