@@ -15,6 +15,11 @@
       @media (max-width: 800px) {
         flex-wrap: wrap;
       }
+
+      .bottom-container {
+        display: flex;
+        width: 100%
+      }
       .card {
         min-width: calc(100% / 4 - 4vw);
         height: 40vh;
