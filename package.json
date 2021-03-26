@@ -2,8 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "start": "lerna run start",
+    "start": "lerna run start --stream",
     "lint": "eslint --ext=.js,.jsx ./",
+    "build": "lerna run build --concurrency 2 --stream",
     "prepare": "husky install",
     "postinstall": "husky install",
     "precommit": "lint-staged"

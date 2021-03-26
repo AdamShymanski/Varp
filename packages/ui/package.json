@@ -5,7 +5,7 @@
   "author": "Dylan Simowitz <git@dylan.simowitz.com>",
   "homepage": "https://gitlab.com/pyramid-team/pyramid-mvp#readme",
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -19,9 +19,8 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "storybook": "start-storybook -p 6006",
-    "build": "babel --out-dir=dist lib",
-    "build-storybook": "build-storybook"
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook -o dist"
   },
   "bugs": {
     "url": "https://gitlab.com/pyramid-team/pyramid-mvp/issues"

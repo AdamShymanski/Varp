@@ -1,0 +1,25 @@
+default:
+  image: node:latest
+
+stages:
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  image: node:latest
+  script:
+    - yarn
+    - npx lerna bootstrap
+    - ls -al
+    - yarn run
+
+
+deploy:
+  only:
+    refs:
+      - master
