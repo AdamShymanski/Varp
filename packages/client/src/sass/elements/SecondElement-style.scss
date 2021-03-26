@@ -102,7 +102,9 @@
         transition: 400ms;
         position: absolute;
         z-index: 2;
-       
+       &#landingCard_3, &#landingCard_4 {
+          left: 0;
+        }
 
         .expandIcon {
           display: none;
