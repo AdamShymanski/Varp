@@ -21,6 +21,8 @@ build:ui:
   stage: build
   cache:
     policy: pull
+    paths:
+      - node_modules/
   script:
     - npx lerna run --scope @pyramid/ui build --stream
   artifacts:
@@ -32,6 +34,8 @@ build:client:
   stage: build
   cache:
     policy: pull
+    paths:
+      - node_modules/
   script:
     - npx lerna run --scope @pyramid/client build --stream
   artifacts:
