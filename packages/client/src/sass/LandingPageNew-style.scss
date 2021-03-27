@@ -40,7 +40,11 @@ body {
       width: 50px;
     }
     ul {
+      @media screen and(max-width: 500px) {
+        flex-direction: row-reverse;
+      }
       .default-menu {
+        display: flex;
         @media screen and (max-width: 500px) {
           position: absolute;
           flex-direction: column;
@@ -72,6 +76,11 @@ body {
       }
 
       .hamburger-menu {
+        display:none;
+        @media screen and(max-width: 500px) {
+          display:flex;
+          z-index: 10;
+        }
         * {
           fill:white
         }
