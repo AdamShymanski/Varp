@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./../sass/SignUpPage-style..scss";
+import "./../sass/SignUpPage-style.scss";
 
 import { makeStyles } from "@material-ui/core/styles";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
