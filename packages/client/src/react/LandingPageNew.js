@@ -93,9 +93,9 @@ function LandingPageNew() {
       </div>
       <div className='scrollIndicator flexColumn'>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>What is Pyramid?</li>
+          <li>How It Works?</li>
+          <li>How You Can Help?</li>
         </ul>
         {/* <div className='dotWrapper flexRow'>
           <div className={handleScrollIndicator("dot", 1)} />

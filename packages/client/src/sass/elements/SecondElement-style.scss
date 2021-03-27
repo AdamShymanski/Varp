@@ -5,7 +5,9 @@
   position: absolute;
 
   width: 70vw;
-
+  @media screen and (max-width: 500px) {
+    width: 100vw;
+  }
   article {
     width: 100%;
     .bottom {
