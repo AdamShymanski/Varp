@@ -77,9 +77,14 @@ function LandingPageNew() {
       <div className='navbar flexRow'>
         <img src={logo} alt='Logo' className='logo' />
         <ul className='flexRow'>
-          <li className='poppinsFont'>Home</li>
-          <li className='poppinsFont'>For Developers</li>
-          <li className='poppinsFont'>Contact</li>
+          <div class="default-menu flexRow">
+            <li className='poppinsFont'>Home</li>
+            <li className='poppinsFont'>For Developers</li>
+            <li className='poppinsFont'>Contact</li>
+          </div>
+          <div class="hamburger-menu">
+            <MenuIcon/>
+          </div>
           <li className='poppinsFont suButton' onClick={pushToSignUp}>
             Sign Up
           </li>
