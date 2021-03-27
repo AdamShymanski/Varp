@@ -10,7 +10,7 @@ import logo from "./../resources/icons/logo.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-
+import MenuIcon from '@material-ui/icons/Menu';
 //elements
 import FirstElement from "./elements/FirstElement";
 import SecondElement from "./elements/SecondElement";
