@@ -72,18 +72,19 @@ function LandingPageNew() {
     }
   };
 
+  const [hamburger, setHamburger] = useState(false);
   return (
     <div className='wrapper'>
       <div className='navbar flexRow'>
         <img src={logo} alt='Logo' className='logo' />
         <ul className='flexRow'>
-          <div class="default-menu flexRow">
+          <div class={`default-menu flexRow ${hamburger && "expand-menu"}`}>
             <li className='poppinsFont'>Home</li>
             <li className='poppinsFont'>For Developers</li>
             <li className='poppinsFont'>Contact</li>
           </div>
           <div class="hamburger-menu">
-            <MenuIcon/>
+            <MenuIcon onClick={() => setHamburger(!hamburger)}/>
           </div>
           <li className='poppinsFont suButton' onClick={pushToSignUp}>
             Sign Up
