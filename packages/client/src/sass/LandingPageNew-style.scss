@@ -151,13 +151,13 @@ body {
     ul li:before { 
       content: counter(step);
       counter-increment: step;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
       border: 1px solid #ddd;
       display: inline-block;
       text-align: center;
-      margin: 5px 10px;
+      margin: 20px 10px;
       border-radius: 50%;
       background-color: white;
       z-index: 2;
@@ -174,7 +174,7 @@ body {
       bottom: 5px;
       width: 2px;
       background: red;
-      left: 26px;
+      left: 18px;
       z-index: 1;
     }
 
