@@ -45,16 +45,19 @@ body {
       }
       .default-menu {
         display: flex;
+        visibility: visible;
         @media screen and (max-width: 500px) {
-          display:none;
+          transition: all 0.5s ease;
+          visibility: hidden;
+          width: 0;
+          height: 0;
           position: absolute;
           flex-direction: column;
           top: 0;
-          left:0;
+          right:0;
           z-index: 5;
           background-color: black;
-          width: calc(100vw * 10 / 9);
-          height: calc(100vh * 10 / 9);
+          transform: rotate3d(90);
           li {
             padding: $margin-hamburger-menu;
             margin: $margin-hamburger-menu/2;
@@ -62,6 +65,7 @@ body {
             position: relative;
             text-align: center;
             width: 100%;
+            font-size: 0;
             &:hover {
               background-color: rgba(252, 28, 8,0.7);
               box-shadow:
@@ -76,12 +80,19 @@ body {
 
         &.expand-menu {
           display:flex;
+          visibility: visible;
+          width: calc(100vw * 10 / 9);
+          height: calc(100vh * 10 / 9);
+          li {
+            font-size: clamp(0.75rem, 2vw, 1rem);
+          }
         }
       }
 
       .hamburger-menu {
-        display:none;
+        visibility: hidden;
         @media screen and(max-width: 500px) {
+          visibility: visible;
           display:flex;
           z-index: 10;
         }
@@ -111,6 +122,54 @@ body {
     width: 30vw;
 
     margin-top: 9.8vh;
+
+    @media screen and (max-width: 500px){
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+
+      ul {
+        counter-reset: step;
+      }
+      
+      ul li { 
+        list-style-type: none;
+        float: left;
+        width: 33.33%;
+        position: relative;
+        text-align:center;
+      }
+      
+      ul li:before { 
+        content: counter(step);
+        counter-increment: step;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #ddd;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px auto;
+        border-radius: 50%;
+        background-color: white;
+      }
+      
+      ul li:after { 
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background:#ddd;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+      }
+  
+      ul li:first-child:after {
+        content: none;
+      }
+    }
+    
     .dotWrapper {
       margin-right: 15vw;
       position: relative;
