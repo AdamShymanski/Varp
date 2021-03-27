@@ -51,9 +51,22 @@ body {
           width: calc(100vw * 10 / 9);
           height: calc(100vh * 10 / 9);
           li {
-            margin: $margin-hamburger-menu;
+            padding: $margin-hamburger-menu;
+            margin: $margin-hamburger-menu/2;
             top: calc(50vh - (0.75rem + 40px));
             position: relative;
+            text-align: center;
+            width: 100%;
+            &:hover {
+              background-color: rgba(252, 28, 8,0.7);
+              box-shadow:
+              0 2.8px 2.2px rgba(252, 28, 8, 0.034),
+              0 6.7px 5.3px rgba(252, 28, 8, 0.048),
+              0 12.5px 10px rgba(252, 28, 8, 0.06),
+              0 22.3px 17.9px rgba(252, 28, 8, 0.072),
+              0 41.8px 33.4px rgba(252, 28, 8, 0.086),
+              
+            }
           }
         }
       }
