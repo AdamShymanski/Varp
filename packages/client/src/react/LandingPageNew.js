@@ -73,6 +73,7 @@ function LandingPageNew() {
   };
 
   const [hamburger, setHamburger] = useState(false);
+  const [menuTitle, setMenuTitle] = useState("");
   return (
     <div className='wrapper'>
       <div className='navbar flexRow'>
@@ -92,7 +93,8 @@ function LandingPageNew() {
         </ul>
       </div>
       <div className='scrollIndicator flexColumn'>
-        <ul>
+        <div>{menuTitle || " "}</div>
+        <ul onClick={(e) => setMenuTitle(e.target.firstChild.innerHTML)}>
           <li><a>What is Pyramid?</a></li>
           <li><a>How It Works?</a></li>
           <li><a>How You Can Help?</a></li>
