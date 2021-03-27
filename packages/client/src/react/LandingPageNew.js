@@ -98,6 +98,10 @@ function LandingPageNew() {
           <li><a>What is Pyramid?</a></li>
           <li><a>How It Works?</a></li>
           <li><a>How You Can Help?</a></li>
+          <li><a>How You Can Help?</a></li>
+          <li><a>How You Can Help?</a></li>
+          <li><a>How You Can Help?</a></li>
+          <li><a>How You Can Help?</a></li>
         </ul>
         {/* <div className='dotWrapper flexRow'>
           <div className={handleScrollIndicator("dot", 1)} />
