@@ -81,10 +81,7 @@ export default function SignUpPage() {
   return (
     <div className="wrapper flexColumn">
       <h1 className="robotoFont">Sign Up</h1>
-      <p className="robotoFont description-s  ">
-        Text to accompany header will go here, for now, lorem ipsum impsudo
-        suoas
-      </p>
+      <p className="robotoFont description-s  "></p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
         <div className="inputWrapper flexColumn">
           <p className="label robotoFont">Email</p>
