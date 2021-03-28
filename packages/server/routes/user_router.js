@@ -6,8 +6,8 @@ const User = require("../models/user_model");
 
 const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
-const specialCharactersRegEx = /[^A-Za-z0-9]/;
-const onlyLettersRegEx = /[^A-Za-z\s]/;
+const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
+const onlyLettersRegEx = /^[A-Za-z\s]+$/;
 
 router.post("/register", async (req, res) => {
   let errorContainer = [];
@@ -35,7 +35,7 @@ router.post("/register", async (req, res) => {
           fnf: "Name is too long. It muste be below 25 characters"
         });
       }
-      if (onlyLettersRegEx.test(fullName)) {
+      if (!onlyLettersRegEx.test(fullName)) {
         errorContainer.push({
           fnf: "Name contains not allowed special characters"
         });
@@ -56,7 +56,7 @@ router.post("/register", async (req, res) => {
       let usernameLenght = username.length;
       if (usernameLenght >= 3) {
         if (usernameLenght <= 25) {
-          if (!specialCharactersRegEx.test(username)) {
+          if (onlyLetterNumberRegEx.test(username)) {
             const findUsername = await User.findOne({ username: username });
             if (findUsername)
               errorContainer.push({ uf: "This username is already taken" });
@@ -103,7 +103,8 @@ router.post("/register", async (req, res) => {
       return res.status(400).json(errorContainer);
     }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    errorContainer.push({ error: err.message });
+    res.status(500).json(errorContainer);
   }
 });
 
