@@ -1,7 +1,6 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { registerUser } = require("../firebase/firebaseFunction");
+const { registerUser, loginUser } = require("../firebase/firebaseFunction");
 const auth = require("../middleware/auth");
 const User = require("../models/user_model");
 
@@ -115,22 +114,16 @@ router.post("/signin", async (req, res) => {
     // validate
     if (!email || !password)
       return res.status(400).json({ msg: "Not all fields have been entered" });
-
-    const user = await User.findOne({ email: email });
-    if (!user) return res.status(400).json({ msg: "Wrong email or password" });
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch)
-      return res.status(400).json({ msg: "Wrong email or password" });
-
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.json({
+    const user = await loginUser(email, password);
+    const token = await user.user.getIdToken();
+    const toresp = {
       token,
       user: {
-        id: user._id,
-        displayName: user.displayName
+        id: user.user.uid,
+        fullName: user.user.displayName
       }
-    });
+    };
+    res.json(toresp);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

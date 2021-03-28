@@ -22,6 +22,16 @@ const registerUser = (email, password, fullName, username, age, country) => {
   });
 };
 
+const loginUser = (email, password) => {
+  return new Promise((resolve, reject) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(user => resolve(user))
+      .catch(error => reject(error));
+  });
+};
+
 module.exports = {
-  registerUser
+  registerUser,
+  loginUser
 };
