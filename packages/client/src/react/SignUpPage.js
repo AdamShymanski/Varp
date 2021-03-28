@@ -38,7 +38,10 @@ const schema = yup.object().shape({
   passwordCheck: yup
     .string()
     .oneOf([yup.ref("password"), null], "Password must match"),
-  age: yup.number().required("Please fill your age!"),
+  age: yup
+    .number()
+    .typeError("Please enter numerical value only!")
+    .required("Please fill your age!"),
   country: yup.string().required("Please fill your country")
 });
 
