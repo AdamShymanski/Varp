@@ -6,8 +6,9 @@ const registerUser = (email, password, fullName, username, age, country) => {
       .createUserWithEmailAndPassword(email, password)
       .then(authUser => {
         authUser.user.updateProfile({
-          fullName: fullName,
+          displayName: fullName,
           username: username,
+          // need to be stored in another db
           age: age,
           country: country
         });
