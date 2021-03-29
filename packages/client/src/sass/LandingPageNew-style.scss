@@ -201,6 +201,7 @@ body {
         bottom: 0;
         position: absolute;
         width: 100%;
+        margin-left:0;
         div {
           background: #5c5c5c;
           color: white;
@@ -296,6 +297,10 @@ body {
   }
 
   .navigationButtons {
+    @media screen and (max-width:500px){
+      display: none;
+    }
+
     width: 70%;
 
     right: 0;
