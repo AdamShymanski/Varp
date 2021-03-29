@@ -119,13 +119,13 @@ body {
       left: 0;
       position: relative;
       margin-left: 20px;
-      // width: 30vw;
+      width: 100%;
 
       margin-top: 9.8vh;
       z-index: 5;
 
       ul {
-        flex-direction: flex-start;
+        position: relative;
         color: white;
         width: 100%;
       }
@@ -176,7 +176,7 @@ body {
       ul li:after {
         content: "";
         position: absolute;
-        top: 40px;
+        top: 30px;
         bottom: 21px;
         width: 2px;
         background: #5c5c5c;
