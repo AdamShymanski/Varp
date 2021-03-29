@@ -37,7 +37,7 @@ body {
     justify-content: space-between;
     .wrapper--navbar--logo {
       margin: 20px;
-      width: 50px;
+      width: 50px;  
     }
     ul {
       @media screen and(max-width: 500px) {
@@ -121,6 +121,7 @@ body {
       margin-left: 20px;
       width: 100%;
       max-width: 200px;
+      min-width: 170px;
       margin-top: 9.8vh;
       z-index: 5;
 
@@ -151,6 +152,11 @@ body {
       //   left: 20%;
       //   margin-left: -2.5px;
       // }
+
+      @media screen and (max-width:500px) {
+        max-width: unset;
+        min-width: unset;
+      }
 
       ul li:before {
         content: "";
