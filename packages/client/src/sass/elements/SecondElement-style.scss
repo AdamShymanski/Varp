@@ -51,7 +51,7 @@
         .title {
           color: $accent;
           font-weight: 700;
-          font-size: 1.7vw;
+          font-size: clamp(1.25rem,2vw,2rem);
           margin: 1vh 0;
         }
         .expandIcon {
