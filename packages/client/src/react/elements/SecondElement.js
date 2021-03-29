@@ -16,7 +16,7 @@ import shrinkIcon from "../../resources/icons/shrink.svg";
 const useStyles = makeStyles({
   icon: {
     color: "#f4f4f4",
-    fontSize: "5vw",
+    fontSize: "clamp(3rem,7vw,6rem)",
     marginTop: "1vh",
     fontWeight: "300",
   },
