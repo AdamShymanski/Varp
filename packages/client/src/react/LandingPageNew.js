@@ -76,8 +76,8 @@ function LandingPageNew() {
   const [menuTitle, setMenuTitle] = useState("");
   return (
     <div className='wrapper'>
-      <div className='navbar flexRow'>
-        <img src={logo} alt='Logo' className='logo' />
+      <div className='wrapper--navbar flexRow'>
+        <img src={logo} alt='Logo' className='wrapper--navbar--logo'/>
         <ul className='flexRow'>
           <div class={`default-menu flexRow ${hamburger && "expand-menu"}`}>
             <li className='poppinsFont'>Home</li>
