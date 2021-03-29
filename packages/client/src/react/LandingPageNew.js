@@ -93,18 +93,19 @@ function LandingPageNew() {
         </ul>
       </div>
       <div className="">
-        <div className='scrollIndicator flexColumn'>
-          <div>{menuTitle || " "}</div>
-          <ul onClick={(e) => setMenuTitle(e.target.firstChild.innerHTML)}>
-            <li><a>What is Pyramid?</a></li>
-            <li><a>How It Works?</a></li>
-            <li><a>How You Can Help?</a></li>
-            <li><a>How You Can Help?</a></li>
-            <li><a>How You Can Help?</a></li>
-            <li><a>How You Can Help?</a></li>
-            <li><a>How You Can Help?</a></li>
-          </ul>
-          {/* <div className='dotWrapper flexRow'>
+        <div className="">
+          <div className='scrollIndicator flexColumn'>
+            <div>{menuTitle || " "}</div>
+            <ul onClick={(e) => setMenuTitle(e.target.firstChild.innerHTML)}>
+              <li><a>What is Pyramid?</a></li>
+              <li><a>How It Works?</a></li>
+              <li><a>How You Can Help?</a></li>
+              <li><a>How You Can Help?</a></li>
+              <li><a>How You Can Help?</a></li>
+              <li><a>How You Can Help?</a></li>
+              <li><a>How You Can Help?</a></li>
+            </ul>
+            {/* <div className='dotWrapper flexRow'>
           <div className={handleScrollIndicator("dot", 1)} />
           <p className='poppinsFont'>What is Pyramid?</p>
         </div>
@@ -119,26 +120,27 @@ function LandingPageNew() {
           <div className={handleScrollIndicator("dot", 3)} />
           <p className='poppinsFont'>How You Can Help?</p>
         </div> */}
-        </div>
-        <div className="main-content">
-          <FirstElement
-            visibility={() => {
-              if (visibilityState == 1) return true;
-              else return false;
-            }}
-          />
-          <SecondElement
-            visibility={() => {
-              if (visibilityState == 2) return true;
-              else return false;
-            }}
-          />
-          <ThirdElement
-            visibility={() => {
-              if (visibilityState == 3) return true;
-              else return false;
-            }}
-          />
+          </div>
+          <div className="main-content">
+            <FirstElement
+              visibility={() => {
+                if (visibilityState == 1) return true;
+                else return false;
+              }}
+            />
+            <SecondElement
+              visibility={() => {
+                if (visibilityState == 2) return true;
+                else return false;
+              }}
+            />
+            <ThirdElement
+              visibility={() => {
+                if (visibilityState == 3) return true;
+                else return false;
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className='navigationButtons '>
