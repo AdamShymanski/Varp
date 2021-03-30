@@ -11,11 +11,18 @@
     .bottom {
       justify-content: flex-start;
       width: 100%;
+      @media (max-width: 900px) {
+        flex-wrap: wrap;
+      }
       .card {
         min-width: calc(100% / 4 - 4vw);
         height: 40vh;
         margin: 6vh 4vw 0 0;
         // margin-right: 4vw;
+        @media (max-width: 900px) {
+          width: calc(50% - 4vw);
+          height: 30vh;
+        }
 
         position: relative;
         background: $dark-gray;
