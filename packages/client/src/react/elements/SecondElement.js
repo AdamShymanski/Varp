@@ -48,7 +48,7 @@ function SecondElement(props) {
       </article>
       <article>
         <div className='bottom flexRow'>
-          <div className={handleCardsClass(aState)}>
+          <div id="landingCard_1" className={handleCardsClass(aState)}>
             <div className='topWrapper flexColumn'>
               <WorkOutlinedIcon className={classes.icon} />
               <h1 className='title poppinsFont'>Collaboration</h1>
@@ -61,7 +61,7 @@ function SecondElement(props) {
             <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setA((aState) => !aState)} />
             <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setA((aState) => !aState)} />
           </div>
-          <div className={handleCardsClass(bState)}>
+          <div id="landingCard_2" className={handleCardsClass(bState)}>
             <div className='topWrapper flexColumn'>
               <FindInPageOutlinedIcon className={classes.icon} />
               <h1 className='title poppinsFont'>Your Job</h1>
@@ -77,7 +77,7 @@ function SecondElement(props) {
             <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setB((bState) => !bState)} />
             <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setB((bState) => !bState)} />
           </div>
-          <div className={handleCardsClass(cState)}>
+          <div id="landingCard_3" className={handleCardsClass(cState)}>
             <div className='topWrapper flexColumn'>
               <VideogameAssetOutlinedIcon className={classes.icon} />
               <h1 className=' title poppinsFont'>Game</h1>
@@ -92,7 +92,7 @@ function SecondElement(props) {
             <img src={expandIcon} alt='Expand Icon' className='expandIcon' onClick={() => setC((cState) => !cState)} />
             <img src={shrinkIcon} alt='Shrink Icon' className='shrinkIcon' onClick={() => setC((cState) => !cState)} />
           </div>
-          <div className={handleCardsClass(dState)}>
+          <div id="landingCard_4" className={handleCardsClass(dState)}>
             <div className='topWrapper flexColumn'>
               <AttachMoneyOutlinedIcon className={classes.icon} />
               <h1 className='title poppinsFont'>Prize</h1>

@@ -81,12 +81,23 @@
           display: none;
         }
       }
+
+      @media (max-width: 900px) {
+        #landingCard_1, #landingCard_2 {
+          top:0;
+        }
+
+        #landingCard_3, #landingCard_4 {
+          bottom:0;
+        }
+      }
+      
       .expanded {
         min-width: 66vw;
         transition: 400ms;
         position: absolute;
-
         z-index: 2;
+       
 
         .expandIcon {
           display: none;
