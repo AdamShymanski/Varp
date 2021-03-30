@@ -15,7 +15,9 @@
   }
   form {
     margin-top: 2vh;
-
+    .error {
+      color: $accent;
+    }
     .inputWrapper {
       margin-top: 3.4vh;
       position: relative;
