@@ -29,11 +29,11 @@ const colors: ColorMap = {
 
 const makeColorVariants = (colors: ColorMap): string => {
   let styles = "";
-  for (let opacity = 10; opacity < 100; opacity += 10) {
+  for (let percentage = 10; percentage < 100; percentage += 10) {
     let func;
-    if (opacity < 50) {
+    if (percentage < 50) {
       func = tint;
-    } else if (opacity == 50) {
+    } else if (percentage == 50) {
       func = (amount: number, el: string) => el;
     } else {
       func = shade;
@@ -41,8 +41,8 @@ const makeColorVariants = (colors: ColorMap): string => {
     for (const color in colors) {
       if (Object.prototype.hasOwnProperty.call(colors, color)) {
         const element = colors[color];
-        styles += `--color-${color + opacity*10}: ${func(
-          Math.abs(opacity-50) / 100,
+        styles += `--color-${color + percentage*10}: ${func(
+          Math.abs(percentage-50) / 100,
           element
         )};\n`;
       }
