@@ -1,5 +1,3 @@
-import { Global } from "@emotion/react";
-import { normalize } from "polished";
 import { Styles } from "../lib/Styles";
 
 export const parameters = {
