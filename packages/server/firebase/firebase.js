@@ -3,4 +3,9 @@ require("firebase/auth");
 const firebaseConfig = require("./firebaseConfig");
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-exports.auth = firebaseApp.auth();
+const auth = firebaseApp.auth();
+
+if (process.env.ENVIRONMENT !== "PRODUCTION") {
+  auth.useEmulator("http://localhost:9099");
+}
+exports.auth;
