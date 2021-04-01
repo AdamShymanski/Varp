@@ -12,10 +12,6 @@ interface ColorMap {
 
 const colors: ColorMap = {
   primary: "#0084ff",
-  greybg: "#1b1b1b",
-  blackbox: "#121212",
-  smoky: "#f4f4f4",
-  lightgrey: "#5c5c5c",
   white: "#ffffff"
 };
 
