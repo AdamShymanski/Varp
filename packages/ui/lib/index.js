@@ -1,1 +1,2 @@
-export {Slider} from "./Slider";
+export { Slider } from "./Slider";
+export { Styles } from "./Styles";
