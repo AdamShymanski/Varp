@@ -20,12 +20,18 @@
 
       .bottom-container {
         display: flex;
-        width: 100%
+        width: 100%;
+        @media (max-width: 800px) {
+          & > *:first-child {
+            margin-right: 0;
+          }
+        }
       }
+
       .card {
         min-width: calc(100% / 4 - 4vw);
         height: 40vh;
-        margin: 6vh 4vw 0 0;
+        margin: 2rem 1rem;
         // margin-right: 4vw;
         @media (max-width: 800px) {
           width: calc(50% - 4vw);
