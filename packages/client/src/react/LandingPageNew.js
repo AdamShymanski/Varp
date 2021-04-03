@@ -74,6 +74,27 @@ function LandingPageNew() {
 
   const [hamburger, setHamburger] = useState(false);
   const [menuTitle, setMenuTitle] = useState("");
+
+  const handleMenu = (e) => {
+    let getSiblings = function (e) {
+      
+      let siblings = [],
+      sibling  = e.parentNode.firstChild;; 
+      if(!e.parentNode) return siblings;
+      while (sibling) {
+          if (sibling.nodeType === 1 && sibling !== e) {
+              siblings.push(sibling);
+          }
+          sibling = sibling.nextSibling;
+      }
+      return siblings;
+  };
+    e.target.classList.add('active')
+    console.log(getSiblings(e.target))
+    console.log(e.target)
+    console.log(e.target.firstChild.innerHTML)
+  }
+
   return (
     <div className='wrapper'>
       <div className='wrapper--navbar flexRow'>
@@ -95,7 +116,7 @@ function LandingPageNew() {
       <div className="wrapper--main">
         <div className='wrapper--main--scrollIndicator flexColumn'>
           <div>{menuTitle || " "}</div>
-          <ul onClick={(e) => setMenuTitle(e.target.firstChild.innerHTML)}>
+          <ul onClick={(e) => handleMenu(e)}>
             <li><a>What is Pyramid?</a></li>
             <li><a>How It Works?</a></li>
             <li><a>How You Can Help?</a></li>
