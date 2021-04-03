@@ -141,6 +141,17 @@ body {
         width: 100%;
       }
 
+      ul li.active {
+        color: #FF1D00;
+      }
+
+      ul li.active:before {
+        background-color: #FF1D00;
+      }
+
+      // ul li.active:after {
+      //   background: linear-gradient(red,black);
+      // }
       // ul li {
       //   display: flex;
       // }
@@ -239,8 +250,6 @@ body {
         }
 
         ul li:before {
-          content: counter(step);
-          counter-increment: step;
           width: 30px;
           height: 30px;
           line-height: 30px;
