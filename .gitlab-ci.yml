@@ -54,9 +54,6 @@ preview:
   only:
     - master
     - merge_requests
-  needs:
-    - job: build:client
-      artifacts: true
   script:
     - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG
 
