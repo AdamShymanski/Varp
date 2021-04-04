@@ -15,8 +15,6 @@ cache:
 initialize:
   stage: initialize
   script:
-    - echo $CI_PIPELINE_SOURCE
-    - echo $CI_DEFAULT_BRANCH
     - yarn
     - npx lerna bootstrap
 
@@ -54,13 +52,24 @@ test:
 preview:
   stage: preview
   rules:
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == $CI_DEFAULT_BRANCH'
+    - if: '$CI_COMMIT_BRANCH != "$CI_DEFAULT_BRANCH"'
+      when: on_success
+    - when: never
+  needs:
+    - job: build:client
+      artifacts: true
   script:
     - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG
+
 
 deploy:
   stage: deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
+      when: on_success
+    - when: never
+  needs:
+    - job: build:client
+      artifacts: true
   script:
     - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live
