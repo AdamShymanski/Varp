@@ -52,8 +52,7 @@ test:
 preview:
   stage: preview
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      - merge_requests
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
   script:
     - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG
 
