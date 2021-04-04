@@ -31,7 +31,7 @@ $speech-bubble-background: #313131;
 
 .poppinsFont {
   font-weight: 400;
-  font-size: 0.8vw;
+  font-size: clamp(0.75rem, 2vw, 1rem);
   font-family: $poppins-font;
 }
 .flexRow {

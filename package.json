@@ -16,11 +16,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "craco": "0.0.3",
-    "craco-babel-loader": "^0.1.4",
-=======
->>>>>>> 3fe478b888c3bf0b8b54acd8810af99de2b55693
     "cross-env": "^7.0.3",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
