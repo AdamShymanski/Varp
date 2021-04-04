@@ -5,6 +5,7 @@ stages:
   - initialize
   - build
   - test
+  - preview
   - deploy
 
 cache:
@@ -48,19 +49,17 @@ test:
   script:
     - echo test
 
-preview_deploy:
-  stage: deploy
-  only:
-    refs:
-      - master
+preview:
+  stage: preview
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       - merge_requests
   script:
     - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG
 
-live_deploy:
+deploy:
   stage: deploy
-  only:
-    refs:
-      - master
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   script:
     - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live
