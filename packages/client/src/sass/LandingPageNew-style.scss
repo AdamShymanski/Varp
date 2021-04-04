@@ -1,5 +1,7 @@
 @import "../variables.scss";
 
+$margin-hamburger-menu:"20px";
+
 html,
 body {
   background: $background;
@@ -38,6 +40,29 @@ body {
       width: 50px;
     }
     ul {
+      .default-menu {
+        @media screen and (max-width: 500px) {
+          position: absolute;
+          flex-direction: column;
+          top: 0;
+          left:0;
+          z-index: 5;
+          background-color: black;
+          width: calc(100vw * 10 / 9);
+          height: calc(100vh * 10 / 9);
+          li {
+            margin: 20px;
+            top: calc(50vh - (0.75rem + 40px));
+            position: relative;
+          }
+        }
+      }
+
+      .hamburger-menu {
+        * {
+          fill:white
+        }
+      }
       padding: 2rem;
       li {
         list-style: none;
