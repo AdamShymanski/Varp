@@ -9,7 +9,7 @@
     ]
   },
   "hosting": {
-    "public": "./packages/client/build",
+    "public": "./packages/client/dist/",
     "ignore": [
       "firebase.json",
       "**/.*",

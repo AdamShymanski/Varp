@@ -5,6 +5,7 @@ stages:
   - initialize
   - build
   - test
+  - preview
   - deploy
 
 cache:
@@ -48,10 +49,21 @@ test:
   script:
     - echo test
 
+preview:
+  stage: preview
+  only:
+    - master
+    - merge_requests
+  needs:
+    - job: build:client
+      artifacts: true
+  script:
+    - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG
+
 deploy:
   stage: deploy
   only:
     refs:
       - master
   script:
-    - echo deploy
+    - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live

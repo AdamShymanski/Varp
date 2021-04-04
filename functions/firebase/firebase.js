@@ -5,7 +5,7 @@ const firebaseConfig = require("./firebaseConfig");
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const auth = firebaseApp.auth();
 
-if (process.env.ENVIRONMENT !== "PRODUCTION") {
+if (process.env.FUNCTIONS_EMULATOR === true) {
   auth.useEmulator("http://localhost:9099");
 }
 
