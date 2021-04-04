@@ -32,17 +32,20 @@ export default function SignInPage() {
   };
   const onSubmit = async data => {
     try {
-      await axios({
-        method: "post",
-        url: "/user/signin",
-        data: data
-      }).then(resp => {
-        alert("Login Success!");
-        localStorage.setItem("auth-token", resp.data.token);
-        localStorage.setItem("id", resp.data.user.id);
-        localStorage.setItem("fullName", resp.data.user.fullName);
-        setToken(resp.data.token);
-      });
+      await axios
+        .post("/user/signin", {
+          ...data
+        })
+        .then(resp => {
+          alert("Login Success!");
+          localStorage.setItem("auth-token", resp.data.token);
+          localStorage.setItem("id", resp.data.user.id);
+          localStorage.setItem("fullName", resp.data.user.fullName);
+          setToken(resp.data.token);
+        })
+        .catch(resp => {
+          alert(resp.response.data.error);
+        });
     } catch (err) {
       console.error(err);
     }
