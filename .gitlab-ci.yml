@@ -55,26 +55,32 @@ preview:
     - if: '$CI_COMMIT_BRANCH != "$CI_DEFAULT_BRANCH"'
       when: on_success
     - when: never
-  needs:
-    - job: build:client
-      artifacts: true
   before_script:
     - npm install -g firebase-tools
   script:
     - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG --non-interactive --token $FIREBASE_TOKEN
 
-deploy:
+deploy_client:
   stage: deploy
-
-  rules:
-    - if: '$CI_COMMIT_BRANCH == "$CI_DEFAULT_BRANCH"'
-      when: on_success
-    - when: never
-  needs:
-    - job: build:client
-      artifacts: true
+  only:
+    refs:
+      - master
   before_script:
     - npm install -g firebase-tools
   script:
     - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token $FIREBASE_TOKEN
+
+deploy_functions:
+  stage: deploy
+  only:
+    refs:
+      - master
+    changes:
+      - functions/**/*
+  before_script:
+    - npm install -g firebase-tools
+  script:
+    - cd functions
+    - npm install
+    - cd ..
     - firebase deploy --only functions --non-interactive --token $FIREBASE_TOKEN
