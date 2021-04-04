@@ -5,7 +5,9 @@ stages:
   - initialize
   - build
   - test
+  - preview
   - deploy
+
 
 cache:
   paths:
@@ -13,12 +15,17 @@ cache:
 
 initialize:
   stage: initialize
+  only:
+    - merge_requests
+    - $CI_DEFAULT_BRANCH
   script:
-    - yarn
     - npx lerna bootstrap
 
 build:ui:
   stage: build
+  only:
+    - merge_requests
+    - $CI_DEFAULT_BRANCH
   cache:
     policy: pull
     paths:
@@ -32,6 +39,9 @@ build:ui:
 
 build:client:
   stage: build
+  only:
+    - merge_requests
+    - $CI_DEFAULT_BRANCH
   cache:
     policy: pull
     paths:
@@ -45,13 +55,43 @@ build:client:
 
 test:
   stage: test
+  only:
+    - merge_requests
+    - $CI_DEFAULT_BRANCH
   script:
     - echo test
 
-deploy:
+preview:
+  stage: preview
+  only:
+    - merge_requests
+    - $CI_DEFAULT_BRANCH
+  before_script:
+    - npm install -g firebase-tools
+  script:
+    - firebase hosting:channel:deploy $CI_COMMIT_REF_SLUG --non-interactive --token "$FIREBASE_TOKEN"
+
+deploy_client:
   stage: deploy
   only:
     refs:
-      - master
+      - $CI_DEFAULT_BRANCH
+  before_script:
+    - npm install -g firebase-tools
   script:
-    - echo deploy
+    - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
+
+deploy_functions:
+  stage: deploy
+  only:
+    refs:
+      - $CI_DEFAULT_BRANCH
+    changes:
+      - functions/**/*
+  before_script:
+    - npm install -g firebase-tools
+  script:
+    - cd functions
+    - npm install
+    - cd ..
+    - firebase deploy --only functions --non-interactive --token "$FIREBASE_TOKEN"

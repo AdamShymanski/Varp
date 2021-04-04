@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./../sass/FormPage-style.scss";
 
-import Axios from "axios";
+import axios from "../axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -32,15 +32,20 @@ export default function SignInPage() {
   };
   const onSubmit = async data => {
     try {
-      Axios.post("http://localhost:5000/user/signin", {
-        ...data
-      }).then(resp => {
-        alert("Login Success!");
-        localStorage.setItem("auth-token", resp.data.token);
-        localStorage.setItem("id", resp.data.user.id);
-        localStorage.setItem("fullName", resp.data.user.fullName);
-        setToken(resp.data.token);
-      });
+      await axios
+        .post("/user/signin", {
+          ...data
+        })
+        .then(resp => {
+          alert("Login Success!");
+          localStorage.setItem("auth-token", resp.data.token);
+          localStorage.setItem("id", resp.data.user.id);
+          localStorage.setItem("fullName", resp.data.user.fullName);
+          setToken(resp.data.token);
+        })
+        .catch(resp => {
+          alert(resp.response.data.error);
+        });
     } catch (err) {
       console.error(err);
     }
