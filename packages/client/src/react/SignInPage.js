@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./../sass/FormPage-style.scss";
 
-import Axios from "axios";
+import axios from "../axios";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -32,8 +32,10 @@ export default function SignInPage() {
   };
   const onSubmit = async data => {
     try {
-      Axios.post("http://localhost:5000/user/signin", {
-        ...data
+      await axios({
+        method: "post",
+        url: "/user/signin",
+        data: data
       }).then(resp => {
         alert("Login Success!");
         localStorage.setItem("auth-token", resp.data.token);

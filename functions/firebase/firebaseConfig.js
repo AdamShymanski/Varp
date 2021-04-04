@@ -7,6 +7,6 @@ const firebaseConfig = {
   storageBucket: "pyramid-64ab2.appspot.com",
   messagingSenderId: "1070528554456",
   appId: "1:1070528554456:web:0c6a796c3f65c61680fead",
-  measurementId: "G-WFW0SBP6M3"
+  measurementId: "G-WFW0SBP6M3",
 };
 module.exports = firebaseConfig;

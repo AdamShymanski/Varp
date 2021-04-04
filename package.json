@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "start": "lerna run start --stream",
+    "localdev": "firebase emulators:start",
     "lint": "eslint --ext=.js,.jsx ./",
     "build": "lerna run build --concurrency 2 --stream",
     "prepare": "husky install",
