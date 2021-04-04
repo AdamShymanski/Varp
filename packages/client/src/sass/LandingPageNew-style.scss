@@ -1,6 +1,6 @@
 @import "../variables.scss";
 
-$margin-hamburger-menu:"20px";
+$margin-hamburger-menu: 20px;
 
 html,
 body {
@@ -51,7 +51,7 @@ body {
           width: calc(100vw * 10 / 9);
           height: calc(100vh * 10 / 9);
           li {
-            margin: 20px;
+            margin: $margin-hamburger-menu;
             top: calc(50vh - (0.75rem + 40px));
             position: relative;
           }
