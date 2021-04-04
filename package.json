@@ -32,7 +32,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "client": "file:packages/client",
-    "server": "file:packages/server"
+    "client": "file:packages/client"
   }
 }
