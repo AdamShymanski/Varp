@@ -1,0 +1,48 @@
+import { css } from "@emotion/react";
+import React, { ReactElement } from "react";
+
+export enum ChallengeType {
+  WATCH_AD = "Watching video ad"
+}
+
+export interface Props {
+  /**
+   * The estimated time to complete in minutes
+   */
+  minutes: number;
+  /**
+   * The type of challenge
+   */
+  type: ChallengeType;
+  /**
+   * The number of tokens earned for completing the challenge
+   */
+  reward: number;
+}
+
+const style = css`
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white700);
+  font-family: var(--font-sans-serif);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin:  22px 0 0 0;
+  }
+`;
+
+export function Details({ minutes, type, reward }: Props): ReactElement {
+  return (
+    <div css={style}>
+      <ul>
+        <li>Estimated time - {minutes} minutes</li>
+        <li>Type - {type}</li>
+        <li>Reward - {reward} tokens</li>
+      </ul>
+    </div>
+  );
+}
