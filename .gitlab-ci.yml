@@ -70,6 +70,7 @@ preview:
   environment:
     name: review/$CI_COMMIT_REF_NAME
     url: $ENVIRONMENT_URL
+    on_stop: stop_branch
   variables:
     ENVIRONMENT: staging
   artifacts:
@@ -82,11 +83,12 @@ deploy_client:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   before_script:
     - npm install -g firebase-tools
-  script:
-    - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
-    - echo "ENVIRONMENT_URL=$(firebase hosting:channel:open live --non-interactive | awk '{ print $3 }')" >> deploy.env
   variables:
-    ENVIRONMENT: production
+    - ENVIRONMENT: production
+    - PREV_COMMIT_REF_SLUG: echo $(git log -1 --no-merges --pretty='%D' | awk -F', ' '{print $2}')
+  script:
+    - firebase hosting:clone pyramid-64ab2:$PREV_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
+    - echo "ENVIRONMENT_URL=$(firebase hosting:channel:open live --non-interactive | awk '{ print $3 }')" >> deploy.env
   environment:
     name: production
     url: $ENVIRONMENT_URL
