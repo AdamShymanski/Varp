@@ -13,43 +13,32 @@ cache:
   paths:
     - node_modules/
 
-init-test:
-  stage: test
-  only:
-    - project-restructure
-  script:
-    - echo $CI_COMMIT_BRANCH
-    - echo $CI_DEFAULT_BRANCH
-    
 initialize:
   stage: initialize
   only:
     - merge_requests
-    - project-restructure
   script:
-    - npx lerna bootstrap
+    - npx lerna bootstrap -- --production
 
-build:ui:
-  stage: build
-  only:
-    - merge_requests
-    - project-restructure
-  cache:
-    policy: pull
-    paths:
-      - node_modules/
-  script:
-    - npx lerna run --scope @pyramid/ui build --stream
-  artifacts:
-    name: "$CI_JOB_NAME"
-    paths:
-      - packages/ui/dist/
+# build:ui:
+#   stage: build
+#   only:
+#     - merge_requests
+#   cache:
+#     policy: pull
+#     paths:
+#       - node_modules/
+#   script:
+#     - npx lerna run --scope @pyramid/ui build --stream
+#   artifacts:
+#     name: "$CI_JOB_NAME"
+#     paths:
+#       - packages/ui/dist/
 
 build:client:
   stage: build
   only:
     - merge_requests
-    - project-restructure
   cache:
     policy: pull
     paths:
@@ -65,7 +54,6 @@ test:
   stage: test
   only:
     - merge_requests
-    - project-restructure
   script:
     - echo test
 
@@ -73,7 +61,6 @@ preview:
   stage: preview
   only:
     - merge_requests
-    - project-restructure
   before_script:
     - npm install -g firebase-tools
   script:
@@ -81,21 +68,20 @@ preview:
 
 deploy_client:
   stage: deploy
-  only:
-    refs:
-      - project-restructure
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   before_script:
     - npm install -g firebase-tools
   script:
     - firebase hosting:clone pyramid-64ab2:$CI_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
+    - firebase hosting:channel:delete -f $CI_COMMIT_REF_SLUG
 
 deploy_functions:
   stage: deploy
-  only:
-    refs:
-      - project-restructure
-    changes:
-      - functions/**/*
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      changes:
+        - functions/**/*
   before_script:
     - npm install -g firebase-tools
   script:
