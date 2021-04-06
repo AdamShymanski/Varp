@@ -88,7 +88,8 @@ deploy_client:
   script:
     - export PREV_COMMIT_REF_SLUG=$(git log --no-merges --pretty='%D' -1 | awk -F', ' '{print $2}')
     - echo $(git log)
-    - echo $(git log --no-merges --pretty='%D' -1)
+    - echo $(git log --no-merges)
+    - echo $(git log --no-merges --pretty='%D')
     - echo $PREV_COMMIT_REF_SLUG
     - firebase hosting:clone pyramid-64ab2:$PREV_COMMIT_REF_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
     - echo "ENVIRONMENT_URL=$(firebase hosting:channel:open live --non-interactive | awk '{ print $3 }')" >> deploy.env
