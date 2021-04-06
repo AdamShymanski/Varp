@@ -123,6 +123,32 @@ body {
 
     margin-top: 9.8vh;
 
+
+    ul li:before { 
+      content: counter(step);
+      counter-increment: step;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #ddd;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+    }
+    
+    ul li:after { 
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background:#ddd;
+      top: 15px;
+      left: -50%;
+      z-index: -1;
+    }
+
     @media screen and (max-width: 500px){
       bottom: 0;
       position: absolute;
@@ -149,11 +175,11 @@ body {
         position: relative;
         text-align:center;
 
-        @media screen and (max-width: 500px) {
+       
           a { 
             display: none;
           }
-        }
+        
       }
       
       ul li:before { 
