@@ -86,9 +86,10 @@ deploy_client:
   variables:
     ENVIRONMENT: production
   script:
-    - export PREV_COMMIT_SHA=$(git log --no-merges --pretty='%H' -1) |head -c8
+    - export PREV_COMMIT_SHA=$(git log --no-merges -1 | head -n1 | awk '{ print $2 }' | head -c8)
     - firebase hosting:clone pyramid-64ab2:$PREV_COMMIT_SHA pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
-    - echo $(git log --no-merges --pretty='%H')
+    - echo $(git log --no-merges -1 | head -n1)
+    - echo $(git log --no-merges -1 | head -n1 | awk '{ print $2 }')
     - echo $PREV_COMMIT_REF_SLUG
     - echo "ENVIRONMENT_URL=$(firebase hosting:channel:open live --non-interactive | awk '{ print $3 }')" >> deploy.env
   environment:
