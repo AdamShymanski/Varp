@@ -19,6 +19,9 @@ initialize:
     - merge_requests
     - $CI_DEFAULT_BRANCH
   script:
+    - echo $CI_DEFAULT_BRANCH
+    - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - echo $CI_COMMIT_BRANCH
     - npx lerna bootstrap
 
 build:ui:
