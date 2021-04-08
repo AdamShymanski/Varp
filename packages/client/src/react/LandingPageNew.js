@@ -89,6 +89,7 @@ function LandingPageNew() {
 
   const handleMenu = (e) => {
     e.target.classList.add('active')
+    window.innerWidth <= 500 && setMenuTitle(e.target.firstChild.innerHTML) 
     getSiblings(e.target).map(item => item.classList.remove('active'))
   }
 
