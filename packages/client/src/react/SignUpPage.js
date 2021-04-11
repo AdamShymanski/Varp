@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import Axios from "axios";
+import axios from "../axios";
 
 const onlyLettersRegEx = /^[A-Za-z\s]+$/;
 const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
@@ -63,7 +63,7 @@ export default function SignUpPage() {
   const onSubmit = async data => {
     let response;
     try {
-      response = await Axios.post("http://localhost:5000/user/register", {
+      response = await axios.post("/user/register", {
         ...data
       });
     } catch (err) {
