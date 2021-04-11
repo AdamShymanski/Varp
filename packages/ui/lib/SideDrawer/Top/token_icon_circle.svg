@@ -1,0 +1,21 @@
+<svg id="Layer_3" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55.42 55.42">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #f4f4f4;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1 {
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        stroke-width: 4.47px;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="27.71" cy="27.71" r="25.71"/>
+  <path class="cls-2" d="M28,13.9l-13.26,23a1.42,1.42,0,0,0,.52,1.92,1.46,1.46,0,0,0,.7.18h26.5a1.4,1.4,0,0,0,1.22-2.1l-13.25-23a1.4,1.4,0,0,0-1.92-.5A1.36,1.36,0,0,0,28,13.9Z" transform="translate(-1.45 -1.45)"/>
+</svg>
