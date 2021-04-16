@@ -16,19 +16,19 @@ const style = css`
 
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
   max-width: 500px;
-
   font-family: "Poppins", sans-serif;
   background: #121212;
   color: #f4f4f4;
-
+  
+  
   .name {
     width: 20vw;
     background: #1b1b1b;
     padding: 15px 20px;
     margin-top: 20px;
-
+    
     border-radius: 8px;
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,44 +36,53 @@ const style = css`
   .bank {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
-
+    border-radius: 12px;
+    padding: 28px;
+    font-weight: 900;
+    .title {
+      font-size: 3em;
+    }
     img {
       width: 2em;
       margin-right: 10px;
     }
-  }
-  .tokenContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 15px;
-    p {
-      font-size: 2em;
+    .tokenContainer {
+      line-height: 0.7em;
+      margin: 20px 0px 40px 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: 500;
+      
+      p {
+        font-size: 3em;
+      }
+      .number {
+        font-size: 1em;
+      }
+    }
+    .lastActionContainer {
+      align-self: flex-end;
+      display: flex;
+      flex-direction: row;
+      img {
+        margin-left: 20px;
+        margin-right: 2px;
+        width: 1em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+
+    .bonus {
     }
   }
-  .lastActionContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    img {
-      margin-left: 20px;
-      margin-right: 2px;
-      width: 1em;
-    }
-    p {
-      font-size: 1em;
-    }
+  .green {
+    color: #43ff00;
   }
-  .expandContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 15px 0 30px;
-    img {
-      margin-left: 8px;
-      width: 1em;
-    }
+  .red {
+    color: #f80102;
   }
 `;
 
@@ -94,6 +103,18 @@ export interface Props {
    * Profit or Lose
    */
   profit: boolean;
+  /**
+   * First Source of Bonus
+   */
+  dailyStreak: number;
+  /**
+   * Second Source of Bonus
+   */
+  referral: number;
+  /**
+   * Third Source of Bonus
+   */
+  finishedTask: number;
 }
 
 export const Top = (props: Props) => {
@@ -102,27 +123,33 @@ export const Top = (props: Props) => {
     balance = 451,
     profit = true,
     number = 51,
+    dailyStreak = 5,
+    referral = 5,
+    finishedTask = 5,
     ...rest
   } = props;
 
   return (
     <main css={style}>
-      <article className="name">
-        <p>{name}</p>
-      </article>
       <article className="bank">
-        <p>Balance</p>
+        <div  className="title">
+          <p>Bank</p>
+        </div>
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
-          <p>{balance}</p>
+          <p>
+            {balance}
+          </p>
           <div className="lastActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
-            <p className="number">{`${profit ? "+" : "-"} ${number}`}</p>
+            <p className={"number " + (profit ? "green" : "red")}>{number}</p>
           </div>
         </div>
-        <div className="expandContainer">
-          <p>View all information</p>
-          <img src={expandIcon} alt="Exapand Icon" />
+      <div className="bonus">
+        <p>Bonuses</p>
+        <div>
+          <p>{dailyStreak} {referral} {finishedTask}</p>
+        </div>
         </div>
       </article>
     </main>
