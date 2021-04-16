@@ -76,8 +76,102 @@ const style = css`
     }
 
     .bonus {
+      font-size: 1.5em;
+      > p {
+        margin-bottom: 12px;
+      }
+      .scoreBar {
+        width: 80%;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        box-shadow: 0 0 0 2px #5c5c5c inset;
+        border-radius: 6px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      }
+      .dailyStreak {
+        display: flex;
+        align-items: center;
+        background-color: #2cb200;
+        border-radius: 6px 0 0 6px;
+        z-index: 3;
+        position: relative;
+        > p {
+          margin-left: 20px;
+        }
+        &::after {
+          background-color: inherit;
+          display: inline-block;
+          border-radius: 12px;
+          width: 12px;
+          height: 100%;
+          left: calc(100% - 6px);
+          top: 0%;
+          position: absolute;
+          content: "";
+        }
+      }
+      .referral {
+        display: flex;
+        align-items: center;
+        background-color: #33cc01;
+        z-index: 2;
+        position: relative;
+
+        > p {
+          margin-left: 20px;
+        }
+
+        &::after {
+          background-color: inherit;
+          display: inline-block;
+          border-radius: 12px;
+          width: 12px;
+          height: 100%;
+          left: calc(100% - 6px);
+          top: 0%;
+          position: absolute;
+          content: "";
+        }
+      }
+      .finishedTask {
+        display: flex;
+        align-items: center;
+        position: relative;
+        background-color: #3be601;
+        z-index: 1;
+
+        > p {
+          margin-left: 20px;
+        }
+        
+        &::after {
+          background-color: inherit;
+          display: inline-block;
+          border-radius: 12px;
+          width: 12px;
+          height: 100%;
+          left: calc(100% - 6px);
+          top: 0%;
+          position: absolute;
+          content: "";
+        }
+      }
     }
   }
+  .bonusInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    > p {
+      margin-left: 4px;
+      font-size: 0.5em;
+    }
+  }
+}
+
   .green {
     color: #43ff00;
   }
@@ -128,6 +222,9 @@ export const Top = (props: Props) => {
     finishedTask = 5,
     ...rest
   } = props;
+  const maxDailyStreak = 10;
+  const maxReferral = 10;
+  const maxFinishedTask = 10;
 
   return (
     <main css={style}>
@@ -145,11 +242,16 @@ export const Top = (props: Props) => {
             <p className={"number " + (profit ? "green" : "red")}>{number}</p>
           </div>
         </div>
-      <div className="bonus">
-        <p>Bonuses</p>
-        <div>
-          <p>{dailyStreak} {referral} {finishedTask}</p>
-        </div>
+        <div className="bonus">
+          <p>Bonuses</p>
+          <div className="bonusInfo">
+            <div className="scoreBar">
+              <div className="dailyStreak" style={{width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`}}><p>+ {dailyStreak}%</p></div>
+              <div className="referral" style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}><p>+ {referral}%</p></div>
+              <div className="finishedTask" style={{width: `calc((100%)/3*(${finishedTask}/${maxFinishedTask}))`}}><p>+ {finishedTask}%</p></div>
+            </div>
+            <p>max. 30%</p>
+          </div>
         </div>
       </article>
     </main>
