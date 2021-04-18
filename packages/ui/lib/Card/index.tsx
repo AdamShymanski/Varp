@@ -1,9 +1,9 @@
 import { css } from "@emotion/react";
 import React from "react";
-import { Header } from "./Header";
-import { Details } from "./Details";
-import { Description } from "./Description";
-import { ActionBar } from "./ActionBar";
+import { Header, Props as HeaderProps } from "./Header";
+import { Details, Props as DetailsProps } from "./Details";
+import { Description, Props as DescriptionProps } from "./Description";
+import { ActionBar, Props as ActionBarProps } from "./ActionBar";
 
 const style = css`
   display: flex;
@@ -16,30 +16,48 @@ const style = css`
     opacity: 0.25;
   }
   .body {
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-export interface Props {
+export interface PropsPreview {
   children: React.ReactNode;
 }
 
-export const Container = ({ children }: Props) => {
+export interface Props {
+  header: HeaderProps;
+  details: DetailsProps;
+  description: DescriptionProps;
+  actionBar: ActionBarProps;
+}
+
+export const Container = ({ children }: PropsPreview) => {
   return (
     <div css={style}>
       <div className="border" />
-      <div className="body">
-      {children}
-      </div>
+      <div className="body">{children}</div>
     </div>
   );
 };
 
-export const Card = {
+export const CardElemets = {
   Container,
   Header,
   Details,
   Description,
   ActionBar
+};
+export const Card = (props: Props) => {
+  return (
+    <div css={style}>
+      <div className="border" />
+      <div className="body">
+        <Header {...props.header} />
+        <Details {...props.details} />
+        <Description {...props.description} />
+        <ActionBar {...props.actionBar} />
+      </div>
+    </div>
+  );
 };

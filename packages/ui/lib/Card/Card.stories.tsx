@@ -1,16 +1,15 @@
 import React from "react";
-import { Story, Meta } from '@storybook/react';
-import { Card, Props } from ".";
-import HeaderStories from "./Header/Header.stories"
-import DetailsStories from "./Details/Details.stories"
-import DescriptionStories from "./Description/Description.stories"
+import { Story, Meta } from "@storybook/react";
+import { CardElemets, Props } from ".";
+import HeaderStories from "./Header/Header.stories";
+import DetailsStories from "./Details/Details.stories";
+import DescriptionStories from "./Description/Description.stories";
 import ActionBarStories from "./ActionBar/ActionBar.stories";
-
 
 export default {
   title: "Card",
-  component: Card.Container,
-  subcomponents: {...Card},
+  component: CardElemets.Container,
+  subcomponents: { ...CardElemets },
   args: {
     //   ...HeaderStories.args,
     //   ...DetailsStories.args,
@@ -19,12 +18,11 @@ export default {
   }
 } as Meta;
 
-
-export const Basic: Story<Props> = (args) => (
-    <Card.Container>
-        <Card.Header {...HeaderStories.args}/>
-        <Card.Details {...DetailsStories.args} />
-        <Card.Description {...DescriptionStories.args} />
-        <Card.ActionBar {...ActionBarStories.args} />
-    </Card.Container>
+export const Basic: Story<Props> = args => (
+  <CardElemets.Container>
+    <CardElemets.Header {...HeaderStories.args} />
+    <CardElemets.Details {...DetailsStories.args} />
+    <CardElemets.Description {...DescriptionStories.args} />
+    <CardElemets.ActionBar {...ActionBarStories.args} />
+  </CardElemets.Container>
 );
