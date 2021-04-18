@@ -92,5 +92,3 @@ export function Button(props: Props) {
     </main>
   );
 }
-
-//css={style}
