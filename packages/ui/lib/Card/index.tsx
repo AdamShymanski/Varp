@@ -24,7 +24,6 @@ const style = css`
 export interface PropsPreview {
   children: React.ReactNode;
 }
-
 export interface Props {
   header: HeaderProps;
   details: DetailsProps;
