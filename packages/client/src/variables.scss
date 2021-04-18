@@ -24,6 +24,7 @@ $second-text: #e3e3e3;
 $main-text: #f4f4f4;
 $back-text: #7f7f7f;
 $gray: #5c5c5c;
+
 $input-background: #121212;
 $dark-gray: #121212;
 
@@ -34,19 +35,22 @@ $speech-bubble-background: #313131;
   font-size: clamp(0.75rem, 2vw, 1rem);
   font-family: $poppins-font;
 }
-.flexRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.flexColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .robotoFont {
   font-weight: 700;
   color: $main-text;
   font-family: $roboto-font;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -23,7 +23,7 @@ function FirstElement(props: any) {
       <article>
         <div className="title poppinsFont flexRow">
           <div className="accentLine" />
-          <p>What Pyramid is?</p>
+          <p>What is Varp?</p>
         </div>
         <div className="body poppinsFont">
           <p>

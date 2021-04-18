@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./../sass/LandingPage-style.scss";
 
 //resources
-import logo from "./../resources/icons/logo.svg";
+import logo from "./../resources/icons/logo.png";
 
 //icons
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,8 +16,6 @@ import MenuIcon from "@material-ui/icons/Menu";
 import FirstElement from "./elements/FirstElement";
 import SecondElement from "./elements/SecondElement";
 import ThirdElement from "./elements/ThirdElement";
-
-
 
 const useStyles = makeStyles({
   arrowF: {
@@ -33,6 +31,8 @@ const useStyles = makeStyles({
     fontStyle: "700"
   }
 });
+
+enum ScrollIndicatorElement {"line","dot",}
 
 function LandingPage() {
   // useEffect(() => {
@@ -50,60 +50,41 @@ function LandingPage() {
 
   const [visibilityState, setVisibilityState] = useState(2);
 
-  // const handleScrollIndicator = (element: String, index: number) => {
-  //   switch (visibilityState) {
-  //     case 1: {
-  //       if (element === "dot") {
-  //         if (index === 1) return "dot accent";
-  //         return "dot";
-  //       }
-  //       return "line";
-  //     }
-  //     case 2: {
-  //       if (element === "dot") {
-  //         switch (index) {
-  //           case 1:
-  //             return "dot accent";
-  //           case 2:
-  //             return "dot accent";
-  //         }
-  //         return "dot";
-  //       }
-  //       if (element === "line") {
-  //         if (index === 1) return "line accent";
-  //         return "line";
-  //       }
-  //     }
-  //     case 3: {
-  //       if (element === "dot") {
-  //         return "dot accent";
-  //       }
-  //       return "line accent";
-  //     }
-  //   }
-  // };
+  const handleScrollIndicator = (element: String, index: number) => {
+    switch (visibilityState) {
+      case 1: {
+        if (element === "dot") {
+          if (index === 1) return "dot accent";
+          return "dot";
+        }
+        return "line";
+      }
+      case 2: {
+        if (element === "dot") {
+          switch (index) {
+            case 1:
+              return "dot accent";
+            case 2:
+              return "dot accent";
+          }
+          return "dot";
+        }
+        if (element === "line") {
+          if (index === 1) return "line accent";
+          return "line";
+        }
+        return "no-return";
+      }
+      case 3: {
+        if (element === "dot") {
+          return "dot accent";
+        }
+        return "line accent";
+      }
+    }
+  };
 
   const [hamburger, setHamburger] = useState(false);
-  const [menuTitle, setMenuTitle] = useState("");
-
-  const getSiblings = function (e: any) {
-    let siblings: any[] = [],
-      sibling = e.parentNode.firstChild;
-    if (!e.parentNode) return siblings;
-    while (sibling) {
-      if (sibling.nodeType === 1 && sibling !== e) {
-        siblings.push(sibling);
-      }
-      sibling = sibling.nextSibling;
-    }
-    return siblings;
-  };
-
-  const handleMenu = (e: any) => {
-    e.target.classList.add("active");
-    window.innerWidth <= 500 && setMenuTitle(e.target.firstChild.innerHTML);
-    getSiblings(e.target).map(item => item.classList.remove("active"));
-  };
 
   return (
     <div className="wrapper">
@@ -124,34 +105,22 @@ function LandingPage() {
         </ul>
       </div>
       <div className="wrapper--main">
-        <div className="wrapper--main--scrollIndicator flexColumn">
-          <div>{menuTitle || " "}</div>
-          <ul onClick={e => handleMenu(e)}>
-            <li>
-              <a>What is Pyramid?</a>
-            </li>
-            <li>
-              <a>How It Works?</a>
-            </li>
-            <li>
-              <a>How You Can Help?</a>
-            </li>
-          </ul>
-          {/* <div className='dotWrapper flexRow'>
-              <div className={handleScrollIndicator("dot", 1)} />
-              <p className='poppinsFont'>What is Pyramid?</p>
-            </div>
+        <div className="scrollIndicator flexColumn">
+          <div className="dotWrapper flexRow">
+            <div className={handleScrollIndicator("dot", 1)} />
+            <p className="poppinsFont">What is Pyramid?</p>
+          </div>
 
-            <div className={handleScrollIndicator("line", 1)} />
-            <div className='dotWrapper flexRow'>
-              <div className={handleScrollIndicator("dot", 2)} />
-              <p className='poppinsFont'>How It Works?</p>
-            </div>
-            <div className={handleScrollIndicator("line", 2)} />
-            <div className='dotWrapper flexRow'>
-              <div className={handleScrollIndicator("dot", 3)} />
-              <p className='poppinsFont'>How You Can Help?</p>
-            </div> */}
+          <div className={handleScrollIndicator("line", 1)} />
+          <div className="dotWrapper flexRow">
+            <div className={handleScrollIndicator("dot", 2)} />
+            <p className="poppinsFont">How It Works?</p>
+          </div>
+          <div className={handleScrollIndicator("line", 2)} />
+          <div className="dotWrapper flexRow">
+            <div className={handleScrollIndicator("dot", 3)} />
+            <p className="poppinsFont">How You Can Help?</p>
+          </div>
         </div>
         <div className="wrapper--main--main-content">
           <FirstElement

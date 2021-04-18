@@ -5,7 +5,7 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
-    databaseURL: "https://pyramid-64ab2.firebaseio.com",
+    databaseURL: "https://pyramid-64ab2.firebaseio.com"
 });
 exports.createUser = functions.https.onCall((data, context) => {
     try {
@@ -17,9 +17,9 @@ exports.createUser = functions.https.onCall((data, context) => {
             emailVerified: false,
             password: password,
             displayName: name,
-            disabled: false,
+            disabled: false
         })
-            .then((currentUser) => {
+            .then(currentUser => {
             console.log("Successfully created new user");
             // Creating user's doc with custom info
             admin
@@ -32,18 +32,18 @@ exports.createUser = functions.https.onCall((data, context) => {
                 dailyStreak: 0,
                 surveyProgram: 0,
                 referralProgram: 0,
-                referralCode: currentUser.uid,
+                referralCode: currentUser.uid
             })
                 .then(() => {
                 console.log("Document successfully written!");
                 return currentUser;
             })
-                .catch((error) => {
+                .catch(error => {
                 console.error("Error writing document: ", error);
                 return error;
             });
         })
-            .catch((error) => {
+            .catch(error => {
             console.log("Error creating new user:", error);
             return error;
         });
@@ -54,30 +54,27 @@ exports.createUser = functions.https.onCall((data, context) => {
 });
 exports.createUserTest = functions.https.onCall((data, context) => {
     const { email, password } = data;
-    console.log("start");
-    return new Promise((resolve, reject) => {
-        try {
-            admin
-                .auth()
-                .createUser({
-                email: email,
-                emailVerified: false,
-                password: password,
-                disabled: false,
-            })
-                .then((user) => {
-                resolve({
-                    result: 'success',
-                    user: user,
-                });
-            })
-                .catch((error) => {
-                throw new functions.https.HttpsError("unknown", "this is my error message", { code: 'myCustomCode', message: 'my custom message' });
-                reject();
-            });
+    return admin
+        .auth()
+        .createUser({
+        email: email,
+        emailVerified: false,
+        password: password,
+        disabled: false
+    })
+        .then(user => {
+        return {
+            result: "success",
+            user: user
+        };
+    })
+        .catch(error => {
+        if (error.code === "auth/email-already-exists") {
+            throw new functions.https.HttpsError("already-exists", "The provided email is already in use by an existing user");
         }
-        catch (error) {
-            reject(error);
+        else {
+            // throw new functions.https.HttpsError("...other code....", "...");
+            // If an error other than HttpsError is thrown, your client instead receives an error with the message INTERNAL and the code internal.
         }
     });
 });
