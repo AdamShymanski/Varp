@@ -9,6 +9,7 @@ import "./App.scss";
 import LandingPage from "./react/LandingPage";
 import RegisterPage from "./react/RegisterPage";
 import SignInPage from "./react/SignInPage";
+import MainPage from "./react/MainPage";
 
 function App() {
   // const { currentUser } = useAuth();
@@ -16,7 +17,7 @@ function App() {
     <Router>
       <AuthProvider>
         <div className="appComponent">
-          <Route path="/" exact component={LandingPage} />
+          <Route path="/" exact component={MainPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/sign-in" component={SignInPage} />
         </div>
