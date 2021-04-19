@@ -2,7 +2,9 @@ import { css } from "@emotion/react";
 import React from "react";
 
 import tokenIcon from "./token_icon_circle.svg";
-import expandIcon from "./show_all_info_icon.svg";
+import litIcon from "./lit.svg";
+import referralIcon from "./referral_program 1.svg"
+import surveyIcon from "./Survey.svg"
 import loseIcon from "./lose_icon.svg";
 import profitIcon from "./profit_icon.svg";
 
@@ -90,18 +92,45 @@ const style = css`
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
-      }
-      .dailyStreak {
-        display: flex;
-        align-items: center;
-        background-color: #2cb200;
-        border-radius: 6px 0 0 6px;
-        z-index: 3;
-        position: relative;
-        > p {
-          margin-left: 20px;
+        p {
+          font-size: 0.7em;
         }
-        &::after {
+      }
+      .bar {
+        position: relative;
+        
+        &::before {
+          content: attr(data-text);
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 100%;
+          margin-left:15px;
+          width:200px;
+          padding:10px;
+          border-radius:10px;
+          background:#000;
+          color: #fff;
+          text-align:center;
+          display:none;
+        }
+        
+        .info{
+          img {
+            width: 0.7em;
+            margin-left: 12px;
+            display: block;
+            float: left;
+          }
+          display: flex;
+          height: 100%;
+          flex-wrap: wrap;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          left: -6px;
+        }
+        .expander {
           background-color: inherit;
           display: inline-block;
           border-radius: 12px;
@@ -111,53 +140,24 @@ const style = css`
           top: 0%;
           position: absolute;
           content: "";
+          z-index: -1;
+        }
+      }
+      .dailyStreak {
+        z-index: 3;
+        background-color: #2cb200;
+        border-radius: 6px 0 0 6px;
+        &::hover {
+          content: 'blablaba'
         }
       }
       .referral {
-        display: flex;
-        align-items: center;
-        background-color: #33cc01;
         z-index: 2;
-        position: relative;
-
-        > p {
-          margin-left: 20px;
-        }
-
-        &::after {
-          background-color: inherit;
-          display: inline-block;
-          border-radius: 12px;
-          width: 12px;
-          height: 100%;
-          left: calc(100% - 6px);
-          top: 0%;
-          position: absolute;
-          content: "";
-        }
+        background-color: #33cc01;
       }
       .finishedTask {
-        display: flex;
-        align-items: center;
-        position: relative;
-        background-color: #3be601;
         z-index: 1;
-
-        > p {
-          margin-left: 20px;
-        }
-        
-        &::after {
-          background-color: inherit;
-          display: inline-block;
-          border-radius: 12px;
-          width: 12px;
-          height: 100%;
-          left: calc(100% - 6px);
-          top: 0%;
-          position: absolute;
-          content: "";
-        }
+        background-color: #3be601;
       }
     }
   }
@@ -166,12 +166,11 @@ const style = css`
     flex-direction: row;
     align-items: flex-end;
     > p {
-      margin-left: 4px;
+      margin-left: 12px;
       font-size: 0.5em;
     }
   }
 }
-
   .green {
     color: #43ff00;
   }
@@ -246,11 +245,39 @@ export const Top = (props: Props) => {
           <p>Bonuses</p>
           <div className="bonusInfo">
             <div className="scoreBar">
-              <div className="dailyStreak" style={{width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`}}><p>+ {dailyStreak}%</p></div>
-              <div className="referral" style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}><p>+ {referral}%</p></div>
-              <div className="finishedTask" style={{width: `calc((100%)/3*(${finishedTask}/${maxFinishedTask}))`}}><p>+ {finishedTask}%</p></div>
+              <div 
+              className="bar dailyStreak"
+              style={{width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`}}>
+                <div
+                className="info">
+                  <img className="dailyStreak" src={litIcon} alt="Lit Icon" />
+                  <p className="">{dailyStreak}</p>
+                  <p className="">%</p>
+                </div>
+                <div className="expander"></div>
+              </div>
+              <div 
+              className="bar referral" 
+              style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}>
+                <div className="info">
+                  <img src={referralIcon} alt="Referral Icon" />
+                  <p>{referral}</p>
+                  <p className="percentage">%</p>
+                </div>
+                <div className="expander"></div>
+              </div>
+              <div 
+              className="bar finishedTask" 
+              style={{width: `calc((100%)/3*(${finishedTask}/${maxFinishedTask}))`}}>
+                <div className="info">
+                  <img src={surveyIcon} alt="Survey Icon" />
+                  <p>{finishedTask}</p>
+                  <p className="percentage">%</p>
+                </div>
+                <div className="expander"></div>
+              </div>
             </div>
-            <p>max. 30%</p>
+            <p className="additionalInfo">max. 30%</p>
           </div>
         </div>
       </article>
