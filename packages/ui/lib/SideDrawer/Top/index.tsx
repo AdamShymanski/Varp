@@ -81,6 +81,10 @@ const style = css`
       font-size: 1.5em;
       > p {
         margin-bottom: 12px;
+        span {
+          font-size: 0.5em;
+        }
+        }
       }
       .scoreBar {
         width: 80%;
@@ -147,9 +151,6 @@ const style = css`
         z-index: 3;
         background-color: #2cb200;
         border-radius: 6px 0 0 6px;
-        &::hover {
-          content: 'blablaba'
-        }
       }
       .referral {
         z-index: 2;
@@ -160,17 +161,49 @@ const style = css`
         background-color: #3be601;
       }
     }
-  }
-  .bonusInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    > p {
-      margin-left: 12px;
-      font-size: 0.5em;
+    .bonusInfo {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      > p {
+        margin-left: 12px;
+        font-size: 0.5em;
+      }
+    }
+    .tooltip {
+      position:relative; /* making the .tooltip span a container for the tooltip text */
+      border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
+    
+      &:before {
+        content: attr(data-text); /* here's the magic */
+        position:absolute;
+        z-index: 99;
+        /* vertically center */
+        top:50%;
+        transform:translateY(-50%);
+        
+        /* move to right */
+        left:100%;
+        margin-left:15px; /* and add a small left margin */
+        
+        /* basic styles */
+        width:200px;
+        padding:10px;
+        border-radius:10px;
+        background:#000;
+        opacity: 80%;
+        color: #fff;
+        text-align:center;
+      
+        display:none; /* hide by default */
+      }
+      &:hover:before {
+        display:block;
+      }
     }
   }
 }
+
   .green {
     color: #43ff00;
   }
@@ -242,7 +275,12 @@ export const Top = (props: Props) => {
           </div>
         </div>
         <div className="bonus">
-          <p>Bonuses</p>
+          <p>
+            Bonuses
+            <span className="tooltip" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?">
+              &#128712;
+            </span>
+          </p>
           <div className="bonusInfo">
             <div className="scoreBar">
               <div 
@@ -277,7 +315,7 @@ export const Top = (props: Props) => {
                 <div className="expander"></div>
               </div>
             </div>
-            <p className="additionalInfo">max. 30%</p>
+            <p>max. 30%</p>
           </div>
         </div>
       </article>
