@@ -15,6 +15,6 @@ export default {
 } as Meta;
 
 export const Basic: Story<Props> = props => {
-  const { name, balance, number, profit , dailyStreak, referral, finishedTask} = props;
+  const { balance, number, profit , dailyStreak, referral, finishedTask} = props;
   return <Top {...props} />;
 };

@@ -213,10 +213,6 @@ const style = css`
 
 export interface Props {
   /**
-   * Name of user
-   */
-  name: string;
-  /**
    * Balance of user
    */
   balance: number;
@@ -244,7 +240,6 @@ export interface Props {
 
 export const Top = (props: Props) => {
   const {
-    name = "Adam Szymanski",
     balance = 451,
     profit = true,
     number = 51,
