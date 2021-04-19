@@ -171,10 +171,9 @@ const style = css`
       }
     }
     .tooltip {
-      position:relative; /* making the .tooltip span a container for the tooltip text */
-      border-bottom:1px dashed #000; /* little indicater to indicate it's hoverable */
-    
+      position:relative; /* making the .tooltip span a container for the tooltip text */    
       &:before {
+        font-size: 1rem;
         content: attr(data-text); /* here's the magic */
         position:absolute;
         z-index: 99;
@@ -284,7 +283,8 @@ export const Top = (props: Props) => {
           <div className="bonusInfo">
             <div className="scoreBar">
               <div 
-              className="bar dailyStreak"
+              className="bar dailyStreak tooltip"
+              data-text={`Bonus by daily streak: ${dailyStreak}%`}
               style={{width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`}}>
                 <div
                 className="info">
@@ -295,7 +295,8 @@ export const Top = (props: Props) => {
                 <div className="expander"></div>
               </div>
               <div 
-              className="bar referral" 
+              className="bar referral tooltip" 
+              data-text={`Bonus by referral: ${referral}%`}
               style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}>
                 <div className="info">
                   <img src={referralIcon} alt="Referral Icon" />
@@ -305,7 +306,8 @@ export const Top = (props: Props) => {
                 <div className="expander"></div>
               </div>
               <div 
-              className="bar finishedTask" 
+              className="bar finishedTask tooltip" 
+              data-text={`Bonus by survey: ${finishedTask}%`}
               style={{width: `calc((100%)/3*(${finishedTask}/${maxFinishedTask}))`}}>
                 <div className="info">
                   <img src={surveyIcon} alt="Survey Icon" />
