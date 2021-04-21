@@ -9,10 +9,6 @@ import AttachMoneyOutlinedIcon from "@material-ui/icons/AttachMoneyOutlined";
 import FindInPageOutlinedIcon from "@material-ui/icons/FindInPageOutlined";
 import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
 
-//icons
-import expandIcon from "../../resources/icons/expand.svg";
-import shrinkIcon from "../../resources/icons/shrink.svg";
-
 const useStyles = makeStyles({
   icon: {
     color: "#f4f4f4",

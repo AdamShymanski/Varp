@@ -9,7 +9,6 @@ stages:
   - preview
   - deploy
 
-
 cache:
   paths:
     - node_modules/
@@ -52,7 +51,7 @@ build:client:
     paths:
       - node_modules/
   script:
-    - lerna run --scope @pyramid/client build --stream
+    - lerna run --scope @varp/client build --stream
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
@@ -98,7 +97,6 @@ deploy_client:
   artifacts:
     reports:
       dotenv: deploy.env
-
 
 deploy_functions:
   stage: deploy

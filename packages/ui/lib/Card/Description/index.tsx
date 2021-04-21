@@ -9,13 +9,15 @@ export interface Props {
 }
 
 const style = css`
-  color: var(--color-white900);
-  font-family: var(--font-sans-serif);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
   line-height: 24px;
   max-width: 415px;
+  margin-top: 10px;
+
+  color: #959595;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
 `;
 
 export function Description({ children }: Props): ReactElement {

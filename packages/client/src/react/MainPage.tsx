@@ -1,25 +1,7 @@
-import React, { useRef } from "react";
-import { SideDrawer, Card } from "@pyramid/ui";
-import { makeStyles } from "@material-ui/core/styles";
-import { Grid, Theme } from "@material-ui/core";
+import React, { ReactComponentElement, useState } from "react";
+import { SideDrawer, Card } from "@varp/ui";
 
-const useStyles = makeStyles<Theme>({
-  container: {
-    display: "flex",
-    backgroundColor: "#1B1B1B"
-  },
-  sideBar: {
-    height: "100%",
-    position: "fixed",
-    zIndex: 1,
-    top: 0,
-    left: 0,
-    overflowX: "hidden"
-  },
-  cardContainer: (props) => ({
-    marginLeft: "327px"
-  })
-});
+import "./../sass/MainPage-style.scss";
 
 const props = {
   header: {
@@ -57,25 +39,22 @@ const props = {
   }
 };
 
-const MainPage = () => {
-  const sideBarRef = useRef<HTMLDivElement>(null);
-  const classes = useStyles();
+const cardsHandler = (object: {}) => {
+  //number of cards
+  const number = Object.keys(object);
 
+  return <Card {...props} />;
+};
+
+function MainPage() {
   return (
-    <div className={classes.container}>
-      <div className={classes.sideBar}>
-        <SideDrawer  {...props} />
+    <div className="mpWrapper">
+      <SideDrawer {...props} />
+      <div className="cardsContainer">
+        <Card {...props} />
       </div>
-      <Grid container spacing={4} className={classes.cardContainer}>
-        {new Array(10).fill(10).map(value => (
-          <Grid xs={12} sm={6} md={4} key={value} item>
-            <Card {...props} />
-          </Grid>
-        ))}
-      </Grid>
-      <div></div>
     </div>
   );
-};
+}
 
 export default MainPage;

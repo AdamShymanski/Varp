@@ -23,15 +23,17 @@ export interface Props {
 const style = css`
   display: flex;
   flex-direction: column;
-  color: var(--color-white700);
-  font-family: var(--font-sans-serif);
+
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   ul {
-    list-style: none;
     padding: 0;
-    margin:  22px 0 0 0;
+    margin: 22px 0 0 0;
+
+    color: #f4f4f4;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
   }
 `;
 

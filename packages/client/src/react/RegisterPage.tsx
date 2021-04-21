@@ -2,8 +2,8 @@ import React from "react";
 import "./../sass/RegisterPage-style.scss";
 import { useHistory } from "react-router-dom";
 
-import { TextField } from "@material-ui/core";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { Button } from "@varp/ui";
+import { makeStyles } from "@material-ui/core/styles";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 import { useForm } from "react-hook-form";
@@ -145,7 +145,12 @@ export default function RegisterPage() {
         </div>
         <div className="inputWrapper flexColumn">
           <p className="label robotoFont">Age</p>
-          <input className="robotoFont" name="age" ref={register} />
+          <input
+            className="robotoFont"
+            type="number"
+            name="age"
+            ref={register}
+          />
           <p className="error poppinsFont">
             {errors.age && errors.age.message}
           </p>
@@ -158,9 +163,12 @@ export default function RegisterPage() {
           </p>
         </div>
         <div className="buttonWrapper">
-          <button className="robotoFont" type="submit">
-            Submit
-          </button>
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
         </div>
       </form>
     </div>

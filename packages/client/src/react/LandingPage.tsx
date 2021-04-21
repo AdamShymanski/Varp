@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 
 import "./../sass/LandingPage-style.scss";
 
+import { Button } from "@varp/ui";
+
 //resources
 import logo from "./../resources/icons/logo.png";
 
@@ -32,8 +34,6 @@ const useStyles = makeStyles({
   }
 });
 
-enum ScrollIndicatorElement {"line","dot",}
-
 function LandingPage() {
   // useEffect(() => {
   //   const createAccount = firebase.functions().httpsCallable("createAccount");
@@ -48,7 +48,7 @@ function LandingPage() {
 
   const pushToSignUp = () => history.push("/register");
 
-  const [visibilityState, setVisibilityState] = useState(2);
+  const [visibilityState, setVisibilityState] = useState(3);
 
   const handleScrollIndicator = (element: String, index: number) => {
     switch (visibilityState) {
@@ -84,6 +84,13 @@ function LandingPage() {
     }
   };
 
+  const buttonVisibilityHandler = (hideNumber: number) => {
+    if (hideNumber === visibilityState) {
+      return false;
+    }
+    return true;
+  };
+
   const [hamburger, setHamburger] = useState(false);
 
   return (
@@ -99,8 +106,8 @@ function LandingPage() {
           <div className="hamburger-menu">
             <MenuIcon onClick={() => setHamburger(!hamburger)} />
           </div>
-          <li className="poppinsFont suButton" onClick={pushToSignUp}>
-            Sign Up
+          <li className="poppinsFont " onClick={pushToSignUp}>
+            <Button variant="primary" size="medium" children="Register" />
           </li>
         </ul>
       </div>
@@ -144,18 +151,7 @@ function LandingPage() {
         </div>
       </div>
       <div className="navigationButtons ">
-        <button
-          className={`poppinsFont gbBtn flexRow ${
-            visibilityState === 1 ? "invisible" : ""
-          }`}
-          onClick={() =>
-            setVisibilityState(visibilityState => visibilityState - 1)
-          }
-        >
-          <ArrowBackIosIcon className={classes.arrowGb} />
-          Go Back
-        </button>
-        <button
+        {/* <button
           className={`poppinsFont nBtn flexRow ${
             visibilityState === 3 ? "invisible" : ""
           }`}
@@ -165,7 +161,29 @@ function LandingPage() {
         >
           Next
           <ArrowForwardIosIcon className={classes.arrowF} />
-        </button>
+        </button> */}
+        <div className={"gbbWrapper"}>
+          <Button
+            size="medium"
+            variant="primary"
+            children="Go Back"
+            visibility={buttonVisibilityHandler(1)}
+            onClick={() =>
+              setVisibilityState(visibilityState => visibilityState - 1)
+            }
+          />
+        </div>
+        <div className={"nbWrapper"}>
+          <Button
+            size="medium"
+            children="Next"
+            variant="primary"
+            visibility={buttonVisibilityHandler(3)}
+            onClick={() =>
+              setVisibilityState(visibilityState => visibilityState + 1)
+            }
+          />
+        </div>
       </div>
     </div>
   );

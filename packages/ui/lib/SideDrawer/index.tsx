@@ -12,8 +12,8 @@ const style = css`
     background: transparent;
   }
 
-  max-width: 500px;
   .body {
+    position: relative;
     width: 22vw;
     height: 100vh;
 
@@ -49,8 +49,8 @@ export const SideDrawer = (props: Props) => {
       <div className="body">
         <Top {...props.top} />
         <GameCard {...props.gameCard} />
-        <Bottom {...props.bottom} />
       </div>
+      <Bottom {...props.bottom} />
     </main>
   );
 };

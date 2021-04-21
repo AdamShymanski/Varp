@@ -321,25 +321,6 @@ body {
 
     width: 70%;
 
-    right: 0;
-    button {
-      position: fixed;
-
-      outline: none;
-      border-radius: 5vh;
-      bottom: 20px;
-
-      font-weight: 700;
-    }
-    .nBtn {
-      color: $dark-gray;
-      background: $accent;
-
-      border: none;
-
-      right: 5vw;
-      padding: 0.8vh 2.5vw 0.8vh 2vw;
-    }
     .gbBtn {
       padding: 0.8vh 0.8vw 0.8vh 1.8vw;
 
@@ -348,8 +329,15 @@ body {
 
       left: 21%;
     }
-    .invisible {
-      display: none;
+    .nbWrapper {
+      position: fixed;
+      right: 2vw;
+      bottom: 2vh;
+    }
+    .gbbWrapper {
+      position: fixed;
+      left: 20vw;
+      bottom: 2vh;
     }
   }
 }

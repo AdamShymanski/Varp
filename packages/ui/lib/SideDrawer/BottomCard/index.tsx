@@ -17,8 +17,12 @@ const style = css`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
   max-width: 500px;
 
+  width: 20vw;
+  bottom: 20px;
+  margin-left: 1vw;
+  position: absolute;
+
   .card {
-    width: 20vw;
     padding: 20px 15px;
     background: #1b1b1b;
 
@@ -27,8 +31,6 @@ const style = css`
     align-items: center;
     justify-content: space-evenly;
 
-    position: relative;
-    bottom: -20px;
     border-radius: 8px;
     img {
       width: 30px;

@@ -17,7 +17,7 @@ function App() {
     <Router>
       <AuthProvider>
         <div className="appComponent">
-          <Route path="/" exact component={MainPage} />
+          <Route path="/" exact component={LandingPage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/sign-in" component={SignInPage} />
         </div>

@@ -82,17 +82,5 @@
   .buttonWrapper {
     width: 22vw;
     margin-top: 4vh;
-
-    button {
-      text-align: center;
-      color: $background;
-      font-size: 1vw;
-      padding: 0.5vh 1.7vw;
-      background: $accent;
-
-      outline: none;
-      border-radius: 40px;
-      border: 0px solid transparent;
-    }
   }
 }
