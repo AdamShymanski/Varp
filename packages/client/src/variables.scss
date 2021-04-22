@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 @font-face {
   src: url("./resources/atari.ttf") format("truetype");
   font-family: "Atari";
@@ -11,8 +12,8 @@ $agency-font: "Agency FB", arial;
 $roboto-font: "Roboto", sans-serif;
 $agency-bold-font: "Agency FB Bold", arial;
 
-$accent: #ff1d00;
-$blue: #0082ff;
+$old-accent: #ff1d00;
+$accent: #0082ff;
 
 $foreground-old: #0f0f0f;
 $background-old: #0a0a0a;
@@ -24,6 +25,7 @@ $second-text: #e3e3e3;
 $main-text: #f4f4f4;
 $back-text: #7f7f7f;
 $gray: #5c5c5c;
+
 $input-background: #121212;
 $dark-gray: #121212;
 
@@ -34,19 +36,22 @@ $speech-bubble-background: #313131;
   font-size: clamp(0.75rem, 2vw, 1rem);
   font-family: $poppins-font;
 }
-.flexRow {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.flexColumn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 .robotoFont {
   font-weight: 700;
   color: $main-text;
   font-family: $roboto-font;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

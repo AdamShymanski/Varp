@@ -13,10 +13,11 @@ export interface Props {
 }
 
 const style = css`
-  font-family: var(--font-sans-serif);
   display: flex;
   align-items: center;
-  color: var(--color-white500);
+
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
   h2 {
     margin: 0;
     font-size: 36px;

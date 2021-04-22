@@ -10,32 +10,29 @@ const style = css`
   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
   .small {
-    width: 60px;
-    height: 20px;
     font-size: 0.8em;
     border-radius: 3px;
   }
   .medium {
-    width: 90px;
-    height: 30px;
     font-size: 1em;
-    border-radius: 6px;
+    border-radius: 5px;
   }
   .big {
-    width: 150px;
-    height: 50px;
     font-size: 1.46em;
     border-radius: 8px;
   }
   .button {
     display: flex;
     flex-direction: column;
-
+    padding: 4.5px 25px;
     align-items: center;
     justify-content: center;
 
     font-family: "Poppins", sans-serif;
     font-weight: 600;
+
+    outline: none;
+    border: none;
   }
 
   .primary {
@@ -51,6 +48,10 @@ const style = css`
 
   .robotoFont {
     font-family: "Roboto", sans-serif;
+  }
+
+  .invisible {
+    display: none;
   }
 `;
 
@@ -72,25 +73,38 @@ export interface Props {
    */
   font?: SelectFont;
   /**
-   * ClassName
+   * Function which will be executed on click
    */
-  className?: string;
+  action?: Function;
+  /**
+   * Visiblity of Button
+   */
+  visibility?: boolean;
+  /**
+   * Type of Button
+   */
+  type?: string;
 }
 
 export function Button(props: Props) {
   const {
     variant = "primary",
     children = "Primary",
-    size = "small",
+    visibility = true,
+    size = "medium",
+    type = "",
+    action = () => {},
     ...rest
   } = props;
   return (
     <main css={style}>
-      <div className={`button ${size} ${variant}`} {...rest}>
+      <button
+        className={`button ${size} ${variant} ${visibility ? "" : "invisible"}`}
+        onClick={action()}
+        {...rest}
+      >
         {children}
-      </div>
+      </button>
     </main>
   );
 }
-
-//css={style}

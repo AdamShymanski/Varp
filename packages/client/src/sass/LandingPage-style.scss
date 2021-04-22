@@ -19,7 +19,7 @@ body {
     width: 2.2vw;
 
     border-radius: 8px;
-    background: #ff1d00;
+    background: $accent;
   }
   p {
     margin-left: 1vw;
@@ -36,8 +36,8 @@ body {
     padding-bottom: 20px;
     justify-content: space-between;
     .wrapper--navbar--logo {
-      margin: 20px;
-      width: 50px;  
+      margin: 10px;
+      width: 150px;
     }
     ul {
       @media screen and(max-width: 500px) {
@@ -68,8 +68,10 @@ body {
             font-size: 0;
             &:hover {
               background-color: rgba(252, 28, 8, 0.7);
-              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034), 0 6.7px 5.3px rgba(252, 28, 8, 0.048),
-                0 12.5px 10px rgba(252, 28, 8, 0.06), 0 22.3px 17.9px rgba(252, 28, 8, 0.072),
+              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034),
+                0 6.7px 5.3px rgba(252, 28, 8, 0.048),
+                0 12.5px 10px rgba(252, 28, 8, 0.06),
+                0 22.3px 17.9px rgba(252, 28, 8, 0.072),
                 0 41.8px 33.4px rgba(252, 28, 8, 0.086);
             }
           }
@@ -85,8 +87,6 @@ body {
             }
           }
         }
-
-        
       }
 
       .hamburger-menu {
@@ -142,11 +142,11 @@ body {
       }
 
       ul li.active {
-        color: #FF1D00;
+        color: #ff1d00;
       }
 
       ul li.active:before {
-        background-color: #FF1D00;
+        background-color: #ff1d00;
       }
 
       // ul li.active:after {
@@ -167,7 +167,7 @@ body {
       //   margin-left: -2.5px;
       // }
 
-      @media screen and (max-width:500px) {
+      @media screen and (max-width: 500px) {
         max-width: unset;
         min-width: unset;
       }
@@ -221,7 +221,7 @@ body {
         bottom: 0;
         position: absolute;
         width: 100%;
-        margin-left:0;
+        margin-left: 0;
         div {
           background: #5c5c5c;
           color: white;
@@ -315,31 +315,12 @@ body {
   }
 
   .navigationButtons {
-    @media screen and (max-width:500px){
+    @media screen and (max-width: 500px) {
       display: none;
     }
 
     width: 70%;
 
-    right: 0;
-    button {
-      position: fixed;
-
-      outline: none;
-      border-radius: 5vh;
-      bottom: 20px;
-
-      font-weight: 700;
-    }
-    .nBtn {
-      color: $dark-gray;
-      background: $accent;
-
-      border: none;
-
-      right: 5vw;
-      padding: 0.8vh 2.5vw 0.8vh 2vw;
-    }
     .gbBtn {
       padding: 0.8vh 0.8vw 0.8vh 1.8vw;
 
@@ -348,8 +329,15 @@ body {
 
       left: 21%;
     }
-    .invisible {
-      display: none;
+    .nbWrapper {
+      position: fixed;
+      right: 2vw;
+      bottom: 2vh;
+    }
+    .gbbWrapper {
+      position: fixed;
+      left: 20vw;
+      bottom: 2vh;
     }
   }
 }

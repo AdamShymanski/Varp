@@ -2,128 +2,41 @@
 
 .seWrapper {
   right: 0;
-  // position: absolute;
+  position: absolute;
+  width: 75vw;
 
-  // width: 70vw;
-  @media screen and (max-width: 500px) {
-    width: 100vw;
-  }
   article {
-    width: 100%;
-    .bottom {
-      justify-content: flex-start;
-      width: 100%;
-      position: relative;
-      @media (max-width: 800px) {
-        flex-wrap: wrap;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .card {
+      width: 600px;
+
+      margin: 0 10px;
+      padding: 5px 10px 25px;
+
+      background: $dark-gray;
+      border-radius: 10px;
+
+      .title {
+        font-size: 3em;
+        font-weight: 700;
+        color: $accent;
       }
-
-      .bottom-container {
-        display: flex;
-        width: 100%;
-        @media (max-width: 800px) {
-          & > *:first-child {
-            margin-right: 0;
-          }
-        }
+      .description {
+        color: $main-text;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: 500;
       }
+      .detailDescription {
+        margin-top: 8px;
 
-      .card {
-        min-width: calc(100% / 4 - 4vw);
-        height: 40vh;
-        margin: 2rem 1rem;
-        // margin-right: 4vw;
-        @media (max-width: 800px) {
-          width: calc(50% - 4vw);
-          height: 30vh;
-        }
-
-        position: relative;
-        background: $dark-gray;
-
-        border-radius: 1.4vh;
-
-        .bigDescription {
-          margin: 2vh 0 0 2vw;
-          width: 38vw;
-          color: $main-text;
-          transition: 200ms;
-        }
-        .description {
-          text-align: center;
-          color: $main-text;
-          margin: 1rem 0.5rem;
-        }
-        .title {
-          color: $accent;
-          font-weight: 700;
-          font-size: clamp(1.25rem,2vw,2rem);
-          margin: 1vh 0;
-        }
-        .expandIcon {
-          width: 2vw;
-
-          left: 1vw;
-          bottom: 1.6vh;
-          position: absolute;
-        }
-        .shrinkIcon {
-          width: 2vw;
-
-          right: 1vw;
-          top: 1.6vh;
-          position: absolute;
-        }
-        
-      }
-      .shrinked {
-        transition: 400ms;
-
-        .expandIcon {
-          display: block;
-        }
-        .shrinkIcon {
-          display: none;
-        }
-        .description {
-          display: block;
-        }
-        .bigDescription {
-          display: none;
-        }
-      }
-
-      @media (max-width: 800px) {
-        #landingCard_1, #landingCard_2 {
-          top:0;
-        }
-
-        #landingCard_3, #landingCard_4 {
-          bottom:0;
-        }
-      }
-      
-      .expanded {
-        min-width: 66vw;
-        transition: 400ms;
-        position: absolute;
-        z-index: 2;
-       &#landingCard_3, &#landingCard_4 {
-          left: 0;
-        }
-
-        .expandIcon {
-          display: none;
-        }
-        .shrinkIcon {
-          display: block;
-        }
-        .description {
-          display: none;
-        }
-        .bigDescription {
-          display: block;
-        }
+        font-size: 1em;
+        font-weight: 400;
+        color: $back-text;
+        text-align: center;
       }
     }
   }

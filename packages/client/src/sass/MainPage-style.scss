@@ -1,0 +1,14 @@
+@import "../variables.scss";
+
+.mpWrapper {
+  display: flex;
+  flex-direction: row;
+
+  .cardsContainer {
+    width: 78vw;
+    height: 100vh;
+    padding-top: 2vh;
+
+    background: #1b1b1b;
+  }
+}
