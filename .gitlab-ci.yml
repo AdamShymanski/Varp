@@ -23,7 +23,7 @@ initialize:
     changes:
       - "**/package.json"
   script:
-    - lerna bootstrap -- --production
+    - lerna bootstrap
     - firebase hosting:channel:open live --non-interactive
 
 # skip as no deployment for story book
