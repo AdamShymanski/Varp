@@ -63,18 +63,15 @@ const style = css`
         font-size: 1em;
       }
     }
-    .lastActionContainer {
-      align-self: flex-end;
-      display: flex;
-      flex-direction: row;
-      img {
-        margin-left: 20px;
-        margin-right: 2px;
-        width: 1em;
-      }
-      p {
-        font-size: 1em;
-      }
+  }
+  .latestActionContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      margin-left: 20px;
+      margin-right: 2px;
+      width: 1em;
     }
 
     .bonus {
@@ -200,8 +197,6 @@ const style = css`
         display:block;
       }
     }
-  }
-}
 
   .green {
     color: #43ff00;
@@ -260,10 +255,8 @@ export const Top = (props: Props) => {
         </div>
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
-          <p>
-            {balance}
-          </p>
-          <div className="lastActionContainer">
+          <p>{balance}</p>
+          <div className="latestActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
             <p className={"number " + (profit ? "green" : "red")}>{number}</p>
           </div>
