@@ -18,16 +18,16 @@ function ThirdElement(props: any) {
       </div>
       <div className="cardsWrapper">
         <article className="wideCard">
-          <h1 >
+          <h1>
             <span>1.</span> Create an account{" "}
             <span className="addendum"> DO IT NOW AND GET PREMIUM ACCOUNT</span>
           </h1>
           <p>
             Registered users show that the project has interest. This makes
-            companies more likely to collaborate with us, which gives Pyramid a
+            companies more likely to collaborate with us, which gives Varp a
             chance to grow up. Money from cooperation is a source of income for
-            Pyramid and a source of money for rewards for you. The more
-            registered users the better.
+            Varp and a source of money for rewards for you. The more registered
+            users the better.
           </p>
           <p className="cp-3 ">
             If you create an account at this stage, your account will have
@@ -59,13 +59,13 @@ function ThirdElement(props: any) {
           </h1>
           <p>Yes, it's really that simple. </p>
           <p>
-            Just write if you think Pyramid has a chance, what do you like and
-            what not, what would you improve and so on ...
+            Just write if you think Varp has a chance, what do you like and what
+            not, what would you improve and so on ...
           </p>
         </article>
         <article className="wideCard">
           <h1>
-            <span>3.</span> Tell your friends about Pyramid
+            <span>3.</span> Tell your friends about Varp
           </h1>
           <p>
             Just send them a link to our site and summarize what you already

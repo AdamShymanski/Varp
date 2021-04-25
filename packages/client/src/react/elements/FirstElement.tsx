@@ -31,12 +31,12 @@ function FirstElement(props: any) {
             arcade games like Pac-Man, Icy Tower, Snake and so on for money.
           </p>
           <p>
-            Overall simple, easy games. Pyramid will be an{" "}
+            Overall simple, easy games. Varp will be an{" "}
             <span>alternative to tediously filling out surveys</span> on
             Swagbucks type sites.
           </p>
           <p>
-            Pyramid adds <span>risk</span> and an element of competition between
+            Varp adds <span>risk</span> and an element of competition between
             users to this model. We noticed that young people want to compete
             for money rather than have a certain profit.
           </p>
@@ -48,7 +48,7 @@ function FirstElement(props: any) {
           </p>
           <p>
             After completing them you will receive tokens for which you will be
-            able to take part in the game In Pyramid the potential earnings from
+            able to take part in the game In Varp the potential earnings from
             the tasks of all the players are added together{" "}
             <span>creating a pool </span>
             which only a few winners will win.
@@ -63,12 +63,12 @@ function FirstElement(props: any) {
       <article>
         <div className="title poppinsFont flexRow">
           <div className="accentLine" />
-          <p>What Pyramid've already achieved?</p>
+          <p>What Varp've already achieved?</p>
         </div>
         <div className="body poppinsFont">
           <p>
-            Pyramid is just getting started. We started about 1 week ago. You
-            can see our latest developments below. We are very proud of them and
+            Varp is just getting started. We started about 1 week ago. You can
+            see our latest developments below. We are very proud of them and
             want to share them with you, but that's not the only goal. They also
             show how many companies and people trust us and how engaged
             community we create. You can join it today!

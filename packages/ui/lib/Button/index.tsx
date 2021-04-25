@@ -1,13 +1,8 @@
-import { css } from "@emotion/react";
-import React from "react";
-
-export enum SelectFont {
-  POPPINS = "poppinsFont",
-  ROBOTO = "robotoFont"
-}
+import {css} from '@emotion/react';
+import React from 'react';
 
 const style = css`
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
   .small {
     font-size: 0.8em;
@@ -28,7 +23,6 @@ const style = css`
     align-items: center;
     justify-content: center;
 
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
 
     outline: none;
@@ -47,7 +41,10 @@ const style = css`
   }
 
   .robotoFont {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Roboto', sans-serif;
+  }
+  .poppinsFont {
+    font-family: 'Poppins', sans-serif;
   }
 
   .invisible {
@@ -71,7 +68,7 @@ export interface Props {
   /**
    * Font of text in Button - Default is Poppins
    */
-  font?: SelectFont;
+  font?: string;
   /**
    * Function which will be executed on click
    */
@@ -88,18 +85,21 @@ export interface Props {
 
 export function Button(props: Props) {
   const {
-    variant = "primary",
-    children = "Primary",
+    variant = 'primary',
+    children = 'Primary',
     visibility = true,
-    size = "medium",
-    type = "",
+    size = 'medium',
+    type = '',
+    font = 'poppinsFont',
     action = () => {},
     ...rest
   } = props;
   return (
     <main css={style}>
       <button
-        className={`button ${size} ${variant} ${visibility ? "" : "invisible"}`}
+        className={`button ${size} ${variant} ${font} ${
+          visibility ? '' : 'invisible'
+        }`}
         onClick={action()}
         {...rest}
       >

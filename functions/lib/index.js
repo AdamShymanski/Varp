@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.test = exports.createUserTest = exports.createUser = void 0;
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const serviceAccount = require("../keys/serviceAccountKey.json");
 admin.initializeApp({
-    credential: admin.credential.applicationDefault(),
-    databaseURL: "https://pyramid-64ab2.firebaseio.com"
+    credential: admin.credential.cert(serviceAccount)
 });
 exports.createUser = functions.https.onCall((data, context) => {
     try {

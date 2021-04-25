@@ -1,59 +1,59 @@
-import React from "react";
-import "./../sass/RegisterPage-style.scss";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import './../sass/RegisterPage-style.scss';
 
-import { Button } from "@varp/ui";
-import { makeStyles } from "@material-ui/core/styles";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import {Button, Input} from '@varp/ui';
+import {makeStyles} from '@material-ui/core/styles';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
-import firebase from "firebase";
+import firebase from 'firebase';
+import {useHistory} from 'react-router-dom';
 
 const onlyLettersRegEx = /^[A-Za-z\s]+$/;
 const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
 const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
 
 const schema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required!"),
-  // fullName: yup
-  //   .string()
-  //   .matches(onlyLettersRegEx, "No symbol or number allowed!")
-  //   .required("Name is required!"),
-  // username: yup
-  //   .string()
-  //   .min(3, "Too Short!")
-  //   .max(25, "Too Long!")
-  //   .matches(onlyLetterNumberRegEx, "No space or symbol!")
-  //   .required(),
+  email: yup.string().email('Invalid email').required('Email is required!'),
+  fullName: yup
+    .string()
+    .matches(onlyLettersRegEx, 'No symbol or number allowed!')
+    .required('Name is required!'),
+  username: yup
+    .string()
+    .min(3, 'Too Short!')
+    .max(25, 'Too Long!')
+    .matches(onlyLetterNumberRegEx, 'No space or symbol!')
+    .required(),
   password: yup
     .string()
-    .min(8, "Too Short!")
+    .min(8, 'Too Short!')
     .matches(
       strongPasswordRegEx,
-      "At least one number, one capital letter, one lower letter, and one symbol"
+      'At least one number, one capital letter, one lower letter, and one symbol',
     )
-    .required()
-  // passwordCheck: yup
-  //   .string()
-  //   .oneOf([yup.ref("password"), null], "Password must match"),
-  // age: yup
-  //   .number()
-  //   .typeError("Please enter numerical value only!")
-  //   .required("Please fill your age!"),
-  // country: yup.string().required("Please fill your country")
+    .required(),
+  passwordCheck: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Password must match'),
+  age: yup
+    .number()
+    .typeError('Please enter numerical value only!')
+    .required('Please fill your age!'),
+  country: yup.string().required('Please fill your country'),
 });
 
 const useStyles = makeStyles({
   exclamationIcon: {
-    color: "#3a3a3a",
-    fontSize: "1.4vw",
+    color: '#3a3a3a',
+    fontSize: '1.4vw',
 
-    left: "23vw",
-    position: "absolute"
-  }
+    left: '23vw',
+    position: 'absolute',
+  },
 });
 
 interface FormProps {
@@ -68,21 +68,21 @@ interface FormProps {
 export default function RegisterPage() {
   const history = useHistory();
 
-  const { handleSubmit, register, errors } = useForm({
-    resolver: yupResolver(schema)
+  const {handleSubmit, register, errors} = useForm({
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data: FormProps) => {
-    console.log({ email: data.email, password: data.password });
+    console.log({email: data.email, password: data.password});
 
-    const createAccount = firebase.functions().httpsCallable("createUserTest");
+    const createAccount = firebase.functions().httpsCallable('createUserTest');
 
-    createAccount({ email: data.email, password: data.password })
-      .then(result => {
+    createAccount({email: data.email, password: data.password})
+      .then((result) => {
         console.log(result);
-        console.log("result");
+        console.log('result');
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         const code = error.code;
         const message = error.message;
@@ -98,20 +98,63 @@ export default function RegisterPage() {
       <h1 className="robotoFont">Register</h1>
       <p className="robotoFont description-s  "></p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          size="big"
+          label="Email"
+          name="email"
+          ref={register}
+          error={errors.email && errors.email.message}
+        />
+        {/* <Input
+          size="big"
+          label="Full Name"
+          name="fullName"
+          ref={register}
+          error={errors.fullName && errors.fullName.message}
+        />
+        <Input
+          size="big"
+          label="Password"
+          name="password"
+          ref={register}
+          error={errors.password && errors.password.message}
+        />
+
+        <Input
+          size="big"
+          label="Confirm Password"
+          name="passwordCheck"
+          type="password"
+          ref={register}
+          error={errors.passwordCheck && errors.passwordCheck.message}
+        />
+        <Input
+          size="big"
+          label="Age"
+          type="number"
+          name="age"
+          ref={register}
+          error={errors.age && errors.age.message}
+        />
+        <Input
+          size="big"
+          label="Country"
+          name="country"
+          ref={register}
+          error={errors.country && errors.country.message}
+        />  */}
         <div className="inputWrapper flexColumn">
           <p className="label robotoFont">Email</p>
           <input className="robotoFont" name="email" ref={register} />
-          <p className="error poppinsFont">
-            {errors.email && errors.email.message}
-          </p>
+          <p className="error poppinsFont">{errors.email}</p>
         </div>
-        <div className="inputWrapper flexColumn">
+        {/* <div className="inputWrapper flexColumn">
           <p className="label robotoFont">Full Name</p>
           <input className="robotoFont" name="fullName" ref={register} />
           <p className="error poppinsFont">
             {errors.fullName && errors.fullName.message}
           </p>
-        </div>
+        </div> */}
         <div className="inputWrapper flexColumn">
           <p className="label robotoFont ">Password</p>
 

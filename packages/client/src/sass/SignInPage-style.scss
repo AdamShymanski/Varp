@@ -1,0 +1,24 @@
+@import '../variables.scss';
+
+.wrapper {
+  height: 100vh;
+  justify-content: center;
+  h1 {
+    font-size: 5em;
+    margin-bottom: 2vh;
+  }
+  .description-s {
+    font-weight: 400;
+    text-align: center;
+    color: $second-text;
+    width: 25vw;
+  }
+  form {
+    margin-top: 2vh;
+    align-items: flex-start;
+  }
+  .buttonWrapper {
+    width: 22vw;
+    margin-top: 2vh;
+  }
+}

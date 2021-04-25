@@ -1,14 +1,59 @@
-// import React, { useEffect, useState } from "react";
-import React, { useEffect, useState } from "react";
-import "./../sass/FormPage-style.scss";
+import React from 'react';
+import './../sass/SignInPage-style.scss';
+import {useHistory} from 'react-router-dom';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import {Button, Input} from '@varp/ui';
+import {makeStyles} from '@material-ui/core/styles';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import firebase from 'firebase';
+
+const onlyLettersRegEx = /^[A-Za-z\s]+$/;
+const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
+const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required()
+  email: yup.string().email('Invalid email').required('Email is required'),
+  // fullName: yup
+  //   .string()
+  //   .matches(onlyLettersRegEx, "No symbol or number allowed!")
+  //   .required("Name is required!"),
+  // username: yup
+  //   .string()
+  //   .min(3, "Too Short!")
+  //   .max(25, "Too Long!")
+  //   .matches(onlyLetterNumberRegEx, "No space or symbol!")
+  //   .required(),
+  password: yup
+    .string()
+    .min(8, 'Too Short!')
+    .matches(
+      strongPasswordRegEx,
+      'At least 1 number, 1 capital letter, 1 lower letter, 1 one special character',
+    )
+    .required(),
+  // passwordCheck: yup
+  //   .string()
+  //   .oneOf([yup.ref("password"), null], "Password must match"),
+  // age: yup
+  //   .number()
+  //   .typeError("Please enter numerical value only!")
+  //   .required("Please fill your age!"),
+  // country: yup.string().required("Please fill your country")
+});
+
+const useStyles = makeStyles({
+  exclamationIcon: {
+    color: '#3a3a3a',
+    fontSize: '1.4vw',
+
+    left: '23vw',
+    position: 'absolute',
+  },
 });
 
 interface FormProps {
@@ -20,72 +65,89 @@ interface FormProps {
   country: string;
 }
 
-export default function SignInPage() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("auth-token"));
-  useEffect(() => {
-    console.log("triggered");
-    if (localStorage.getItem("auth-token")) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  }, [token]);
-  const { handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+export default function RegisterPage() {
+  const history = useHistory();
+
+  const {handleSubmit, register, errors} = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const logOut = () => {
-    localStorage.clear();
-    setToken(null);
-  };
   const onSubmit = async (data: FormProps) => {
-    try {
-    } catch (err) {
-      console.error(err);
-    }
+    console.log({email: data.email, password: data.password});
+
+    const createAccount = firebase.functions().httpsCallable('createUserTest');
+
+    createAccount({email: data.email, password: data.password})
+      .then((result) => {
+        console.log(result);
+        console.log('result');
+      })
+      .catch((error) => {
+        console.log(error);
+        const code = error.code;
+        const message = error.message;
+        const details = error.details;
+        console.log(code, message, details);
+      });
   };
 
+  const classes = useStyles();
+
   return (
-    <main className="FA center">
-      <section className="center">
-        <h1 className="robotoFont">{loggedIn ? "Log out" : "Log in"}</h1>
-      </section>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        {loggedIn ? null : (
-          <>
-            <div className="card">
-              <h1 className="robotoFont suo">E-mail</h1>
+    <div className="wrapper flexColumn">
+      <h1 className="robotoFont">Sign In</h1>
+      <p className="robotoFont description-s  "></p>
+      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          size="big"
+          label="Email"
+          name="email"
+          ref={register}
+          error={errors.email && errors.email.message}
+        />
+        <Input
+          size="big"
+          label="Passowrd"
+          name="password"
+          type="password"
+          ref={register}
+          error={errors.email && errors.email.message}
+        />
+        {/* <div className="inputWrapper flexColumn">
+          <p className="label robotoFont">Email</p>
+          <input className="robotoFont" name="email" ref={register} />
+          <p className="error poppinsFont">
+            {errors.email && errors.email.message}
+          </p>
+        </div> */}
+        {/* <div className="inputWrapper flexColumn">
+          <p className="label robotoFont ">Password</p>
+
+          <div className="passowrdInputWrapper flexRow">
+            <div className="flexColumn">
               <input
-                className="textBox"
-                type="text"
-                name="email"
-                ref={register}
-              />
-            </div>
-            <div className="card">
-              <h1 className="robotoFont suo">Password</h1>
-              <input
-                className="textBox"
-                type="password"
+                className="robotoFont"
+                type=""
                 name="password"
                 ref={register}
               />
+              <p className="error poppinsFont">
+                {errors.password && errors.password.message}
+              </p>
             </div>
-          </>
-        )}
-        <div className="buttonContainer center">
-          {loggedIn ? (
-            <button onClick={() => logOut()} className="robotoFont">
-              Log Out
-            </button>
-          ) : (
-            <button type="submit" className="robotoFont">
-              Submit
-            </button>
-          )}
+            <ErrorOutlineIcon className={classes.exclamationIcon} />
+            <div id="talkbubble"></div>
+          </div>
+        </div> */}
+        <div className="buttonWrapper">
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
         </div>
       </form>
-    </main>
+    </div>
   );
 }

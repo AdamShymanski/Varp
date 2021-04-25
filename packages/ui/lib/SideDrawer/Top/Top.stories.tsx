@@ -1,20 +1,20 @@
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import React from 'react';
+import {Story, Meta} from '@storybook/react';
 
-import { Props, Top } from ".";
+import {Props, Top} from '.';
 
 export default {
-  title: "SideDrawer/Top",
+  title: 'SideDrawer/Top',
   component: Top,
   parameters: {
     backgrounds: {
-      default: "black",
-      values: [{ name: "black", value: "#121212" }]
-    }
-  }
+      default: 'black',
+      values: [{name: 'black', value: '#121212'}],
+    },
+  },
 } as Meta;
 
-export const Basic: Story<Props> = props => {
-  const { balance, number, profit , dailyStreak, referral, finishedTask} = props;
+export const Basic: Story<Props> = (props) => {
+  const {balance, number, profit, dailyStreak, referral, surveys} = props;
   return <Top {...props} />;
 };
