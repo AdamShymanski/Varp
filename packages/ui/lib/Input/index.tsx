@@ -86,13 +86,13 @@ const style = css`
 `;
 
 export interface Props {
-  ref: any;
-  name: string;
   size: string;
-  type: string;
   label: string;
-  disabled: boolean;
-  error?: string;
+  error?: any;
+  name?: string;
+  type?: string;
+  reference?: any;
+  disabled?: boolean;
 }
 
 export function Input(props: Props) {
@@ -101,11 +101,12 @@ export function Input(props: Props) {
     name = 'password',
     size = 'medium',
     disabled = false,
-    error = {},
-    ref = {},
+    error,
+    reference,
     type = '',
     ...rest
   } = props;
+  console.log(error);
   return (
     <main css={style}>
       <div className={size}>
@@ -115,9 +116,9 @@ export function Input(props: Props) {
           className={`input`}
           type={type}
           disabled={disabled}
-          ref={ref}
+          ref={reference}
         />
-        <p className={`error-msg`}>{error}</p>
+        <p className="error-msg">{error && error.message}</p>
       </div>
     </main>
   );
