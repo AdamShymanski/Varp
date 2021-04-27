@@ -106,7 +106,6 @@ export function Input(props: Props) {
     type = '',
     ...rest
   } = props;
-  console.log(error);
   return (
     <main css={style}>
       <div className={size}>
