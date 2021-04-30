@@ -89,7 +89,7 @@ deploy_client:
     ENVIRONMENT: production
   script:
     - export PREV_COMMIT_SLUG=$(git log --pretty='%s' -1 | awk '{ print $3 }' | sed -e "s/^'//" -e "s/'$//")
-    - firebase hosting:clone pyramid-64ab2:$PREV_COMMIT_SLUG pyramid-64ab2:live --non-interactive --token "$FIREBASE_TOKEN"
+    - firebase hosting:clone varp-ba7a7:$PREV_COMMIT_SLUG varp-ba7a7:live --non-interactive --token "$FIREBASE_TOKEN"
     - echo "ENVIRONMENT_URL=$(firebase hosting:channel:open live --non-interactive | awk '{ print $3 }')" >> deploy.env
   environment:
     name: production

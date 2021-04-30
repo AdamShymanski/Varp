@@ -5,7 +5,7 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp({
     credential: admin.credential.applicationDefault(),
-    databaseURL: "https://pyramid-64ab2.firebaseio.com"
+    databaseURL: "https://varp-ba7a7.firebaseio.com"
 });
 exports.createUser = functions.https.onCall((data, context) => {
     try {

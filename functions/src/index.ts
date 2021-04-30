@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
-  databaseURL: "https://pyramid-64ab2.firebaseio.com"
+  databaseURL: "https://varp-ba7a7.firebaseio.com"
 });
 
 export const createUser = functions.https.onCall((data, context) => {

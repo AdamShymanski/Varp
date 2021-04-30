@@ -4,14 +4,13 @@ import "firebase/auth";
 require("firebase/functions");
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyA4crZ_L7CJJPEDYqkY73KSRBMzP382XNQ",
-  authDomain: "pyramid-64ab2.firebaseapp.com",
-  databaseURL: "https://pyramid-64ab2.firebaseio.com",
-  projectId: "pyramid-64ab2",
-  storageBucket: "pyramid-64ab2.appspot.com",
-  messagingSenderId: "1070528554456",
-  appId: "1:1070528554456:web:0c6a796c3f65c61680fead",
-  measurementId: "G-WFW0SBP6M3"
+  apiKey: "AIzaSyCg9wjlkpmjmqNjS56gRFsKpjB9xdSJO-Q",
+  authDomain: "varp-ba7a7.firebaseapp.com",
+  projectId: "varp-ba7a7",
+  storageBucket: "varp-ba7a7.appspot.com",
+  messagingSenderId: "273561332273",
+  appId: "1:273561332273:web:366d7188c7a18e9ff94310",
+  measurementId: "G-R3N6S59Y0B"
 });
 
 //EMULATOR - ONLY FOR DEVELOPMENT ENVIREMENT
