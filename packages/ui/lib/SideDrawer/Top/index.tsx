@@ -1,12 +1,12 @@
-import { css } from "@emotion/react";
-import React from "react";
+import {css} from '@emotion/react';
+import React from 'react';
 
-import tokenIcon from "./token_icon_circle.svg";
-import litIcon from "./lit.svg";
-import referralIcon from "./referral_program 1.svg";
-import surveyIcon from "./Survey.svg";
-import loseIcon from "./lose_icon.svg";
-import profitIcon from "./profit_icon.svg";
+import tokenIcon from './token_icon_circle.svg';
+import litIcon from './lit.svg';
+import referralIcon from './referral_program 1.svg';
+import surveyIcon from './Survey.svg';
+import loseIcon from './lose_icon.svg';
+import profitIcon from './profit_icon.svg';
 
 const style = css`
   * {
@@ -16,9 +16,9 @@ const style = css`
     background: transparent;
   }
 
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #121212;
   color: #f4f4f4;
 
@@ -39,7 +39,7 @@ const style = css`
     width: 20vw;
 
     margin-bottom: 20px;
-    padding: 5px 0 15px 10px;
+    padding: 5px 0 15px 20px;
 
     display: flex;
     flex-direction: column;
@@ -48,8 +48,11 @@ const style = css`
     background: #1b1b1b;
 
     font-weight: 500;
-    .title {
-      font-size: 2.8em;
+    .bankTitle {
+      p {
+        font-size: 2.3em;
+        font-weight: 500;
+      }
     }
     img {
       width: 2em;
@@ -57,14 +60,16 @@ const style = css`
     }
     .tokenContainer {
       line-height: 0.7em;
-      margin: 20px 0px 40px 0;
+      margin: 5px 0px 40px 0;
       display: flex;
       flex-direction: row;
       align-items: center;
-      font-weight: 500;
-
+      font-weight: 400;
+      .tokenSign {
+        width: 1.8em;
+      }
       p {
-        font-size: 3em;
+        font-size: 1.8em;
       }
       .number {
         font-size: 1em;
@@ -85,7 +90,8 @@ const style = css`
     }
 
     .bonus {
-      font-size: 1.5em;
+      font-size: 1em;
+      font-weight: 500;
       > p {
         margin-bottom: 12px;
         span {
@@ -95,11 +101,11 @@ const style = css`
     }
     .scoreBar {
       width: 80%;
-      height: 40px;
+      height: 38px;
       display: flex;
       flex-direction: row;
       box-shadow: 0 0 0 2px #5c5c5c inset;
-      border-radius: 6px;
+      border-radius: 4px;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -127,12 +133,6 @@ const style = css`
       }
 
       .info {
-        img {
-          width: 0.7em;
-          margin-left: 12px;
-          display: block;
-          float: left;
-        }
         display: flex;
         height: 100%;
         flex-wrap: wrap;
@@ -140,6 +140,16 @@ const style = css`
         align-items: center;
         justify-content: center;
         left: -6px;
+        flex-direction: row;
+        img {
+          width: 38%;
+          margin-left: 12px;
+          display: block;
+          float: left;
+        }
+        p {
+          font-size: 0.7em;
+        }
       }
       .expander {
         background-color: inherit;
@@ -150,7 +160,7 @@ const style = css`
         left: calc(100% - 6px);
         top: 0%;
         position: absolute;
-        content: "";
+        content: '';
         z-index: -1;
       }
     }
@@ -249,8 +259,8 @@ export interface Props {
 
 export const Top = (props: Props) => {
   const {
-    name = "Adam",
-    balance = 451,
+    name = 'Adam',
+    balance = 2051,
     profit = true,
     number = 51,
     dailyStreak = 5,
@@ -268,7 +278,7 @@ export const Top = (props: Props) => {
     <main css={style}>
       <article className="name">{name}</article>
       <article className="bank">
-        <div className="title">
+        <div className="bankTitle">
           <p>Bank</p>
         </div>
         <div className="tokenContainer">
@@ -276,7 +286,7 @@ export const Top = (props: Props) => {
           <p>{balance}</p>
           <div className="lastActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
-            <p className="number">{`${profit ? "+" : "-"} ${number}`}</p>
+            <p className="number">{`${profit ? '+' : '-'} ${number}`}</p>
           </div>
         </div>
         <div className="bonus">
@@ -295,7 +305,7 @@ export const Top = (props: Props) => {
                 className="bar dailyStreak tooltip"
                 data-text={`Bonus by daily streak: ${dailyStreak}%`}
                 style={{
-                  width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`
+                  width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`,
                 }}
               >
                 <div className="info">
@@ -308,7 +318,7 @@ export const Top = (props: Props) => {
               <div
                 className="bar referral tooltip"
                 data-text={`Bonus by referral: ${referral}%`}
-                style={{ width: `calc((100%)/3*(${referral}/${maxReferral}))` }}
+                style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}
               >
                 <div className="info">
                   <img src={referralIcon} alt="Referral Icon" />
@@ -321,7 +331,7 @@ export const Top = (props: Props) => {
                 className="bar finishedTask tooltip"
                 data-text={`Bonus by survey: ${surveys}%`}
                 style={{
-                  width: `calc((100%)/3*(${surveys}/${maxSurveys}))`
+                  width: `calc((100%)/3*(${surveys}/${maxSurveys}))`,
                 }}
               >
                 <div className="info">

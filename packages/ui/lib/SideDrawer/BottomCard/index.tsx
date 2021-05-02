@@ -1,10 +1,12 @@
-import { css } from "@emotion/react";
-import React from "react";
+import React from 'react';
+import {css} from '@emotion/react';
 
-import logOutIcon from "./log_out.svg";
-import settingsIcon from "./settings.svg";
-import playIcon from "./play.svg";
-import copyReferralCodeIcon from "./copy_referral_code.svg";
+import playIcon from './play.svg';
+import logOutIcon from './log_out.svg';
+import settingsIcon from './settings.svg';
+import copyReferralCodeIcon from './copy_referral_code.svg';
+
+import {useHistory} from 'react-router-dom';
 
 const style = css`
   * {
@@ -14,7 +16,7 @@ const style = css`
     background: transparent;
   }
 
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
   max-width: 500px;
 
   width: 20vw;
@@ -37,7 +39,7 @@ const style = css`
     }
   }
 
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: #121212;
   color: #f4f4f4;
 `;
@@ -47,21 +49,23 @@ export interface Props {
    * User's referral code
    */
   referralCode: string;
+  auth: any;
 }
 
-export const Bottom = (props: Props) => {
-  const { referralCode = "9590-1431 4-1344", ...rest } = props;
+export const Bottom: React.FC<Props> = (props) => {
+  const {referralCode = '9590-1431 4-1344', auth, ...rest} = props;
+  const history = useHistory();
 
   return (
     <main css={style}>
       <div className="card">
-        <img
-          src={settingsIcon}
-          onClick={() => `Crete functions which shows settings page`}
-        />
+        <img src={settingsIcon} onClick={() => {}} />
         <img
           src={logOutIcon}
-          onClick={() => `Crete functions which log out user`}
+          onClick={() => {
+            auth.signOut();
+            history.push('/home');
+          }}
         />
         <img
           src={copyReferralCodeIcon}
