@@ -23,3 +23,7 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   variant: 'disabled',
 };
+export const Text = Template.bind({});
+Disabled.args = {
+  variant: 'text',
+};
