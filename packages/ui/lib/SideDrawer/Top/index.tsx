@@ -78,9 +78,7 @@ const style = css`
       font-size: 1.5em;
       > p {
         margin-bottom: 12px;
-        span {
-          font-size: 0.5em;
-        }
+        width: 4em;
         }
       }
       .scoreBar {
@@ -262,11 +260,8 @@ export const Top = (props: Props) => {
           </div>
         </div>
         <div className="bonus">
-          <p>
+          <p className="tooltip" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?">
             Bonuses
-            <span className="tooltip" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?">
-              &#128712;
-            </span>
           </p>
           <div className="bonusInfo">
             <div className="scoreBar">
