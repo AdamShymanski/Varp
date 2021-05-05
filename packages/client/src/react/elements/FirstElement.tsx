@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import "./../../sass/elements/FirstElement-style.scss";
+import React, {useState, useEffect} from 'react';
+import './../../sass/elements/FirstElement-style.scss';
 
-import { makeStyles } from "@material-ui/core/styles";
-import BusinessIcon from "@material-ui/icons/Business";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import PublicOutlinedIcon from "@material-ui/icons/PublicOutlined";
+import {makeStyles} from '@material-ui/core/styles';
+import BusinessIcon from '@material-ui/icons/Business';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 
 const useStyles = makeStyles({
   accountIcon: {
-    color: "#f4f4f4",
-    fontSize: "4.8vw",
-    marginTop: "1vh"
-  }
+    color: '#f4f4f4',
+    fontSize: '4.8vw',
+    marginTop: '1vh',
+  },
 });
 function FirstElement(props: any) {
   const classes = useStyles();
 
   return (
     <main
-      className={`feWrapper ${props.visibility() ? " visible" : "invisible"}`}
+      className={`feWrapper `}
     >
       <article>
         <div className="title poppinsFont flexRow">
@@ -31,7 +31,7 @@ function FirstElement(props: any) {
             arcade games like Pac-Man, Icy Tower, Snake and so on for money.
           </p>
           <p>
-            Overall simple, easy games. Varp will be an{" "}
+            Overall simple, easy games. Varp will be an{' '}
             <span>alternative to tediously filling out surveys</span> on
             Swagbucks type sites.
           </p>
@@ -49,13 +49,13 @@ function FirstElement(props: any) {
           <p>
             After completing them you will receive tokens for which you will be
             able to take part in the game In Varp the potential earnings from
-            the tasks of all the players are added together{" "}
+            the tasks of all the players are added together{' '}
             <span>creating a pool </span>
             which only a few winners will win.
           </p>
           <p>
             This way, players can get their money much <span>faster</span> and
-            in a <span>more interesting way</span>. All prizes are paid out in{" "}
+            in a <span>more interesting way</span>. All prizes are paid out in{' '}
             <span>cash</span>.
           </p>
         </div>

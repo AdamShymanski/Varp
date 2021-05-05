@@ -1,42 +1,44 @@
-import React, { ReactComponentElement, useState } from "react";
-import { SideDrawer, Card } from "@varp/ui";
+import React, {ReactComponentElement, useState} from 'react';
+import {SideDrawer, Card} from '@varp/ui';
 
-import "./../sass/MainPage-style.scss";
+import './../sass/MainPage-style.scss';
+import {auth} from './../firebase';
 
 const props = {
   header: {
-    title: "Card Title",
-    thumbnail: "https://placehold.co/65x65/orange/white"
+    title: 'Card Title',
+    thumbnail: 'https://placehold.co/65x65/orange/white',
   },
   details: {
     minutes: 15,
-    type: "Watching video ad",
-    reward: 150
+    type: 'Watching video ad',
+    reward: 150,
   },
   description: {
     children: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
                 Nam repellendus similique ab, ad sint labore voluptatibus doloribus aliquam aperiam a, 
-                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`
+                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`,
   },
   actionBar: {
-    status: "Start"
+    status: 'Start',
   },
   bottom: {
-    referralCode: "HDI92DN"
+    referralCode: 'HDI92DN',
+    auth: auth,
   },
   gameCard: {
-    title: "End It Fast",
-    date: "April 2nd",
-    time: "2:30pm",
+    title: 'End It Fast',
+    date: 'April 2nd',
+    time: '2:30pm',
     price: 500,
-    reward: 214
+    reward: 214,
   },
   top: {
-    name: "Adam Szymanski",
-    balance: 451,
+    name: 'Adam Szymanski',
+    balance: 2051,
     number: 51,
-    profit: false
-  }
+    profit: false,
+  },
 };
 
 const cardsHandler = (object: {}) => {

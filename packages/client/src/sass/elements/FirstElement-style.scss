@@ -1,13 +1,10 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 
 .feWrapper {
-  right: 0;
-  position: absolute;
-
-  width: 70vw;
+  width: 75vw;
   article {
     margin: 6vh 0;
-    width: 55vw;
+    width: 75vw;
 
     .body {
       margin-left: 3.5vw;

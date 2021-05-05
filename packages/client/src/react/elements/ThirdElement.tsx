@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-import "./../../sass/elements/ThirdElement-style.scss";
-import ForumIcon from "@material-ui/icons/Forum";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import GradeIcon from "@material-ui/icons/Grade";
+import './../../sass/elements/ThirdElement-style.scss';
+import ForumIcon from '@material-ui/icons/Forum';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import GradeIcon from '@material-ui/icons/Grade';
 
 function ThirdElement(props: any) {
   return (
     <main
-      className={` teWrapper poppinsFont ${
-        props.visibility() ? " visible" : "invisible"
-      }`}
+      className={` teWrapper poppinsFont `}
+      // ${
+      //   props.visibility() ? " visible" : "invisible"
+      // }
     >
       <div className="title flexRow">
         <div className="accentLine" />
@@ -19,7 +20,7 @@ function ThirdElement(props: any) {
       <div className="cardsWrapper">
         <article className="wideCard">
           <h1>
-            <span>1.</span> Create an account{" "}
+            <span>1.</span> Create an account{' '}
             <span className="addendum"> DO IT NOW AND GET PREMIUM ACCOUNT</span>
           </h1>
           <p>
@@ -36,7 +37,7 @@ function ThirdElement(props: any) {
           <ul>
             <li>
               <p>
-                <span>- </span>You will be able to join the first few games{" "}
+                <span>- </span>You will be able to join the first few games{' '}
                 <span> without spending tokens on them</span>
               </p>
             </li>

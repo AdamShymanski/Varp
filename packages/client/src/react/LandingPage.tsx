@@ -7,7 +7,7 @@ import {Button} from '@varp/ui';
 
 //resources
 import logo from './../resources/icons/logo.png';
-import checkMark from './../resources/icons/check-mark.svg';
+import hamburger from './../resources/icons/hamburger-menu.svg';
 
 //icons
 import {makeStyles} from '@material-ui/core/styles';
@@ -18,31 +18,7 @@ import FirstElement from './elements/FirstElement';
 import SecondElement from './elements/SecondElement';
 import ThirdElement from './elements/ThirdElement';
 
-const useStyles = makeStyles({
-  arrowF: {
-    position: 'absolute',
-    right: '0.6vw',
-    fontSize: '1.38em',
-    fontStyle: '700',
-  },
-  arrowGb: {
-    position: 'absolute',
-    left: '0.6vw',
-    fontSize: '1.38em',
-    fontStyle: '700',
-  },
-});
-
 function LandingPage() {
-  // useEffect(() => {
-  //   const createAccount = firebase.functions().httpsCallable("createAccount");
-
-  //   createAccount("coo").then(result => {
-  //     console.log(result.data);
-  //   });
-  // }, []);
-
-  const classes = useStyles();
   const history = useHistory();
 
   const pushToRegister = () => history.push('/register');
@@ -50,20 +26,20 @@ function LandingPage() {
 
   const [visibilityState, setVisibilityState] = useState(1);
 
-  const checkMarkHandler = (number: Number) => {
-    if (number === 2) {
-      if (visibilityState === 2) {
-        return 'visible';
-      }
-      if (visibilityState === 3) {
-        return 'visible';
-      }
-      return 'invisible';
-    }
-    if (number === 3) {
-      if (visibilityState !== 3) return 'invisible';
-    }
-  };
+  // const checkMarkHandler = (number: Number) => {
+  //   if (number === 2) {
+  //     if (visibilityState === 2) {
+  //       return 'visible';
+  //     }
+  //     if (visibilityState === 3) {
+  //       return 'visible';
+  //     }
+  //     return 'invisible';
+  //   }
+  //   if (number === 3) {
+  //     if (visibilityState !== 3) return 'invisible';
+  //   }
+  // };
 
   const buttonVisibilityHandler = (hideNumber: number) => {
     if (hideNumber === visibilityState) {
@@ -72,20 +48,26 @@ function LandingPage() {
     return true;
   };
 
-  const [hamburger, setHamburger] = useState(false);
+  const [hamburgerState, setHamburger] = useState(false);
 
   return (
     <div className="wrapper">
       <div className="wrapper--navbar flexRow">
-        <img src={logo} alt="Logo" className="wrapper--navbar--logo" />
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
         <ul className="flexRow">
           <div className={`default-menu flexRow ${hamburger && 'expand-menu'}`}>
-            <li className="poppinsFont">Home</li>
             <li className="poppinsFont">For Developers</li>
             <li className="poppinsFont">Contact</li>
           </div>
-          <div className="hamburger-menu">
-            <MenuIcon onClick={() => setHamburger(!hamburger)} />
+          <div className="hamburgerMenu">
+            <img src={hamburger} alt="Hamburger Menu" />
           </div>
           <li className="poppinsFont " onClick={pushToRegister}>
             <Button variant="primary" size="medium" children="Register" />
@@ -97,11 +79,16 @@ function LandingPage() {
             <Button variant="primary" size="medium" children="Sign In" />
           </li>
         </ul>
+        <article
+          className={`sideDrawer ${hamburgerState ? 'invisible' : ''}`}
+        ></article>
       </div>
-      <div className="wrapper--main">
-        <div className="scrollIndicator flexColumn">
+      <div className="wrapper--main flexColumn">
+        <FirstElement />
+        <SecondElement />
+        <ThirdElement />
+        {/* <div className="scrollIndicator flexColumn">
           <div className="dotWrapper flexRow">
-            {/* handleScrollIndicator("dot", 1) */}
             <div className={'flexColumn dot '}>
               <img
                 src={checkMark}
@@ -128,15 +115,16 @@ function LandingPage() {
             </div>
             <p className="poppinsFont">How You Can Help?</p>
           </div>
-        </div>
-        <div className="wrapper--main--main-content">
-          <FirstElement
+        </div> */}
+        {/* <div className="elementsWrapper flexColumn">
+           <FirstElement
             visibility={() => {
               if (visibilityState == 1) return true;
               else return false;
             }}
-          />
-          <SecondElement
+          /> 
+
+           <SecondElement
             visibility={() => {
               if (visibilityState == 2) return true;
               else return false;
@@ -147,21 +135,10 @@ function LandingPage() {
               if (visibilityState == 3) return true;
               else return false;
             }}
-          />
-        </div>
+          /> 
+        </div> */}
       </div>
-      <div className="navigationButtons ">
-        {/* <button
-          className={`poppinsFont nBtn flexRow ${
-            visibilityState === 3 ? "invisible" : ""
-          }`}
-          onClick={() =>
-            setVisibilityState(visibilityState => visibilityState + 1)
-          }
-        >
-          Next
-          <ArrowForwardIosIcon className={classes.arrowF} />
-        </button> */}
+      {/* <div className="navigationButtons ">
         <div className={'gbbWrapper'}>
           <Button
             size="medium"
@@ -184,7 +161,7 @@ function LandingPage() {
             }
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

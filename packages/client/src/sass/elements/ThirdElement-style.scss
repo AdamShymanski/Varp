@@ -1,10 +1,8 @@
-@import "../../variables.scss";
+@import '../../variables.scss';
 
 .teWrapper {
-  right: 0;
-  position: absolute;
-
-  width: 70vw;
+  margin-top: 6vh;
+  width: 75vw;
   .cardsWrapper {
     padding-top: 2vh;
     .wideCard {

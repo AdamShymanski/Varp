@@ -1,11 +1,16 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
-.wrapper {
-  height: 100vh;
+.reWrapper {
   justify-content: center;
+  height: 100vh;
   h1 {
     font-size: 3.5vw;
     margin-bottom: 2vh;
+  }
+  .logoWrapper {
+    position: absolute;
+    top: 12.1px;
+    left: 0px;
   }
   .description-s {
     font-weight: 400;
@@ -15,72 +20,104 @@
   }
   form {
     margin-top: 2vh;
-    .error {
-      color: $accent;
+    align-items: flex-start;
+    input {
+      width: 22vw;
+      height: 4.5vh;
+
+      margin-top: 1vh;
+      padding-left: 10px;
+
+      font-size: 0.9vw;
+      font-weight: 400;
+      color: $main-text;
+
+      outline: none;
+      border-radius: 1px 4px 4px 1px;
+      background: $input-background;
+      border: 0px solid $input-background;
+
+      border-left: 2px solid $gray;
+      transition: 350ms;
     }
-    .inputWrapper {
-      margin-top: 3.4vh;
-      position: relative;
-      justify-content: space-between;
-      align-items: flex-start;
-      .label {
-        bottom: 5.2vh;
-        position: absolute;
-        font-weight: 400;
-        font-size: 0.7vw;
-      }
-      input {
-        width: 22vw;
-        height: 4.5vh;
-
-        margin-top: 1vh;
-        padding-left: 10px;
-
-        font-size: 0.9vw;
-        font-weight: 400;
-        color: $main-text;
-
-        outline: none;
-        border-radius: 1px 4px 4px 1px;
-        background: $input-background;
-        border: 0px solid $input-background;
-
-        border-left: 2px solid $gray;
-        transition: 350ms;
-      }
-      input:focus {
-        border-left: 2px solid $accent;
-        transition: 350ms;
-      }
-      .passowrdInputWrapper {
-        #talkbubble {
-          height: 10vw;
-          width: 9vw;
-          position: absolute;
-          background: $speech-bubble-background;
-          left: 26vw;
-          top: 1.4vh;
-          -moz-border-radius: 10px;
-          -webkit-border-radius: 10px;
-          border-radius: 2px;
-        }
-        #talkbubble:before {
-          content: "";
-          position: absolute;
-          right: 100%;
-          top: 0;
-          width: 0;
-          height: 0;
-
-          border-top: 13px solid transparent;
-          border-right: 26px solid $speech-bubble-background;
-          border-bottom: 13px solid transparent;
-        }
-      }
+    input:focus {
+      border-left: 2px solid $accent;
+      transition: 350ms;
     }
+    .errorMessage {
+      color: $old-accent;
+      font-size: 1em;
+      font-weight: 500;
+      margin: 20px 0;
+    }
+    // .inputWrapper {
+    //   margin-top: 3.4vh;
+    //   position: relative;
+    //   justify-content: space-between;
+    //   align-items: flex-start;
+    //   .label {
+    //     bottom: 5.2vh;
+    //     position: absolute;
+    //     font-weight: 400;
+    //     font-size: 0.7vw;
+    //   }
+    //   input {
+    //     width: 22vw;
+    //     height: 4.5vh;
+
+    //     margin-top: 1vh;
+    //     padding-left: 10px;
+
+    //     font-size: 0.9vw;
+    //     font-weight: 400;
+    //     color: $main-text;
+
+    //     outline: none;
+    //     border-radius: 1px 4px 4px 1px;
+    //     background: $input-background;
+    //     border: 0px solid $input-background;
+
+    //     border-left: 2px solid $gray;
+    //     transition: 350ms;
+    //   }
+    //   input:focus {
+    //     border-left: 2px solid $accent;
+    //     transition: 350ms;
+    //   }
+    //   .errorMessage {
+    //     color: $accent;
+    //     font-size: 2em;
+    //     font-weight: 700;
+    //   }
+    //   .passowrdInputWrapper {
+    //     #talkbubble {
+    //       height: 10vw;
+    //       width: 9vw;
+    //       position: absolute;
+    //       background: $speech-bubble-background;
+    //       left: 26vw;
+    //       top: 1.4vh;
+    //       -moz-border-radius: 10px;
+    //       -webkit-border-radius: 10px;
+    //       border-radius: 2px;
+    //     }
+    //     #talkbubble:before {
+    //       content: '';
+    //       position: absolute;
+    //       right: 100%;
+    //       top: 0;
+    //       width: 0;
+    //       height: 0;
+
+    //       border-top: 13px solid transparent;
+    //       border-right: 26px solid $speech-bubble-background;
+    //       border-bottom: 13px solid transparent;
+    //     }
+    //   }
+    // }
   }
-  .buttonWrapper {
-    width: 22vw;
-    margin-top: 2vh;
-  }
+  // .buttonWrapper {
+  //   width: 22vw;
+  //   margin-top: 2vh;
+  // }
 }

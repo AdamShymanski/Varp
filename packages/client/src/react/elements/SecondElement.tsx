@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import "./../../sass/elements/SecondElement-style.scss";
+import React, {useState} from 'react';
+import './../../sass/elements/SecondElement-style.scss';
 
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from '@material-ui/core/styles';
 
 //material UI icons
-import VideogameAssetOutlinedIcon from "@material-ui/icons/VideogameAssetOutlined";
-import AttachMoneyOutlinedIcon from "@material-ui/icons/AttachMoneyOutlined";
-import FindInPageOutlinedIcon from "@material-ui/icons/FindInPageOutlined";
-import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
+import VideogameAssetOutlinedIcon from '@material-ui/icons/VideogameAssetOutlined';
+import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
+import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
+import WorkOutlinedIcon from '@material-ui/icons/WorkOutlined';
 
 const useStyles = makeStyles({
   icon: {
-    color: "#f4f4f4",
-    fontSize: "clamp(3rem,7vw,6rem)",
-    marginTop: "1vh",
-    fontStyle: "300"
-  }
+    color: '#f4f4f4',
+    fontSize: 'clamp(3rem,7vw,6rem)',
+    marginTop: '1vh',
+    fontStyle: '300',
+  },
 });
 
 function SecondElement(props: any) {
@@ -23,7 +23,8 @@ function SecondElement(props: any) {
 
   return (
     <main
-      className={`seWrapper ${props.visibility() ? " visible" : "invisible"}`}
+      className={`seWrapper`}
+      //  ${props.visibility() ? " visible" : "invisible"}
     >
       <article>
         <div className="title flexRow">
@@ -41,9 +42,9 @@ function SecondElement(props: any) {
             We work with many companies to raise money for the pools
           </p>
           <p className="detailDescription robotoFont">
-            This is our part of job, we are looking for companys which want to colaborate
-            with Varp. It's source of money for prizes for winners, but more on
-            that later.
+            This is our part of job, we are looking for companys which want to
+            colaborate with Varp. It's source of money for prizes for winners,
+            but more on that later.
           </p>
         </div>
         <div className="card">

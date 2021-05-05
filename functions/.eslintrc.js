@@ -25,5 +25,6 @@ module.exports = {
     quotes: ['error', 'single'],
     indent: ['error', 2],
     '@typescript-eslint/no-var-requires': 0,
+    'max-len': ['error', {code: 140}],
   },
 };

@@ -2,17 +2,6 @@
 
 $margin-hamburger-menu: 20px;
 
-html,
-body {
-  background: $background;
-}
-
-.visible {
-  display: inherit;
-}
-.invisible {
-  display: none;
-}
 .title {
   .accentLine {
     height: 4px;
@@ -24,7 +13,7 @@ body {
   p {
     margin-left: 1vw;
 
-    font-size: 2.5vw;
+    font-size: 3.5em;
     font-weight: 700;
     color: $main-text;
   }
@@ -35,72 +24,14 @@ body {
     width: 100%;
     padding-bottom: 20px;
     justify-content: space-between;
-    .wrapper--navbar--logo {
-      margin: 10px;
-      width: 150px;
-    }
+
     ul {
-      @media screen and(max-width: 500px) {
-        flex-direction: row-reverse;
-      }
-      .default-menu {
-        display: flex;
-        visibility: visible;
-        @media screen and (max-width: 500px) {
-          transition: all 0.5s ease;
-          visibility: hidden;
-          width: 0;
-          height: 0;
-          position: absolute;
-          flex-direction: column;
-          top: 0;
-          right: 0;
-          z-index: 5000;
-          background-color: black;
-          transform: rotate3d(90);
-          li {
-            padding: 0;
-            margin: 0;
-            top: calc(50vh - (0.75rem + 100px));
-            position: relative;
-            text-align: center;
-            width: 100%;
-            font-size: 0;
-            &:hover {
-              background-color: rgba(252, 28, 8, 0.7);
-              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034),
-                0 6.7px 5.3px rgba(252, 28, 8, 0.048),
-                0 12.5px 10px rgba(252, 28, 8, 0.06),
-                0 22.3px 17.9px rgba(252, 28, 8, 0.072),
-                0 41.8px 33.4px rgba(252, 28, 8, 0.086);
-            }
-          }
-          &.expand-menu {
-            display: flex;
-            visibility: visible;
-            width: calc(100vw);
-            height: calc(100vh);
-            li {
-              font-size: clamp(0.75rem, 2vw, 1rem);
-              padding: $margin-hamburger-menu 0;
-              margin: $margin-hamburger-menu/2 0;
-            }
-          }
-        }
+      padding: 2em;
+
+      .hamburgerMenu {
+        display: none;
       }
 
-      .hamburger-menu {
-        visibility: hidden;
-        @media screen and(max-width: 500px) {
-          visibility: visible;
-          display: flex;
-          z-index: 10000;
-        }
-        * {
-          fill: white;
-        }
-      }
-      padding: 2rem;
       li {
         list-style: none;
         margin: 0 1rem;
@@ -110,72 +41,32 @@ body {
           color: $back-text;
         }
       }
-      .suButton {
-        background: $accent;
-        padding: 0.25rem 1rem;
-        border-radius: 2rem;
-        font-weight: 700;
-        color: $dark-gray;
+    }
+    .sideDrawer {
+      display: none;
+    }
+
+    @media screen and (max-width: 1024px) {
+      ul {
+        .hamburgerMenu {
+          display: inherit;
+          img {
+            width: 30px;
+          }
+        }
+
+        li {
+          display: none;
+        }
+      }
+      .sideDrawer {
+        display: none;
       }
     }
   }
 
   .wrapper--main {
     display: flex;
-    .scrollIndicator {
-      left: 50px;
-      position: relative;
-
-      margin-top: 6.5vh;
-      .dotWrapper {
-        margin-top: 15px;
-        width: 400px;
-        .dot {
-          width: 30px;
-          height: 30px;
-          border: $gray 2px solid;
-          border-radius: 4px;
-          .checkMark {
-            margin-top: 5.9px;
-            height: 14px;
-          }
-          .invisible {
-            display: none;
-          }
-        }
-        p {
-          font-size: 1.2em;
-          margin-left: 5px;
-          color: $main-text;
-        }
-      }
-    }
-  }
-
-  .navigationButtons {
-    @media screen and (max-width: 500px) {
-      display: none;
-    }
-
-    width: 70%;
-
-    .gbBtn {
-      padding: 0.8vh 0.8vw 0.8vh 1.8vw;
-
-      color: $gray;
-      border: 2px solid $gray;
-
-      left: 21%;
-    }
-    .nbWrapper {
-      position: fixed;
-      right: 2vw;
-      bottom: 2vh;
-    }
-    .gbbWrapper {
-      position: fixed;
-      left: 20vw;
-      bottom: 2vh;
-    }
+    margin-right: 15vw;
   }
 }
