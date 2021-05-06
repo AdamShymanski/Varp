@@ -63,24 +63,22 @@ const style = css`
         font-size: 1em;
       }
     }
-  }
-  .latestActionContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    img {
-      margin-left: 20px;
-      margin-right: 2px;
-      width: 1em;
+    .latestActionContainer {
+      align-self: flex-end;
+      display: flex;
+      flex-direction: row;
+      img {
+        margin-left: 20px;
+        margin-right: 2px;
+        width: 1em;
+      }
     }
 
     .bonus {
       font-size: 1.5em;
       > p {
         margin-bottom: 12px;
-        span {
-          font-size: 0.5em;
-        }
+        width: 4em;
         }
       }
       .scoreBar {
@@ -125,7 +123,6 @@ const style = css`
           }
           display: flex;
           height: 100%;
-          flex-wrap: wrap;
           overflow: hidden;
           align-items: center;
           justify-content: center;
@@ -246,7 +243,13 @@ export const Top = (props: Props) => {
   const maxDailyStreak = 10;
   const maxReferral = 10;
   const maxFinishedTask = 10;
-
+  const getWidth = (value: number, maximum: number) => {
+    const width = 1/3*(value/maximum)
+    if (width < 0.16){
+      return '16%';
+    }
+    return `calc(100% * ${width.toString()}`;
+  }
   return (
     <main css={style}>
       <article className="bank">
@@ -255,25 +258,24 @@ export const Top = (props: Props) => {
         </div>
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
-          <p>{balance}</p>
+          <p>
+            {balance}
+          </p>
           <div className="latestActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
             <p className={"number " + (profit ? "green" : "red")}>{number}</p>
           </div>
         </div>
         <div className="bonus">
-          <p>
-            Bonuses
-            <span className="tooltip" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?">
-              &#128712;
-            </span>
+          <p className="tooltip" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?"> 
+            Bonuses 
           </p>
           <div className="bonusInfo">
             <div className="scoreBar">
               <div 
               className="bar dailyStreak tooltip"
               data-text={`Bonus by daily streak: ${dailyStreak}%`}
-              style={{width: `calc((100%)/3*(${dailyStreak}/${maxDailyStreak}))`}}>
+              style={{width: getWidth(dailyStreak, maxDailyStreak)}}>
                 <div
                 className="info">
                   <img className="dailyStreak" src={litIcon} alt="Lit Icon" />
@@ -285,7 +287,7 @@ export const Top = (props: Props) => {
               <div 
               className="bar referral tooltip" 
               data-text={`Bonus by referral: ${referral}%`}
-              style={{width: `calc((100%)/3*(${referral}/${maxReferral}))`}}>
+              style={{width: getWidth(referral, maxReferral)}}>
                 <div className="info">
                   <img src={referralIcon} alt="Referral Icon" />
                   <p>{referral}</p>
@@ -296,7 +298,7 @@ export const Top = (props: Props) => {
               <div 
               className="bar finishedTask tooltip" 
               data-text={`Bonus by survey: ${finishedTask}%`}
-              style={{width: `calc((100%)/3*(${finishedTask}/${maxFinishedTask}))`}}>
+              style={{width: getWidth(finishedTask, maxFinishedTask)}}>
                 <div className="info">
                   <img src={surveyIcon} alt="Survey Icon" />
                   <p>{finishedTask}</p>
