@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook -o dist"
+    "build": "build-storybook -o dist",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "bugs": {
     "url": "https://gitlab.com/varp-team/varp-website/issues"
