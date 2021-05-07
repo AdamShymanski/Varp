@@ -32,7 +32,6 @@ export default function SignInPage() {
   });
 
   useEffect(() => {
-    console.log(history)
     console.log("TEST",currentUser !== null ? "YES" : "NO")
 
     currentUser !== null && history.push("/")
