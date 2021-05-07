@@ -87,7 +87,6 @@ export const AuthProvider: React.FC = ({children}) => {
   }
 
   async function signIn(email: string, password: string) {
-    console.log("SIOGN",signIn)
     try {
       await auth.signInWithEmailAndPassword(email, password);
       history.push('/');
