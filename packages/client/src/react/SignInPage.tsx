@@ -32,55 +32,60 @@ export default function SignInPage() {
   });
 
   useEffect(() => {
-    console.log(  currentUser, loading)
+    console.log( currentUser, loading)
     console.log(history)
-  },[])
+    console.log("TEST",currentUser !== null ? "YES" : "NO")
+
+    currentUser !== null && history.push("/")
+  })
 
   const onSubmit = async (data: FormProps) => {
     const {email, password} = data;
     const result = await signIn(email, password);
+    // console.log(result)
     if (result) setError('Wrong password or email!');
   };
 
   return (
-    <div className="si-wrapper flexColumn">
-      <div className="logoWrapper">
-        <img
-          src={logo}
-          alt="Logo"
-          className="logo"
-          onClick={() => {
-            history.push('/home');
-          }}
-        />
-      </div>
-      <h1 className="robotoFont">Sign In</h1>
-      <p className="robotoFont description-s  "></p>
-      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          reference={register}
-          size="big"
-          name="email"
-          error={errors.email}
-        />
-        <Input
-          label="Password"
-          reference={register}
-          size="big"
-          name="password"
-          type="password"
-          error={errors.password}
-        />
-        <div className="divider" />
-        <Button
-          type="submit"
-          size="medium"
-          children="Submit"
-          variant="primary"
-        />
-        <p className="errorMessage poppinsFont">{errorState}</p>
-      </form>
+    (currentUser == null && loading == false) ? <div className="si-wrapper flexColumn">
+    <div className="logoWrapper">
+      <img
+        src={logo}
+        alt="Logo"
+        className="logo"
+        onClick={() => {
+          history.push('/home');
+        }}
+      />
     </div>
+    <h1 className="robotoFont">Sign In</h1>
+    <p className="robotoFont description-s  "></p>
+    <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        label="Email"
+        reference={register}
+        size="big"
+        name="email"
+        error={errors.email}
+      />
+      <Input
+        label="Password"
+        reference={register}
+        size="big"
+        name="password"
+        type="password"
+        error={errors.password}
+      />
+      <div className="divider" />
+      <Button
+        type="submit"
+        size="medium"
+        children="Submit"
+        variant="primary"
+      />
+      <p className="errorMessage poppinsFont">{errorState}</p>
+    </form>
+  </div> : <div></div>
+    
   );
 }
