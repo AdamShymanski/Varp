@@ -38,7 +38,6 @@ export default function SignInPage() {
   const onSubmit = async (data: FormProps) => {
     const {email, password} = data;
     const result = await signIn(email, password);
-    // console.log(result)
     if (result) setError('Wrong password or email!');
   };
 
