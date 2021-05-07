@@ -61,7 +61,6 @@ function RegisterPage() {
   });
 
   const onSubmit = async (data: FormProps) => {
-    console.log(data);
     setLoading(true);
     const result = await callRegister(data);
     setError(result + '!');
