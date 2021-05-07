@@ -1,6 +1,5 @@
 import {css} from '@emotion/react';
-import React from 'react';
-
+import React, {useState} from 'react';
 import arrow from './arrow.svg';
 
 const style = css`
@@ -19,11 +18,44 @@ const style = css`
     padding: 4.4px 25px;
     align-items: center;
     justify-content: center;
-
+    overflow: hidden;
     font-weight: 600;
-
+    position: relative;
+    cursor: pointer;
     outline: none;
     border: none;
+  }
+
+  .ripple {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    display: block;
+    content: '';
+    border-radius: 9999px;
+    opacity: 1;
+    background-color: #fff;
+    animation: 800ms ease 1 forwards ripple;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(10);
+      opacity: 0.375;
+    }
+    100% {
+      transform: scale(35);
+      opacity: 0;
+    }
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
   }
 
   .small {
@@ -110,15 +142,20 @@ export interface Props {
   /**
    * Function which will be executed on click
    */
-  action?: Function;
+  action?: (e: React.MouseEvent) => void;
   /**
-   * Visiblity of Button
+   * Visibility of Button
    */
   visibility?: boolean;
   /**
    * Type of Button
    */
   type?: string;
+}
+
+interface RippleProps {
+  x: number;
+  y: number;
 }
 
 export function Button(props: Props) {
@@ -129,9 +166,26 @@ export function Button(props: Props) {
     size = 'medium',
     type = '',
     font = 'poppinsFont',
-    action = () => {},
+    action = (e: React.MouseEvent) => {},
     ...rest
   } = props;
+
+  const [coords, setCoords] = useState<RippleProps>({x: -1, y: -1});
+  const [isRippling, setIsRippling] = useState<boolean>(false);
+
+  React.useEffect(() => {
+    if (coords.x !== -1 && coords.y !== -1) {
+      setIsRippling(true);
+      setTimeout(() => setIsRippling(false), 300);
+    } else {
+      setIsRippling(false);
+    }
+  }, [coords]);
+
+  React.useEffect(() => {
+    if (!isRippling) setCoords({x: -1, y: -1});
+  }, [isRippling]);
+
   if (variant === 'text') {
     return (
       <main css={style}>
@@ -139,7 +193,7 @@ export function Button(props: Props) {
           className={`button ${size} ${variant} ${font} ${
             visibility ? '' : 'invisible'
           }`}
-          onClick={action()}
+          onClick={(e) => action(e)}
           {...rest}
         >
           {children}
@@ -154,10 +208,25 @@ export function Button(props: Props) {
         className={`button ${size} ${variant} ${font} ${
           visibility ? '' : 'invisible'
         }`}
-        onClick={action()}
+        onClick={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setCoords({x: e.clientX - rect.left, y: e.clientY - rect.top});
+          action && action(e);
+        }}
         {...rest}
       >
-        {children}
+        {isRippling ? (
+          <span
+            className="ripple"
+            style={{
+              left: coords.x,
+              top: coords.y,
+            }}
+          />
+        ) : (
+          ''
+        )}
+        <span className="content">{children}</span>
       </button>
     </main>
   );
