@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './../sass/SignInPage-style.scss';
 import {useHistory} from 'react-router-dom';
 
@@ -25,11 +25,16 @@ interface FormProps {
 export default function SignInPage() {
   const [errorState, setError] = useState<string>('');
   const history = useHistory();
-  const {signIn} = useAuth();
+  const {signIn, currentUser, loading} = useAuth();
 
   const {handleSubmit, register, errors} = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    console.log(  currentUser, loading)
+    console.log(history)
+  },[])
 
   const onSubmit = async (data: FormProps) => {
     const {email, password} = data;
