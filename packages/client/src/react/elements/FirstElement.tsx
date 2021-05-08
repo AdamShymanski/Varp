@@ -9,7 +9,7 @@ import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 const useStyles = makeStyles({
   accountIcon: {
     color: '#f4f4f4',
-    fontSize: '4.8vw',
+    fontSize: '5em',
     marginTop: '1vh',
   },
 });
@@ -17,9 +17,7 @@ function FirstElement(props: any) {
   const classes = useStyles();
 
   return (
-    <main
-      className={`feWrapper `}
-    >
+    <main className={`feWrapper `}>
       <article>
         <div className="title poppinsFont flexRow">
           <div className="accentLine" />
@@ -61,7 +59,7 @@ function FirstElement(props: any) {
         </div>
       </article>
       <article>
-        <div className="title poppinsFont flexRow">
+        <div className="sTitle title poppinsFont flexRow">
           <div className="accentLine" />
           <p>What Varp've already achieved?</p>
         </div>
@@ -74,27 +72,33 @@ function FirstElement(props: any) {
             community we create. You can join it today!
           </p>
         </div>
-        <div className="cardWrapper flexRow">
+        <div className="cardWrapper">
           <div className="cardF flexColumn">
-            <AccountBoxIcon className={classes.accountIcon} />
-            <p className="number poppinsFont">2,000+</p>
-            <p className="description poppinsFont">
-              Users who have already signed up
-            </p>
+            <div className="cardContent flexColumn">
+              <AccountBoxIcon className={classes.accountIcon} />
+              <p className="number poppinsFont">2,000+</p>
+              <p className="description poppinsFont">
+                Users who have already signed up
+              </p>
+            </div>
           </div>
           <div className="cardF flexColumn">
-            <BusinessIcon className={classes.accountIcon} />
-            <p className="number poppinsFont">21</p>
-            <p className="description poppinsFont">
-              Trusted cooperating companies
-            </p>
+            <div className="cardContent flexColumn">
+              <BusinessIcon className={classes.accountIcon} />
+              <p className="number poppinsFont">21</p>
+              <p className="description poppinsFont">
+                Trusted cooperating companies
+              </p>
+            </div>
           </div>
           <div className="cardF flexColumn">
-            <PublicOutlinedIcon className={classes.accountIcon} />
-            <p className="number poppinsFont">13</p>
-            <p className="description poppinsFont">
-              The countries our users come from
-            </p>
+            <div className="cardContent flexColumn">
+              <PublicOutlinedIcon className={classes.accountIcon} />
+              <p className="number poppinsFont">13</p>
+              <p className="description poppinsFont">
+                The countries our users come from
+              </p>
+            </div>
           </div>
         </div>
       </article>

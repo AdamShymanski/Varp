@@ -18,9 +18,9 @@ function ThirdElement(props: any) {
         <p className="poppinsFont">How you can help?</p>
       </div>
       <div className="cardsWrapper">
-        <article className="wideCard">
+        <article className="wideCard c1">
           <h1>
-            <span>1.</span> Create an account{' '}
+            <span>1.</span> Create an account
             <span className="addendum"> DO IT NOW AND GET PREMIUM ACCOUNT</span>
           </h1>
           <p>

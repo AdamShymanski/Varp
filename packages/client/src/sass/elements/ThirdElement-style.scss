@@ -6,7 +6,8 @@
   .cardsWrapper {
     padding-top: 2vh;
     .wideCard {
-      width: 60vw;
+      width: 90%;
+      max-width: 1400px;
 
       padding: 20px;
       padding-top: 0;
@@ -18,6 +19,7 @@
       h1 {
         color: $main-text;
         font-size: 3em;
+
         span {
           color: $accent;
           font-size: 1.5em;
@@ -26,6 +28,7 @@
           color: $accent;
           font-size: 0.3em;
           margin-bottom: 0.5em;
+          margin-left: 1.5em;
         }
       }
       p {
@@ -43,6 +46,44 @@
               color: $accent;
             }
           }
+        }
+      }
+      @media screen and (max-width: 1590px) {
+        h1 {
+          font-size: 2.6em;
+          span {
+            color: $accent;
+            font-size: 1em;
+          }
+        }
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+    .c1 {
+      h1 {
+        @media screen and (max-width: 1590px) {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    }
+    @media screen and (max-width: 1800px) {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .wideCard {
+        background: transparent;
+        border-bottom: 5px solid $dark-gray;
+        border-top: 5px solid $dark-gray;
+        border-radius: 0;
+
+        margin: 20px 0;
+        .title {
+          margin-right: 15vw;
         }
       }
     }
