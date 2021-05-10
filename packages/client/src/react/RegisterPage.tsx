@@ -2,16 +2,15 @@ import React, {useState} from 'react';
 import './../sass/RegisterPage-style.scss';
 
 import {Button, Input} from '@varp/ui';
-import {makeStyles} from '@material-ui/core/styles';
+import logo from './../resources/icons/logo.png';
+import PacmanLoader from 'react-spinners/PacmanLoader';
+
+import {useHistory} from 'react-router-dom';
+import {useAuth} from '../contexts/AuthContext';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
-import {useHistory} from 'react-router-dom';
-import logo from './../resources/icons/logo.png';
-
-import {useAuth} from '../contexts/AuthContext';
 
 const onlyLettersRegEx = /^[A-Za-z\s]+$/;
 const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
@@ -19,7 +18,7 @@ const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za
 
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required!'),
-  fullName: yup
+  name: yup
     .string()
     .required('Name is required!')
     .matches(onlyLettersRegEx, 'No symbol or number allowed!'),
@@ -51,7 +50,7 @@ interface FormProps {
 }
 
 function RegisterPage() {
-  const {callRegister, callTest} = useAuth();
+  const {callRegister} = useAuth();
   const [errorState, setError] = useState<string>('');
 
   const history = useHistory();
@@ -61,8 +60,8 @@ function RegisterPage() {
   });
 
   const onSubmit = async (data: FormProps) => {
-    const {email, password} = data;
-    const result = await callRegister(email, password);
+    console.log(data);
+    const result = await callRegister(data);
     setError(result + '!');
   };
 
@@ -92,8 +91,8 @@ function RegisterPage() {
           label="Full Name"
           reference={register}
           size="big"
-          name="fullName"
-          error={errors.fullName}
+          name="name"
+          error={errors.name}
         />
         <Input
           label="Password"
@@ -128,13 +127,15 @@ function RegisterPage() {
         />
 
         <p className="errorMessage poppinsFont">{errorState}</p>
-        <br />
-        <Button
-          type="submit"
-          size="medium"
-          children="Submit"
-          variant="primary"
-        />
+        <div className="buttonWrapper">
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
+          <PacmanLoader color={'#0082FF'} loading={true} size={15} />
+        </div>
       </form>
     </div>
   );

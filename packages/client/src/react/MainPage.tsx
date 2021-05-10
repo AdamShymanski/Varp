@@ -1,62 +1,126 @@
-import React, {ReactComponentElement, useState} from 'react';
+import React, {ReactComponentElement, useState, useEffect} from 'react';
+import './../sass/MainPage-style.scss';
+
 import {SideDrawer, Card} from '@varp/ui';
 
-import './../sass/MainPage-style.scss';
+import {useAuth} from '../contexts/AuthContext';
 import {auth} from './../firebase';
 
-const props = {
-  header: {
-    title: 'Card Title',
-    thumbnail: 'https://placehold.co/65x65/orange/white',
-  },
-  details: {
-    minutes: 15,
-    type: 'Watching video ad',
-    reward: 150,
-  },
-  description: {
-    children: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Nam repellendus similique ab, ad sint labore voluptatibus doloribus aliquam aperiam a, 
-                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`,
-  },
-  actionBar: {
-    status: 'Start',
-  },
-  bottom: {
-    referralCode: 'HDI92DN',
-    auth: auth,
-  },
-  gameCard: {
-    title: 'End It Fast',
-    date: 'April 2nd',
-    time: '2:30pm',
-    price: 500,
-    reward: 214,
-  },
-  top: {
-    name: 'Adam Szymanski',
-    balance: 2051,
-    number: 51,
-    profit: false,
-  },
-};
+// const cardsHandler = (object: {}) => {
+//number of cards
+//   const number = Object.keys(object);
 
-const cardsHandler = (object: {}) => {
-  //number of cards
-  const number = Object.keys(object);
-
-  return <Card {...props} />;
-};
+//   return <Card {...props} />;
+// };
 
 function MainPage() {
-  return (
-    <div className="mpWrapper">
-      <SideDrawer {...props} />
-      <div className="cardsContainer">
-        <Card {...props} />
+  const {currentUser, fetchUserData} = useAuth();
+  const [result, setResult] = useState<any>({balance: 0, name: ''});
+  const [loading, setlLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function provideAsync() {
+      const data = await fetchUserData(currentUser?.uid);
+      setResult(data);
+      setlLoading(false);
+    }
+    provideAsync();
+  }, []);
+
+  if (loading) {
+    const props = {
+      header: {
+        title: 'Card Title',
+        thumbnail: 'https://placehold.co/65x65/orange/white',
+      },
+      details: {
+        minutes: 15,
+        type: 'Watching video ad',
+        reward: 150,
+      },
+      description: {
+        children: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                Nam repellendus similique ab, ad sint labore voluptatibus doloribus aliquam aperiam a, 
+                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`,
+      },
+      actionBar: {
+        status: 'Start',
+      },
+      bottom: {
+        referralCode: '0',
+        auth: auth,
+      },
+      gameCard: {
+        title: 'End It Fast',
+        date: 'April 2nd',
+        time: '2:30pm',
+        price: 500,
+        reward: 214,
+      },
+      top: {
+        name: '',
+        balance: 0,
+        number: 51,
+        profit: false,
+      },
+    };
+    return (
+      <div className="mpWrapper">
+        <SideDrawer {...props} />
+        <div className="cardsContainer">
+          <Card {...props} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    console.log(result.name);
+    console.log(result.balance);
+
+    const props = {
+      header: {
+        title: 'Card Title',
+        thumbnail: 'https://placehold.co/65x65/orange/white',
+      },
+      details: {
+        minutes: 15,
+        type: 'Watching video ad',
+        reward: 150,
+      },
+      description: {
+        children: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+                Nam repellendus similique ab, ad sint labore voluptatibus doloribus aliquam aperiam a, 
+                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`,
+      },
+      actionBar: {
+        status: 'Start',
+      },
+      bottom: {
+        referralCode: '0',
+        auth: auth,
+      },
+      gameCard: {
+        title: 'End It Fast',
+        date: 'April 2nd',
+        time: '2:30pm',
+        price: 500,
+        reward: 214,
+      },
+      top: {
+        name: result.data.name,
+        balance: result.data.balance,
+        number: 51,
+        profit: false,
+      },
+    };
+    return (
+      <div className="mpWrapper">
+        <SideDrawer {...props} />
+        <div className="cardsContainer">
+          <Card {...props} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default MainPage;
