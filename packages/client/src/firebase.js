@@ -14,7 +14,7 @@ const app = firebase.initializeApp({
 });
 
 //EMULATOR - ONLY FOR DEVELOPMENT ENVIREMENT
-app.functions().useEmulator('localhost', 5001);
+// app.functions().useEmulator('localhost', 5001);
 
 export const auth = app.auth();
 export default app;
