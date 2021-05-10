@@ -1,18 +1,10 @@
 import React, {useState} from 'react';
 
 import './../../sass/elements/ThirdElement-style.scss';
-import ForumIcon from '@material-ui/icons/Forum';
-import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
-import GradeIcon from '@material-ui/icons/Grade';
 
 function ThirdElement(props: any) {
   return (
-    <main
-      className={` teWrapper poppinsFont `}
-      // ${
-      //   props.visibility() ? " visible" : "invisible"
-      // }
-    >
+    <main className={` teWrapper poppinsFont `}>
       <div className="title flexRow">
         <div className="accentLine" />
         <p className="poppinsFont">How you can help?</p>
@@ -20,7 +12,9 @@ function ThirdElement(props: any) {
       <div className="cardsWrapper">
         <article className="wideCard c1">
           <h1>
-            <span>1.</span> Create an account
+            <div>
+              <span>1.</span> Create an account
+            </div>
             <span className="addendum"> DO IT NOW AND GET PREMIUM ACCOUNT</span>
           </h1>
           <p>
