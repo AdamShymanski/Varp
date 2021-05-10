@@ -1,88 +1,26 @@
-import { useHistory } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
 
-import "./../sass/LandingPage-style.scss";
+import './../sass/LandingPage-style.scss';
 
-import { Button } from "@varp/ui";
+import {Button} from '@varp/ui';
 
 //resources
-import logo from "./../resources/icons/logo.png";
-
-//icons
-import { makeStyles } from "@material-ui/core/styles";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import MenuIcon from "@material-ui/icons/Menu";
+import logo from './../resources/icons/logo.png';
+import hamburger from './../resources/icons/hamburger-menu.svg';
 
 //elements
-import FirstElement from "./elements/FirstElement";
-import SecondElement from "./elements/SecondElement";
-import ThirdElement from "./elements/ThirdElement";
-
-const useStyles = makeStyles({
-  arrowF: {
-    position: "absolute",
-    right: "0.6vw",
-    fontSize: "1.38em",
-    fontStyle: "700"
-  },
-  arrowGb: {
-    position: "absolute",
-    left: "0.6vw",
-    fontSize: "1.38em",
-    fontStyle: "700"
-  }
-});
+import FirstElement from './elements/FirstElement';
+import SecondElement from './elements/SecondElement';
+import ThirdElement from './elements/ThirdElement';
 
 function LandingPage() {
-  // useEffect(() => {
-  //   const createAccount = firebase.functions().httpsCallable("createAccount");
-
-  //   createAccount("coo").then(result => {
-  //     console.log(result.data);
-  //   });
-  // }, []);
-
-  const classes = useStyles();
   const history = useHistory();
 
-  const pushToSignUp = () => history.push("/register");
+  const pushToRegister = () => history.push('/register');
+  const pushToSignIn = () => history.push('/sign-in');
 
-  const [visibilityState, setVisibilityState] = useState(3);
-
-  const handleScrollIndicator = (element: String, index: number) => {
-    switch (visibilityState) {
-      case 1: {
-        if (element === "dot") {
-          if (index === 1) return "dot accent";
-          return "dot";
-        }
-        return "line";
-      }
-      case 2: {
-        if (element === "dot") {
-          switch (index) {
-            case 1:
-              return "dot accent";
-            case 2:
-              return "dot accent";
-          }
-          return "dot";
-        }
-        if (element === "line") {
-          if (index === 1) return "line accent";
-          return "line";
-        }
-        return "no-return";
-      }
-      case 3: {
-        if (element === "dot") {
-          return "dot accent";
-        }
-        return "line accent";
-      }
-    }
-  };
+  const [visibilityState, setVisibilityState] = useState(1);
 
   const buttonVisibilityHandler = (hideNumber: number) => {
     if (hideNumber === visibilityState) {
@@ -91,52 +29,91 @@ function LandingPage() {
     return true;
   };
 
-  const [hamburger, setHamburger] = useState(false);
+  const [hamburgerState, setHamburger] = useState(false);
 
   return (
     <div className="wrapper">
       <div className="wrapper--navbar flexRow">
-        <img src={logo} alt="Logo" className="wrapper--navbar--logo" />
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
         <ul className="flexRow">
-          <div className={`default-menu flexRow ${hamburger && "expand-menu"}`}>
-            <li className="poppinsFont">Home</li>
+          <div
+            className={`default-menu flexRow ${
+              hamburgerState && 'expand-menu'
+            }`}
+          >
             <li className="poppinsFont">For Developers</li>
             <li className="poppinsFont">Contact</li>
           </div>
-          <div className="hamburger-menu">
-            <MenuIcon onClick={() => setHamburger(!hamburger)} />
+          <div className="hamburgerMenu">
+            <img
+              src={hamburger}
+              alt="Hamburger Menu"
+              onClick={() => setHamburger(!hamburger)}
+            />
           </div>
-          <li className="poppinsFont " onClick={pushToSignUp}>
+          <li className="poppinsFont " onClick={pushToRegister}>
             <Button variant="primary" size="medium" children="Register" />
           </li>
+          <li className="poppinsFont ">
+            <p>or</p>
+          </li>
+          <li className="poppinsFont " onClick={pushToSignIn}>
+            <Button variant="primary" size="medium" children="Sign In" />
+          </li>
         </ul>
+        <article
+          className={`sideDrawer ${hamburgerState ? 'invisible' : ''}`}
+        ></article>
       </div>
-      <div className="wrapper--main">
-        <div className="scrollIndicator flexColumn">
+      <div className="wrapper--main flexColumn">
+        <FirstElement />
+        <SecondElement />
+        <ThirdElement />
+        {/* <div className="scrollIndicator flexColumn">
           <div className="dotWrapper flexRow">
-            <div className={handleScrollIndicator("dot", 1)} />
-            <p className="poppinsFont">What is Pyramid?</p>
+            <div className={'flexColumn dot '}>
+              <img
+                src={checkMark}
+                className={`checkMark ${checkMarkHandler(1)}`}
+              />
+            </div>
+            <p className="poppinsFont">What is Varp?</p>
           </div>
-
-          <div className={handleScrollIndicator("line", 1)} />
           <div className="dotWrapper flexRow">
-            <div className={handleScrollIndicator("dot", 2)} />
+            <div className={'flexColumn dot '}>
+              <img
+                src={checkMark}
+                className={`checkMark ${checkMarkHandler(2)}`}
+              />
+            </div>
             <p className="poppinsFont">How It Works?</p>
           </div>
-          <div className={handleScrollIndicator("line", 2)} />
           <div className="dotWrapper flexRow">
-            <div className={handleScrollIndicator("dot", 3)} />
+            <div className={'flexColumn dot '}>
+              <img
+                src={checkMark}
+                className={`checkMark ${checkMarkHandler(3)}`}
+              />
+            </div>
             <p className="poppinsFont">How You Can Help?</p>
           </div>
-        </div>
-        <div className="wrapper--main--main-content">
-          <FirstElement
+        </div> */}
+        {/* <div className="elementsWrapper flexColumn">
+           <FirstElement
             visibility={() => {
               if (visibilityState == 1) return true;
               else return false;
             }}
-          />
-          <SecondElement
+          /> 
+
+           <SecondElement
             visibility={() => {
               if (visibilityState == 2) return true;
               else return false;
@@ -147,44 +124,33 @@ function LandingPage() {
               if (visibilityState == 3) return true;
               else return false;
             }}
-          />
-        </div>
+          /> 
+        </div> */}
       </div>
-      <div className="navigationButtons ">
-        {/* <button
-          className={`poppinsFont nBtn flexRow ${
-            visibilityState === 3 ? "invisible" : ""
-          }`}
-          onClick={() =>
-            setVisibilityState(visibilityState => visibilityState + 1)
-          }
-        >
-          Next
-          <ArrowForwardIosIcon className={classes.arrowF} />
-        </button> */}
-        <div className={"gbbWrapper"}>
+      {/* <div className="navigationButtons ">
+        <div className={'gbbWrapper'}>
           <Button
             size="medium"
             variant="primary"
             children="Go Back"
             visibility={buttonVisibilityHandler(1)}
             onClick={() =>
-              setVisibilityState(visibilityState => visibilityState - 1)
+              setVisibilityState((visibilityState) => visibilityState - 1)
             }
           />
         </div>
-        <div className={"nbWrapper"}>
+        <div className={'nbWrapper'}>
           <Button
             size="medium"
             children="Next"
             variant="primary"
             visibility={buttonVisibilityHandler(3)}
             onClick={() =>
-              setVisibilityState(visibilityState => visibilityState + 1)
+              setVisibilityState((visibilityState) => visibilityState + 1)
             }
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

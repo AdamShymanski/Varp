@@ -1,59 +1,43 @@
-import React from "react";
-import "./../sass/RegisterPage-style.scss";
-import { useHistory } from "react-router-dom";
+import React, {useState} from 'react';
+import './../sass/RegisterPage-style.scss';
 
-import { Button } from "@varp/ui";
-import { makeStyles } from "@material-ui/core/styles";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import {Button, Input} from '@varp/ui';
+import logo from './../resources/icons/logo.png';
+import PacmanLoader from 'react-spinners/PacmanLoader';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import {useHistory} from 'react-router-dom';
+import {useAuth} from '../contexts/AuthContext';
 
-import firebase from "firebase";
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
 const onlyLettersRegEx = /^[A-Za-z\s]+$/;
 const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
 const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
 
 const schema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required!"),
-  // fullName: yup
-  //   .string()
-  //   .matches(onlyLettersRegEx, "No symbol or number allowed!")
-  //   .required("Name is required!"),
-  // username: yup
-  //   .string()
-  //   .min(3, "Too Short!")
-  //   .max(25, "Too Long!")
-  //   .matches(onlyLetterNumberRegEx, "No space or symbol!")
-  //   .required(),
+  email: yup.string().email('Invalid email').required('Email is required!'),
+  name: yup
+    .string()
+    .required('Name is required!')
+    .matches(onlyLettersRegEx, 'No symbol or number allowed!'),
   password: yup
     .string()
-    .min(8, "Too Short!")
+    .min(8, 'Too Short!')
     .matches(
       strongPasswordRegEx,
-      "At least one number, one capital letter, one lower letter, and one symbol"
+      'At least one number, one capital letter, one lower letter, and one symbol',
     )
-    .required()
-  // passwordCheck: yup
-  //   .string()
-  //   .oneOf([yup.ref("password"), null], "Password must match"),
-  // age: yup
-  //   .number()
-  //   .typeError("Please enter numerical value only!")
-  //   .required("Please fill your age!"),
-  // country: yup.string().required("Please fill your country")
-});
-
-const useStyles = makeStyles({
-  exclamationIcon: {
-    color: "#3a3a3a",
-    fontSize: "1.4vw",
-
-    left: "23vw",
-    position: "absolute"
-  }
+    .required(),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
+  age: yup
+    .number()
+    .typeError('Please enter numerical value only!')
+    .required('Please fill your age!'),
+  country: yup.string().required('Please fill your country'),
 });
 
 interface FormProps {
@@ -65,103 +49,84 @@ interface FormProps {
   country: string;
 }
 
-export default function RegisterPage() {
+function RegisterPage() {
+  const {callRegister} = useAuth();
+  const [errorState, setError] = useState<string>('');
+
   const history = useHistory();
 
-  const { handleSubmit, register, errors } = useForm({
-    resolver: yupResolver(schema)
+  const {handleSubmit, register, errors} = useForm({
+    resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data: FormProps) => {
-    console.log({ email: data.email, password: data.password });
-
-    const createAccount = firebase.functions().httpsCallable("createUserTest");
-
-    createAccount({ email: data.email, password: data.password })
-      .then(result => {
-        console.log(result);
-        console.log("result");
-      })
-      .catch(error => {
-        console.log(error);
-        const code = error.code;
-        const message = error.message;
-        const details = error.details;
-        console.log(code, message, details);
-      });
+    console.log(data);
+    const result = await callRegister(data);
+    setError(result + '!');
   };
 
-  const classes = useStyles();
-
   return (
-    <div className="wrapper flexColumn">
+    <div className="reWrapper flexColumn">
+      <div className="logoWrapper">
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
+      </div>
       <h1 className="robotoFont">Register</h1>
       <p className="robotoFont description-s  "></p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont">Email</p>
-          <input className="robotoFont" name="email" ref={register} />
-          <p className="error poppinsFont">
-            {errors.email && errors.email.message}
-          </p>
-        </div>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont">Full Name</p>
-          <input className="robotoFont" name="fullName" ref={register} />
-          <p className="error poppinsFont">
-            {errors.fullName && errors.fullName.message}
-          </p>
-        </div>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont ">Password</p>
+        <Input
+          label="Email"
+          reference={register}
+          size="big"
+          name="email"
+          error={errors.email}
+        />
+        <Input
+          label="Full Name"
+          reference={register}
+          size="big"
+          name="name"
+          error={errors.name}
+        />
+        <Input
+          label="Password"
+          reference={register}
+          size="big"
+          name="password"
+          type="password"
+          error={errors.password}
+        />
+        <Input
+          label="Confirm Password"
+          reference={register}
+          size="big"
+          name="confirmPassword"
+          type="password"
+          error={errors.confirmPassword}
+        />
+        <Input
+          label="Age"
+          reference={register}
+          size="big"
+          name="age"
+          type="number"
+          error={errors.age}
+        />
+        <Input
+          label="Country"
+          reference={register}
+          size="big"
+          name="country"
+          error={errors.country}
+        />
 
-          <div className="passowrdInputWrapper flexRow">
-            <div className="flexColumn">
-              <input
-                className="robotoFont"
-                type="password"
-                name="password"
-                ref={register}
-              />
-              <p className="error poppinsFont">
-                {errors.password && errors.password.message}
-              </p>
-            </div>
-            <ErrorOutlineIcon className={classes.exclamationIcon} />
-            <div id="talkbubble"></div>
-          </div>
-        </div>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont">Confirm Password</p>
-          <input
-            className="robotoFont"
-            type="password"
-            name="passwordCheck"
-            ref={register}
-          />
-          <p className="error poppinsFont">
-            {errors.passwordCheck && errors.passwordCheck.message}
-          </p>
-        </div>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont">Age</p>
-          <input
-            className="robotoFont"
-            type="number"
-            name="age"
-            ref={register}
-          />
-          <p className="error poppinsFont">
-            {errors.age && errors.age.message}
-          </p>
-        </div>
-        <div className="inputWrapper flexColumn">
-          <p className="label robotoFont">Country</p>
-          <input className="robotoFont" name="country" ref={register} />
-          <p className="error poppinsFont">
-            {errors.country && errors.country.message}
-          </p>
-        </div>
+        <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="buttonWrapper">
           <Button
             type="submit"
@@ -169,8 +134,10 @@ export default function RegisterPage() {
             children="Submit"
             variant="primary"
           />
+          <PacmanLoader color={'#0082FF'} loading={true} size={15} />
         </div>
       </form>
     </div>
   );
 }
+export default RegisterPage;

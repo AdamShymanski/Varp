@@ -1,21 +1,21 @@
-import React, { useState } from "react";
-import "./../../sass/elements/SecondElement-style.scss";
+import React, {useState} from 'react';
+import './../../sass/elements/SecondElement-style.scss';
 
-import { makeStyles } from "@material-ui/core/styles";
+import {makeStyles} from '@material-ui/core/styles';
 
 //material UI icons
-import VideogameAssetOutlinedIcon from "@material-ui/icons/VideogameAssetOutlined";
-import AttachMoneyOutlinedIcon from "@material-ui/icons/AttachMoneyOutlined";
-import FindInPageOutlinedIcon from "@material-ui/icons/FindInPageOutlined";
-import WorkOutlinedIcon from "@material-ui/icons/WorkOutlined";
+import VideogameAssetOutlinedIcon from '@material-ui/icons/VideogameAssetOutlined';
+import AttachMoneyOutlinedIcon from '@material-ui/icons/AttachMoneyOutlined';
+import FindInPageOutlinedIcon from '@material-ui/icons/FindInPageOutlined';
+import WorkOutlinedIcon from '@material-ui/icons/WorkOutlined';
 
 const useStyles = makeStyles({
   icon: {
-    color: "#f4f4f4",
-    fontSize: "clamp(3rem,7vw,6rem)",
-    marginTop: "1vh",
-    fontStyle: "300"
-  }
+    color: '#f4f4f4',
+    fontSize: '5em',
+    marginTop: '1vh',
+    fontStyle: '300',
+  },
 });
 
 function SecondElement(props: any) {
@@ -23,51 +23,50 @@ function SecondElement(props: any) {
 
   return (
     <main
-      className={`seWrapper ${props.visibility() ? " visible" : "invisible"}`}
+      className={`seWrapper`}
+      //  ${props.visibility() ? " visible" : "invisible"}
     >
-      <article>
-        <div className="title flexRow">
-          <div className="accentLine" />
-          <p className="poppinsFont">How it works?</p>
-        </div>
-      </article>
-      <article className="flexRow">
+      <div className="title flexRow">
+        <div className="accentLine" />
+        <p className="poppinsFont titleText">How it works?</p>
+      </div>
+      <article className="cardsWrapper flexRow">
         <div className="card">
           <div className="topWrapper flexColumn">
             <WorkOutlinedIcon className={classes.icon} />
-            <h1 className="title poppinsFont">Collaboration</h1>
+            <h1 className="cTitle poppinsFont">Collaboration</h1>
           </div>
           <p className="description poppinsFont">
             We work with many companies to raise money for the pools
           </p>
           <p className="detailDescription robotoFont">
-            This is my job, I'm looking for companys which want to colaborate
-            with Pyramid. It's source of money for prizes for winners, but more
-            on that later.
+            This is our part of job, we are looking for companys which want to
+            colaborate with Varp. It's source of money for prizes for winners,
+            but more on that later.
           </p>
         </div>
         <div className="card">
           <div className="topWrapper flexColumn">
             <FindInPageOutlinedIcon className={classes.icon} />
-            <h1 className="title poppinsFont">Your Job</h1>
+            <h1 className="cTitle poppinsFont">Your Job</h1>
           </div>
           <p className="description poppinsFont">
             Complete the tasks to get the tokens needed to join the game
           </p>
           <p className="detailDescription robotoFont">
-            Your task is to get acquainted with Pyramid's collaborators and
-            their offer, as part of the task you could be requested to express
-            your opinion about them, create an account on their website or just
-            leave them your contact details. After completing the task, you
-            receive tokens that will allow you to join the game. Remember that
-            the amount tokens required to join the game is different each time,
-            and largely depends on the pool of money allocated for the prize.
+            Your task is to get acquainted with Varp's collaborators and their
+            offer, as part of the task you could be requested to express your
+            opinion about them, create an account on their website or just leave
+            them your contact details. After completing the task, you receive
+            tokens that will allow you to join the game. Remember that the
+            amount tokens required to join the game is different each time, and
+            largely depends on the pool of money allocated for the prize.
           </p>
         </div>
         <div className="card">
           <div className="topWrapper flexColumn">
             <VideogameAssetOutlinedIcon className={classes.icon} />
-            <h1 className=" title poppinsFont">Game</h1>
+            <h1 className=" cTitle poppinsFont">Game</h1>
           </div>
           <p className="description poppinsFont">
             Enjoy competition and play with other players in arcade games
@@ -83,7 +82,7 @@ function SecondElement(props: any) {
         <div className="card">
           <div className="topWrapper flexColumn">
             <AttachMoneyOutlinedIcon className={classes.icon} />
-            <h1 className="title poppinsFont">Prize</h1>
+            <h1 className="cTitle poppinsFont">Prize</h1>
           </div>
           <p className="description poppinsFont">
             If you are among the winners, collect your prize in cash on the same

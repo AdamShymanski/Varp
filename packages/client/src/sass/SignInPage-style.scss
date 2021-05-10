@@ -1,0 +1,34 @@
+@import '../variables.scss';
+
+.si-wrapper {
+  height: 100vh;
+  justify-content: center;
+  .logoWrapper {
+    position: absolute;
+    top: 12.1px;
+    left: 0px;
+  }
+  h1 {
+    font-size: 5em;
+    margin-bottom: 2vh;
+  }
+  .description-s {
+    font-weight: 400;
+    text-align: center;
+    color: $second-text;
+    width: 25vw;
+  }
+  form {
+    margin-top: 2vh;
+    align-items: flex-start;
+  }
+  .divider {
+    height: 22px;
+  }
+  .errorMessage {
+    color: $old-accent;
+    font-size: 1em;
+    font-weight: 500;
+    margin: 20px 0;
+  }
+}

@@ -1,13 +1,13 @@
-import { css } from "@emotion/react";
-import React from "react";
+import {css} from '@emotion/react';
+import React from 'react';
 
-import tagIcon from "./tag.svg";
-import clockIcon from "./clock.svg";
-import calendarIcon from "./calendar.svg";
-import tokenIcon from "./triangle.svg";
-import dollarSignIcon from "./dollar_sign.svg";
+import tagIcon from './tag.svg';
+import clockIcon from './clock.svg';
+import calendarIcon from './calendar.svg';
+import tokenIcon from './triangle.svg';
+import dollarSignIcon from './dollar_sign.svg';
 
-import { Button } from "./../../Button";
+import {Button} from './../../Button';
 
 const style = css`
   * {
@@ -16,10 +16,10 @@ const style = css`
     box-sizing: border-box;
     background: transparent;
   }
-  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
   max-width: 500px;
 
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #f4f4f4;
 
   .button {
@@ -33,6 +33,7 @@ const style = css`
 
     padding-left: 15px;
     margin: 10px 0;
+    margin-bottom: 12px;
   }
   h1 {
     font-weight: 500;
@@ -70,11 +71,11 @@ export interface Props {
 
 export const GameCard = (props: Props) => {
   const {
-    title = "End It Fast",
-    date = "April 2nd",
-    time = "2:30pm",
+    title = 'End It Fast',
+    date = 'April 2nd',
+    time = '2:30pm',
     reward = 214,
-    price = 135
+    price = 135,
   } = props;
   return (
     <main css={style}>

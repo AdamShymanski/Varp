@@ -1,8 +1,8 @@
-import { css } from "@emotion/react";
-import React from "react";
-import { Top, Props as TopProps } from "./Top";
-import { GameCard, Props as GameCardProps } from "./GameCard";
-import { Bottom, Props as BottomProps } from "./BottomCard";
+import {css} from '@emotion/react';
+import React from 'react';
+import {Top, Props as TopProps} from './Top';
+import {GameCard, Props as GameCardProps} from './GameCard';
+import {Bottom, Props as BottomProps} from './BottomCard';
 
 const style = css`
   * {
@@ -16,6 +16,7 @@ const style = css`
     position: relative;
     width: 22vw;
     height: 100vh;
+    /* max-width: 500px; */
 
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@ export interface Props {
   bottom: BottomProps;
 }
 
-export const Container = ({ children }: PropsPreview) => {
+export const Container = ({children}: PropsPreview) => {
   return (
     <main css={style}>
       <div className="body">{children}</div>
@@ -59,5 +60,5 @@ export const SideDrawerPreview = {
   Container,
   Top,
   GameCard,
-  Bottom
+  Bottom,
 };

@@ -1,91 +1,81 @@
-// import React, { useEffect, useState } from "react";
-import React, { useEffect, useState } from "react";
-import "./../sass/FormPage-style.scss";
+import React, {useState} from 'react';
+import './../sass/SignInPage-style.scss';
+import {useHistory} from 'react-router-dom';
 
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import {Button, Input} from '@varp/ui';
+
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import {useAuth} from '../contexts/AuthContext';
+
+import logo from './../resources/icons/logo.png';
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required()
+  email: yup.string().email('Invalid email').required('Email is required'),
+  password: yup.string().required('Password is required'),
 });
 
 interface FormProps {
   email: string;
-  name: string;
   password: string;
-  repeatPassword: string;
-  age: number;
-  country: string;
 }
 
 export default function SignInPage() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("auth-token"));
-  useEffect(() => {
-    console.log("triggered");
-    if (localStorage.getItem("auth-token")) {
-      setLoggedIn(true);
-    } else {
-      setLoggedIn(false);
-    }
-  }, [token]);
-  const { handleSubmit, register } = useForm({
-    resolver: yupResolver(schema)
+  const [errorState, setError] = useState<string>('');
+  const history = useHistory();
+  const {signIn} = useAuth();
+
+  const {handleSubmit, register, errors} = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const logOut = () => {
-    localStorage.clear();
-    setToken(null);
-  };
   const onSubmit = async (data: FormProps) => {
-    try {
-    } catch (err) {
-      console.error(err);
-    }
+    const {email, password} = data;
+    const result = await signIn(email, password);
+    if (result) setError('Wrong password or email!');
   };
 
   return (
-    <main className="FA center">
-      <section className="center">
-        <h1 className="robotoFont">{loggedIn ? "Log out" : "Log in"}</h1>
-      </section>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        {loggedIn ? null : (
-          <>
-            <div className="card">
-              <h1 className="robotoFont suo">E-mail</h1>
-              <input
-                className="textBox"
-                type="text"
-                name="email"
-                ref={register}
-              />
-            </div>
-            <div className="card">
-              <h1 className="robotoFont suo">Password</h1>
-              <input
-                className="textBox"
-                type="password"
-                name="password"
-                ref={register}
-              />
-            </div>
-          </>
-        )}
-        <div className="buttonContainer center">
-          {loggedIn ? (
-            <button onClick={() => logOut()} className="robotoFont">
-              Log Out
-            </button>
-          ) : (
-            <button type="submit" className="robotoFont">
-              Submit
-            </button>
-          )}
-        </div>
+    <div className="si-wrapper flexColumn">
+      <div className="logoWrapper">
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
+      </div>
+      <h1 className="robotoFont">Sign In</h1>
+      <p className="robotoFont description-s  "></p>
+      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="Email"
+          reference={register}
+          size="big"
+          name="email"
+          error={errors.email}
+        />
+        <Input
+          label="Password"
+          reference={register}
+          size="big"
+          name="password"
+          type="password"
+          error={errors.password}
+        />
+        <div className="divider" />
+        <Button
+          type="submit"
+          size="medium"
+          children="Submit"
+          variant="primary"
+        />
+        <p className="errorMessage poppinsFont">{errorState}</p>
       </form>
-    </main>
+    </div>
   );
 }
