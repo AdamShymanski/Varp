@@ -230,7 +230,7 @@ export interface Props {
   /**
    * Name of user
    */
-  name: string;
+  name: string | undefined;
   /**
    * Balance of user
    */
@@ -259,8 +259,8 @@ export interface Props {
 
 export const Top = (props: Props) => {
   const {
-    name = 'Adam',
-    balance = 2051,
+    name,
+    balance,
     profit = true,
     number = 51,
     dailyStreak = 5,
