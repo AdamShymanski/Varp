@@ -75,7 +75,7 @@ const style = css`
         font-size: 1em;
       }
     }
-    .lastActionContainer {
+    .latestActionContainer {
       align-self: flex-end;
       display: flex;
       flex-direction: row;
@@ -84,9 +84,6 @@ const style = css`
         margin-right: 2px;
         width: 1em;
       }
-      p {
-        font-size: 1em;
-      }
     }
 
     .bonus {
@@ -94,8 +91,7 @@ const style = css`
       font-weight: 500;
       > p {
         margin-bottom: 12px;
-        span {
-          font-size: 0.5em;
+        width: 4em;
         }
       }
     }
@@ -151,17 +147,64 @@ const style = css`
           font-size: 0.7em;
         }
       }
-      .expander {
-        background-color: inherit;
-        display: inline-block;
-        border-radius: 12px;
-        width: 12px;
-        height: 100%;
-        left: calc(100% - 6px);
-        top: 0%;
-        position: absolute;
-        content: '';
-        z-index: -1;
+      .bar {
+        position: relative;
+        
+        &::before {
+          content: attr(data-text);
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 100%;
+          margin-left:15px;
+          width:200px;
+          padding:10px;
+          border-radius:10px;
+          background:#000;
+          color: #fff;
+          text-align:center;
+          display:none;
+        }
+        
+        .info{
+          img {
+            width: 0.7em;
+            margin-left: 12px;
+            display: block;
+            float: left;
+          }
+          display: flex;
+          height: 100%;
+          overflow: hidden;
+          align-items: center;
+          justify-content: center;
+          left: -6px;
+        }
+        .expander {
+          background-color: inherit;
+          display: inline-block;
+          border-radius: 12px;
+          width: 12px;
+          height: 100%;
+          left: calc(100% - 6px);
+          top: 0%;
+          position: absolute;
+          content: "";
+          z-index: -1;
+        }
+      }
+      .dailyStreak {
+        z-index: 3;
+        background-color: #2cb200;
+        border-radius: 6px 0 0 6px;
+      }
+      .referral {
+        z-index: 2;
+        background-color: #33cc01;
+      }
+      .finishedTask {
+        z-index: 1;
+        background-color: #3be601;
       }
     }
     .dailyStreak {
@@ -272,8 +315,14 @@ export const Top = (props: Props) => {
 
   const maxDailyStreak = 10;
   const maxReferral = 10;
-  const maxSurveys = 10;
-
+  const maxFinishedTask = 10;
+  const getWidth = (value: number, maximum: number) => {
+    const width = 1/3*(value/maximum)
+    if (width < 0.16){
+      return '16%';
+    }
+    return `calc(100% * ${width.toString()}`;
+  }
   return (
     <main css={style}>
       <article className="name">{name}</article>
@@ -283,8 +332,10 @@ export const Top = (props: Props) => {
         </div>
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
-          <p>{balance}</p>
-          <div className="lastActionContainer">
+          <p>
+            {balance}
+          </p>
+          <div className="latestActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
             <p className="number">{`${profit ? '+' : '-'} ${number}`}</p>
           </div>

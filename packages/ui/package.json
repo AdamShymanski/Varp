@@ -14,15 +14,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:pyramid-team/pyramid-mvp.git"
+    "url": "git@gitlab.com:varp-team/varp-website.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1",
     "start": "start-storybook -p 6006",
-    "build": "build-storybook -o dist"
+    "build": "build-storybook -o dist",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "bugs": {
-    "url": "https://gitlab.com/pyramid-team/pyramid-mvp/issues"
+    "url": "https://gitlab.com/varp-team/varp-website/issues"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
