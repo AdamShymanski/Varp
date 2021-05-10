@@ -9,10 +9,6 @@ import {Button} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
 import hamburger from './../resources/icons/hamburger-menu.svg';
 
-//icons
-import {makeStyles} from '@material-ui/core/styles';
-import MenuIcon from '@material-ui/icons/Menu';
-
 //elements
 import FirstElement from './elements/FirstElement';
 import SecondElement from './elements/SecondElement';
@@ -25,21 +21,6 @@ function LandingPage() {
   const pushToSignIn = () => history.push('/sign-in');
 
   const [visibilityState, setVisibilityState] = useState(1);
-
-  // const checkMarkHandler = (number: Number) => {
-  //   if (number === 2) {
-  //     if (visibilityState === 2) {
-  //       return 'visible';
-  //     }
-  //     if (visibilityState === 3) {
-  //       return 'visible';
-  //     }
-  //     return 'invisible';
-  //   }
-  //   if (number === 3) {
-  //     if (visibilityState !== 3) return 'invisible';
-  //   }
-  // };
 
   const buttonVisibilityHandler = (hideNumber: number) => {
     if (hideNumber === visibilityState) {
@@ -62,12 +43,20 @@ function LandingPage() {
           }}
         />
         <ul className="flexRow">
-          <div className={`default-menu flexRow ${hamburger && 'expand-menu'}`}>
+          <div
+            className={`default-menu flexRow ${
+              hamburgerState && 'expand-menu'
+            }`}
+          >
             <li className="poppinsFont">For Developers</li>
             <li className="poppinsFont">Contact</li>
           </div>
           <div className="hamburgerMenu">
-            <img src={hamburger} alt="Hamburger Menu" />
+            <img
+              src={hamburger}
+              alt="Hamburger Menu"
+              onClick={() => setHamburger(!hamburger)}
+            />
           </div>
           <li className="poppinsFont " onClick={pushToRegister}>
             <Button variant="primary" size="medium" children="Register" />
