@@ -92,19 +92,57 @@ const style = css`
       > p {
         margin-bottom: 12px;
         width: 4em;
-        }
       }
     }
-    .scoreBar {
-      width: 80%;
-      height: 38px;
+  }
+  .scoreBar {
+    width: 80%;
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 0 0 2px #5c5c5c inset;
+    border-radius: 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    p {
+      font-size: 0.7em;
+    }
+  }
+  .bar {
+    position: relative;
+
+    &::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 100%;
+      margin-left: 15px;
+      width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      display: none;
+    }
+
+    .info {
       display: flex;
+      height: 100%;
+      flex-wrap: wrap;
+      overflow: hidden;
+      align-items: center;
+      justify-content: center;
+      left: -6px;
       flex-direction: row;
-      box-shadow: 0 0 0 2px #5c5c5c inset;
-      border-radius: 4px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
+      img {
+        width: 38%;
+        margin-left: 12px;
+        display: block;
+        float: left;
+      }
       p {
         font-size: 0.7em;
       }
@@ -129,82 +167,30 @@ const style = css`
       }
 
       .info {
-        display: flex;
-        height: 100%;
-        flex-wrap: wrap;
-        overflow: hidden;
-        align-items: center;
-        justify-content: center;
-        left: -6px;
-        flex-direction: row;
         img {
-          width: 38%;
+          width: 0.7em;
           margin-left: 12px;
           display: block;
           float: left;
         }
-        p {
-          font-size: 0.7em;
-        }
+        display: flex;
+        height: 100%;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        left: -6px;
       }
-      .bar {
-        position: relative;
-        
-        &::before {
-          content: attr(data-text);
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          left: 100%;
-          margin-left:15px;
-          width:200px;
-          padding:10px;
-          border-radius:10px;
-          background:#000;
-          color: #fff;
-          text-align:center;
-          display:none;
-        }
-        
-        .info{
-          img {
-            width: 0.7em;
-            margin-left: 12px;
-            display: block;
-            float: left;
-          }
-          display: flex;
-          height: 100%;
-          overflow: hidden;
-          align-items: center;
-          justify-content: center;
-          left: -6px;
-        }
-        .expander {
-          background-color: inherit;
-          display: inline-block;
-          border-radius: 12px;
-          width: 12px;
-          height: 100%;
-          left: calc(100% - 6px);
-          top: 0%;
-          position: absolute;
-          content: "";
-          z-index: -1;
-        }
-      }
-      .dailyStreak {
-        z-index: 3;
-        background-color: #2cb200;
-        border-radius: 6px 0 0 6px;
-      }
-      .referral {
-        z-index: 2;
-        background-color: #33cc01;
-      }
-      .finishedTask {
-        z-index: 1;
-        background-color: #3be601;
+      .expander {
+        background-color: inherit;
+        display: inline-block;
+        border-radius: 12px;
+        width: 12px;
+        height: 100%;
+        left: calc(100% - 6px);
+        top: 0%;
+        position: absolute;
+        content: '';
+        z-index: -1;
       }
     }
     .dailyStreak {
@@ -221,6 +207,20 @@ const style = css`
       background-color: #3be601;
     }
   }
+  .dailyStreak {
+    z-index: 3;
+    background-color: #2cb200;
+    border-radius: 6px 0 0 6px;
+  }
+  .referral {
+    z-index: 2;
+    background-color: #33cc01;
+  }
+  .finishedTask {
+    z-index: 1;
+    background-color: #3be601;
+  }
+
   .bonusInfo {
     display: flex;
     flex-direction: row;
@@ -315,14 +315,15 @@ export const Top = (props: Props) => {
 
   const maxDailyStreak = 10;
   const maxReferral = 10;
-  const maxFinishedTask = 10;
+  const maxSurveys = 10;
+
   const getWidth = (value: number, maximum: number) => {
-    const width = 1/3*(value/maximum)
-    if (width < 0.16){
+    const width = (1 / 3) * (value / maximum);
+    if (width < 0.16) {
       return '16%';
     }
     return `calc(100% * ${width.toString()}`;
-  }
+  };
   return (
     <main css={style}>
       <article className="name">{name}</article>
@@ -332,9 +333,7 @@ export const Top = (props: Props) => {
         </div>
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
-          <p>
-            {balance}
-          </p>
+          <p>{balance}</p>
           <div className="latestActionContainer">
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
             <p className="number">{`${profit ? '+' : '-'} ${number}`}</p>
