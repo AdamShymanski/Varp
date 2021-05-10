@@ -5,17 +5,25 @@ $margin-hamburger-menu: 20px;
 .title {
   .accentLine {
     height: 4px;
-    width: 2.2vw;
+    width: 35px;
 
     border-radius: 8px;
     background: $accent;
   }
+
   p {
     margin-left: 1vw;
-
     font-size: 3.5em;
     font-weight: 700;
     color: $main-text;
+  }
+  @media screen and (max-width: 595px) {
+    p {
+      font-size: 2em;
+    }
+    .accentLine {
+      width: 20px;
+    }
   }
 }
 
@@ -30,6 +38,51 @@ $margin-hamburger-menu: 20px;
 
       .hamburgerMenu {
         display: none;
+      }
+      .default-menu {
+        display: flex;
+        visibility: visible;
+        @media screen and (max-width: 500px) {
+          transition: all 0.5s ease;
+          visibility: hidden;
+          width: 0;
+          height: 0;
+          position: absolute;
+          flex-direction: column;
+          top: 0;
+          right: 0;
+          z-index: 5000;
+          background-color: black;
+          transform: rotate3d(90);
+          li {
+            padding: 0;
+            margin: 0;
+            top: calc(50vh - (0.75rem + 100px));
+            position: relative;
+            text-align: center;
+            width: 100%;
+            font-size: 0;
+            &:hover {
+              background-color: rgba(252, 28, 8, 0.7);
+              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034),
+                0 6.7px 5.3px rgba(252, 28, 8, 0.048),
+                0 12.5px 10px rgba(252, 28, 8, 0.06),
+                0 22.3px 17.9px rgba(252, 28, 8, 0.072),
+                0 41.8px 33.4px rgba(252, 28, 8, 0.086);
+            }
+          }
+          &.expand-menu {
+            display: flex;
+            visibility: visible;
+            width: calc(100vw);
+            height: calc(100vh);
+            li {
+              font-size: clamp(0.75rem, 2vw, 1rem);
+              padding: $margin-hamburger-menu 0;
+              margin: $margin-hamburger-menu/2 0;
+            }
+          }
+        }
       }
 
       li {
@@ -68,5 +121,8 @@ $margin-hamburger-menu: 20px;
   .wrapper--main {
     display: flex;
     margin-right: 15vw;
+    @media screen and (max-width: 1285px) {
+      margin-right: 0;
+    }
   }
 }
