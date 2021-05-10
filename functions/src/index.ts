@@ -1,8 +1,24 @@
-// const serviceAccount = require('../keys/serviceAccountKey.json');
+import * as functions from 'firebase-functions';
+import * as admin from 'firebase-admin';
 
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: "https://varp-ba7a7.firebaseio.com"
+admin.initializeApp();
+
+const db = admin.firestore();
+
+interface RegisterProps {
+  email: string;
+  password: string;
+  name: string;
+  age: number;
+  country: string;
+}
+interface FUDProps {
+  uid: string;
+}
+
+export const fetchUserData = functions.https.onCall(async (data: FUDProps) => {
+  const result = await db.collection('users').doc(data.uid).get();
+  return result.data();
 });
 
 export const createUserTest = functions.https.onCall(
