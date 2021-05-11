@@ -31,6 +31,7 @@ const style = css`
     color: #0082ff;
     font-size: 0.8vw;
     font-weight: 500;
+    margin-top: 8px;
   }
   .input {
     margin: 7px 0 3px 0;
