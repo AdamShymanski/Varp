@@ -59,7 +59,7 @@ export const AuthProvider: React.FC = ({children}) => {
   const history = useHistory();
 
   async function callRegister(data: RegisterProps) {
-    const register = firebase.functions().httpsCallable('createUserTest');
+    const register = firebase.functions().httpsCallable('createUser');
     const {email, password, age, name, country} = data;
 
     try {
