@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
 .mpWrapper {
   display: flex;
@@ -10,5 +10,18 @@
     padding-top: 2vh;
 
     background: #1b1b1b;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    .mpInfo {
+      font-family: $poppins-font;
+      margin-top: 50px;
+      color: #a1a1a1;
+      font-size: 180%;
+      font-weight: 600;
+    }
   }
 }

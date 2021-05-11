@@ -62,21 +62,22 @@ function MainPage() {
         balance: 0,
         number: 51,
         profit: false,
+        referral: 0,
+        dailyStreak: 0,
+        surveysFinished: 0,
       },
     };
     return (
       <div className="mpWrapper">
         <SideDrawer {...props} />
         <div className="cardsContainer">
-          <Card {...props} />
+          <div className="mpInfo">We are starting soon...</div>
+          {/* <Card {...props} /> */}
         </div>
       </div>
     );
   } else {
-    console.log(result.name);
-    console.log(result.balance);
-
-    const props = {
+    const sdProps = {
       header: {
         title: 'Card Title',
         thumbnail: 'https://placehold.co/65x65/orange/white',
@@ -110,13 +111,18 @@ function MainPage() {
         balance: result.data.balance,
         number: 51,
         profit: false,
+        referral: result.data.referralProgram,
+        dailyStreak: result.data.dailyStreak,
+        surveysFinished: result.data.surveyProgram,
       },
     };
+
     return (
       <div className="mpWrapper">
-        <SideDrawer {...props} />
+        <SideDrawer {...sdProps} />
         <div className="cardsContainer">
-          <Card {...props} />
+          <div className="mpInfo">We are starting soon...</div>
+          {/* <Card {...props} /> */}
         </div>
       </div>
     );
