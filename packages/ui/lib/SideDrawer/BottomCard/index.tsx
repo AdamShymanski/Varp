@@ -21,7 +21,6 @@ const style = css`
 
   width: 20vw;
   bottom: 20px;
-  margin-left: 1vw;
   position: absolute;
 
   .card {
@@ -33,7 +32,7 @@ const style = css`
     align-items: center;
     justify-content: space-evenly;
 
-    border-radius: 8px;
+    border-radius: 6px;
     img {
       width: 30px;
     }
