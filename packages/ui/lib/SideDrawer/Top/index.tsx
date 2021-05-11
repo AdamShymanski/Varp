@@ -77,25 +77,31 @@ const style = css`
       align-self: flex-end;
       display: flex;
       flex-direction: row;
-      margin-bottom: 5px;
+      margin-bottom: 1px;
       img {
+        position: relative;
+        bottom: 2.5px;
         margin-left: 20px;
         margin-right: 5px;
         width: 1em;
       }
     }
 
+    .invisible {
+      display: none;
+    }
+
     .bonus {
       font-size: 1.5em;
       > p {
-        font-size: 0.8em;
+        font-size: 0.7em;
         font-weight: 500;
-        margin-bottom: 8px;
+        margin-bottom: 5px;
         width: 4em;
       }
     }
     .scoreBar {
-      width: 80%;
+      width: 75%;
       height: 32px;
       display: flex;
       flex-direction: row;
@@ -214,6 +220,7 @@ const style = css`
     }
     &:hover:before {
       display: block;
+      width: 220px;
     }
   }
 
@@ -258,19 +265,15 @@ export interface Props {
 
 export const Top = (props: Props) => {
   const {
-    balance = 451,
-    profit = true,
-    name = '',
-    number = 51,
+    balance = 666,
+    profit = false,
+    name = 'Adam',
+    number = 0,
     dailyStreak = 5,
     referral = 5,
     surveysFinished = 5,
     ...rest
   } = props;
-
-  const maxDailyStreak = 10;
-  const maxReferral = 10;
-  const maxSurveysFinished = 10;
 
   // const getWidth = (value: number, maximum: number) => {
   //
@@ -296,7 +299,11 @@ export const Top = (props: Props) => {
         <div className="tokenContainer">
           <img src={tokenIcon} alt="Token Icon" className="tokenSign" />
           <p>{balance}</p>
-          <div className="latestActionContainer">
+          <div
+            className={`latestActionContainer ${
+              number == 0 ? 'invisible' : ''
+            }`}
+          >
             <img src={`${profit ? profitIcon : loseIcon}`} alt="Profit Icon" />
             <p className={'number ' + (profit ? 'green' : 'red')}>{number}</p>
           </div>
