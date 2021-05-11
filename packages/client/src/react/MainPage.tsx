@@ -60,7 +60,7 @@ function MainPage() {
       top: {
         name: '',
         balance: 0,
-        number: 51,
+        number: 0,
         profit: false,
       },
     };
@@ -68,14 +68,11 @@ function MainPage() {
       <div className="mpWrapper">
         <SideDrawer {...props} />
         <div className="cardsContainer">
-          <Card {...props} />
+          <div className="mpInfo">We are starting soon...</div>
         </div>
       </div>
     );
   } else {
-    console.log(result.name);
-    console.log(result.balance);
-
     const props = {
       header: {
         title: 'Card Title',
@@ -95,7 +92,7 @@ function MainPage() {
         status: 'Start',
       },
       bottom: {
-        referralCode: '0',
+        referralCode: 'skrrrr',
         auth: auth,
       },
       gameCard: {
@@ -108,15 +105,15 @@ function MainPage() {
       top: {
         name: result.data.name,
         balance: result.data.balance,
-        number: 51,
-        profit: false,
+        number: result.data.lastAction,
+        profit: result.data.profit,
       },
     };
     return (
       <div className="mpWrapper">
         <SideDrawer {...props} />
         <div className="cardsContainer">
-          <Card {...props} />
+          <div className="mpInfo">We are starting soon...</div>
         </div>
       </div>
     );
