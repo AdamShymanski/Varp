@@ -60,7 +60,7 @@ function MainPage() {
       top: {
         name: '',
         balance: 0,
-        number: 51,
+        number: 0,
         profit: false,
         referral: 0,
         dailyStreak: 0,
@@ -77,7 +77,7 @@ function MainPage() {
       </div>
     );
   } else {
-    const sdProps = {
+    const props = {
       header: {
         title: 'Card Title',
         thumbnail: 'https://placehold.co/65x65/orange/white',
@@ -96,7 +96,7 @@ function MainPage() {
         status: 'Start',
       },
       bottom: {
-        referralCode: '0',
+        referralCode: 'skrrrr',
         auth: auth,
       },
       gameCard: {
@@ -109,17 +109,14 @@ function MainPage() {
       top: {
         name: result.data.name,
         balance: result.data.balance,
-        number: 51,
-        profit: false,
-        referral: result.data.referralProgram,
-        dailyStreak: result.data.dailyStreak,
-        surveysFinished: result.data.surveyProgram,
+        number: result.data.lastAction,
+        profit: result.data.profit,
       },
     };
 
     return (
       <div className="mpWrapper">
-        <SideDrawer {...sdProps} />
+        <SideDrawer {...props} />
         <div className="cardsContainer">
           <div className="mpInfo">We are starting soon...</div>
           {/* <Card {...props} /> */}

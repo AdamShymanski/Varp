@@ -52,7 +52,8 @@ export const createUser = functions.https.onCall(
         surveyProgram: 0,
         referralProgram: 0,
         referralCode: user.uid,
-        lastAction: '',
+        lastAction: 0,
+        profit: false,
         name: name,
       });
 

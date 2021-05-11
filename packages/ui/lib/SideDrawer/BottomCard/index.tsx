@@ -7,6 +7,7 @@ import settingsIcon from './settings.svg';
 import copyReferralCodeIcon from './copy_referral_code.svg';
 
 import {useHistory} from 'react-router-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 const style = css`
   * {
@@ -66,12 +67,15 @@ export const Bottom: React.FC<Props> = (props) => {
             history.push('/home');
           }}
         />
-        <img
-          src={copyReferralCodeIcon}
-          onClick={() =>
-            `Crete functions which copy referral code to client's clipboard`
-          }
-        />
+        <CopyToClipboard text={referralCode}>
+          <img
+            src={copyReferralCodeIcon}
+            // onClick={() =>
+            //   `Crete functions which copy referral code to client's clipboard`
+            // }
+          />
+        </CopyToClipboard>
+
         <img
           src={playIcon}
           onClick={() => `Crete functions which shows game page`}
