@@ -54,6 +54,7 @@ export const createUserTest = functions.https.onCall(
           'The provided email is already in use by an existing user',
         );
       } else {
+        //
         // throw new functions.https.HttpsError("...other code....", "...");
         // If an error other than HttpsError is thrown,
         // your client instead receives an error with
