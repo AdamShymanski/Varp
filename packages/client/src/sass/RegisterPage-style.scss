@@ -1,11 +1,13 @@
 @import '../variables.scss';
 
 .reWrapper {
-  justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   h1 {
     font-size: 3.5vw;
-    margin-bottom: 2vh;
   }
   .logoWrapper {
     position: absolute;
@@ -19,6 +21,8 @@
     width: 25vw;
   }
   form {
+    position: relative;
+    bottom: 0;
     margin-top: 2vh;
     align-items: flex-start;
     input {

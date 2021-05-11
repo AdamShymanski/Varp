@@ -52,6 +52,7 @@ interface FormProps {
 function RegisterPage() {
   const {callRegister} = useAuth();
   const [errorState, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const history = useHistory();
 
@@ -61,8 +62,10 @@ function RegisterPage() {
 
   const onSubmit = async (data: FormProps) => {
     console.log(data);
+    setLoading(true);
     const result = await callRegister(data);
     setError(result + '!');
+    setLoading(false);
   };
 
   return (
@@ -134,7 +137,7 @@ function RegisterPage() {
             children="Submit"
             variant="primary"
           />
-          <PacmanLoader color={'#0082FF'} loading={true} size={15} />
+          <PacmanLoader color={'#0082FF'} loading={loading} size={15} />
         </div>
       </form>
     </div>
