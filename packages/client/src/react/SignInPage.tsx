@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import {useAuth} from '../contexts/AuthContext';
 
 import logo from './../resources/icons/logo.png';
+import PacmanLoader from 'react-spinners/PacmanLoader';
 
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -24,6 +25,7 @@ interface FormProps {
 
 export default function SignInPage() {
   const [errorState, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const history = useHistory();
   const {signIn} = useAuth();
 
@@ -32,9 +34,11 @@ export default function SignInPage() {
   });
 
   const onSubmit = async (data: FormProps) => {
+    setLoading(true);
     const {email, password} = data;
     const result = await signIn(email, password);
     if (result) setError('Wrong password or email!');
+    setLoading(false);
   };
 
   return (
@@ -68,13 +72,22 @@ export default function SignInPage() {
           error={errors.password}
         />
         <div className="divider" />
+        <p className="errorMessage poppinsFont">{errorState}</p>
         <Button
           type="submit"
           size="medium"
           children="Submit"
           variant="primary"
         />
-        <p className="errorMessage poppinsFont">{errorState}</p>
+        <div className="buttonWrapper">
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
+          <PacmanLoader color={'#0082FF'} loading={loading} size={15} />
+        </div>
       </form>
     </div>
   );
