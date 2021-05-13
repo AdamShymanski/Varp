@@ -55,7 +55,7 @@ function LandingPage() {
             <img
               src={hamburger}
               alt="Hamburger Menu"
-              onClick={() => setHamburger(!hamburger)}
+              onClick={() => setHamburger(!hamburgerState)}
             />
           </div>
           <li className="poppinsFont " onClick={pushToRegister}>

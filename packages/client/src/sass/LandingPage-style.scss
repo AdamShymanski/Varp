@@ -42,7 +42,7 @@ $margin-hamburger-menu: 20px;
       .default-menu {
         display: flex;
         visibility: visible;
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 1024px) {
           transition: all 0.5s ease;
           visibility: hidden;
           width: 0;
@@ -103,6 +103,7 @@ $margin-hamburger-menu: 20px;
       ul {
         .hamburgerMenu {
           display: inherit;
+          z-index: 5000;
           img {
             width: 30px;
           }
