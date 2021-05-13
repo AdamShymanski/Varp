@@ -71,14 +71,7 @@ export default function SignInPage() {
           type="password"
           error={errors.password}
         />
-        <div className="divider" />
         <p className="errorMessage poppinsFont">{errorState}</p>
-        <Button
-          type="submit"
-          size="medium"
-          children="Submit"
-          variant="primary"
-        />
         <div className="buttonWrapper">
           <Button
             type="submit"
