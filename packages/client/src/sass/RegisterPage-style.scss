@@ -32,6 +32,29 @@
     h1 { 
       font-size:3em;
     }
+
+    form {
+      margin: 2vh 0.25rem;
+      align-items: flex-start;
+      width: 100%;
+
+      main {
+        margin: 0 1rem;
+        width: calc(100% - 2rem);
+
+        button {
+          width: 100%;
+        }
+
+        div.big {
+          width: 100%;
+        }
+      }
+
+      input.input {
+        width: 100% !important;
+      }
+    }
   }
   .description-s {
     font-weight: 400;
