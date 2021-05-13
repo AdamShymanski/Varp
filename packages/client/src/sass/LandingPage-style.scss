@@ -109,7 +109,7 @@ $margin-hamburger-menu: 20px;
           }
         }
 
-        li {
+        & > li {
           display: none;
         }
       }
