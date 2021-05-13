@@ -33,6 +33,10 @@
     form {
       margin: 2vh 1rem;
       align-items: flex-start;
+
+      input.input {
+        width: 100% !important;
+      }
     }
   }
 
