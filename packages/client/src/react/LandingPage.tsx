@@ -32,7 +32,7 @@ function LandingPage() {
   const [hamburgerState, setHamburger] = useState(false);
 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${hamburgerState && "fullscreen"}`}>
       <div className="wrapper--navbar flexRow">
         <img
           src={logo}
@@ -50,12 +50,14 @@ function LandingPage() {
           >
             <li className="poppinsFont">For Developers</li>
             <li className="poppinsFont">Contact</li>
+            <li className="poppinsFont">Register</li>
+            <li className="poppinsFont">Sign In</li>
           </div>
           <div className="hamburgerMenu">
             <img
               src={hamburger}
               alt="Hamburger Menu"
-              onClick={() => setHamburger(!hamburger)}
+              onClick={() => setHamburger(!hamburgerState)}
             />
           </div>
           <li className="poppinsFont " onClick={pushToRegister}>

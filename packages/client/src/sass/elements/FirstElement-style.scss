@@ -9,6 +9,12 @@
     .body {
       margin-left: 3.5vw;
       margin-top: 2vh;
+      ul {
+        margin-top: 1.2vh;
+        li {
+          list-style: none;
+        }
+      }
       p {
         color: $second-text;
         margin: 1vh 0;

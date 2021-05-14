@@ -5,6 +5,9 @@ import {GameCard, Props as GameCardProps} from './GameCard';
 import {Bottom, Props as BottomProps} from './BottomCard';
 
 const style = css`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  font-family: 'Poppins', sans-serif;
+
   * {
     margin: 0;
     padding: 0;
@@ -12,17 +15,27 @@ const style = css`
     background: transparent;
   }
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .body {
     position: relative;
     width: 22vw;
     height: 100vh;
-    /* max-width: 500px; */
+    max-width: 700px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     background: #121212;
+    .sdInfo {
+      margin-top: 50px;
+      color: #a1a1a1;
+      font-size: 130%;
+      font-weight: 600;
+    }
   }
 `;
 
@@ -49,7 +62,8 @@ export const SideDrawer = (props: Props) => {
     <main css={style}>
       <div className="body">
         <Top {...props.top} />
-        <GameCard {...props.gameCard} />
+        {/* <GameCard {...props.gameCard} /> */}
+        <div className="sdInfo">We are starting soon...</div>
       </div>
       <Bottom {...props.bottom} />
     </main>

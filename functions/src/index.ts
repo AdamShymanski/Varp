@@ -3,6 +3,12 @@ import * as admin from 'firebase-admin';
 
 admin.initializeApp();
 
+// const serviceAccount = require('../keys/serviceAccountKey.json');
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+// });
+
 const db = admin.firestore();
 
 interface RegisterProps {
@@ -17,11 +23,15 @@ interface FUDProps {
 }
 
 export const fetchUserData = functions.https.onCall(async (data: FUDProps) => {
-  const result = await db.collection('users').doc(data.uid).get();
-  return result.data();
+  try {
+    const result = await db.collection('users').doc(data.uid).get();
+    return result.data();
+  } catch (error) {
+    return error;
+  }
 });
 
-export const createUserTest = functions.https.onCall(
+export const createUser = functions.https.onCall(
   async (data: RegisterProps) => {
     const {email, password, age, name, country} = data;
 
@@ -37,12 +47,13 @@ export const createUserTest = functions.https.onCall(
       await db.collection('users').doc(user.uid).set({
         balance: 0,
         age: age,
-        contry: country,
+        country: country,
         dailyStreak: 0,
         surveyProgram: 0,
         referralProgram: 0,
         referralCode: user.uid,
-        lastAction: '',
+        lastAction: 0,
+        profit: false,
         name: name,
       });
 

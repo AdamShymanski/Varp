@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
 .mpWrapper {
   display: flex;
@@ -7,8 +7,21 @@
   .cardsContainer {
     width: 78vw;
     height: 100vh;
-    padding-top: 2vh;
 
     background: #1b1b1b;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    .mpInfo {
+      font-family: $poppins-font;
+      margin-top: 50px;
+      color: #a1a1a1;
+      font-size: 180%;
+      font-weight: 600;
+    }
   }
 }

@@ -1,16 +1,60 @@
 @import '../variables.scss';
 
 .reWrapper {
-  justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   h1 {
     font-size: 3.5vw;
-    margin-bottom: 2vh;
   }
   .logoWrapper {
     position: absolute;
     top: 12.1px;
     left: 0px;
+  }
+
+  @media screen and (max-width: 425px) { 
+    .logoWrapper {
+      position: absolute;
+      top: 12.1px;
+      left: 0px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .logo {
+        left: 0 !important;
+      }
+    }
+
+    h1 { 
+      font-size:3em;
+    }
+
+    form {
+      margin: 2vh 0.25rem;
+      align-items: flex-start;
+      width: 100%;
+
+      main {
+        margin: 0 1rem;
+        width: calc(100% - 2rem);
+
+        button {
+          width: 100%;
+        }
+
+        div.big {
+          width: 100%;
+        }
+      }
+
+      input.input {
+        width: 100% !important;
+      }
+    }
   }
   .description-s {
     font-weight: 400;
@@ -19,6 +63,8 @@
     width: 25vw;
   }
   form {
+    position: relative;
+    bottom: 0;
     margin-top: 2vh;
     align-items: flex-start;
     input {
