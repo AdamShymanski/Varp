@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './../sass/SignInPage-style.scss';
 import {useHistory} from 'react-router-dom';
 
@@ -27,11 +27,15 @@ export default function SignInPage() {
   const [errorState, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const history = useHistory();
-  const {signIn} = useAuth();
+  const {signIn, currentUser, loading} = useAuth();
 
   const {handleSubmit, register, errors} = useForm({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    currentUser !== null && history.push("/")
+  })
 
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
@@ -83,5 +87,34 @@ export default function SignInPage() {
         </div>
       </form>
     </div>
+    <h1 className="robotoFont">Sign In</h1>
+    <p className="robotoFont description-s  "></p>
+    <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        label="Email"
+        reference={register}
+        size="big"
+        name="email"
+        error={errors.email}
+      />
+      <Input
+        label="Password"
+        reference={register}
+        size="big"
+        name="password"
+        type="password"
+        error={errors.password}
+      />
+      <div className="divider" />
+      <Button
+        type="submit"
+        size="medium"
+        children="Submit"
+        variant="primary"
+      />
+      <p className="errorMessage poppinsFont">{errorState}</p>
+    </form>
+  </div> : <div></div>
+    
   );
 }

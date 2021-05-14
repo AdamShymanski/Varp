@@ -42,7 +42,8 @@ $margin-hamburger-menu: 20px;
       .default-menu {
         display: flex;
         visibility: visible;
-        @media screen and (max-width: 500px) {
+
+        @media screen and (max-width: 1024px) {
           transition: all 0.5s ease;
           visibility: hidden;
           width: 0;
@@ -60,19 +61,21 @@ $margin-hamburger-menu: 20px;
             top: calc(50vh - (0.75rem + 100px));
             position: relative;
             text-align: center;
+            display: unset !important;
             width: 100%;
             font-size: 0;
             &:hover {
-              background-color: rgba(252, 28, 8, 0.7);
-              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034),
-                0 6.7px 5.3px rgba(252, 28, 8, 0.048),
-                0 12.5px 10px rgba(252, 28, 8, 0.06),
-                0 22.3px 17.9px rgba(252, 28, 8, 0.072),
-                0 41.8px 33.4px rgba(252, 28, 8, 0.086);
+              background-color: rgba(0, 132, 255, 0.7);
+              box-shadow: 0 2.8px 2.2px rgba(0, 132, 255, 0.034),
+                0 6.7px 5.3px rgba(0, 132, 255, 0.048),
+                0 12.5px 10px rgba(0, 132, 255, 0.06),
+                0 22.3px 17.9px rgba(0, 132, 255, 0.072),
+                0 41.8px 33.4px rgba(0, 132, 255, 0.086);
             }
           }
           &.expand-menu {
             display: flex;
+            position: fixed;
             visibility: visible;
             width: calc(100vw);
             height: calc(100vh);
@@ -82,6 +85,10 @@ $margin-hamburger-menu: 20px;
               margin: $margin-hamburger-menu/2 0;
             }
           }
+        }
+
+        & > li:nth-child(3), & > li:nth-child(4) {
+          display: none;
         }
       }
 
@@ -103,12 +110,13 @@ $margin-hamburger-menu: 20px;
       ul {
         .hamburgerMenu {
           display: inherit;
+          z-index: 5000;
           img {
             width: 30px;
           }
         }
 
-        li {
+        & > li {
           display: none;
         }
       }
