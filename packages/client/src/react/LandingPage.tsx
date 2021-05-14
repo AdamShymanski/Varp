@@ -32,7 +32,7 @@ function LandingPage() {
   const [hamburgerState, setHamburger] = useState(false);
 
   return (
-    <div className="wrapper">
+    <div className={`wrapper ${hamburgerState && "fullscreen"}`}>
       <div className="wrapper--navbar flexRow">
         <img
           src={logo}
