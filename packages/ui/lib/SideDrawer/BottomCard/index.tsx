@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {css} from '@emotion/react';
 
 import playIcon from './play.svg';
 import logOutIcon from './log_out.svg';
 import settingsIcon from './settings.svg';
 import copyReferralCodeIcon from './copy_referral_code.svg';
+
+import {MessageBox} from './../../MessageBox';
 
 import {useHistory} from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -49,6 +51,7 @@ export interface Props {
    * User's referral code
    */
   referralCode: string;
+
   auth: any;
 }
 
@@ -56,31 +59,51 @@ export const Bottom: React.FC<Props> = (props) => {
   const {referralCode = '9590-1431 4-1344', auth, ...rest} = props;
   const history = useHistory();
 
-  return (
-    <main css={style}>
-      <div className="card">
-        <img src={settingsIcon} onClick={() => {}} />
-        <img
-          src={logOutIcon}
-          onClick={() => {
-            auth.signOut();
-            history.push('/home');
-          }}
-        />
-        <CopyToClipboard text={referralCode}>
-          <img
-            src={copyReferralCodeIcon}
-            // onClick={() =>
-            //   `Crete functions which copy referral code to client's clipboard`
-            // }
-          />
-        </CopyToClipboard>
+  const [message, setMessage] = useState<string>(
+    'Referral something something',
+  );
+  const [toggle, setToggle] = useState<boolean>(false);
 
-        <img
-          src={playIcon}
-          onClick={() => `Crete functions which shows game page`}
-        />
-      </div>
-    </main>
+  const messageBoxProps = {
+    toggle: toggle,
+    message: message,
+    setToggle: setToggle,
+  };
+
+  const setMessageBox = () => {
+    setMessage('Referral code copied to clipboard');
+    setToggle(true);
+  };
+
+  return (
+    <>
+      <main css={style}>
+        <div className="card">
+          <img src={settingsIcon} onClick={() => {}} />
+          <img
+            src={logOutIcon}
+            onClick={() => {
+              auth.signOut();
+              history.push('/home');
+            }}
+          />
+
+          <CopyToClipboard text={referralCode}>
+            <img
+              src={copyReferralCodeIcon}
+              onClick={() => {
+                setMessageBox();
+              }}
+            />
+          </CopyToClipboard>
+
+          <img
+            src={playIcon}
+            onClick={() => `Crete functions which shows game page`}
+          />
+        </div>
+      </main>
+      <MessageBox {...messageBoxProps} />
+    </>
   );
 };
