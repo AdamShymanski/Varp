@@ -30,8 +30,6 @@ const style = css`
     border-radius: 6px;
     background: #121212;
 
-    transition: opacity 350ms;
-
     .text {
       font-family: 'Roboto', sans-serif;
       font-size: 1.1em;
