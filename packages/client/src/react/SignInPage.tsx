@@ -88,33 +88,6 @@ export default function SignInPage() {
           </div>
         </form>
       </div>
-      <h1 className="robotoFont">Sign In</h1>
-      <p className="robotoFont description-s  "></p>
-      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          reference={register}
-          size="big"
-          name="email"
-          error={errors.email}
-        />
-        <Input
-          label="Password"
-          reference={register}
-          size="big"
-          name="password"
-          type="password"
-          error={errors.password}
-        />
-        <div className="divider" />
-        <Button
-          type="submit"
-          size="medium"
-          children="Submit"
-          variant="primary"
-        />
-        <p className="errorMessage poppinsFont">{errorState}</p>
-      </form>
     </>
   );
 }
