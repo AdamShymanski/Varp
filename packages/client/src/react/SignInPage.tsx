@@ -25,7 +25,7 @@ interface FormProps {
 
 export default function SignInPage() {
   const [errorState, setError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingState, setLoading] = useState<boolean>(false);
   const history = useHistory();
   const {signIn, currentUser, loading} = useAuth();
 
@@ -34,8 +34,8 @@ export default function SignInPage() {
   });
 
   useEffect(() => {
-    currentUser !== null && history.push("/")
-  })
+    currentUser !== null && history.push('/');
+  });
 
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
@@ -46,16 +46,47 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="si-wrapper flexColumn">
-      <div className="logoWrapper">
-        <img
-          src={logo}
-          alt="Logo"
-          className="logo"
-          onClick={() => {
-            history.push('/home');
-          }}
-        />
+    <>
+      <div className="si-wrapper flexColumn">
+        <div className="logoWrapper">
+          <img
+            src={logo}
+            alt="Logo"
+            className="logo"
+            onClick={() => {
+              history.push('/home');
+            }}
+          />
+        </div>
+        <h1 className="robotoFont">Sign In</h1>
+        <p className="robotoFont description-s  "></p>
+        <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            label="Email"
+            reference={register}
+            size="big"
+            name="email"
+            error={errors.email}
+          />
+          <Input
+            label="Password"
+            reference={register}
+            size="big"
+            name="password"
+            type="password"
+            error={errors.password}
+          />
+          <p className="errorMessage poppinsFont">{errorState}</p>
+          <div className="buttonWrapper">
+            <Button
+              type="submit"
+              size="medium"
+              children="Submit"
+              variant="primary"
+            />
+            <PacmanLoader color={'#0082FF'} loading={loadingState} size={15} />
+          </div>
+        </form>
       </div>
       <h1 className="robotoFont">Sign In</h1>
       <p className="robotoFont description-s  "></p>
@@ -75,46 +106,15 @@ export default function SignInPage() {
           type="password"
           error={errors.password}
         />
+        <div className="divider" />
+        <Button
+          type="submit"
+          size="medium"
+          children="Submit"
+          variant="primary"
+        />
         <p className="errorMessage poppinsFont">{errorState}</p>
-        <div className="buttonWrapper">
-          <Button
-            type="submit"
-            size="medium"
-            children="Submit"
-            variant="primary"
-          />
-          <PacmanLoader color={'#0082FF'} loading={loading} size={15} />
-        </div>
       </form>
-    </div>
-    <h1 className="robotoFont">Sign In</h1>
-    <p className="robotoFont description-s  "></p>
-    <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
-      <Input
-        label="Email"
-        reference={register}
-        size="big"
-        name="email"
-        error={errors.email}
-      />
-      <Input
-        label="Password"
-        reference={register}
-        size="big"
-        name="password"
-        type="password"
-        error={errors.password}
-      />
-      <div className="divider" />
-      <Button
-        type="submit"
-        size="medium"
-        children="Submit"
-        variant="primary"
-      />
-      <p className="errorMessage poppinsFont">{errorState}</p>
-    </form>
-  </div> : <div></div>
-    
+    </>
   );
 }
