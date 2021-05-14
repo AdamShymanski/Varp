@@ -1,0 +1,17 @@
+@import '../variables.scss';
+
+.contactWrapper {
+  justify-content: center;
+  height: 100vh;
+  p {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 1.6em;
+    color: $main-text;
+  }
+  .logoWrapper {
+    position: absolute;
+    top: 12.1px;
+    left: 0px;
+  }
+}
