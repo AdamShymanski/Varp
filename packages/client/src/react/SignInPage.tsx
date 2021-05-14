@@ -45,49 +45,47 @@ export default function SignInPage() {
     setLoading(false);
   };
 
-  return (
-    <>
-      <div className="si-wrapper flexColumn">
-        <div className="logoWrapper">
-          <img
-            src={logo}
-            alt="Logo"
-            className="logo"
-            onClick={() => {
-              history.push('/home');
-            }}
-          />
-        </div>
-        <h1 className="robotoFont">Sign In</h1>
-        <p className="robotoFont description-s  "></p>
-        <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            label="Email"
-            reference={register}
-            size="big"
-            name="email"
-            error={errors.email}
-          />
-          <Input
-            label="Password"
-            reference={register}
-            size="big"
-            name="password"
-            type="password"
-            error={errors.password}
-          />
-          <p className="errorMessage poppinsFont">{errorState}</p>
-          <div className="buttonWrapper">
-            <Button
-              type="submit"
-              size="medium"
-              children="Submit"
-              variant="primary"
-            />
-            <PacmanLoader color={'#0082FF'} loading={loadingState} size={15} />
-          </div>
-        </form>
+  return currentUser == null && loading == false ? (
+    <div className="si-wrapper flexColumn">
+      <div className="logoWrapper">
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
       </div>
-    </>
+      <h1 className="robotoFont">Sign In</h1>
+      <p className="robotoFont description-s  "></p>
+      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="Email"
+          reference={register}
+          size="big"
+          name="email"
+          error={errors.email}
+        />
+        <Input
+          label="Password"
+          reference={register}
+          size="big"
+          name="password"
+          type="password"
+          error={errors.password}
+        />
+        <div className="divider" />
+        <Button
+          type="submit"
+          size="medium"
+          children="Submit"
+          variant="primary"
+        />
+        <p className="errorMessage poppinsFont">{errorState}</p>
+      </form>
+    </div>
+  ) : (
+    <div></div>
   );
 }

@@ -18,7 +18,6 @@ function MainPage() {
   const [result, setResult] = useState<any>({balance: 0, name: ''});
   const [loading, setlLoading] = useState<boolean>(true);
 
-
   useEffect(() => {
     async function provideAsync() {
       const data = await fetchUserData(currentUser?.uid);
