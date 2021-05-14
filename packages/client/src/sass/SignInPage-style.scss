@@ -31,4 +31,12 @@
     font-weight: 500;
     margin: 20px 0;
   }
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 60px;
+    width: 150px;
+  }
 }
