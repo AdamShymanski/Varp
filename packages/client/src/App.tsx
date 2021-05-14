@@ -8,6 +8,7 @@ import './App.scss';
 //pages
 import PrivateRoute from './react/PrivateRoute';
 import RegisterPage from './react/RegisterPage';
+import ContactPage from './react/ContactPage';
 import LandingPage from './react/LandingPage';
 import SignInPage from './react/SignInPage';
 import MainPage from './react/MainPage';
@@ -21,6 +22,7 @@ function App() {
           <PrivateRoute path="/home" component={LandingPage} />
           <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
+          <PrivateRoute path="/contact" component={ContactPage} />
         </div>
       </AuthProvider>
     </Router>
