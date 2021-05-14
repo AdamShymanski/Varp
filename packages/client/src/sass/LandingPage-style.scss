@@ -65,12 +65,12 @@ $margin-hamburger-menu: 20px;
             width: 100%;
             font-size: 0;
             &:hover {
-              background-color: rgba(252, 28, 8, 0.7);
-              box-shadow: 0 2.8px 2.2px rgba(252, 28, 8, 0.034),
-                0 6.7px 5.3px rgba(252, 28, 8, 0.048),
-                0 12.5px 10px rgba(252, 28, 8, 0.06),
-                0 22.3px 17.9px rgba(252, 28, 8, 0.072),
-                0 41.8px 33.4px rgba(252, 28, 8, 0.086);
+              background-color: rgba(0, 132, 255, 0.7);
+              box-shadow: 0 2.8px 2.2px rgba(0, 132, 255, 0.034),
+                0 6.7px 5.3px rgba(0, 132, 255, 0.048),
+                0 12.5px 10px rgba(0, 132, 255, 0.06),
+                0 22.3px 17.9px rgba(0, 132, 255, 0.072),
+                0 41.8px 33.4px rgba(0, 132, 255, 0.086);
             }
           }
           &.expand-menu {
