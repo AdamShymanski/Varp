@@ -70,8 +70,8 @@ export const Bottom: React.FC<Props> = (props) => {
     setToggle: setToggle,
   };
 
-  const setMessageBox = () => {
-    setMessage('Referral code copied to clipboard');
+  const setMessageBox = (msg: string) => {
+    setMessage(msg);
     setToggle(true);
   };
 
@@ -79,7 +79,12 @@ export const Bottom: React.FC<Props> = (props) => {
     <>
       <main css={style}>
         <div className="card">
-          <img src={settingsIcon} onClick={() => {}} />
+          <img
+            src={settingsIcon}
+            onClick={() => {
+              setMessageBox('Setting page is still being created');
+            }}
+          />
           <img
             src={logOutIcon}
             onClick={() => {
@@ -92,14 +97,16 @@ export const Bottom: React.FC<Props> = (props) => {
             <img
               src={copyReferralCodeIcon}
               onClick={() => {
-                setMessageBox();
+                setMessageBox('Referral code copied to clipboard');
               }}
             />
           </CopyToClipboard>
 
           <img
             src={playIcon}
-            onClick={() => `Crete functions which shows game page`}
+            onClick={() => {
+              setMessageBox("You haven't joined any games yet");
+            }}
           />
         </div>
       </main>
