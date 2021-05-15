@@ -30,6 +30,7 @@ const style = css`
 
     border-radius: 6px;
     font-weight: 500;
+    height: 44px;
 
     display: flex;
     flex-direction: column;
@@ -311,7 +312,7 @@ export const Top = (props: Props) => {
         <div className="bonus">
           <p
             className="tooltip"
-            data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique iure atque quis autem ea pariatur consequatur, nemo commodi unde consequuntur possimus obcaecati numquam, inventore corporis? Architecto itaque ut deserunt cumque?"
+            data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code and completing surveys from Varp."
           >
             Bonuses
           </p>

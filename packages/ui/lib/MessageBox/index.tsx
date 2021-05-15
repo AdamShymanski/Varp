@@ -14,18 +14,17 @@ const style = css`
     background: transparent;
   }
 
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
   .messageBox {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-
-    width: 420px;
+    padding: 0 20px;
     height: 100px;
-
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
 
     border-radius: 6px;
     background: #121212;
@@ -34,6 +33,7 @@ const style = css`
       font-family: 'Roboto', sans-serif;
       font-size: 1.1em;
       color: #f4f4f4;
+      margin: 0 20px;
     }
 
     .closeIcon {
@@ -42,9 +42,11 @@ const style = css`
   }
   .show {
     opacity: 1;
+    transition: opacity 400ms;
   }
   .hide {
     opacity: 0;
+    transition: opacity 400ms;
   }
 `;
 
@@ -91,6 +93,7 @@ export function MessageBox(props: Props) {
           trailColor={`#003d77`}
           isPlaying={toggle}
           duration={10}
+          //10
           colors={[['#0084ff', 1]]}
         >
           <img

@@ -158,17 +158,20 @@ function MainPage() {
         auth: auth,
       },
       gameCard: {
-        title: 'End It Fast',
-        date: 'April 2nd',
+        title: 'We are starting soon',
+        date: '	June 15th',
         time: '2:30pm',
         price: 500,
-        reward: 214,
+        reward: 438,
       },
       top: {
         name: result.data.name,
         balance: result.data.balance,
         number: result.data.lastAction,
         profit: result.data.profit,
+        dailyStreak: result.data.dailyStreak,
+        referral: result.data.referralProgram,
+        surveysFinished: result.data.surveyProgram,
       },
     };
 

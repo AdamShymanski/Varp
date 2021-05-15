@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Story, Meta} from '@storybook/react';
 
 import {Props, MessageBox} from '.';
@@ -15,6 +15,12 @@ export default {
 } as Meta;
 
 export const Basic: Story<Props> = (props) => {
-  const {message, toggle} = props;
-  return <MessageBox {...props} />;
+  const [toggle, setToggle] = useState<boolean>(true);
+  const messageBoxProps = {
+    toggle: toggle,
+    message: 'It is StoryBook view',
+    setToggle: setToggle,
+  };
+
+  return <MessageBox {...messageBoxProps} />;
 };
