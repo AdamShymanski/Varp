@@ -33,7 +33,7 @@ const style = css`
     .sdInfo {
       margin-top: 50px;
       color: #a1a1a1;
-      font-size: 180%;
+      font-size: 130%;
       font-weight: 600;
     }
   }

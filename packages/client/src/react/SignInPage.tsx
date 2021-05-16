@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import {useAuth} from '../contexts/AuthContext';
 
 import logo from './../resources/icons/logo.png';
+import PacmanLoader from 'react-spinners/PacmanLoader';
 
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -24,6 +25,7 @@ interface FormProps {
 
 export default function SignInPage() {
   const [errorState, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const history = useHistory();
   const {signIn, currentUser, loading} = useAuth();
 
@@ -36,22 +38,54 @@ export default function SignInPage() {
   })
 
   const onSubmit = async (data: FormProps) => {
+    setLoading(true);
     const {email, password} = data;
     const result = await signIn(email, password);
     if (result) setError('Wrong password or email!');
+    setLoading(false);
   };
 
   return (
-    (currentUser == null && loading == false) ? <div className="si-wrapper flexColumn">
-    <div className="logoWrapper">
-      <img
-        src={logo}
-        alt="Logo"
-        className="logo"
-        onClick={() => {
-          history.push('/home');
-        }}
-      />
+    <div className="si-wrapper flexColumn">
+      <div className="logoWrapper">
+        <img
+          src={logo}
+          alt="Logo"
+          className="logo"
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
+      </div>
+      <h1 className="robotoFont">Sign In</h1>
+      <p className="robotoFont description-s  "></p>
+      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          label="Email"
+          reference={register}
+          size="big"
+          name="email"
+          error={errors.email}
+        />
+        <Input
+          label="Password"
+          reference={register}
+          size="big"
+          name="password"
+          type="password"
+          error={errors.password}
+        />
+        <p className="errorMessage poppinsFont">{errorState}</p>
+        <div className="buttonWrapper">
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
+          <PacmanLoader color={'#0082FF'} loading={loading} size={15} />
+        </div>
+      </form>
     </div>
     <h1 className="robotoFont">Sign In</h1>
     <p className="robotoFont description-s  "></p>
