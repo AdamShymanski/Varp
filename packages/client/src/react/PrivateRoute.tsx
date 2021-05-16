@@ -51,9 +51,9 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
       return <Route path={path} {...rest} />;
     }
     if (path === '/' && !currentUser) {
-      // return <Redirect to="/home" />;
+      return <Redirect to="/home" />;
     }
-    return <Route path={path} {...rest} />;
+    return <Route exact path={path} {...rest} />;
   }
 
   return <div />;
