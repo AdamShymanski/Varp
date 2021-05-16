@@ -12,9 +12,7 @@ function ThirdElement(props: any) {
       <div className="cardsWrapper">
         <article className="wideCard c1">
           <h1>
-            <div>
-              <span>1.</span> Create an account
-            </div>
+            <div>Create an account</div>
             <span className="addendum"> DO IT NOW AND GET PREMIUM ACCOUNT</span>
           </h1>
           <p>
@@ -49,9 +47,7 @@ function ThirdElement(props: any) {
           </ul>
         </article>
         <article className="wideCard">
-          <h1>
-            <span>2.</span> Express your opinion about this project
-          </h1>
+          <h1>Express your opinion about this project</h1>
           <p>Yes, it's really that simple. </p>
           <p>
             Just write if you think Varp has a chance, what do you like and what
@@ -59,9 +55,7 @@ function ThirdElement(props: any) {
           </p>
         </article>
         <article className="wideCard">
-          <h1>
-            <span>3.</span> Tell your friends about Varp
-          </h1>
+          <h1>Tell your friends about Varp</h1>
           <p>
             Just send them a link to our site and summarize what you already
             know about us. It's the best thing you can do for us :D

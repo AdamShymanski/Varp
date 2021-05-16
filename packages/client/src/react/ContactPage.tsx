@@ -15,7 +15,7 @@ export default function SignInPage() {
   });
 
   return currentUser == null && loading == false ? (
-    <div className="contactWrapper flexColumn">
+    <div className="contactWrapper">
       <div className="logoWrapper">
         <img
           src={logo}
@@ -26,8 +26,14 @@ export default function SignInPage() {
           }}
         />
       </div>
-      <p className="robotoFont">Collaboration: collaboration@varp.io</p>
-      <p className="robotoFont">Support: support@varp.io</p>
+      <article>
+        <p className="robotoFont">
+          Collaboration - <span>collaboration@varp.io</span>
+        </p>
+        <p className="robotoFont">
+          Support - <span>support@varp.io</span>
+        </p>
+      </article>
     </div>
   ) : (
     <div></div>

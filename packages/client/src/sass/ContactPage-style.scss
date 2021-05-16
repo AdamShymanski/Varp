@@ -1,13 +1,25 @@
 @import '../variables.scss';
 
 .contactWrapper {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
   height: 100vh;
-  p {
-    margin-bottom: 10px;
-    font-weight: 400;
-    font-size: 1.6em;
-    color: $main-text;
+  article {
+    span {
+      color: $accent;
+      font-weight: 600;
+    }
+    p {
+      margin-bottom: 10px;
+      font-weight: 400;
+      font-size: 1.6em;
+      color: $main-text;
+      padding-left: 8px;
+      border-left: 2px solid $accent;
+    }
   }
   .logoWrapper {
     position: absolute;

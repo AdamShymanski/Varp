@@ -11,9 +11,9 @@
 
       padding: 0 20px 20px;
       margin-bottom: 20px;
-
-      background: $dark-gray;
-      border-radius: 1.4vh;
+      border-radius: 0 6px 6px 0;
+      border-left: 3px solid $accent;
+      background-color: $dark-gray;
 
       h1 {
         color: $main-text;
@@ -31,7 +31,7 @@
         }
       }
       p {
-        color: $main-text;
+        color: $second-text;
         font-size: 1.1em;
 
         position: relative;
@@ -98,8 +98,8 @@
       flex-direction: column;
       .wideCard {
         background: transparent;
-        border-bottom: 3px solid $gray;
-        // border-top: 5px solid $dark-gray;
+        border-bottom: 3px solid $accent;
+        border-left: none;
         border-radius: 0;
 
         .title {
