@@ -1,0 +1,48 @@
+@import '../variables.scss';
+
+.sideDrawer {
+  width: 17.5%;
+  height: 100vh;
+
+  background: $dark-gray;
+  position: relative;
+  .top {
+    margin-top: 30px;
+    width: 85%;
+    height: 55px;
+    background: $background;
+    border-radius: 5px;
+    justify-content: center;
+    p {
+      font-size: 1.4em;
+      color: $main-text;
+      font-weight: 500;
+    }
+  }
+  ul {
+    list-style: none;
+    margin-top: 30px;
+
+    li {
+      margin-top: 15px;
+      padding: 15px 0;
+    }
+    button {
+      color: $main-text;
+      font-size: 1.3em;
+      font-weight: 600;
+      border: none;
+      font-family: $roboto-font;
+      letter-spacing: 0.7px;
+    }
+    .selected {
+      width: 17.5vw;
+      background: $background;
+      border-right: $accent 4px solid;
+    }
+  }
+  .buttonWrapper {
+    position: absolute;
+    bottom: 20px;
+  }
+}
