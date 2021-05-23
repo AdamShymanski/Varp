@@ -1,5 +1,5 @@
 import {css} from '@emotion/react';
-import React from 'react';
+import React, {useState} from 'react';
 
 import tagIcon from './tag.svg';
 import clockIcon from './clock.svg';
@@ -8,6 +8,7 @@ import tokenIcon from './triangle.svg';
 import dollarSignIcon from './dollar_sign.svg';
 
 import {Button} from './../../Button';
+import {MessageBox} from './../../MessageBox';
 
 const style = css`
   * {
@@ -37,8 +38,9 @@ const style = css`
   }
   h1 {
     font-weight: 500;
-    font-size: 2em;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    position: relative;
+    bottom: 8px;
   }
   .grid {
     display: grid;
@@ -55,7 +57,6 @@ const style = css`
     margin-right: 12px;
   }
   .tokenIcon {
-    width: 10px;
     width: 0.8em;
     margin-left: 3px;
   }
@@ -77,32 +78,56 @@ export const GameCard = (props: Props) => {
     reward = 214,
     price = 135,
   } = props;
+
+  // const [message, setMessage] = useState<string>();
+  const [toggle, setToggle] = useState<boolean>(false);
+
+  const messageBoxProps = {
+    toggle: toggle,
+    message: "You don't have enough tokens",
+    setToggle: setToggle,
+  };
+
+  const setMessageBox = () => {
+    setToggle(true);
+  };
+
   return (
-    <main css={style}>
-      <div className="card">
-        <h1>{title}</h1>
-        <div className="grid">
-          <div>
-            <img className="icon" src={calendarIcon} />
-            <p>{date}</p>
-          </div>
-          <div>
-            <img className="icon" src={clockIcon} />
-            <p>{time}</p>
-          </div>
-          <div>
-            <img className="icon" src={tagIcon} />
-            <p>{price}</p>
-            <img className="tokenIcon" src={tokenIcon} />
-          </div>
-          <div>
-            <img className="icon" src={dollarSignIcon} />
-            <p>{reward}</p>
+    <>
+      <main css={style}>
+        <div className="card">
+          <h1>{title}</h1>
+          <div className="grid">
+            <div>
+              <img className="icon" src={calendarIcon} />
+              <p>{date}</p>
+            </div>
+            <div>
+              <img className="icon" src={clockIcon} />
+              <p>{time}</p>
+            </div>
+            <div>
+              <img className="icon" src={tagIcon} />
+              <p>{price}</p>
+              <img className="tokenIcon" src={tokenIcon} />
+            </div>
+            <div>
+              <img className="icon" src={dollarSignIcon} />
+              <p>{reward}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <Button children="Join" variant="primary" size="small" />
-      <div className="divider" />
-    </main>
+        <Button
+          children="Join"
+          variant="primary"
+          size="small"
+          action={() => {
+            setMessageBox();
+          }}
+        />
+        <div className="divider" />
+      </main>
+      <MessageBox {...messageBoxProps} />
+    </>
   );
 };

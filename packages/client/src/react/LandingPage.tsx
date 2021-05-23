@@ -19,6 +19,7 @@ function LandingPage() {
 
   const pushToRegister = () => history.push('/register');
   const pushToSignIn = () => history.push('/sign-in');
+  const pushToContact = () => history.push('/contact');
 
   const [visibilityState, setVisibilityState] = useState(1);
 
@@ -32,7 +33,7 @@ function LandingPage() {
   const [hamburgerState, setHamburger] = useState(false);
 
   return (
-    <div className={`wrapper ${hamburgerState && "fullscreen"}`}>
+    <div className={`wrapper ${hamburgerState && 'fullscreen'}`}>
       <div className="wrapper--navbar flexRow">
         <img
           src={logo}
@@ -49,9 +50,11 @@ function LandingPage() {
             }`}
           >
             <li className="poppinsFont">For Developers</li>
-            <li className="poppinsFont">Contact</li>
+            <li className="poppinsFont" onClick={pushToContact}> Contact
+            </li>
             <li className="poppinsFont" onClick={pushToRegister}>Register</li>
             <li className="poppinsFont" onClick={pushToSignIn}>Sign In</li>
+            
           </div>
           <div className="hamburgerMenu">
             <img

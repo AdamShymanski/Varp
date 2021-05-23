@@ -60,8 +60,8 @@ const style = css`
 
   .small {
     font-size: 0.84em;
-    border-radius: 5px;
-    padding-top: 5px;
+    border-radius: 3.8px;
+    padding: 3.8px 25px 2px 25px;
   }
 
   .medium {

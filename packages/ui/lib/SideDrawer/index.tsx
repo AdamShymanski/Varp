@@ -62,8 +62,8 @@ export const SideDrawer = (props: Props) => {
     <main css={style}>
       <div className="body">
         <Top {...props.top} />
-        {/* <GameCard {...props.gameCard} /> */}
-        <div className="sdInfo">We are starting soon...</div>
+        <GameCard {...props.gameCard} />
+        {/* <div className="sdInfo">We are starting soon...</div> */}
       </div>
       <Bottom {...props.bottom} />
     </main>

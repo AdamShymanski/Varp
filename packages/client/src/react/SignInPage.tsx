@@ -34,8 +34,8 @@ export default function SignInPage() {
   });
 
   useEffect(() => {
-    currentUser !== null && history.push("/")
-  })
+    currentUser !== null && history.push('/');
+  });
 
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
@@ -46,7 +46,6 @@ export default function SignInPage() {
   };
 
   return (
-
     (currentUser == null && loading == false) ? 
     <div className="si-wrapper flexColumn">
 		<div className="logoWrapper">
@@ -60,7 +59,7 @@ export default function SignInPage() {
 			/>
 		</div>
       	<h1 className="robotoFont">Sign In</h1>
-      	<p className="robotoFont description-s  "></p>
+      	<p className="robotoFont description-s"></p>
       	<form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
 			<Input
 				label="Email"
@@ -78,6 +77,7 @@ export default function SignInPage() {
 				error={errors.password}
 			/>
 			<p className="errorMessage poppinsFont">{errorState}</p>
+      <div className="divider" />
 			<div className="buttonWrapper">
 				<Button
 					type="submit"
@@ -87,8 +87,15 @@ export default function SignInPage() {
 				/>
 				<PacmanLoader color={'#0082FF'} loading={loadingPacman} size={15} />
 			</div>
+
+      {/* <Button
+          type="submit"
+          size="medium"
+          children="Submit"
+          variant="primary"
+        />
+        <p className="errorMessage poppinsFont">{errorState}</p> */}
       	</form>
     </div>: <div></div>
-    
   );
 }

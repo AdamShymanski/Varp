@@ -38,19 +38,22 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
     if (path === '/register' && currentUser) {
       return <Redirect to="/" />;
     }
+    if (path === '/home' && currentUser) {
+      return <Redirect to="/" />;
+    }
+    if (path === '/contact' && currentUser) {
+      return <Redirect to="/" />;
+    }
     if (path === '/sign-in' && currentUser) {
       return <Redirect to="/" />;
     }
     if (path === '/sign-in' && !currentUser) {
       return <Route path={path} {...rest} />;
     }
-    if (path === '/home' && currentUser) {
-      return <Redirect to="/" />;
-    }
     if (path === '/' && !currentUser) {
-      // return <Redirect to="/home" />;
+      return <Redirect to="/home" />;
     }
-    return <Route path={path} {...rest} />;
+    return <Route exact path={path} {...rest} />;
   }
 
   return <div />;
