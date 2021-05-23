@@ -50,16 +50,11 @@ function LandingPage() {
             }`}
           >
             <li className="poppinsFont">For Developers</li>
-            <li
-              className="poppinsFont"
-              onClick={() => {
-                pushToContact();
-              }}
-            >
-              Contact
+            <li className="poppinsFont" onClick={pushToContact}> Contact
             </li>
-            <li className="poppinsFont">Register</li>
-            <li className="poppinsFont">Sign In</li>
+            <li className="poppinsFont" onClick={pushToRegister}>Register</li>
+            <li className="poppinsFont" onClick={pushToSignIn}>Sign In</li>
+            
           </div>
           <div className="hamburgerMenu">
             <img
