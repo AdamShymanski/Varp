@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+p {
+  font-size: 8em;
+  color: $main-text;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: inherit;
+}
+
+.accountWrapper {
+  width: 82.5vw;
+  align-items: center;
+  justify-content: center;
+}
