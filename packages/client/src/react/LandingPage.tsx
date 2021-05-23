@@ -10,9 +10,9 @@ import logo from './../resources/icons/logo.png';
 import hamburger from './../resources/icons/hamburger-menu.svg';
 
 //elements
-import FirstElement from './elements/FirstElement';
-import SecondElement from './elements/SecondElement';
-import ThirdElement from './elements/ThirdElement';
+import FirstElement from './LandingPageElements/FirstElement';
+import SecondElement from './LandingPageElements/SecondElement';
+import ThirdElement from './LandingPageElements/ThirdElement';
 
 function LandingPage() {
   const history = useHistory();
