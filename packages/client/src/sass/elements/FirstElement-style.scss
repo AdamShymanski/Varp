@@ -6,9 +6,17 @@
     margin: 6vh 0;
     width: 75vw;
 
+    .title {
+      position: relative;
+
+      z-index: 1;
+    }
+
     .body {
       margin-left: 3.5vw;
       margin-top: 2vh;
+      position: relative;
+      width: 90vw;
       ul {
         margin-top: 1.2vh;
         li {
@@ -16,11 +24,21 @@
         }
       }
       p {
+        position: relative;
+        z-index: 1;
+
+        width: 45%;
         color: $second-text;
         margin: 1vh 0;
         span {
           color: $accent;
         }
+      }
+      img {
+        position: absolute;
+        right: 0;
+        top: 0px;
+        width: 50%;
       }
     }
 
