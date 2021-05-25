@@ -50,11 +50,16 @@ function LandingPage() {
             }`}
           >
             <li className="poppinsFont">For Developers</li>
-            <li className="poppinsFont" onClick={pushToContact}> Contact
+            <li className="poppinsFont" onClick={pushToContact}>
+              {' '}
+              Contact
             </li>
-            <li className="poppinsFont" onClick={pushToRegister}>Register</li>
-            <li className="poppinsFont" onClick={pushToSignIn}>Sign In</li>
-            
+            <li className="poppinsFont" onClick={pushToRegister}>
+              Register
+            </li>
+            <li className="poppinsFont" onClick={pushToSignIn}>
+              Sign In
+            </li>
           </div>
           <div className="hamburgerMenu">
             <img
@@ -81,81 +86,11 @@ function LandingPage() {
         <FirstElement />
         <SecondElement />
         <ThirdElement />
-        {/* <div className="scrollIndicator flexColumn">
-          <div className="dotWrapper flexRow">
-            <div className={'flexColumn dot '}>
-              <img
-                src={checkMark}
-                className={`checkMark ${checkMarkHandler(1)}`}
-              />
-            </div>
-            <p className="poppinsFont">What is Varp?</p>
-          </div>
-          <div className="dotWrapper flexRow">
-            <div className={'flexColumn dot '}>
-              <img
-                src={checkMark}
-                className={`checkMark ${checkMarkHandler(2)}`}
-              />
-            </div>
-            <p className="poppinsFont">How It Works?</p>
-          </div>
-          <div className="dotWrapper flexRow">
-            <div className={'flexColumn dot '}>
-              <img
-                src={checkMark}
-                className={`checkMark ${checkMarkHandler(3)}`}
-              />
-            </div>
-            <p className="poppinsFont">How You Can Help?</p>
-          </div>
-        </div> */}
-        {/* <div className="elementsWrapper flexColumn">
-           <FirstElement
-            visibility={() => {
-              if (visibilityState == 1) return true;
-              else return false;
-            }}
-          /> 
-
-           <SecondElement
-            visibility={() => {
-              if (visibilityState == 2) return true;
-              else return false;
-            }}
-          />
-          <ThirdElement
-            visibility={() => {
-              if (visibilityState == 3) return true;
-              else return false;
-            }}
-          /> 
-        </div> */}
       </div>
-      {/* <div className="navigationButtons ">
-        <div className={'gbbWrapper'}>
-          <Button
-            size="medium"
-            variant="primary"
-            children="Go Back"
-            visibility={buttonVisibilityHandler(1)}
-            onClick={() =>
-              setVisibilityState((visibilityState) => visibilityState - 1)
-            }
-          />
-        </div>
-        <div className={'nbWrapper'}>
-          <Button
-            size="medium"
-            children="Next"
-            variant="primary"
-            visibility={buttonVisibilityHandler(3)}
-            onClick={() =>
-              setVisibilityState((visibilityState) => visibilityState + 1)
-            }
-          />
-        </div>
-      </div> */}
+      <footer className="flexColumn robotoFont">
+        <p>© 2021 Varp.io</p>
+        <p>All rights reserved.</p>
+      </footer>
     </div>
   );
 }
