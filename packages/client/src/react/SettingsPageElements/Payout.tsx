@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function Payout(params) {
+const Payout:React.FC = (params:any) => {
   return (
     <main className={`${params.elementState == 2 ? 'show' : 'hide'}`}>
       <p className="poppinsFont">Payout</p>
