@@ -8,7 +8,7 @@ interface PayoutProps {
 function Payout(params:PayoutProps) {
   return (
     <main className={`accountWrapper columnFlex ${params.elementState == 2 ? 'show' : 'hide'}`}>
-      <form>
+      <form className="flexColumn">
         <Input
           label="Email"
           size="big"
