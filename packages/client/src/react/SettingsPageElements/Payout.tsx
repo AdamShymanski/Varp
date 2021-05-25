@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {Button, Input} from '@varp/ui';
+import './../../sass/SettingsPageElements/Payout-style.scss';
 
 interface PayoutProps {
   elementState: number
 }
 function Payout(params:PayoutProps) {
   return (
-    <main className={`${params.elementState == 2 ? 'show' : 'hide'}`}>
+    <main className={`accountWrapper columnFlex ${params.elementState == 2 ? 'show' : 'hide'}`}>
       <form>
         <Input
           label="Email"
