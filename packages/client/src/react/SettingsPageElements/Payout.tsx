@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Button, Input} from '@varp/ui';
 
 interface PayoutProps {
   elementState: number
@@ -6,7 +7,52 @@ interface PayoutProps {
 function Payout(params:PayoutProps) {
   return (
     <main className={`${params.elementState == 2 ? 'show' : 'hide'}`}>
-      <p className="poppinsFont">Payout</p>
+      <form>
+        <Input
+          label="Email"
+          size="big"
+          name="email"
+        />
+        <Input
+          label="Full Name"
+          size="big"
+          name="name"
+        />
+        <Input
+          label="Password"
+          size="big"
+          name="password"
+          type="password"
+        />
+        <Input
+          label="Confirm Password"
+          size="big"
+          name="confirmPassword"
+          type="password"
+        />
+        <Input
+          label="Age"
+          size="big"
+          name="age"
+          type="number"
+        />
+        <Input
+          label="Country"
+          size="big"
+          name="country"
+        />
+
+        <p className="errorMessage poppinsFont"></p>
+        <div className="buttonWrapper">
+          <Button
+            type="submit"
+            size="medium"
+            children="Submit"
+            variant="primary"
+          />
+          {/* <PacmanLoader color={'#0082FF'} loading={""} size={15} /> */}
+        </div>
+      </form>
     </main>
   );
 }
