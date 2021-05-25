@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 
-interface Props {
-  params: any
+interface PayoutProps {
+  elementState: number
 }
-const Payout:React.FC<Props> = (params:any) => {
+function Payout(params:PayoutProps) {
   return (
     <main className={`${params.elementState == 2 ? 'show' : 'hide'}`}>
       <p className="poppinsFont">Payout</p>
