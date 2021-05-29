@@ -60,7 +60,7 @@ function SettingsPage() {
           <Button variant="disabled" />
         </div>
       </aside>
-      <article>
+      <article className="subPageContainer">
         <Account elementState={elementState} />
         <Referrals elementState={elementState} />
         <Payout elementState={elementState} />
