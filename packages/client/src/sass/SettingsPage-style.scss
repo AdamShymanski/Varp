@@ -5,7 +5,10 @@
   height: 100vh;
 
   background: $dark-gray;
-  position: relative;
+
+  top: 0;
+  left: 0;
+  position: fixed;
   .top {
     margin-top: 30px;
     width: 85%;
@@ -45,4 +48,8 @@
     position: absolute;
     bottom: 20px;
   }
+}
+.subPageContainer {
+  min-height: 100vh;
+  background-color: $background;
 }
