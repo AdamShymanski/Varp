@@ -9,17 +9,23 @@ function Payout(params:PayoutProps) {
   return (
     <main className={`payoutWrapper columnFlex ${params.elementState == 2 ? 'show' : 'hide'}`}>
       <form className="flexColumn">
-        <Input
-          label="PayPal"
-          size="big"
-          name="email"
-        />
-        <Input
-          label="BankAcccount"
-          size="big"
-          name="name"
-        />
-
+        <div className="flexRow">
+          <Input
+            label="PayPal"
+            size="big"
+            name="email"
+          />
+          <input type="checkbox" className="inputCheckboxPayout" name="" id="" /></div>
+        <div className="flexRow">
+          <Input
+            label="BankAcccount"
+            size="big"
+            name="name"
+          />
+          <input type="checkbox" className="inputCheckboxPayout" name="" id="" />
+        </div>
+        
+        
         <p className="errorMessage poppinsFont"></p>
         <div className="buttonWrapper">
           <Button

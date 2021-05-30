@@ -16,4 +16,14 @@ p {
   width: 82.5vw;
   align-items: center;
   justify-content: center;
+  .flexRow {
+    position: relative;
+    input.inputCheckboxPayout {
+      position: absolute;
+      height: 50px;
+      width: 50px;
+      right: -75px;
+    }
+  }
+
 }
