@@ -15,10 +15,10 @@ function Payout(params:PayoutProps) {
             size="big"
             name="email"
           />
-          <div className="payloadCheckboxContainer">
-            <input type="checkbox" className="inputCheckboxPayout" name="" id="" />
+          <label className="payloadCheckboxContainer">
+            <input type="checkbox" className="inputCheckboxPayout" name="" id=""/>
             <span className="payloadCheckmark"/>
-          </div>
+          </label>
         </div>
         <div className="flexRow">
           <Input
@@ -26,10 +26,10 @@ function Payout(params:PayoutProps) {
             size="big"
             name="name"
           />
-          <div className="payloadCheckboxContainer">
+          <label className="payloadCheckboxContainer">
             <input type="checkbox" className="inputCheckboxPayout" name="" id="" />
             <span className="payloadCheckmark"/>
-          </div>
+          </label>
         </div>
         
         
