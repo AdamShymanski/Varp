@@ -125,7 +125,7 @@ export function Input(props: Props) {
           type={type}
           disabled={disabled}
           ref={reference}
-          value={defaultValue || ""}
+          {...(defaultValue && {value:defaultValue})}
         />
         <p className="error-msg">{error && error.message}</p>
       </div>
