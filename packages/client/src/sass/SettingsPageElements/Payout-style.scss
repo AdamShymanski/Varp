@@ -25,7 +25,16 @@ p {
       flex-direction: column;
       width: 75%;
       h4 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 42px;
+        text-align: left;
+        display: flex;
+        align-items: center;
 
+        color: #F4F4F4;
       }
   
       p {
