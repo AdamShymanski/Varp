@@ -18,19 +18,27 @@ p {
   justify-content: center;
   .flexRow {
     position: relative;
-    input.inputCheckboxPayout {
-      position: absolute;
-      height: 50px;
-      width: 50px;
-      right: -75px;
-      &:checked {
-        content: '\2713';
-        display: block;
-        text-align: center;
-        color: #41B883;
+    .payloadCheckboxContainer {
+      input.inputCheckboxPayout {
         position: absolute;
-        left: 0.7rem;
-        top: 0.2rem;
+        height: 50px;
+        width: 50px;
+        right: -75px;
+      }
+  
+      .payloadCheckmark {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
       }
     }
   }
