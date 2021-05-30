@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Button, Input} from '@varp/ui';
 import './../../sass/SettingsPageElements/Payout-style.scss';
+import EditIcon from "../../resources/icons/edit-3.svg"
 
 interface PayoutProps {
   elementState: number
@@ -14,6 +15,7 @@ function Payout(params:PayoutProps) {
             label="PayPal"
             size="big"
             name="email"
+            labelIcon={EditIcon}
           />
           <label className="payloadCheckboxContainer">
             <input type="checkbox" className="inputCheckboxPayout" name="" id=""/>

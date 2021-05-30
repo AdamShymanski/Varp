@@ -94,6 +94,7 @@ export interface Props {
   type?: string;
   reference?: any;
   disabled?: boolean;
+  labelIcon?: string;
 }
 
 export function Input(props: Props) {
@@ -105,12 +106,13 @@ export function Input(props: Props) {
     error,
     reference,
     type = '',
+    labelIcon = '',
     ...rest
   } = props;
   return (
     <main css={style}>
       <div className={size}>
-        <p className={`label`}>{label}</p>
+        <p className={`label`}>{label}</p> {labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}
         <input
           name={name}
           className={`input`}
