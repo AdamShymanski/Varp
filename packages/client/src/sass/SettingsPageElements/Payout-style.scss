@@ -31,7 +31,7 @@ p {
       user-select: none;
       
       &:hover input ~ .payloadCheckmark {
-        background-color: #ccc;
+        background-color: #121212;
       }
 
       input.inputCheckboxPayout {
@@ -56,16 +56,16 @@ p {
         left: 20px;
         height: 30px;
         width: 30px;
-        background-color: #eee;
+        background-color: #121212;
         
         &:after {
           content: "";
           position: absolute;
           display: none;
-          left: 9px;
-          top: 5px;
-          width: 5px;
-          height: 10px;
+          left: 10px;
+          top: 3px;
+          width: 7.5px;
+          height: 15px;
           border: solid #0082FF;
           border-width: 0 3px 3px 0;
           -webkit-transform: rotate(45deg);
