@@ -1,148 +1,263 @@
 @import '../variables.scss';
 
-$margin-hamburger-menu: 20px;
-
-.title {
-  .accentLine {
-    height: 4px;
-    width: 35px;
-
-    border-radius: 8px;
-    background: $accent;
-  }
-
-  p {
-    margin-left: 1vw;
-    font-size: 3.5em;
-    font-weight: 700;
-    color: $main-text;
-  }
-  @media screen and (max-width: 595px) {
-    p {
-      font-size: 2em;
-    }
-    .accentLine {
-      width: 20px;
-    }
-  }
-}
-
-.wrapper {
-  .wrapper--navbar {
+.lpWrapper {
+  background: #0d0d0d;
+  padding: 0 16.825%;
+  header {
+    margin-top: 30px;
     width: 100%;
-    padding-bottom: 20px;
+    height: 80px;
     justify-content: space-between;
 
-    ul {
-      padding: 2em;
-
-      .hamburgerMenu {
-        display: none;
-      }
-      .default-menu {
-        display: flex;
-        visibility: visible;
-
-        @media screen and (max-width: 1024px) {
-          transition: all 0.5s ease;
-          visibility: hidden;
-          width: 0;
-          height: 0;
-          position: absolute;
-          flex-direction: column;
-          top: 0;
-          right: 0;
-          z-index: 5000;
-          background-color: black;
-          transform: rotate3d(90);
-          li {
-            padding: 0;
-            margin: 0;
-            top: calc(50vh - (0.75rem + 100px));
-            position: relative;
-            text-align: center;
-            display: unset !important;
-            width: 100%;
-            font-size: 0;
-            &:hover {
-              background-color: rgba(0, 132, 255, 0.7);
-              box-shadow: 0 2.8px 2.2px rgba(0, 132, 255, 0.034),
-                0 6.7px 5.3px rgba(0, 132, 255, 0.048),
-                0 12.5px 10px rgba(0, 132, 255, 0.06),
-                0 22.3px 17.9px rgba(0, 132, 255, 0.072),
-                0 41.8px 33.4px rgba(0, 132, 255, 0.086);
-            }
-          }
-          &.expand-menu {
-            display: flex;
-            position: fixed;
-            visibility: visible;
-            width: calc(100vw);
-            height: calc(100vh);
-            li {
-              font-size: clamp(0.75rem, 2vw, 1rem);
-              padding: $margin-hamburger-menu 0;
-              margin: $margin-hamburger-menu/2 0;
-            }
-          }
-        }
-
-        & > li:nth-child(3),
-        & > li:nth-child(4) {
-          display: none;
+    img {
+      height: 100%;
+    }
+    aside {
+      width: 70%;
+      justify-content: space-around;
+      .headerList {
+        color: $main-text;
+        width: 380px;
+        justify-content: space-evenly;
+        li {
+          font-weight: 500;
+          list-style: none;
         }
       }
-
-      li {
-        list-style: none;
-        margin: 0 1rem;
-        color: $second-text;
+      .btnWrapper {
+        align-items: center;
+        justify-content: center;
         p {
-          margin: 0 -10px;
+          margin: 0 20px;
+          font-family: $poppins-font;
           color: $back-text;
         }
       }
     }
-    .sideDrawer {
-      display: none;
+  }
+  .mainSection {
+    margin-top: 80px;
+    text-align: center;
+    h1 {
+      font-size: 4em;
+      font-weight: 700;
+
+      width: 962px;
+      color: $main-text;
     }
-
-    @media screen and (max-width: 1024px) {
-      ul {
-        .hamburgerMenu {
-          display: inherit;
-          z-index: 5000;
-          img {
-            width: 30px;
-          }
-        }
-
-        & > li {
-          display: none;
-        }
+    p {
+      font-size: 1.2em;
+      font-weight: 50;
+      margin: 30px 0;
+      width: 900px;
+      color: $gray;
+    }
+    .mockupWrapper {
+      position: relative;
+      div {
+        height: 45%;
+        position: absolute;
+        margin-bottom: 200px;
+        width: 30px;
+        border-radius: 30px;
       }
-      .sideDrawer {
-        display: none;
+      .shadowHandler1 {
+        right: 0;
+        -webkit-box-shadow: 18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+        -moz-box-shadow: 18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+        box-shadow: 18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+      }
+      .shadowHandler2 {
+        left: 0;
+        -webkit-box-shadow: -18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+        -moz-box-shadow: -18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+        box-shadow: -18px 0px 81px 28px rgba(0, 132, 255, 0.85);
+      }
+      img {
+        z-index: 1;
+        margin: 40px 0 220px 0;
+        width: 100%; //1274 px
       }
     }
   }
+  .featuresArt {
+    height: 800px;
+    width: 120%;
 
-  .wrapper--main {
-    display: flex;
-    margin-right: 15vw;
-    @media screen and (max-width: 1285px) {
-      margin-right: 0;
+    background: #0d0d0d;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    color: $main-text;
+
+    div {
+      align-items: flex-start;
+      img {
+        width: 120px;
+      }
+      .podium {
+        width: 170px;
+      }
+      .hand {
+        width: 140px;
+      }
+      .featureContent {
+        margin-left: 50px;
+        color: $main-text;
+        h3 {
+          font-size: 2.2em;
+        }
+        span {
+          font-weight: 600;
+          color: $main-text;
+        }
+        p {
+          margin-top: 12px;
+          width: 280px;
+          color: $back-text;
+        }
+      }
+    }
+  }
+  .nrpArt {
+    width: 100vw;
+    height: 560px;
+    padding: 0 25.359%;
+
+    background: $background;
+    .textContainer {
+      color: $main-text;
+      h4 {
+        font-weight: 600;
+        color: $accent;
+      }
+      h1 {
+        margin: 10px 0;
+        font-size: 3em;
+      }
+      p {
+        width: 60%;
+        color: $back-text;
+        .accentSpan {
+          color: $accent;
+        }
+        span {
+          font-weight: 500;
+          color: $main-text;
+        }
+      }
+    }
+    img {
+      width: 45%;
+    }
+  }
+  .faqArt {
+    height: 650px;
+    justify-content: space-between;
+    width: 100%;
+    .textContainer {
+      color: $main-text;
+      h4 {
+        font-weight: 600;
+        color: $accent;
+      }
+      h1 {
+        margin: 10px 0;
+        font-size: 3em;
+      }
+      p {
+        width: 45%;
+        color: $back-text;
+        .accentSpan {
+          color: $accent;
+        }
+        span {
+          font-weight: 500;
+          color: $main-text;
+        }
+      }
+    }
+    aside {
+      width: 30%;
+    }
+  }
+  .complicatedArt {
+    width: 100vw;
+    height: 560px;
+    padding: 0 25.359%;
+
+    background: $background;
+    .textContainer {
+      color: $main-text;
+      h4 {
+        font-weight: 600;
+        color: $accent;
+      }
+      h1 {
+        margin: 10px 0;
+        font-size: 3em;
+      }
+      p {
+        width: 60%;
+        color: $back-text;
+        .accentSpan {
+          color: $accent;
+        }
+        span {
+          font-weight: 500;
+          color: $main-text;
+        }
+      }
+    }
+    img {
+      width: 380px;
     }
   }
   footer {
     width: 100%;
-    height: 100px;
-    position: absolute;
+    height: 580px;
 
-    background: $dark-gray;
-    justify-content: center;
-    p {
-      font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: $main-text;
+    .top {
+      align-items: flex-start;
+      justify-content: center;
+      img {
+        width: 9%;
+        margin-bottom: 25px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 1.1em;
+      }
+    }
+    .body {
+      width: 400px;
+      align-items: flex-start;
+      justify-content: space-between;
+      li {
+        list-style: none;
+      }
+      .bold {
+        font-weight: 600;
+      }
+    }
+    aside {
+      p {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .row {
+        width: 380px;
+        justify-content: space-between;
+        .icons {
+          width: 100px;
+          justify-content: space-between;
+        }
+      }
     }
   }
 }
