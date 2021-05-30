@@ -39,17 +39,6 @@ function Payout(params:PayoutProps) {
           </label>
         </div>
         
-        
-        <p className="errorMessage poppinsFont"></p>
-        <div className="buttonWrapper">
-          <Button
-            type="submit"
-            size="medium"
-            children="Submit"
-            variant="primary"
-          />
-          {/* <PacmanLoader color={'#0082FF'} loading={""} size={15} /> */}
-        </div>
       </form>
     </main>
   );
