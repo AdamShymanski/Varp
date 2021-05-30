@@ -7,15 +7,22 @@ import {Button} from '@varp/ui';
 
 //resources
 import logo from './../resources/icons/logo.png';
-import mockup from './../resources/mockup.png';
+import just_logo from './../resources/icons/just-logo.png';
 
 import hamburger from './../resources/icons/hamburger-menu.svg';
 
-import clock from './../resources/illustrations/clock.png';
-import hand from './../resources/illustrations/hand_money.png';
-import podium from './../resources/illustrations/podium.png';
-import file from './../resources/illustrations/lock_file.png';
-import inputs from './../resources/illustrations/inputs_ill.png';
+import mockup from './../resources/illustrations/mockup.png';
+import clock from './../resources/illustrations/clock.svg';
+import hand from './../resources/illustrations/hand.svg';
+import podium from './../resources/illustrations/podium.svg';
+import file from './../resources/illustrations/file.svg';
+import inputs from './../resources/illustrations/inputs.svg';
+import map from './../resources/illustrations/map.svg';
+
+import twitter from './../resources/icons/twitter.png';
+import instagram from './../resources/icons/instagram.png';
+import linkedIn from './../resources/icons/linkedin.png';
+import {action} from '@storybook/addon-actions';
 
 function LandingPage() {
   const history = useHistory();
@@ -35,9 +42,9 @@ function LandingPage() {
             <li>Contact</li>
           </ul>
           <div className="flexRow btnWrapper">
-            <Button />
+            <Button children={'Register'} action={pushToRegister} />
             <p>or</p>
-            <Button />
+            <Button children={'Sign In'} action={pushToSignIn} />
           </div>
         </aside>
       </header>
@@ -48,7 +55,7 @@ function LandingPage() {
           an element of competition, shorten the time and significantly improve
           the overall comfort of this way of earning. Even $20 in 15 minutes.
         </p>
-        <Button size="huge" />
+        <Button size="big" children={'Get Started'} />
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
           <img src={mockup} />
@@ -113,23 +120,65 @@ function LandingPage() {
           </p>
         </div>
         <img src={inputs} />
-        <aside className="inputIllustration"></aside>
       </article>
       <article className="faqArt flexRow">
         <div className="textContainer poppinsFont">
           <h4>GET TO KNOW VARP</h4>
           <h1>Frequently Asked Questions</h1>
-          <p>
-            <span>Increased efficiency.</span> By saving previous responses, we
-            can use
-            <span className="accentSpan"> AutoFill</span> to reduce the time
-            needed to complete the survey by up to 40%.
-          </p>
         </div>
         <aside></aside>
       </article>
-      <article className="complicatedArt"></article>
-      <footer></footer>
+      <article className="complicatedArt flexRow">
+        <div className="textContainer poppinsFont">
+          <h4>SIMPLE AND SLEEK</h4>
+          <h1>Why it’s so complicated?</h1>
+          <p>
+            <span> Make it simple.</span> With us, the task of creating an
+            account on a site is just a click of a button away. You don't have
+            to visit the advertiser's site, all the data comes from your Varp
+            profile and the registration process is automated.
+          </p>
+        </div>
+        <img src={map} />
+      </article>
+      <footer>
+        <div className="top poppinsFont flexColumn">
+          <img src={just_logo} />
+          <p>© 2021 Varp, Inc.</p>
+        </div>
+        <main className="body poppinsFont flexRow">
+          <ul>
+            <li className="bold">SITE</li>
+            <li>Dashboard</li>
+            <li>Site map</li>
+            <li>FAQ</li>
+          </ul>
+          <ul>
+            <li className="bold">COMPANY</li>
+            <li>About Varp</li>
+            <li>Legal</li>
+            <li>Privacy Policy</li>
+            <li>Terms of Use</li>
+          </ul>
+          <ul>
+            <li className="bold">COMMUNITY</li>
+            <li>Help</li>
+            <li>Support</li>
+            <li>Media kit</li>
+          </ul>
+        </main>
+        <aside>
+          <p className="poppinsFont">FOLLOW US</p>
+          <div className="row flexRow">
+            <div className="icons flexRow">
+              <img src={linkedIn} alt="LinkedIn" />
+              <img src={twitter} alt="Twitter" />
+              <img src={instagram} alt="Instagram" />
+            </div>
+            <Button width={'230px'} children={'Start making money'} />
+          </div>
+        </aside>
+      </footer>
     </div>
   );
 }
