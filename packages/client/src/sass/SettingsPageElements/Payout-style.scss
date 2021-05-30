@@ -21,24 +21,25 @@ p {
     position: relative;
     display: flex;
     
-    h4 {
+    &.payoutInformation {
+      flex-direction: column;
+      width: 75%;
+      h4 {
 
+      }
+  
+      p {
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 18px;
+  
+        color: #8C8C8C;
+      }
+  
     }
-
-    p {
-      font-size: 1rem;
-      // position: absolute;
-
-
-      
-      font-style: normal;
-      font-weight: normal;
-      font-size: 15px;
-      line-height: 18px;
-
-      color: #8C8C8C;
-    }
-
+   
     .payloadCheckboxContainer {
       display: block;
       position: relative;
