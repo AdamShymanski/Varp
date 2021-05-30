@@ -20,6 +20,7 @@ function Payout(params:PayoutProps) {
             size="big"
             name="email"
             labelIcon={EditIcon}
+            defaultValue="szymanskiadam111@gmail.com"
           />
           <label className="payloadCheckboxContainer">
             <input type="checkbox" className="inputCheckboxPayout" name="" id=""/>
@@ -32,6 +33,7 @@ function Payout(params:PayoutProps) {
             size="big"
             name="name"
             labelIcon={EditIcon}
+            defaultValue="1534534634643152435634613"
           />
           <label className="payloadCheckboxContainer">
             <input type="checkbox" className="inputCheckboxPayout" name="" id="" />

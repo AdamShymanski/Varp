@@ -99,6 +99,7 @@ export interface Props {
   reference?: any;
   disabled?: boolean;
   labelIcon?: string;
+  defaultValue?: string;
 }
 
 export function Input(props: Props) {
@@ -111,6 +112,7 @@ export function Input(props: Props) {
     reference,
     type = '',
     labelIcon = '',
+    defaultValue= '',
     ...rest
   } = props;
   return (
@@ -123,6 +125,7 @@ export function Input(props: Props) {
           type={type}
           disabled={disabled}
           ref={reference}
+          value={defaultValue || ""}
         />
         <p className="error-msg">{error && error.message}</p>
       </div>
