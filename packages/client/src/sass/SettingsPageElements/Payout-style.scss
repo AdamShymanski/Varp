@@ -24,6 +24,7 @@ p {
     &.payoutInformation {
       flex-direction: column;
       width: 75%;
+      align-items: flex-start;
       h4 {
         font-family: Poppins;
         font-style: normal;
@@ -33,7 +34,7 @@ p {
         text-align: left;
         display: flex;
         align-items: center;
-
+        justify-self: start;
         color: #F4F4F4;
       }
   
