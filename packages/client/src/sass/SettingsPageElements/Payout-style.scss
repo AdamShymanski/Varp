@@ -16,8 +16,29 @@ p {
   width: 82.5vw;
   align-items: center;
   justify-content: center;
+  font-family: Roboto;
   .flexRow {
     position: relative;
+    display: flex;
+    
+    h4 {
+
+    }
+
+    p {
+      font-size: 1rem;
+      // position: absolute;
+
+
+      
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15px;
+      line-height: 18px;
+
+      color: #8C8C8C;
+    }
+
     .payloadCheckboxContainer {
       display: block;
       position: relative;

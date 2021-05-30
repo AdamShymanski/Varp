@@ -11,8 +11,8 @@ function Payout(params:PayoutProps) {
     <main className={`payoutWrapper columnFlex ${params.elementState == 2 ? 'show' : 'hide'}`}>
       <form className="flexColumn">
         <div className="flexRow">
-          <h1>Payout Method</h1>
-          <p>If you win the game the prize will be paid as soon as possible within 24 hours. Choose one of the withdrawal methods. Make sure to enter a valid address. In case of any problems, please contact our <a>support team.</a></p>
+          <h4>Payout Method</h4>
+          <p >If you win the game the prize will be paid as soon as possible within 24 hours. Choose one of the withdrawal methods. Make sure to enter a valid address. In case of any problems, please contact our <a>support team.</a></p>
         </div>
         <div className="flexRow">
           <Input
