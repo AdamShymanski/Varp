@@ -10,37 +10,14 @@ function Payout(params:PayoutProps) {
     <main className={`payoutWrapper columnFlex ${params.elementState == 2 ? 'show' : 'hide'}`}>
       <form className="flexColumn">
         <Input
-          label="Email"
+          label="PayPal"
           size="big"
           name="email"
         />
         <Input
-          label="Full Name"
+          label="BankAcccount"
           size="big"
           name="name"
-        />
-        <Input
-          label="Password"
-          size="big"
-          name="password"
-          type="password"
-        />
-        <Input
-          label="Confirm Password"
-          size="big"
-          name="confirmPassword"
-          type="password"
-        />
-        <Input
-          label="Age"
-          size="big"
-          name="age"
-          type="number"
-        />
-        <Input
-          label="Country"
-          size="big"
-          name="country"
         />
 
         <p className="errorMessage poppinsFont"></p>
