@@ -77,6 +77,10 @@ const style = css`
   .big {
     .label {
       font-size: 1.2em;
+      display: flex;
+      img {
+        margin: 0 1rem;
+      }
     }
     .input {
       width: 500px;
@@ -112,7 +116,7 @@ export function Input(props: Props) {
   return (
     <main css={style}>
       <div className={size}>
-        <p className={`label`}>{label}</p> {labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}
+        <p className={`label`}>{label}{labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}</p> 
         <input
           name={name}
           className={`input`}
