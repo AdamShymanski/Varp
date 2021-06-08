@@ -3,26 +3,29 @@ import React, {useState, useEffect} from 'react';
 
 import './../sass/LandingPage-style.scss';
 
-import {Button} from '@varp/ui';
+import {Button, Answer} from '@varp/ui';
 
 //resources
 import logo from './../resources/icons/logo.png';
 import just_logo from './../resources/icons/just-logo.png';
 
 import hamburger from './../resources/icons/hamburger-menu.svg';
+import search from './../resources/icons/search.svg';
+import plus from './../resources/icons/plus.svg';
+import minus from './../resources/icons/minus.svg';
+import longArrow from './../resources/icons/long-arrow.svg';
 
 import mockup from './../resources/illustrations/mockup.png';
 import clock from './../resources/illustrations/clock.svg';
 import hand from './../resources/illustrations/hand.svg';
-import podium from './../resources/illustrations/podium.svg';
 import file from './../resources/illustrations/file.svg';
 import inputs from './../resources/illustrations/inputs.svg';
 import map from './../resources/illustrations/map.svg';
+import shield from './../resources/illustrations/shield.svg';
 
 import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
-import {action} from '@storybook/addon-actions';
 
 function LandingPage() {
   const history = useHistory();
@@ -30,6 +33,25 @@ function LandingPage() {
   const pushToRegister = () => history.push('/register');
   const pushToSignIn = () => history.push('/sign-in');
   const pushToContact = () => history.push('/contact');
+  const pushToLinkedIn = () => history.push('/linkedIn');
+
+  const [faqState, setFaq] = useState({
+    first: false,
+    second: false,
+    third: false,
+  });
+
+  const faqSectionSwitch = (number: string) => {
+    if (number == 'first') {
+      setFaq({first: !faqState.first, second: false, third: false});
+    }
+    if (number == 'second') {
+      setFaq({first: false, second: !faqState.second, third: false});
+    }
+    if (number == 'third') {
+      setFaq({first: false, second: false, third: !faqState.third});
+    }
+  };
 
   return (
     <div className="lpWrapper flexColumn">
@@ -55,7 +77,13 @@ function LandingPage() {
           an element of competition, shorten the time and significantly improve
           the overall comfort of this way of earning. Even $20 in 15 minutes.
         </p>
-        <Button size="big" children={'Get Started'} />
+        <Button
+          size="big"
+          children={'Get Started'}
+          action={pushToRegister}
+          variant="icon"
+          icon={longArrow}
+        />
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
           <img src={mockup} />
@@ -87,7 +115,7 @@ function LandingPage() {
         <div className="flexRow">
           <img src={file} className="file" />
           <div className="featureContent">
-            <h3>Your data is safe</h3>
+            <h3>Your data is secure</h3>
             <p>
               <span>Enhanced privacy.</span> Although you share your data with
               other companies you can fully control the content that is sent to
@@ -96,14 +124,14 @@ function LandingPage() {
             </p>
           </div>
         </div>
-        <div className="flexRow">
-          <img src={podium} className="podium" />
+        <div className="flexRow shieldDiv">
+          <img src={shield} className="shield" />
           <div className="featureContent">
-            <h3>Competitive element</h3>
+            <h3>You are safe</h3>
             <p>
-              <span>Add some excitement.</span> With arcade games competition
-              you also get to enjoy playing against other players, it really is
-              addictive.
+              <span>High reliability.</span> Each company that wants to
+              cooperate with us is thoroughly checked by us. This is how we make
+              sure that our users aren't cheated.
             </p>
           </div>
         </div>
@@ -125,8 +153,86 @@ function LandingPage() {
         <div className="textContainer poppinsFont">
           <h4>GET TO KNOW VARP</h4>
           <h1>Frequently Asked Questions</h1>
+          <aside className="flexColumn">
+            <section>
+              <div className="flexRow">
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <div
+                  className={'flexRow'}
+                  onClick={() => {
+                    faqSectionSwitch('first');
+                  }}
+                >
+                  <img src={`${faqState.first ? minus : plus}`} alt="Expand" />
+                </div>
+              </div>
+              <div>
+                <p className={`mainText ${faqState.first ? '' : 'invisible'}`}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
+                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
+                  dolor sit amet, consectetur adipiscing el?
+                </p>
+              </div>
+            </section>
+            <section>
+              <div className="flexRow">
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <div
+                  className={'flexRow'}
+                  onClick={() => {
+                    faqSectionSwitch('second');
+                  }}
+                >
+                  <img src={`${faqState.second ? minus : plus}`} alt="Expand" />
+                </div>
+              </div>
+              <div>
+                <p className={`mainText ${faqState.second ? '' : 'invisible'}`}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
+                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
+                  dolor sit amet, consectetur adipiscing el?
+                </p>
+              </div>
+            </section>
+            <section>
+              <div className="flexRow">
+                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <div
+                  className={'flexRow'}
+                  onClick={() => {
+                    faqSectionSwitch('third');
+                  }}
+                >
+                  <img src={`${faqState.third ? minus : plus}`} alt="Expand" />
+                </div>
+              </div>
+              <div>
+                <p className={`mainText ${faqState.third ? '' : 'invisible'}`}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
+                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
+                  dolor sit amet, consectetur adipiscing el?
+                </p>
+              </div>
+            </section>
+          </aside>
         </div>
-        <aside></aside>
+        <aside className="flexColumn FAQSection">
+          <section className="scrHeader flexColumn">
+            <div className="searchInputWrapper flexRow">
+              <input
+                className="scrHeader flexRow poppinsFont"
+                placeholder="Search for help"
+              />
+              <img src={search} />
+            </div>
+          </section>
+          <section className="scrBox">
+            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
+            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
+            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
+            <Answer header="Lorem Ipsum" text="Lorem Ipsum" last={true} />
+          </section>
+        </aside>
       </article>
       <article className="complicatedArt flexRow">
         <div className="textContainer poppinsFont">
@@ -171,7 +277,7 @@ function LandingPage() {
           <p className="poppinsFont">FOLLOW US</p>
           <div className="row flexRow">
             <div className="icons flexRow">
-              <img src={linkedIn} alt="LinkedIn" />
+              <img src={linkedIn} alt="LinkedIn" onClick={pushToLinkedIn} />
               <img src={twitter} alt="Twitter" />
               <img src={instagram} alt="Instagram" />
             </div>

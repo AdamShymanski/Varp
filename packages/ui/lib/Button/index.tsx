@@ -101,6 +101,19 @@ const style = css`
       margin-left: 8px;
     }
   }
+  .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background: #0082ff;
+    color: #121212;
+    padding: 6px 25px;
+    img {
+      margin-left: 15px;
+      width: 17%;
+    }
+  }
 
   .disabled {
     background: transparent;
@@ -151,6 +164,10 @@ export interface Props {
    * Type of Button
    */
   type?: string;
+  /**
+   * Icon on the left side of Button
+   */
+  icon?: any;
 }
 
 interface RippleProps {
@@ -167,6 +184,7 @@ export function Button(props: Props) {
     type = '',
     font = 'poppinsFont',
     action = (e: React.MouseEvent) => {},
+    icon,
     ...rest
   } = props;
 
@@ -198,6 +216,37 @@ export function Button(props: Props) {
         >
           {children}
           <img src={arrow} />
+        </button>
+      </main>
+    );
+  }
+  if (variant === 'icon') {
+    return (
+      <main css={style}>
+        <button
+          className={`button ${size} ${variant} ${font} ${
+            visibility ? '' : 'invisible'
+          }`}
+          onClick={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            setCoords({x: e.clientX - rect.left, y: e.clientY - rect.top});
+            action && action(e);
+          }}
+          {...rest}
+        >
+          {isRippling ? (
+            <span
+              className="ripple"
+              style={{
+                left: coords.x,
+                top: coords.y,
+              }}
+            />
+          ) : (
+            ''
+          )}
+          <span className="content">{children}</span>
+          <img src={icon} alt="Icon" />
         </button>
       </main>
     );

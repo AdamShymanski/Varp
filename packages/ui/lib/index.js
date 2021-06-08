@@ -4,3 +4,4 @@ export {Styles} from './Styles';
 export {SideDrawer} from './SideDrawer';
 export {Button} from './Button';
 export {Input} from './Input';
+export {Answer} from './FAQ';
