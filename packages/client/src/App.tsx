@@ -23,6 +23,14 @@ function App() {
           <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
+          <Route
+            path="/linkedIn"
+            component={() => {
+              window.location.href =
+                'https://www.linkedin.com/company/varp-marketing';
+              return null;
+            }}
+          />
         </div>
       </AuthProvider>
     </Router>
