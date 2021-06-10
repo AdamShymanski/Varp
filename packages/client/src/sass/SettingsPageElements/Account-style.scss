@@ -32,7 +32,7 @@ p {
         position: relative;
         .insideBox {
           position: absolute;
-          top: 66px;
+          bottom: 28px;
           text-align: right;
           width: 500px;
           pointer-events: none;
@@ -44,7 +44,7 @@ p {
         }
         .rightBox {
           position: absolute;
-          top: 60px;
+          bottom: 20px;
           left: 100%;
           margin-left: 24px;
         }
