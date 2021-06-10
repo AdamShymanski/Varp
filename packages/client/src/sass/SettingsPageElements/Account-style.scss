@@ -5,15 +5,46 @@ p {
   color: $main-text;
 }
 
-.hide {
+.accountWrapper.hide {
   display: none;
 }
-.show {
-  display: inherit;
+.accountWrapper.show {
+  display: flex;
 }
 
 .accountWrapper {
   width: 82.5vw;
   align-items: center;
   justify-content: center;
+  .formWrapper{
+    position: relative;
+    min-width: 50%;
+    @media screen and (max-width: 768px) {
+        min-width: 80%;
+      }
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .buttonWrapper {
+        margin: 40px 0px;
+      }
+  .verifyButton {
+    position: absolute;
+    top: 60px;
+    left: 100%;
+    margin-left: 24px;
+  }
+  .verification {
+    position: absolute;
+    top: 70px;
+    text-align: right;
+    width: 500px;
+    margin-right: 48px;
+    >p {
+      font-size: 1em;
+      color: $gray;
+    }
+  }
+  }
 }

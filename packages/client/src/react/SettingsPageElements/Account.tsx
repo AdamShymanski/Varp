@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import './../../sass/SettingsPageElements/Account-style.scss';
 
@@ -14,7 +14,7 @@ import {useAuth} from '../../contexts/AuthContext';
 
 function Account(params) {
   const onlyLettersRegEx = /^[A-Za-z\s]+$/;
-  const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
+  // const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
   const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
 
   const schema = yup.object().shape({
@@ -53,10 +53,13 @@ function Account(params) {
   }
 
   const [loadingPacman, setLoading] = useState<boolean>(false);
+  // eslint-disable-next-line
   const [errorState, setError] = useState<string>('');
-
+  // eslint-disable-next-line
+  const [tokenAmount, setTokenAmount] = useState<string>('');
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
+    console.log(data);
     setLoading(false);
   };
 
@@ -65,7 +68,7 @@ function Account(params) {
   });
 
   //Email Verification Indicator
-
+  // eslint-disable-next-line
   function EVI(props: number) {
     //if props = 1 it means EVI will return boolean for elements which will be used to toggle between hide and show classes
 
@@ -77,8 +80,10 @@ function Account(params) {
     }
 
     if (currentUser) {
-      if (currentUser.emailVerified) return 'Completed';
-      return 'Not completed';
+      if (currentUser.emailVerified) return 'Email Verified';
+      return 'Email not verified';
+    } else {
+      return 'Account not found';
     }
   }
 
@@ -88,7 +93,7 @@ function Account(params) {
         params.elementState == 0 ? 'show' : 'hide'
       }`}
     >
-      <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
+      <form className="formWrapper" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Email"
           reference={register}
@@ -96,6 +101,17 @@ function Account(params) {
           name="email"
           error={errors.email}
         />
+        <div className="verification">
+          <p>{EVI(0)}</p>
+        </div>
+        <div className="verifyButton">
+          <Button
+            type="submit"
+            size="medium"
+            children="Verify"
+            variant="primary"
+          />
+        </div>
         <Input
           label="Full Name"
           reference={register}
@@ -134,6 +150,17 @@ function Account(params) {
           name="country"
           error={errors.country}
         />
+        <Input
+          label="Referral Code"
+          reference={register}
+          size="big"
+          name="referral"
+        />
+        {tokenAmount && (
+          <p>
+            <span>{tokenAmount}</span> tokens have been added to your account
+          </p>
+        )}
 
         <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="buttonWrapper">
