@@ -375,3 +375,18 @@
     }
   }
 }
+
+.accordion {
+  margin-bottom: 10px;
+  .content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity .4s ease-out, max-height .7s ease-in-out;
+    
+    &.animated {
+      max-height: 30rem;
+      opacity: 1;
+    }
+  }
+}

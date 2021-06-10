@@ -154,7 +154,7 @@ function LandingPage() {
           <h4>GET TO KNOW VARP</h4>
           <h1>Frequently Asked Questions</h1>
           <aside className="flexColumn">
-            <section>
+            <section className="accordion">
               <div className="flexRow">
                 <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
                 <div
@@ -166,7 +166,7 @@ function LandingPage() {
                   <img src={`${faqState.first ? minus : plus}`} alt="Expand" />
                 </div>
               </div>
-              <div>
+              <div className={`content ${faqState.first ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.first ? '' : 'invisible'}`}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
                   ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
@@ -174,7 +174,7 @@ function LandingPage() {
                 </p>
               </div>
             </section>
-            <section>
+            <section className="accordion">
               <div className="flexRow">
                 <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
                 <div
@@ -186,7 +186,7 @@ function LandingPage() {
                   <img src={`${faqState.second ? minus : plus}`} alt="Expand" />
                 </div>
               </div>
-              <div>
+              <div className={`content ${faqState.second ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.second ? '' : 'invisible'}`}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
                   ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
@@ -194,7 +194,7 @@ function LandingPage() {
                 </p>
               </div>
             </section>
-            <section>
+            <section className="accordion">
               <div className="flexRow">
                 <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
                 <div
@@ -206,7 +206,7 @@ function LandingPage() {
                   <img src={`${faqState.third ? minus : plus}`} alt="Expand" />
                 </div>
               </div>
-              <div>
+              <div className={`content ${faqState.third ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.third ? '' : 'invisible'}`}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
                   ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
