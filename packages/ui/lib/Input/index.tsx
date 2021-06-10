@@ -1,6 +1,6 @@
 import {css} from '@emotion/react';
 import React from 'react';
-import {Disabled} from '../Button/Button.stories';
+// import {Disabled} from '../Button/Button.stories';
 
 const style = css`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -99,6 +99,7 @@ export interface Props {
   reference?: any;
   disabled?: boolean;
   labelIcon?: string;
+  onChange?: void;
   defaultValue?: string;
 }
 
@@ -112,20 +113,25 @@ export function Input(props: Props) {
     reference,
     type = '',
     labelIcon = '',
-    defaultValue= '',
-    ...rest
+    onChange = () => {},
+    defaultValue = '',
+    // ...rest
   } = props;
   return (
     <main css={style}>
       <div className={size}>
-        <p className={`label`}>{label}{labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}</p> 
+        <p className={`label`}>
+          {label}
+          {labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}
+        </p>
         <input
           name={name}
           className={`input`}
           type={type}
           disabled={disabled}
           ref={reference}
-          {...(defaultValue && {value:defaultValue})}
+          onChange={onChange}
+          {...(defaultValue && {value: defaultValue})}
         />
         <p className="error-msg">{error && error.message}</p>
       </div>
