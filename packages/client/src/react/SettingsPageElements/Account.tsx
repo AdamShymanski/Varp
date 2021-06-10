@@ -56,7 +56,7 @@ function Account(params) {
   // eslint-disable-next-line
   const [errorState, setError] = useState<string>('');
   // eslint-disable-next-line
-  const [tokenAmount, setTokenAmount] = useState<string>('');
+  const [tokenAmount, setTokenAmount] = useState<number>();
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
     console.log(data);
@@ -157,9 +157,11 @@ function Account(params) {
           name="referral"
         />
         {tokenAmount && (
-          <p>
-            <span>{tokenAmount}</span> tokens have been added to your account
-          </p>
+          <div className="token">
+            <p>
+              <span>{tokenAmount}</span> tokens have been added to your account
+            </p>
+          </div>
         )}
 
         <p className="errorMessage poppinsFont">{errorState}</p>

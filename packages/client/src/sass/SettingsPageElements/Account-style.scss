@@ -46,5 +46,14 @@ p {
       color: $gray;
     }
   }
+  .token {
+    text-align: left;
+    width: 500px;
+    margin-left: 48px;
+    > p{
+      font-size: 1em;
+      color: $gray;
+    }
+  }
   }
 }
