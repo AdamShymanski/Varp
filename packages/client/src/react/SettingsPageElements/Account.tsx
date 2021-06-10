@@ -11,6 +11,8 @@ import * as yup from 'yup';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 
 import {useAuth} from '../../contexts/AuthContext';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 function Account(params) {
   const onlyLettersRegEx = /^[A-Za-z\s]+$/;
@@ -57,12 +59,19 @@ function Account(params) {
   const [errorState, setError] = useState<string>('');
   // eslint-disable-next-line
   const [tokenAmount, setTokenAmount] = useState<number>();
+  // eslint-disable-next-line
+  const [isCodeValid, setIsCodeValid] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>('');
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
     console.log(data);
     setLoading(false);
   };
-
+  const onEmailVerify = async () => {
+    setLoading(true);
+    console.log(email);
+    setLoading(false);
+  };
   const {handleSubmit, register, errors} = useForm({
     resolver: yupResolver(schema),
   });
@@ -94,23 +103,28 @@ function Account(params) {
       }`}
     >
       <form className="formWrapper" onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          reference={register}
-          size="big"
-          name="email"
-          error={errors.email}
-        />
-        <div className="verification">
-          <p>{EVI(0)}</p>
-        </div>
-        <div className="verifyButton">
-          <Button
-            type="submit"
-            size="medium"
-            children="Verify"
-            variant="primary"
+        <div className="inputBoxWrapper">
+          <Input
+            label="Email"
+            reference={register}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
+            size="big"
+            name="email"
+            error={errors.email}
           />
+          <div className="insideBox">
+            <p>{EVI(0)}</p>
+          </div>
+          <div className="rightBox">
+            <Button
+              action={onEmailVerify}
+              size="medium"
+              children="Verify"
+              variant="primary"
+            />
+          </div>
         </div>
         <Input
           label="Full Name"
@@ -150,12 +164,21 @@ function Account(params) {
           name="country"
           error={errors.country}
         />
-        <Input
-          label="Referral Code"
-          reference={register}
-          size="big"
-          name="referral"
-        />
+        <div className="inputBoxWrapper">
+          <Input
+            label="Referral Code"
+            reference={register}
+            size="big"
+            name="referral"
+          />
+          <div className="insideBox">
+            {isCodeValid === true ? (
+              <FontAwesomeIcon icon={faCheck} color="green" />
+            ) : isCodeValid === false ? (
+              <FontAwesomeIcon icon={faTimes} color="red" />
+            ) : null}
+          </div>
+        </div>
         {tokenAmount && (
           <div className="token">
             <p>

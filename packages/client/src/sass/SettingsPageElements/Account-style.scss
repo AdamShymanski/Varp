@@ -17,7 +17,6 @@ p {
   align-items: center;
   justify-content: center;
   .formWrapper{
-    position: relative;
     min-width: 50%;
     @media screen and (max-width: 768px) {
         min-width: 80%;
@@ -29,31 +28,36 @@ p {
       .buttonWrapper {
         margin: 40px 0px;
       }
-  .verifyButton {
-    position: absolute;
-    top: 60px;
-    left: 100%;
-    margin-left: 24px;
-  }
-  .verification {
-    position: absolute;
-    top: 70px;
-    text-align: right;
-    width: 500px;
-    margin-right: 48px;
-    >p {
-      font-size: 1em;
-      color: $gray;
+      .inputBoxWrapper{
+        position: relative;
+        .insideBox {
+          position: absolute;
+          top: 66px;
+          text-align: right;
+          width: 500px;
+          pointer-events: none;
+          padding-right: 24px;
+          >p {
+            font-size: 1em;
+            color: $gray;
+          }
+        }
+        .rightBox {
+          position: absolute;
+          top: 60px;
+          left: 100%;
+          margin-left: 24px;
+        }
+      }
+      .token {
+        text-align: left;
+        width: 500px;
+        margin-left: 48px;
+        > p{
+          font-size: 1em;
+          color: $gray;
+        }
+      }
     }
   }
-  .token {
-    text-align: left;
-    width: 500px;
-    margin-left: 48px;
-    > p{
-      font-size: 1em;
-      color: $gray;
-    }
-  }
-  }
-}
+  
