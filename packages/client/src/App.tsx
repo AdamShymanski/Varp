@@ -9,6 +9,7 @@ import './App.scss';
 import PrivateRoute from './react/PrivateRoute';
 import RegisterPage from './react/RegisterPage';
 import ContactPage from './react/ContactPage';
+import SupportPage from './react/SupportPage';
 import LandingPage from './react/LandingPage';
 import SignInPage from './react/SignInPage';
 import MainPage from './react/MainPage';
@@ -23,6 +24,7 @@ function App() {
           <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
+          <PrivateRoute path="/Support" component={SupportPage} />
           <Route
             path="/linkedIn"
             component={() => {

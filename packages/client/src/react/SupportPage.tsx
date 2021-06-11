@@ -1,7 +1,7 @@
 import {useHistory} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 
-import './../sass/LandingPage-style.scss';
+import './../sass/SupportPage-style.scss';
 
 import {Button, Answer} from '@varp/ui';
 
@@ -34,7 +34,6 @@ function LandingPage() {
   const pushToSignIn = () => history.push('/sign-in');
   const pushToContact = () => history.push('/contact');
   const pushToLinkedIn = () => history.push('/linkedIn');
-  const pushToSupport = () => history.push('/support');
 
   const [faqState, setFaq] = useState({
     first: false,
@@ -55,7 +54,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="lpWrapper flexColumn">
+    <div className="spWrapper flexColumn">
       <header className="flexRow">
         <img src={logo} />
         <aside className="flexRow">
@@ -63,18 +62,16 @@ function LandingPage() {
             <li>Collaboration</li>
             <li>Business</li>
             <li>Contact</li>
-            <Button children={'Contact'} action={pushToContact} />
-            <Button children={'Support'} action={pushToSupport} />
           </ul>
-          <div className="flexRow btnWrapper">
+          {/* <div className="flexRow btnWrapper">
             <Button children={'Register'} action={pushToRegister} />
             <p>or</p>
             <Button children={'Sign In'} action={pushToSignIn} />
-          </div>
+          </div> */}
         </aside>
       </header>
       <main className="flexColumn poppinsFont mainSection">
-        <h1>Earn money for performing simple tasks</h1>
+        <h1>Earn SS for performing simple tasks</h1>
         <p>
           We're turning the CPA marketing monetization model upside down. We add
           an element of competition, shorten the time and significantly improve
