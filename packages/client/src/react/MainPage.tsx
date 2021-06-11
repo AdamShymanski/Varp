@@ -116,7 +116,7 @@ function MainPage() {
         reward: 214,
       },
       top: {
-        name: '',
+        name: currentUser ? currentUser.displayName : '',
         balance: 0,
         number: 0,
         profit: false,
@@ -165,7 +165,7 @@ function MainPage() {
         reward: 438,
       },
       top: {
-        name: result.data.name,
+        name: currentUser ? currentUser.displayName : '',
         balance: result.data.balance,
         number: result.data.lastAction,
         profit: result.data.profit,

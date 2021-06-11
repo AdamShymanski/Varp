@@ -14,9 +14,7 @@ $agency-bold-font: 'Agency FB Bold', arial;
 
 $old-accent: #ff1d00;
 $accent: #0082ff;
-
-$foreground-old: #0f0f0f;
-$background-old: #0a0a0a;
+$green: #24ff00;
 
 $foreground: #0f0f0f;
 $background: #1b1b1b;
@@ -49,6 +47,7 @@ $speech-bubble-background: #313131;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .flexColumn {

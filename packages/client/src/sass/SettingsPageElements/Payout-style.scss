@@ -1,0 +1,113 @@
+@import '../../variables.scss';
+
+p {
+  font-size: 8em;
+  color: $main-text;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: inherit;
+}
+
+.payoutWrapper {
+  width: 82.5vw;
+  align-items: center;
+  justify-content: center;
+  font-family: Roboto;
+  .flexRow {
+    position: relative;
+    display: flex;
+    
+    &.payoutInformation {
+      flex-direction: column;
+      width: 77%;
+      align-items: flex-start;
+      margin: 2.5rem 0;
+      h4 {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 42px;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-self: start;
+        color: #F4F4F4;
+      }
+  
+      p {
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 18px;
+        color: #8C8C8C;
+        a {
+          color: #0082FF
+        }
+      }
+  
+    }
+   
+    .payloadCheckboxContainer {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      
+      &:hover input ~ .payloadCheckmark {
+        background-color: #f4f4f4;;
+      }
+
+      input.inputCheckboxPayout {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        
+        &:checked ~ .payloadCheckmark{
+          background-color: #121212;
+          &:after {
+            display: block;
+          }
+        }
+      }
+      
+  
+      .payloadCheckmark {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        height: 30px;
+        width: 30px;
+        background-color: #121212;
+        
+        &:after {
+          content: "";
+          position: absolute;
+          display: none;
+          left: 10px;
+          top: 3px;
+          width: 7.5px;
+          height: 15px;
+          border: solid #0082FF;
+          border-width: 0 3px 3px 0;
+          -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}
