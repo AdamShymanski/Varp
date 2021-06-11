@@ -57,6 +57,13 @@ function LandingPage() {
     <div className="spWrapper flexColumn">
       <header className="flexRow">
         <img src={logo} />
+
+          <ul className="breadcump flexRow poppinsFont">
+            <li>Support</li>
+            <li>Business</li>
+            <li>Contact</li>
+          </ul>
+        
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
             <li>Collaboration</li>

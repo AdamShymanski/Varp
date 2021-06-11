@@ -9,6 +9,15 @@
     height: 80px;
     justify-content: space-between;
 
+    .breadcump {
+      color: $main-text;
+      width: 380px;
+      justify-content: space-evenly;
+      li {
+        font-weight: 500;
+        list-style: none;
+      }
+    }
     img {
       height: 100%;
     }
