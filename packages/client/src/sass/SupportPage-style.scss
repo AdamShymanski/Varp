@@ -46,6 +46,18 @@
     }
   }
   .mainSection {
+
+    .search__area {
+      background-color: #1b1b1b;
+    }
+
+    .help__center__content {
+      display: grid;
+
+      .item {
+        background-color: #1b1b1b;
+      }
+    }
     margin-top: 80px;
     text-align: center;
     h1 {
