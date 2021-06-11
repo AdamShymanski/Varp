@@ -85,12 +85,30 @@ function LandingPage() {
 
         </div>
         <div className="help__center__content">
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
-          <div className="item"></div>
+          <div className="item">
+            <img src={varpcard} alt="payment and billing"/>
+            <p>Payment and Billing</p>
+          </div>
+          <div className="item">
+          <img src={varpuser} alt="account"/>
+            <p>Account</p>
+          </div>
+          <div className="item">
+          <img src={varplock} alt="security"/>
+            <p>Security</p>
+          </div>
+          <div className="item">
+            <img src={varpcard} alt="payment and billing"/>
+            <p>Payment and Billing</p>
+          </div>
+          <div className="item">
+          <img src={varpuser} alt="account"/>
+            <p>Account</p>
+          </div>
+          <div className="item">
+          <img src={varplock} alt="security"/>
+            <p>Security</p>
+          </div>
         </div>
         <h1>Earn SS for performing simple tasks</h1>
         <p>
