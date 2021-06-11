@@ -7,7 +7,7 @@ function ThirdElement(props: any) {
     <main className={` teWrapper poppinsFont `}>
       <div className="title flexRow">
         <div className="accentLine" />
-        <p className="poppinsFont">How you can help?</p>
+        <p className="poppinsFont">How can you help?</p>
       </div>
       <div className="cardsWrapper">
         <article className="wideCard c1">
