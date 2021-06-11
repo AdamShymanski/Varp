@@ -61,11 +61,17 @@
       // flex-direction: row;
       // padding: 0 16.825%;
       .item {
+        width: calc(100% / 3);
         display: flex;
         background-color: #1b1b1b;
         height: 300px;
         justify-self: center;
         flex: 0 0 calc(100% / 3);
+        flex-direction: column;
+        img {
+          width: calc(1920px * 0.0625);
+
+        }
       }
     }
     margin-top: 80px;
