@@ -60,8 +60,6 @@ function LandingPage() {
 
           <ul className="breadcump flexRow poppinsFont">
             <li>Support</li>
-            <li>Business</li>
-            <li>Contact</li>
           </ul>
         
         <aside className="flexRow">
@@ -78,6 +76,18 @@ function LandingPage() {
         </aside>
       </header>
       <main className="flexColumn poppinsFont mainSection">
+
+        <div className="search__area">
+
+        </div>
+        <div className="help__center__content">
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+          <div className="item"></div>
+        </div>
         <h1>Earn SS for performing simple tasks</h1>
         <p>
           We're turning the CPA marketing monetization model upside down. We add

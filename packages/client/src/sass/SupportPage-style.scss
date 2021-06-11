@@ -12,7 +12,8 @@
     .breadcump {
       color: $main-text;
       width: 380px;
-      justify-content: space-evenly;
+      justify-content: flex-start;
+      margin: 0 1rem;
       li {
         font-weight: 500;
         list-style: none;
