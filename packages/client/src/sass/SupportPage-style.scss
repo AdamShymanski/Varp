@@ -65,7 +65,8 @@
         display: flex;
         background-color: #1b1b1b;
         height: 300px;
-        justify-self: center;
+        justify-content: center;
+        align-items: center;
         flex: 0 0 calc(100% / 3);
         flex-direction: column;
         
