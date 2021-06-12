@@ -60,16 +60,17 @@
       flex-wrap: wrap;
       // flex-direction: row;
       // padding: 0 16.825%;
+      $margin_item: 0.75rem;
       .item {
-        width: calc(100% / 3);
+        width: calc(100% / 3 - 1.5rem);
         display: flex;
         background-color: #1b1b1b;
         height: 300px;
         justify-content: center;
         align-items: center;
-        flex: 0 0 calc(100% / 3);
+        flex: 0 0 calc(100% / 3 - 1.5rem);
         flex-direction: column;
-        
+        margin: $margin_item;
         img {
           width: calc(1920px * 0.0625);
 
