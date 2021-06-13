@@ -49,6 +49,7 @@
     width: 100%;
     .search__area {
       width: 100%;
+      position: relative;
       input {
         background-color: #1b1b1b;
         width: inherit;
@@ -61,6 +62,13 @@
         font-weight: 500;
         font-size: 24px;
         }
+      img {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        padding: 28px;
+        right: 38px;
+      }
     }
 
     .help__center__content {
