@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .spWrapper {
   background: #0d0d0d;
@@ -58,10 +58,10 @@
         border: 0;
         border-radius: 6px;
         padding: 28px 38px;
-        color: #5C5C5C;
+        color: #5c5c5c;
         font-weight: 500;
         font-size: 24px;
-        }
+      }
       img {
         position: absolute;
         justify-content: center;
@@ -88,9 +88,21 @@
         flex: 0 0 calc(100% / 3 - 1.5rem);
         flex-direction: column;
         margin: $margin_item;
-        img {
-          width: calc(1920px * 0.0625);
-          
+        &:nth-child(3n+2) {
+          img {
+            width: calc(1920px * 0.0525);
+            position: relative;
+            top: 15px
+          }
+          p {
+            position: relative;
+            top: -20px
+          }
+        }
+        &:nth-child(3n+3) {
+          img {
+            width: calc(1920px * 0.0425);
+          }
         }
       }
     }
@@ -109,7 +121,6 @@
       margin: 30px 0;
       width: 900px;
       color: $gray;
-      
     }
 
     .mockupWrapper {
@@ -442,8 +453,8 @@
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: opacity .4s ease-out, max-height .7s ease-in-out;
-    
+    transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
+
     &.animated {
       max-height: 30rem;
       opacity: 1;
