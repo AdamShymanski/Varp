@@ -30,6 +30,7 @@ import linkedIn from './../resources/icons/linkedin.png';
 import varpuser from './../resources/icons/varp-user.svg'
 import varplock from './../resources/icons/varp-lock.svg'
 import varpcard from './../resources/icons/varp-card.svg'
+import varpsearch from './../resources/icons/varp-search.svg'
 
 function LandingPage() {
   const history = useHistory();
@@ -82,6 +83,7 @@ function LandingPage() {
       <main className="flexColumn poppinsFont mainSection">
         <div className="search__area">
           <input type="search" className="poppinsFont" placeholder="Search for articles"/>
+          <img src={varpsearch} />
         </div>
         <div className="help__center__content">
           <div className="item">
