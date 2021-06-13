@@ -80,8 +80,9 @@ function LandingPage() {
         </aside>
       </header>
       <main className="flexColumn poppinsFont mainSection">
-
-        <input className="search__area poppinsFont" placeholder="Search for articles"/>
+        <div className="search__area">
+          <input type="search" className="poppinsFont" placeholder="Search for articles"/>
+        </div>
         <div className="help__center__content">
           <div className="item">
             <img src={varpcard} alt="payment and billing"/>
