@@ -9,20 +9,6 @@ import {Button, Answer} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
 import just_logo from './../resources/icons/just-logo.png';
 
-import hamburger from './../resources/icons/hamburger-menu.svg';
-import search from './../resources/icons/search.svg';
-import plus from './../resources/icons/plus.svg';
-import minus from './../resources/icons/minus.svg';
-import longArrow from './../resources/icons/long-arrow.svg';
-
-import mockup from './../resources/illustrations/mockup.png';
-import clock from './../resources/illustrations/clock.svg';
-import hand from './../resources/illustrations/hand.svg';
-import file from './../resources/illustrations/file.svg';
-import inputs from './../resources/illustrations/inputs.svg';
-import map from './../resources/illustrations/map.svg';
-import shield from './../resources/illustrations/shield.svg';
-
 import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
@@ -35,9 +21,6 @@ import varpsearch from './../resources/icons/varp-search.svg'
 function LandingPage() {
   const history = useHistory();
 
-  const pushToRegister = () => history.push('/register');
-  const pushToSignIn = () => history.push('/sign-in');
-  const pushToContact = () => history.push('/contact');
   const pushToLinkedIn = () => history.push('/linkedIn');
 
   const [faqState, setFaq] = useState({
