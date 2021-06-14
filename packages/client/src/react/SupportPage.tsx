@@ -22,24 +22,9 @@ function LandingPage() {
   const history = useHistory();
 
   const pushToLinkedIn = () => history.push('/linkedIn');
-
-  const [faqState, setFaq] = useState({
-    first: false,
-    second: false,
-    third: false,
-  });
-
-  const faqSectionSwitch = (number: string) => {
-    if (number == 'first') {
-      setFaq({first: !faqState.first, second: false, third: false});
-    }
-    if (number == 'second') {
-      setFaq({first: false, second: !faqState.second, third: false});
-    }
-    if (number == 'third') {
-      setFaq({first: false, second: false, third: !faqState.third});
-    }
-  };
+  const pushToAccount = () => history.push('/support/account');
+  const pushToPayment = () => history.push('/support/payment');
+  const pushToSecurity = () => history.push('/support/security');
 
   return (
     <div className="spWrapper flexColumn">
