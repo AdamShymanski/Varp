@@ -48,16 +48,13 @@
   .mainSection {
     width: 100%;
     margin-top: 80px;
-    text-align: center;
+    display: flex;
+    align-items: flex-start;
     .mainSection__title {
         text-align: left;
-    }
-    h1 {
-      font-size: 4em;
-      font-weight: 700;
-
-      width: 962px;
-      color: $main-text;
+        font-weight: 700;
+        font-size: 48px;
+        color: $main-text;
     }
     p {
       font-size: 1.2em;
