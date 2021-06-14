@@ -24,7 +24,10 @@ function App() {
           <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
-          <PrivateRoute path="/Support" component={SupportPage} />
+          <PrivateRoute path="/support" component={SupportPage} />
+          <PrivateRoute path="/support/payment" component={SupportPage} />
+          <PrivateRoute path="/support/account" component={SupportPage} />
+          <PrivateRoute path="/support/security" component={SupportPage} />
           <Route
             path="/linkedIn"
             component={() => {
