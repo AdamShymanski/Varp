@@ -1,7 +1,7 @@
 import {useHistory} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 
-import './../sass/SupportPage-style.scss';
+import './../sass/SupportPage/SupportPage-style.scss';
 
 import {Button, Answer} from '@varp/ui';
 
