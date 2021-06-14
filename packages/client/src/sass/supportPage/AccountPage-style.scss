@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import "../../variables.scss";
 
 .spWrapper {
   background: #0d0d0d;
@@ -49,6 +49,9 @@
     width: 100%;
     margin-top: 80px;
     text-align: center;
+    .mainSection__title {
+        text-align: left;
+    }
     h1 {
       font-size: 4em;
       font-weight: 700;

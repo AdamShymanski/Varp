@@ -54,27 +54,27 @@ function LandingPage() {
           <img src={varpsearch} />
         </div>
         <div className="help__center__content">
-          <div className="item">
+          <div className="item" onClick={pushToPayment}>
             <img src={varpcard} alt="payment and billing"/>
             <p>Payment and Billing</p>
           </div>
-          <div className="item">
+          <div className="item" onClick={pushToAccount}>
           <img src={varpuser} alt="account"/>
             <p>Account</p>
           </div>
-          <div className="item">
+          <div className="item" onClick={pushToSecurity}>
           <img src={varplock} alt="security"/>
             <p>Security</p>
           </div>
-          <div className="item">
+          <div className="item" onClick={pushToPayment}>
             <img src={varpcard} alt="payment and billing"/>
             <p>Payment and Billing</p>
           </div>
-          <div className="item">
+          <div className="item" onClick={pushToAccount}>
           <img src={varpuser} alt="account"/>
             <p>Account</p>
           </div>
-          <div className="item">
+          <div className="item" onClick={pushToSecurity}>
           <img src={varplock} alt="security"/>
             <p>Security</p>
           </div>

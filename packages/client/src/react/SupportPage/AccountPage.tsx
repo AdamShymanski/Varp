@@ -1,22 +1,22 @@
 import {useHistory} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 
-import './../sass/SupportPage/SupportPage-style.scss';
+import '../../sass/supportPage/AccountPage-style.scss';
 
 import {Button, Answer} from '@varp/ui';
 
 //resources
-import logo from './../resources/icons/logo.png';
-import just_logo from './../resources/icons/just-logo.png';
+import logo from './../../resources/icons/logo.png';
+import just_logo from './../../resources/icons/just-logo.png';
 
-import twitter from './../resources/icons/twitter.png';
-import instagram from './../resources/icons/instagram.png';
-import linkedIn from './../resources/icons/linkedin.png';
+import twitter from './../../resources/icons/twitter.png';
+import instagram from './../../resources/icons/instagram.png';
+import linkedIn from './../../resources/icons/linkedin.png';
 
-import varpuser from './../resources/icons/varp-user.svg'
-import varplock from './../resources/icons/varp-lock.svg'
-import varpcard from './../resources/icons/varp-card.svg'
-import varpsearch from './../resources/icons/varp-search.svg'
+import varpuser from './../../resources/icons/varp-user.svg'
+import varplock from './../../resources/icons/varp-lock.svg'
+import varpcard from './../../resources/icons/varp-card.svg'
+import varpsearch from './../../resources/icons/varp-search.svg'
 
 function AccountPage() {
   const history = useHistory();

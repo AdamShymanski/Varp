@@ -9,10 +9,13 @@ import './App.scss';
 import PrivateRoute from './react/PrivateRoute';
 import RegisterPage from './react/RegisterPage';
 import ContactPage from './react/ContactPage';
-import SupportPage from './react/SupportPage';
+
 import LandingPage from './react/LandingPage';
 import SignInPage from './react/SignInPage';
 import MainPage from './react/MainPage';
+
+import SupportPage from './react/SupportPage';
+import AccountPage from './react/SupportPage/AccountPage'
 
 function App() {
   return (
@@ -24,9 +27,9 @@ function App() {
           <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
-          <PrivateRoute path="/support" component={SupportPage} />
+          <PrivateRoute path="/support" exact component={SupportPage} />
           <PrivateRoute path="/support/payment" component={SupportPage} />
-          <PrivateRoute path="/support/account" component={SupportPage} />
+          <PrivateRoute path="/support/account" component={AccountPage} />
           <PrivateRoute path="/support/security" component={SupportPage} />
           <Route
             path="/linkedIn"
