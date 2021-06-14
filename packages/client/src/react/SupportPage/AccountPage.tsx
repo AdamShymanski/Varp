@@ -49,6 +49,7 @@ function AccountPage() {
         <h1 className="mainSection__title">Help Center</h1>
         <ul className="breadcump flexRow poppinsFont">
             <li>Support</li>
+            <li>Account</li>
         </ul>
       </main>
       
