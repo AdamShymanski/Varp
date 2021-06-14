@@ -9,20 +9,6 @@ import {Button, Answer} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
 import just_logo from './../resources/icons/just-logo.png';
 
-import hamburger from './../resources/icons/hamburger-menu.svg';
-import search from './../resources/icons/search.svg';
-import plus from './../resources/icons/plus.svg';
-import minus from './../resources/icons/minus.svg';
-import longArrow from './../resources/icons/long-arrow.svg';
-
-import mockup from './../resources/illustrations/mockup.png';
-import clock from './../resources/illustrations/clock.svg';
-import hand from './../resources/illustrations/hand.svg';
-import file from './../resources/illustrations/file.svg';
-import inputs from './../resources/illustrations/inputs.svg';
-import map from './../resources/illustrations/map.svg';
-import shield from './../resources/illustrations/shield.svg';
-
 import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
@@ -35,37 +21,16 @@ import varpsearch from './../resources/icons/varp-search.svg'
 function AccountPage() {
   const history = useHistory();
 
-  const pushToRegister = () => history.push('/register');
-  const pushToSignIn = () => history.push('/sign-in');
-  const pushToContact = () => history.push('/contact');
   const pushToLinkedIn = () => history.push('/linkedIn');
-
-  const [faqState, setFaq] = useState({
-    first: false,
-    second: false,
-    third: false,
-  });
-
-  const faqSectionSwitch = (number: string) => {
-    if (number == 'first') {
-      setFaq({first: !faqState.first, second: false, third: false});
-    }
-    if (number == 'second') {
-      setFaq({first: false, second: !faqState.second, third: false});
-    }
-    if (number == 'third') {
-      setFaq({first: false, second: false, third: !faqState.third});
-    }
-  };
 
   return (
     <div className="spWrapper flexColumn">
       <header className="flexRow">
         <img src={logo} />
 
-          <ul className="breadcump flexRow poppinsFont">
-            <li>Support</li>
-          </ul>
+          <p className="site__section__title flexRow poppinsFont">
+            Support
+          </p>
         
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
@@ -81,36 +46,10 @@ function AccountPage() {
         </aside>
       </header>
       <main className="flexColumn poppinsFont mainSection">
-        <div className="search__area">
-          <input type="search" className="poppinsFont" placeholder="Search for articles"/>
-          <img src={varpsearch} />
-        </div>
-        <div className="help__center__content">
-          <div className="item">
-            <img src={varpcard} alt="payment and billing"/>
-            <p>Payment and Billing</p>
-          </div>
-          <div className="item">
-          <img src={varpuser} alt="account"/>
-            <p>Account</p>
-          </div>
-          <div className="item">
-          <img src={varplock} alt="security"/>
-            <p>Security</p>
-          </div>
-          <div className="item">
-            <img src={varpcard} alt="payment and billing"/>
-            <p>Payment and Billing</p>
-          </div>
-          <div className="item">
-          <img src={varpuser} alt="account"/>
-            <p>Account</p>
-          </div>
-          <div className="item">
-          <img src={varplock} alt="security"/>
-            <p>Security</p>
-          </div>
-        </div>
+        <h1 className="mainSection__title">Help Center</h1>
+        <ul className="breadcump flexRow poppinsFont">
+            <li>Support</li>
+        </ul>
       </main>
       
       <footer>

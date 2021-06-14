@@ -46,9 +46,9 @@ function LandingPage() {
       <header className="flexRow">
         <img src={logo} />
 
-          <ul className="breadcump flexRow poppinsFont">
-            <li>Support</li>
-          </ul>
+        <p className="site__section__title flexRow poppinsFont">
+            Support
+          </p>
         
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
