@@ -60,11 +60,9 @@ function LandingPage() {
         <img src={logo} />
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
-            <li>Collaboration</li>
+            <li onClick={pushToSupport}>Support</li>
             <li>Business</li>
-            <li>Contact</li>
-            <Button children={'Contact'} action={pushToContact} />
-            <Button children={'Support'} action={pushToSupport} />
+            <li onClick={pushToContact}>Contact</li>
           </ul>
           <div className="flexRow btnWrapper">
             <Button children={'Register'} action={pushToRegister} />
@@ -76,9 +74,9 @@ function LandingPage() {
       <main className="flexColumn poppinsFont mainSection">
         <h1>Earn money for performing simple tasks</h1>
         <p>
-          We're turning the CPA marketing monetization model upside down. We add
-          an element of competition, shorten the time and significantly improve
-          the overall comfort of this way of earning. Even $20 in 15 minutes.
+          We turn the CPA marketing monetization model upside down. We add
+          element of risk, we shorten the time and significantly improve overall
+          comfort of this way of earning. Even $20 in 15 minutes.
         </p>
         <Button
           size="big"
@@ -159,7 +157,7 @@ function LandingPage() {
           <aside className="flexColumn">
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>Why can I trust you?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -171,15 +169,16 @@ function LandingPage() {
               </div>
               <div className={`content ${faqState.first ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.first ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                  We work with a number of large companies that carefully screen
+                  their partners, including us. In addition, you can trust us
+                  because we have already collected thousands of satisfied users
+                  who pay out prizes to their accounts every day.
                 </p>
               </div>
             </section>
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>What do I need to start making money?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -191,15 +190,15 @@ function LandingPage() {
               </div>
               <div className={`content ${faqState.second ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.second ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                  All you really need is some free time and a bank account or
+                  PayPal to receive your reward. That's all! We try to make this
+                  as simple as possible.
                 </p>
               </div>
             </section>
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>How much money can I make using Varp?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -211,9 +210,10 @@ function LandingPage() {
               </div>
               <div className={`content ${faqState.third ? 'animated' : ''}`}>
                 <p className={`mainText ${faqState.third ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                  In fact, the amount of money you can earn is unlimited. The
+                  only factor that influences this is how much free time you
+                  have. In the best case scenario (which isn't all that unusual)
+                  you can make as much as $15 in 20 minutes with Varp.
                 </p>
               </div>
             </section>
@@ -230,10 +230,27 @@ function LandingPage() {
             </div>
           </section>
           <section className="scrBox">
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" last={true} />
+            <Answer
+              header="We're working on it!"
+              text="Give to us some time..."
+            />
+            <Answer
+              header="We're working on it!"
+              text="Give to us some time..."
+            />
+            <Answer
+              header="We're working on it!"
+              text="Give to us some time..."
+            />
+            <Answer
+              header="We're working on it!"
+              text="Give to us some time..."
+            />
+            <Answer
+              header="We're working on it!"
+              text="Give to us some time..."
+              last={true}
+            />
           </section>
         </aside>
       </article>
