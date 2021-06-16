@@ -13,11 +13,13 @@ import twitter from './../../resources/icons/twitter.png';
 import instagram from './../../resources/icons/instagram.png';
 import linkedIn from './../../resources/icons/linkedin.png';
 
-import varpuser from './../../resources/icons/varp-user.svg'
-import varplock from './../../resources/icons/varp-lock.svg'
-import varpcard from './../../resources/icons/varp-card.svg'
-import varpsearch from './../../resources/icons/varp-search.svg'
-
+const AccountItem = () => {
+    return <div className="account__card">
+        <h1>Account has been disabled</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel, nisl, massa ultrices ullamcorper. Ullamcorper faucibus nisl lacus, leo molestie pulvinar. Euismod tortor mattis sed amet, lorem sapien facilisis pellentesque.</p>
+        <button>View Article</button>
+    </div>
+}
 function AccountPage() {
   const history = useHistory();
 
@@ -51,6 +53,11 @@ function AccountPage() {
             <li>Support</li>
             <li>Account</li>
         </ul>
+        <section className="card__container">
+            {Array.from({length: 4}, (_, i) => i + 1).map(item => {
+                <AccountItem/>
+            })}
+        </section>
       </main>
       
       <footer>
