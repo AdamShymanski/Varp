@@ -1,10 +1,5 @@
 @import '../../variables.scss';
 
-p {
-  font-size: 8em;
-  color: $main-text;
-}
-
 .hide {
   display: none;
 }
@@ -13,46 +8,46 @@ p {
 }
 
 .payoutWrapper {
+  p {
+    font-size: 8em;
+    color: $main-text;
+  }
+
   width: 82.5vw;
-  align-items: center;
-  justify-content: center;
+  margin-left: 17.5%;
+
   font-family: Roboto;
   .flexRow {
-    position: relative;
-    display: flex;
-    
+    justify-content: flex-start;
+
     &.payoutInformation {
       flex-direction: column;
-      width: 77%;
       align-items: flex-start;
+      width: 77%;
       margin: 2.5rem 0;
       h4 {
-        font-family: Poppins;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 28px;
-        line-height: 42px;
-        text-align: left;
         display: flex;
-        align-items: center;
-        justify-self: start;
-        color: #F4F4F4;
+        margin-bottom: 15px;
+
+        font-size: 1.8em;
+        font-weight: 600;
+        font-family: $poppins-font;
+        color: #f4f4f4;
       }
-  
+
       p {
         font-size: 1rem;
-        font-style: normal;
-        font-weight: normal;
         font-size: 15px;
         line-height: 18px;
-        color: #8C8C8C;
+        color: #8c8c8c;
+
+        width: 800px;
         a {
-          color: #0082FF
+          color: #0082ff;
         }
       }
-  
     }
-   
+
     .payloadCheckboxContainer {
       display: block;
       position: relative;
@@ -64,9 +59,9 @@ p {
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
-      
+
       &:hover input ~ .payloadCheckmark {
-        background-color: #f4f4f4;;
+        background-color: #f4f4f423;
       }
 
       input.inputCheckboxPayout {
@@ -75,16 +70,15 @@ p {
         cursor: pointer;
         height: 0;
         width: 0;
-        
-        &:checked ~ .payloadCheckmark{
+
+        &:checked ~ .payloadCheckmark {
           background-color: #121212;
           &:after {
             display: block;
           }
         }
       }
-      
-  
+
       .payloadCheckmark {
         position: absolute;
         top: 20px;
@@ -92,16 +86,16 @@ p {
         height: 30px;
         width: 30px;
         background-color: #121212;
-        
+
         &:after {
-          content: "";
+          content: '';
           position: absolute;
           display: none;
           left: 10px;
           top: 3px;
           width: 7.5px;
           height: 15px;
-          border: solid #0082FF;
+          border: solid #0082ff;
           border-width: 0 3px 3px 0;
           -webkit-transform: rotate(45deg);
           -ms-transform: rotate(45deg);

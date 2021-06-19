@@ -53,6 +53,38 @@ const style = css`
     border-left: 2px solid #0082ff;
     transition: 350ms;
   }
+  .wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+
+    button {
+      padding: 5px 23px;
+      position: absolute;
+
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: #121212;
+
+      background: #0082ff;
+      border: none;
+      border-radius: 4px;
+      right: -22%;
+      font-size: 1em;
+    }
+    p {
+      position: absolute;
+      margin-top: 3px;
+      right: 6%;
+
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 1em;
+      color: #5c5c5c;
+    }
+  }
 
   .small {
     .label {
@@ -93,21 +125,28 @@ const style = css`
 export interface Props {
   size: string;
   label: string;
+
   error?: any;
   name?: string;
   type?: string;
-  reference?: any;
-  disabled?: boolean;
-  labelIcon?: string;
   onChange?: void;
+  reference?: any;
+  variant?: string;
+  labelIcon?: string;
+  disabled?: boolean;
+  evStatus?: boolean;
+  placeholder?: string;
   defaultValue?: string;
 }
 
 export function Input(props: Props) {
   const {
+    evStatus = true,
+    variant = 'regular',
     label = 'Storybook',
     name = 'password',
     size = 'medium',
+    placeholder = '',
     disabled = false,
     error,
     reference,
@@ -117,6 +156,33 @@ export function Input(props: Props) {
     defaultValue = '',
     // ...rest
   } = props;
+  if (variant === 'withButton') {
+    return (
+      <main css={style}>
+        <div className={size}>
+          <p className={`label`}>
+            {label}
+            {labelIcon.length > 1 && <img src={labelIcon} alt="label icon" />}
+          </p>
+          <div className="wrapper">
+            <input
+              name={name}
+              type={type}
+              ref={reference}
+              className={`input`}
+              disabled={disabled}
+              onChange={onChange}
+              {...(defaultValue && {value: defaultValue})}
+            />
+            <p>{`${evStatus ? '' : 'Email is not verified'}`}</p>
+            <button>Verify</button>
+          </div>
+
+          <p className="error-msg">{error && error.message}</p>
+        </div>
+      </main>
+    );
+  }
   return (
     <main css={style}>
       <div className={size}>
@@ -126,11 +192,12 @@ export function Input(props: Props) {
         </p>
         <input
           name={name}
-          className={`input`}
           type={type}
-          disabled={disabled}
           ref={reference}
+          className={`input`}
+          disabled={disabled}
           onChange={onChange}
+          placeholder={placeholder}
           {...(defaultValue && {value: defaultValue})}
         />
         <p className="error-msg">{error && error.message}</p>

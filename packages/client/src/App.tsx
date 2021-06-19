@@ -19,13 +19,12 @@ function App() {
     <Router>
       <AuthProvider>
         <div className="appComponent">
-          <SettingsPage />
-          {/* <PrivateRoute path="/" exact component={MainPage} />
+          <PrivateRoute path="/" exact component={MainPage} />
           <PrivateRoute path="/home" component={LandingPage} />
-          <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
-          <PrivateRoute path="/settings" component={SettingsPage} /> */}
+          <PrivateRoute path="/register" component={RegisterPage} />
+          <PrivateRoute path="/settings" component={SettingsPage} />
         </div>
       </AuthProvider>
     </Router>

@@ -103,7 +103,7 @@ function Account(params) {
       }`}
     >
       <form className="formWrapper" onSubmit={handleSubmit(onSubmit)}>
-        <div className="inputBoxWrapper">
+        {/* <div className="inputBoxWrapper">
           <Input
             label="Email"
             reference={register}
@@ -117,37 +117,30 @@ function Account(params) {
           <div className="insideBox">
             <p>{EVI(0)}</p>
           </div>
-          <div className="rightBox">
-            <Button
-              action={onEmailVerify}
-              size="medium"
-              children="Verify"
-              variant="primary"
-            />
+          <div className="rightBox flexColumn">
+            <Button action={onEmailVerify} size="medium" variant="primary">
+              Verify
+            </Button>
           </div>
-        </div>
+        </div> */}
+        <Input
+          label="Email"
+          reference={register}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
+          size="big"
+          name="email"
+          error={errors.email}
+          variant="withButton"
+          evStatus={false}
+        />
         <Input
           label="Full Name"
           reference={register}
           size="big"
           name="name"
           error={errors.name}
-        />
-        <Input
-          label="Password"
-          reference={register}
-          size="big"
-          name="password"
-          type="password"
-          error={errors.password}
-        />
-        <Input
-          label="Confirm Password"
-          reference={register}
-          size="big"
-          name="confirmPassword"
-          type="password"
-          error={errors.confirmPassword}
         />
         <Input
           label="Age"
@@ -189,12 +182,9 @@ function Account(params) {
 
         <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="buttonWrapper">
-          <Button
-            type="submit"
-            size="medium"
-            children="Submit"
-            variant="primary"
-          />
+          <Button type="submit" size="medium" variant="primary">
+            Submit
+          </Button>
           <PacmanLoader color={'#0082FF'} loading={loadingPacman} size={15} />
         </div>
       </form>

@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import './../sass/SettingsPage-style.scss';
 
@@ -10,17 +11,20 @@ import {Button} from '@varp/ui';
 
 import {useAuth} from '../contexts/AuthContext';
 
+import PayoutIcon from './../resources/icons/payout.svg';
+import ReferralIcon from './../resources/icons/referral-white.svg';
+import AccountIcon from './../resources/icons/account.svg';
+
 function SettingsPage() {
-  const {currentUser, fetchUserData} = useAuth();
+  const history = useHistory();
+  const {currentUser} = useAuth();
 
   const [elementState, setElement] = useState<number>(0);
+  const pushToMain = () => history.push('/');
 
   const selectElement = (element: number) => {
     setElement(element);
-    console.log(element);
   };
-
-  console.log(currentUser);
 
   return (
     <main className="flexRow">
@@ -37,7 +41,10 @@ function SettingsPage() {
             }}
             className={`flexColumn ${elementState === 0 ? 'selected' : ''}`}
           >
-            <button>Account</button>
+            <button className="flexRow">
+              <p>Account</p>
+              <img src={AccountIcon} className="accountIcon" />
+            </button>
           </li>
           <li
             onClick={() => {
@@ -45,7 +52,10 @@ function SettingsPage() {
             }}
             className={`flexColumn ${elementState === 1 ? 'selected' : ''}`}
           >
-            <button>Referrals</button>
+            <button className="flexRow">
+              <p>Referrals</p>
+              <img src={ReferralIcon} className="referralsIcon" />
+            </button>
           </li>
           <li
             onClick={() => {
@@ -53,11 +63,16 @@ function SettingsPage() {
             }}
             className={`flexColumn ${elementState === 2 ? 'selected' : ''}`}
           >
-            <button>Payout</button>
+            <button className="flexRow">
+              <p>Payout</p>
+              <img src={PayoutIcon} className="payoutIcon" />
+            </button>
           </li>
         </ul>
         <div className={'buttonWrapper'}>
-          <Button variant="disabled" />
+          <Button variant="disabled" action={pushToMain}>
+            Go Back
+          </Button>
         </div>
       </aside>
       <article className="subPageContainer">
