@@ -230,25 +230,13 @@ function LandingPage() {
             </div>
           </section>
           <section className="scrBox">
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
             <Answer
               header="We're working on it!"
-              text="Give to us some time..."
-            />
-            <Answer
-              header="We're working on it!"
-              text="Give to us some time..."
-            />
-            <Answer
-              header="We're working on it!"
-              text="Give to us some time..."
-            />
-            <Answer
-              header="We're working on it!"
-              text="Give to us some time..."
-            />
-            <Answer
-              header="We're working on it!"
-              text="Give to us some time..."
+              text="Give us some time..."
               last={true}
             />
           </section>

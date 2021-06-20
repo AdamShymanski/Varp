@@ -6,16 +6,22 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  background-color: #0d0d0d;
   h1 {
     font-size: 3.5vw;
   }
   .logoWrapper {
     position: absolute;
-    top: 12.1px;
-    left: 0px;
+
+    top: 30px;
+    left: 16.825%;
+    img {
+      height: 80px;
+      width: 201.797px;
+    }
   }
 
-  @media screen and (max-width: 425px) { 
+  @media screen and (max-width: 425px) {
     .logoWrapper {
       position: absolute;
       top: 12.1px;
@@ -29,8 +35,8 @@
       }
     }
 
-    h1 { 
-      font-size:3em;
+    h1 {
+      font-size: 3em;
     }
 
     form {
@@ -57,10 +63,12 @@
     }
   }
   .description-s {
+    width: 25vw;
+    margin-top: 20px;
+
     font-weight: 400;
     text-align: center;
-    color: $second-text;
-    width: 25vw;
+    color: $back-text;
   }
   form {
     position: relative;
@@ -83,11 +91,11 @@
       background: $input-background;
       border: 0px solid $input-background;
 
-      border-left: 2px solid $gray;
+
       transition: 350ms;
     }
     input:focus {
-      border-left: 2px solid $accent;
+
       transition: 350ms;
     }
     .errorMessage {

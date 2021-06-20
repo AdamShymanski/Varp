@@ -44,13 +44,14 @@ const style = css`
     border: none;
     outline: none;
     border-radius: 1px 4px 4px 1px;
-    border-left: 2px solid #5c5c5c;
+    border-left: 3px solid #5c5c5c;
 
-    background: #121212;
+    background: #161616;
+    border-radius: 2px 0 0 2px;
     transition: 350ms;
   }
   input:focus {
-    border-left: 2px solid #0082ff;
+    border-left: 3px solid #0082ff;
     transition: 350ms;
   }
 

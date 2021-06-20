@@ -1,18 +1,23 @@
 @import '../variables.scss';
 
 .si-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
+  background-color: #0d0d0d;
 
-  
   .logoWrapper {
     position: absolute;
+
     top: 12.1px;
-    left: 0px;
-    
+    left: 16.825%;
+    height: 80px;
+    img {
+      height: 80px;
+      width: 201.797px;
+    }
   }
 
-  @media screen and (max-width: 425px) { 
+  @media screen and (max-width: 425px) {
     .logoWrapper {
       position: absolute;
       top: 12.1px;
@@ -26,8 +31,8 @@
       }
     }
 
-    h1 { 
-      font-size:3em !important;
+    h1 {
+      font-size: 3em !important;
     }
 
     form {
@@ -59,10 +64,14 @@
     margin-bottom: 1vh;
   }
   .description-s {
+    width: 25vw;
+    margin-top: 20px;
+
+    width: 480px;
+
     font-weight: 400;
     text-align: center;
-    color: $second-text;
-    width: 25vw;
+    color: $back-text;
   }
   form {
     margin-top: 2vh;
