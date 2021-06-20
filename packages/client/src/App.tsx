@@ -9,10 +9,14 @@ import './App.scss';
 import PrivateRoute from './react/PrivateRoute';
 import RegisterPage from './react/RegisterPage';
 import ContactPage from './react/ContactPage';
+
 import LandingPage from './react/LandingPage';
 import SignInPage from './react/SignInPage';
 import MainPage from './react/MainPage';
 import SettingsPage from './react/SettingsPage';
+
+import SupportPage from './react/SupportPage';
+import AccountPage from './react/SupportPage/AccountPage'
 
 function App() {
   return (
@@ -23,8 +27,18 @@ function App() {
           <PrivateRoute path="/home" component={LandingPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
-          <PrivateRoute path="/register" component={RegisterPage} />
-          <PrivateRoute path="/settings" component={SettingsPage} />
+          <PrivateRoute path="/support" exact component={SupportPage} />
+          <PrivateRoute path="/support/payment" component={SupportPage} />
+          <PrivateRoute path="/support/account" component={AccountPage} />
+          <PrivateRoute path="/support/security" component={SupportPage} />
+          <Route
+            path="/linkedIn"
+            component={() => {
+              window.location.href =
+                'https://www.linkedin.com/company/varp-marketing';
+              return null;
+            }}
+          />
         </div>
       </AuthProvider>
     </Router>

@@ -96,10 +96,13 @@
       img {
         width: 120px;
       }
-      .podium {
-        width: 170px;
+      .shield {
+        width: 100px;
       }
       .hand {
+        width: 140px;
+      }
+      .clock {
         width: 140px;
       }
       .featureContent {
@@ -118,6 +121,9 @@
           color: $back-text;
         }
       }
+    }
+    .shieldDiv {
+      margin-left: 68px;
     }
   }
   .nrpArt {
@@ -177,9 +183,117 @@
           color: $main-text;
         }
       }
+      aside {
+        min-height: 320px;
+        margin-top: 30px;
+
+        align-items: flex-start;
+        section {
+          min-height: 90px;
+          width: 600px;
+
+          div {
+            padding: 0 20px 0 15px;
+
+            color: $gray;
+
+            background: $background;
+
+            justify-content: space-between;
+            h1 {
+              width: 80%;
+              font-size: 1.05em;
+              font-weight: 500;
+            }
+
+            div {
+              width: 50px;
+              height: 50px;
+              align-items: center;
+              justify-content: center;
+              img {
+                width: 20px;
+              }
+            }
+          }
+          .mainText {
+            width: 500px;
+            padding: 10px 0;
+            background: $background;
+          }
+          .invisible {
+            display: none;
+          }
+        }
+      }
     }
-    aside {
-      width: 30%;
+    .FAQSection {
+      width: 45%;
+      height: 70%;
+      padding: 0 20px;
+      background: $background;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      .scrHeader {
+        width: 100%;
+        height: 10%;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
+        .searchInputWrapper {
+          width: 100%;
+          height: 50px;
+          justify-content: center;
+          align-items: center;
+
+          position: relative;
+
+          input {
+            width: 100%;
+            height: 45px;
+            padding-left: 20px;
+
+            font-weight: 400;
+            color: $main-text;
+
+            border: none;
+            outline: none;
+            border-radius: 22.5px;
+            background: $dark-gray;
+          }
+        }
+        img {
+          position: absolute;
+          right: 20px;
+        }
+      }
+
+      .scrBox {
+        width: 100%;
+        height: 75%;
+
+        overflow-y: scroll;
+        padding-right: 10px;
+      }
+      ::-webkit-scrollbar {
+        width: 6px;
+        margin-left: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        border-radius: 4.5px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #383838;
+        border-radius: 10px;
+      }
     }
   }
   .complicatedArt {
@@ -258,6 +372,21 @@
           justify-content: space-between;
         }
       }
+    }
+  }
+}
+
+.accordion {
+  margin-bottom: 10px;
+  .content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
+
+    &.animated {
+      max-height: 30rem;
+      opacity: 1;
     }
   }
 }

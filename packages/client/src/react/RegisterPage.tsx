@@ -67,9 +67,7 @@ function RegisterPage() {
     setLoading(false);
   };
 
-  return (
-
-    (currentUser == null && loading == false) ? 
+  return currentUser == null && loading == false ? (
     <div className="reWrapper flexColumn">
       <div className="logoWrapper">
         <img
@@ -82,7 +80,10 @@ function RegisterPage() {
         />
       </div>
       <h1 className="robotoFont">Register</h1>
-      <p className="robotoFont description-s  "></p>
+      <p className="robotoFont description-s  ">
+        You're just one step away from becoming our awesome new user. All you
+        have to do is fill in this form.
+      </p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Email"
@@ -142,8 +143,8 @@ function RegisterPage() {
         </div>
       </form>
     </div>
-    : <div></div>
-    
+  ) : (
+    <div></div>
   );
 }
 export default RegisterPage;
