@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {Route, Redirect, RouteProps} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
-import {useHistory} from 'react-router-dom';
 
 interface PrivateRouteProps extends RouteProps {
-  //extend props
+  path: any;
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
@@ -52,6 +51,9 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
     }
     if (path === '/' && !currentUser) {
       return <Redirect to="/home" />;
+    }
+    if (path === '/settings') {
+      return <Route path={path} {...rest} />;
     }
     return <Route exact path={path} {...rest} />;
   }

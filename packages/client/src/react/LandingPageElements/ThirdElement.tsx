@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import './../../sass/elements/ThirdElement-style.scss';
+import './../../sass/LandingPageElements/ThirdElement-style.scss';
 
 function ThirdElement(props: any) {
   return (

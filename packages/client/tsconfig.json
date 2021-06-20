@@ -18,5 +18,9 @@
     "noImplicitAny": false,
     "typeRoots": ["./node_modules/@types"]
   },
-  "include": ["src", "../FlappyBird", "../games/FlappyBird/dist"]
+  "include": ["src", "../FlappyBird", "../games/FlappyBird/dist"],
+   "typeRoots": [
+            "../node_modules/@types",
+            "../@types"
+        ]
 }

@@ -13,6 +13,7 @@ import ContactPage from './react/ContactPage';
 import LandingPage from './react/LandingPage';
 import SignInPage from './react/SignInPage';
 import MainPage from './react/MainPage';
+import SettingsPage from './react/SettingsPage';
 
 import SupportPage from './react/SupportPage';
 import AccountPage from './react/SupportPage/AccountPage'
@@ -24,7 +25,6 @@ function App() {
         <div className="appComponent">
           <PrivateRoute path="/" exact component={MainPage} />
           <PrivateRoute path="/home" component={LandingPage} />
-          <PrivateRoute path="/register" component={RegisterPage} />
           <PrivateRoute path="/sign-in" component={SignInPage} />
           <PrivateRoute path="/contact" component={ContactPage} />
           <PrivateRoute path="/support" exact component={SupportPage} />
