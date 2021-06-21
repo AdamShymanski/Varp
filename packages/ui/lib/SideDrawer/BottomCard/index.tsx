@@ -82,7 +82,7 @@ export const Bottom: React.FC<Props> = (props) => {
           <img
             src={settingsIcon}
             onClick={() => {
-              setMessageBox('Setting page is still being created');
+              history.push('/settings');
             }}
           />
           <img

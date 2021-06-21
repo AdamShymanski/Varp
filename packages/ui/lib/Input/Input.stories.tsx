@@ -7,10 +7,18 @@ export default {
   title: 'General/Input',
   component: Input,
   args: {
-    size: 'medium',
+    Input,
   },
 } as Meta;
 
-export const Basic: Story<Props> = (props) => {
-  return <Input {...props} />;
+const Template: Story<Props> = (args) => <Input {...args} />;
+
+export const Regular = Template.bind({});
+Regular.args = {
+  variant: 'regular',
+};
+
+export const WithButton = Template.bind({});
+WithButton.args = {
+  variant: 'withButton',
 };

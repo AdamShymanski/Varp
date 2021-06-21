@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './../sass/RegisterPage-style.scss';
+
+import {writeStorage} from '@rehooks/local-storage';
 
 import {Button, Input} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
@@ -12,8 +14,7 @@ import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-const onlyLettersRegEx = /^[A-Za-z\s]+$/;
-const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
+const onlyLettersRegEx = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
 const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
 
 const schema = yup.object().shape({
@@ -67,9 +68,11 @@ function RegisterPage() {
     setLoading(false);
   };
 
-  return (
+  useEffect(() => {
+    writeStorage('path', '/register');
+  }, []);
 
-    (currentUser == null && loading == false) ? 
+  return currentUser == null && loading == false ? (
     <div className="reWrapper flexColumn">
       <div className="logoWrapper">
         <img
@@ -82,7 +85,10 @@ function RegisterPage() {
         />
       </div>
       <h1 className="robotoFont">Register</h1>
-      <p className="robotoFont description-s  "></p>
+      <p className="robotoFont description-s  ">
+        You're just one step away from becoming our awesome new user. All you
+        have to do is fill in this form.
+      </p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
         <Input
           label="Email"
@@ -142,8 +148,8 @@ function RegisterPage() {
         </div>
       </form>
     </div>
-    : <div></div>
-    
+  ) : (
+    <div></div>
   );
 }
 export default RegisterPage;

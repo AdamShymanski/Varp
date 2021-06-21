@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import './../../sass/elements/FirstElement-style.scss';
+import './../../sass/LandingPageElements/FirstElement-style.scss';
 
 import {makeStyles} from '@material-ui/core/styles';
 import BusinessIcon from '@material-ui/icons/Business';
