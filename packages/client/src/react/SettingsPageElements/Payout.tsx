@@ -6,11 +6,11 @@ import EditIcon from '../../resources/icons/edit-3.svg';
 interface PayoutProps {
   elementState: number;
 }
-function Payout(params: PayoutProps) {
+function Payout(params) {
   return (
     <main
       className={`payoutWrapper columnFlex ${
-        params.elementState == 2 ? 'show' : 'hide'
+        params.elementState === 2 ? 'show' : 'hide'
       }`}
     >
       <form>

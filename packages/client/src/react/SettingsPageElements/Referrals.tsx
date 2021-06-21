@@ -1,25 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import '../../sass/SettingsPageElements/Referrals-style.scss';
 import copyIcon from '../../resources/icons/copy-referral-code.svg';
-import surveyIcon from '../../resources/icons/survey.svg';
 import dailyStreakIcon from '../../resources/icons/daily-streak.svg';
 import referralIcon from '../../resources/icons/referral-green.svg';
-import {Button} from '@varp/ui';
+
+import {useAuth} from '../../contexts/AuthContext';
 
 function Referrals(params) {
+  const {userData} = useAuth();
+
   return (
     <main
-      className={`referralWrapper flexColumn ${
-        params.elementState == 1 ? 'show' : 'hide'
+      className={`referralWrapper  ${
+        params.elementState === 1 ? 'show' : 'hide'
       }`}
     >
       <div className="container">
         <div className="referralCode">
           <h2>Your referral code</h2>
           <div>
-            <p className="code">nnyMJAv7L1XruxWVtwF5uSoPlPY2</p>
+            <p className="code">{userData.referralCode}</p>
             <span className="divider" />
-            <img src={copyIcon} alt="" />
+            <img src={copyIcon} alt="copyIcon" />
           </div>
         </div>
         <div className="bonuses">
@@ -28,7 +30,8 @@ function Referrals(params) {
             <h3 className="title">
               Daily Streak:{' '}
               <span>
-                <img src={dailyStreakIcon} alt="daily streak icon" /> 8%
+                <img src={dailyStreakIcon} alt="daily streak icon" />{' '}
+                {userData.dailyStreak}%
               </span>{' '}
             </h3>
             <p className="body">
@@ -48,7 +51,8 @@ function Referrals(params) {
             <h3 className="title">
               Referral Program:{' '}
               <span>
-                <img src={referralIcon} alt="referral icon" /> 8%
+                <img src={referralIcon} alt="referral icon" />{' '}
+                {userData.referralProgram}%
               </span>
             </h3>
             <p className="body">

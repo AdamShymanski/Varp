@@ -5,12 +5,15 @@ import {auth} from '../firebase';
 import {User} from '@firebase/auth-types';
 import {useHistory} from 'react-router-dom';
 
+import {useLocalStorage} from '@rehooks/local-storage';
+
 interface FirebaseUser extends firebase.User {
   //
 }
 
 interface ContextProps {
   currentUser: FirebaseUser | null;
+  userData: any;
   loading: boolean;
   signIn: Function;
   callRegister: Function;
@@ -37,7 +40,11 @@ interface RegisterProps {
 
 export const AuthProvider: React.FC = ({children}) => {
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
+  const [userData, setUserData] = useState<{} | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const history = useHistory();
+  const [path] = useLocalStorage<string>('path');
 
   useEffect(() => {
     // auth.onAuthStateChanged((user) => {
@@ -49,14 +56,20 @@ export const AuthProvider: React.FC = ({children}) => {
     //   setLoading(false);
     // });
 
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
+      if (user) {
+        const result = await fetchUserData(user.uid);
+        setUserData(result.data);
+      }
+
+      if (path) history.push(path);
+
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
-
-  const history = useHistory();
 
   async function callRegister(data: RegisterProps) {
     const register = firebase.functions().httpsCallable('createUser');
@@ -94,17 +107,6 @@ export const AuthProvider: React.FC = ({children}) => {
       return true;
     }
   }
-  // function callTest() {
-  //   const callTest = firebase.functions().httpsCallable('test');
-  //   callTest('aaa')
-  //     .then((result) => {
-  //       console.log('It works');
-  //       console.log(result);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
 
   function logout() {
     return auth.signOut();
@@ -127,6 +129,7 @@ export const AuthProvider: React.FC = ({children}) => {
       value={{
         loading,
         currentUser,
+        userData,
         signIn,
         callRegister,
         fetchUserData,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 
 import './../sass/SettingsPage-style.scss';
@@ -14,17 +14,23 @@ import {useAuth} from '../contexts/AuthContext';
 import PayoutIcon from './../resources/icons/payout.svg';
 import ReferralIcon from './../resources/icons/referral-white.svg';
 import AccountIcon from './../resources/icons/account.svg';
+import {ReactNode} from 'react';
 
 function SettingsPage() {
   const history = useHistory();
   const {currentUser} = useAuth();
 
-  const [elementState, setElement] = useState<number>(0);
-  const pushToMain = () => history.push('/');
+  // userData.then(() => {
+  //   console.log('skrtttt');
+  //   console.log(userData);
+  // });
 
-  const selectElement = (element: number) => {
-    setElement(element);
-  };
+  const [elementState, setElement] = useState<number>(0);
+  const [subpage, setSubpage] = useState<ReactNode>(
+    <Account elementState={0} />,
+  );
+
+  const pushToMain = () => history.push('/');
 
   return (
     <main className="flexRow">
@@ -34,38 +40,41 @@ function SettingsPage() {
             {currentUser ? currentUser.displayName : ''}
           </p>
         </div>
-        <ul className="">
+        <ul>
           <li
             onClick={() => {
-              selectElement(0);
+              setSubpage(<Account elementState={0} />);
+              setElement(0);
             }}
-            className={`flexColumn ${elementState === 0 ? 'selected' : ''}`}
+            className={`flexColumn ${elementState == 0 ? 'selected' : ''}`}
           >
             <button className="flexRow">
-              <p>Account</p>
               <img src={AccountIcon} className="accountIcon" />
+              <p>Account</p>
             </button>
           </li>
           <li
             onClick={() => {
-              selectElement(1);
+              setSubpage(<Referrals elementState={1} />);
+              setElement(1);
             }}
-            className={`flexColumn ${elementState === 1 ? 'selected' : ''}`}
+            className={`flexColumn ${elementState == 1 ? 'selected' : ''}`}
           >
             <button className="flexRow">
-              <p>Referrals</p>
               <img src={ReferralIcon} className="referralsIcon" />
+              <p>Referrals</p>
             </button>
           </li>
           <li
             onClick={() => {
-              selectElement(2);
+              setSubpage(<Payout elementState={2} />);
+              setElement(2);
             }}
             className={`flexColumn ${elementState === 2 ? 'selected' : ''}`}
           >
             <button className="flexRow">
-              <p>Payout</p>
               <img src={PayoutIcon} className="payoutIcon" />
+              <p>Payout</p>
             </button>
           </li>
         </ul>
@@ -75,11 +84,7 @@ function SettingsPage() {
           </Button>
         </div>
       </aside>
-      <article className="subPageContainer">
-        <Account elementState={elementState} />
-        <Referrals elementState={elementState} />
-        <Payout elementState={elementState} />
-      </article>
+      <article className="subPageContainer">{subpage}</article>
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import {useHistory} from 'react-router-dom';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import './../sass/LandingPage-style.scss';
 
@@ -9,7 +9,7 @@ import {Button, Answer} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
 import just_logo from './../resources/icons/just-logo.png';
 
-import hamburger from './../resources/icons/hamburger-menu.svg';
+// import hamburger from './../resources/icons/hamburger-menu.svg';
 import search from './../resources/icons/search.svg';
 import plus from './../resources/icons/plus.svg';
 import minus from './../resources/icons/minus.svg';
@@ -27,6 +27,8 @@ import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 function LandingPage() {
   const history = useHistory();
 
@@ -41,6 +43,10 @@ function LandingPage() {
     second: false,
     third: false,
   });
+
+  useEffect(() => {
+    writeStorage('path', '/home');
+  }, []);
 
   const faqSectionSwitch = (number: string) => {
     if (number == 'first') {
@@ -65,9 +71,9 @@ function LandingPage() {
             <li onClick={pushToContact}>Contact</li>
           </ul>
           <div className="flexRow btnWrapper">
-            <Button children={'Register'} action={pushToRegister} />
+            <Button action={pushToRegister}>Register</Button>
             <p>or</p>
-            <Button children={'Sign In'} action={pushToSignIn} />
+            <Button action={pushToSignIn}>Sign In</Button>
           </div>
         </aside>
       </header>
@@ -80,11 +86,12 @@ function LandingPage() {
         </p>
         <Button
           size="big"
-          children={'Get Started'}
           action={pushToRegister}
           variant="icon"
           icon={longArrow}
-        />
+        >
+          Get Started
+        </Button>
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
           <img src={mockup} />
@@ -168,7 +175,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className={`content ${faqState.first ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.first ? '' : 'invisible'}`}>
+                <p className={`mainText `}>
                   We work with a number of large companies that carefully screen
                   their partners, including us. In addition, you can trust us
                   because we have already collected thousands of satisfied users
@@ -189,7 +196,7 @@ function LandingPage() {
                 </div>
               </div>
               <div className={`content ${faqState.second ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.second ? '' : 'invisible'}`}>
+                <p className={`mainText `}>
                   All you really need is some free time and a bank account or
                   PayPal to receive your reward. That's all! We try to make this
                   as simple as possible.
@@ -208,8 +215,9 @@ function LandingPage() {
                   <img src={`${faqState.third ? minus : plus}`} alt="Expand" />
                 </div>
               </div>
+              {/* ${faqState.third ? '' : 'invisible'} */}
               <div className={`content ${faqState.third ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.third ? '' : 'invisible'}`}>
+                <p className={`mainText`}>
                   In fact, the amount of money you can earn is unlimited. The
                   only factor that influences this is how much free time you
                   have. In the best case scenario (which isn't all that unusual)

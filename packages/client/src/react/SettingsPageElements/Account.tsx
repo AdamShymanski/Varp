@@ -43,7 +43,7 @@ function Account(params) {
     country: yup.string().required('Please fill your country'),
   });
 
-  const {currentUser} = useAuth();
+  const {currentUser, userData} = useAuth();
 
   interface FormProps {
     email: string;
@@ -67,11 +67,11 @@ function Account(params) {
     console.log(data);
     setLoading(false);
   };
-  const onEmailVerify = async () => {
-    setLoading(true);
-    console.log(email);
-    setLoading(false);
-  };
+  // const onEmailVerify = async () => {
+  //   setLoading(true);
+  //   console.log(email);
+  //   setLoading(false);
+  // };
   const {handleSubmit, register, errors} = useForm({
     resolver: yupResolver(schema),
   });
@@ -99,30 +99,10 @@ function Account(params) {
   return (
     <main
       className={`accountWrapper columnFlex ${
-        params.elementState == 0 ? 'show' : 'hide'
+        params.elementState === 0 ? 'show' : 'hide'
       }`}
     >
       <form className="formWrapper" onSubmit={handleSubmit(onSubmit)}>
-        {/* <div className="inputBoxWrapper">
-          <Input
-            label="Email"
-            reference={register}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setEmail(e.target.value)
-            }
-            size="big"
-            name="email"
-            error={errors.email}
-          />
-          <div className="insideBox">
-            <p>{EVI(0)}</p>
-          </div>
-          <div className="rightBox flexColumn">
-            <Button action={onEmailVerify} size="medium" variant="primary">
-              Verify
-            </Button>
-          </div>
-        </div> */}
         <Input
           label="Email"
           reference={register}
@@ -133,7 +113,8 @@ function Account(params) {
           name="email"
           error={errors.email}
           variant="withButton"
-          evStatus={false}
+          evState={true}
+          placeholder={currentUser ? currentUser.email : ''}
         />
         <Input
           label="Full Name"
@@ -141,6 +122,7 @@ function Account(params) {
           size="big"
           name="name"
           error={errors.name}
+          placeholder={userData.name}
         />
         <Input
           label="Age"
@@ -149,6 +131,7 @@ function Account(params) {
           name="age"
           type="number"
           error={errors.age}
+          placeholder={userData.age}
         />
         <Input
           label="Country"
@@ -156,6 +139,7 @@ function Account(params) {
           size="big"
           name="country"
           error={errors.country}
+          placeholder={userData.country}
         />
         <div className="inputBoxWrapper">
           <Input

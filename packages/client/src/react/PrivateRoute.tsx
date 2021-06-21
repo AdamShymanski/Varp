@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {Route, Redirect, RouteProps} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
 
+import LoadingPage from './LoadingPage';
+
 interface PrivateRouteProps extends RouteProps {
   path: any;
 }
@@ -46,18 +48,12 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
     if (path === '/sign-in' && currentUser) {
       return <Redirect to="/" />;
     }
-    if (path === '/sign-in' && !currentUser) {
-      return <Route exact path={path} {...rest} />;
-    }
-    if (path === '/' && !currentUser) {
-      return <Redirect to="/home" />;
-    }
-    if (path === '/settings') {
+    if (path === '/settings' && !currentUser) {
       return <Route path={path} {...rest} />;
     }
     return <Route exact path={path} {...rest} />;
   }
 
-  return <div />;
+  return <LoadingPage />;
 };
 export default PrivateRoute;

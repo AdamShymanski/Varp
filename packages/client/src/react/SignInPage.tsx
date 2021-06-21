@@ -13,6 +13,8 @@ import {useAuth} from '../contexts/AuthContext';
 import logo from './../resources/icons/logo.png';
 import PacmanLoader from 'react-spinners/PacmanLoader';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 const schema = yup.object().shape({
   email: yup.string().email('Invalid email').required('Email is required'),
   password: yup.string().required('Password is required'),
@@ -34,8 +36,8 @@ export default function SignInPage() {
   });
 
   useEffect(() => {
-    currentUser !== null && history.push('/');
-  });
+    writeStorage('path', '/sign-in');
+  }, []);
 
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
@@ -45,7 +47,7 @@ export default function SignInPage() {
     setLoading(false);
   };
 
-  return currentUser == null && loading == false ? (
+  return (
     <div className="si-wrapper flexColumn">
       <div className="logoWrapper">
         <img
@@ -99,7 +101,5 @@ export default function SignInPage() {
         <p className="errorMessage poppinsFont">{errorState}</p> */}
       </form>
     </div>
-  ) : (
-    <div></div>
   );
 }

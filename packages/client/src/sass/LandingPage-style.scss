@@ -193,7 +193,7 @@
           width: 600px;
 
           div {
-            padding: 0 20px 0 15px;
+            padding: 6px 20px 6px 15px;
 
             color: $gray;
 
@@ -379,14 +379,20 @@
 .accordion {
   margin-bottom: 10px;
   .content {
-    opacity: 0;
+    // opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
+    // transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
 
     &.animated {
       max-height: 30rem;
-      opacity: 1;
+      // opacity: 1;
+
+      opacity: 0;
+      -moz-transition: opacity 0.4s ease-in-out;
+      -o-transition: opacity 0.4s ease-in-out;
+      -webkit-transition: opacity 0.4s ease-in-out;
+      transition: opacity 0.4s ease-in-out;
     }
   }
 }

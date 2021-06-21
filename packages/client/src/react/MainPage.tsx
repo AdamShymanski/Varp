@@ -6,6 +6,8 @@ import {SideDrawer, Card} from '@varp/ui';
 import {useAuth} from '../contexts/AuthContext';
 import {auth} from './../firebase';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 // const cardsHandler = (object: {}) => {
 //number of cards
 //   const number = Object.keys(object);
@@ -18,13 +20,15 @@ function MainPage() {
   const [result, setResult] = useState<any>({balance: 0, name: ''});
   const [loading, setlLoading] = useState<boolean>(true);
 
+  async function provideAsync() {
+    const data = await fetchUserData(currentUser?.uid);
+    setResult(data);
+    setlLoading(false);
+  }
+
   useEffect(() => {
-    async function provideAsync() {
-      const data = await fetchUserData(currentUser?.uid);
-      setResult(data);
-      setlLoading(false);
-    }
     provideAsync();
+    writeStorage('path', '/');
   }, []);
 
   // const crcCooldown = false;
