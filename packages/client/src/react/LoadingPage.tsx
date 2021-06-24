@@ -12,9 +12,6 @@ import {useLocalStorage} from '@rehooks/local-storage';
 export default function LoadingPage() {
   const {currentUser, loading} = useAuth();
   let [path] = useLocalStorage<string>('path');
-  const history = useHistory();
-
-  // const [innerLoading, setInnerLoading] = useState<boolean>(true);
 
   if (!loading) {
     console.log('redirect');
