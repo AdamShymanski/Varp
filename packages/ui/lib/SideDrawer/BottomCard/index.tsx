@@ -11,6 +11,8 @@ import {MessageBox} from './../../MessageBox';
 import {useHistory} from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 const style = css`
   * {
     margin: 0;
@@ -56,7 +58,7 @@ export interface Props {
 }
 
 export const Bottom: React.FC<Props> = (props) => {
-  const {referralCode = '9590-1431 4-1344', auth, ...rest} = props;
+  const {referralCode, auth, ...rest} = props;
   const history = useHistory();
 
   const [message, setMessage] = useState<string>(
@@ -88,7 +90,9 @@ export const Bottom: React.FC<Props> = (props) => {
           <img
             src={logOutIcon}
             onClick={() => {
+              // eslint-disable-next-line react/prop-types
               auth.signOut();
+              writeStorage('path', '/home');
               history.push('/home');
             }}
           />

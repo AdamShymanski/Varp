@@ -35,25 +35,28 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({path, ...rest}) => {
   //prevent from displaying Landing, SignIn and Register Page signed in users
   //if signed in user tries to go to Landing Page redirect him to Main Page
 
-  if (!loading) {
-    if (path === '/register' && currentUser) {
-      return <Redirect to="/" />;
-    }
-    if (path === '/home' && currentUser) {
-      return <Redirect to="/" />;
-    }
-    if (path === '/contact' && currentUser) {
-      return <Redirect to="/" />;
-    }
-    if (path === '/sign-in' && currentUser) {
-      return <Redirect to="/" />;
-    }
-    if (path === '/settings' && !currentUser) {
-      return <Route path={path} {...rest} />;
-    }
-    return <Route exact path={path} {...rest} />;
-  }
+  // if (!loading) {
+  //   if (path === '/register' && currentUser) {
+  //     return <Redirect to="/" />;
+  //   }
+  //   if (path === '/home' && currentUser) {
+  //     return <Redirect to="/" />;
+  //   }
+  //   if (path === '/contact' && currentUser) {
+  //     return <Redirect to="/" />;
+  //   }
+  //   if (path === '/sign-in' && currentUser) {
+  //     return <Redirect to="/" />;
+  //   }
+  //   if (path === '/settings' && !currentUser) {
+  //     return <Route path={path} {...rest} />;
+  //   }
+  //   return <Route exact path={path} {...rest} />;
+  // }
 
-  return <LoadingPage />;
+  // return <LoadingPage />;
+
+  if (loading) return <LoadingPage />;
+  return <Route exact path={path} {...rest} />;
 };
 export default PrivateRoute;
