@@ -35,9 +35,9 @@ export default function SignInPage() {
     resolver: yupResolver(schema),
   });
 
-  useEffect(() => {
-    writeStorage('path', '/sign-in');
-  }, []);
+  // useEffect(() => {
+  //   writeStorage('path', '/sign-in');
+  // }, []);
 
   const onSubmit = async (data: FormProps) => {
     setLoading(true);
@@ -46,6 +46,8 @@ export default function SignInPage() {
     if (result) setError('Wrong password or email!');
     setLoading(false);
   };
+
+  writeStorage('path', '/sign-in');
 
   return (
     <div className="si-wrapper flexColumn">

@@ -68,9 +68,8 @@ function RegisterPage() {
     setLoading(false);
   };
 
-  useEffect(() => {
-    writeStorage('path', '/register');
-  }, []);
+  // useEffect(() => {}, []);
+  writeStorage('path', '/register');
 
   return currentUser == null && loading == false ? (
     <div className="reWrapper flexColumn">

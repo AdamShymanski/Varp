@@ -6,6 +6,8 @@ import {User} from '@firebase/auth-types';
 import {useHistory} from 'react-router-dom';
 
 import {useLocalStorage} from '@rehooks/local-storage';
+import {writeStorage} from '@rehooks/local-storage';
+import {idText} from 'typescript';
 
 interface FirebaseUser extends firebase.User {
   //
@@ -57,16 +59,22 @@ export const AuthProvider: React.FC = ({children}) => {
     // });
 
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      history.push('/loading');
       setCurrentUser(user);
       if (user) {
         const result = await fetchUserData(user.uid);
         setUserData(result.data);
       }
-
-      if (path) history.push(path);
-
       setLoading(false);
     });
+
+    if (path) {
+      if (currentUser && !(path === '/' || '/settings' || '/support')) {
+        history.push('/');
+      }
+      if (!currentUser && !(path !== '/' || '/settings' || '/support'))
+        history.push(path);
+    }
 
     return unsubscribe;
   }, []);

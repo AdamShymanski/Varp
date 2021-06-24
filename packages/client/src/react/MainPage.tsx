@@ -16,18 +16,11 @@ import {writeStorage} from '@rehooks/local-storage';
 // };
 
 function MainPage() {
-  const {currentUser, fetchUserData} = useAuth();
+  const {currentUser, userData, loading} = useAuth();
   const [result, setResult] = useState<any>({balance: 0, name: ''});
-  const [loading, setlLoading] = useState<boolean>(true);
-
-  async function provideAsync() {
-    const data = await fetchUserData(currentUser?.uid);
-    setResult(data);
-    setlLoading(false);
-  }
 
   useEffect(() => {
-    provideAsync();
+    setResult(userData);
     writeStorage('path', '/');
   }, []);
 
@@ -158,7 +151,7 @@ function MainPage() {
         status: 'Start',
       },
       bottom: {
-        referralCode: result.data.referralCode,
+        referralCode: result?.referralCode,
         auth: auth,
       },
       gameCard: {
@@ -169,13 +162,13 @@ function MainPage() {
         reward: 438,
       },
       top: {
-        name: currentUser ? currentUser.displayName : '',
-        balance: result.data.balance,
-        number: result.data.lastAction,
-        profit: result.data.profit,
-        dailyStreak: result.data.dailyStreak,
-        referral: result.data.referralProgram,
-        surveysFinished: result.data.surveyProgram,
+        name: currentUser?.displayName,
+        balance: result?.balance,
+        number: result?.lastAction,
+        profit: result?.profit,
+        dailyStreak: result?.dailyStreak,
+        referral: result?.referralProgram,
+        surveysFinished: result?.surveyProgram,
       },
     };
 

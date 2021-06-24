@@ -16,6 +16,9 @@ import ReferralIcon from './../resources/icons/referral-white.svg';
 import AccountIcon from './../resources/icons/account.svg';
 import {ReactNode} from 'react';
 
+import {writeStorage} from '@rehooks/local-storage';
+
+
 function SettingsPage() {
   const history = useHistory();
   const {currentUser} = useAuth();
@@ -31,6 +34,9 @@ function SettingsPage() {
   );
 
   const pushToMain = () => history.push('/');
+
+  writeStorage('path', '/settings');
+
 
   return (
     <main className="flexRow">
