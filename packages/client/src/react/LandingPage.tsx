@@ -63,7 +63,11 @@ function LandingPage() {
   return (
     <div className="lpWrapper flexColumn">
       <header className="flexRow">
-        <img src={logo} />
+        <picture>
+            <source media="(min-width: 481px)" srcSet={logo}/>
+            <source media="(max-width: 480px)" srcSet={just_logo}/>
+            <img src={logo} /> 
+        </picture>
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
             <li onClick={pushToSupport}>Support</li>
