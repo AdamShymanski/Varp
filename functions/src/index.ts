@@ -45,16 +45,19 @@ export const createUser = functions.https.onCall(
       });
 
       await db.collection('users').doc(user.uid).set({
-        balance: 0,
         age: age,
-        country: country,
-        dailyStreak: 0,
-        surveyProgram: 0,
-        referralProgram: 0,
-        referralCode: user.uid,
-        lastAction: 0,
-        profit: false,
         name: name,
+        country: country,
+
+        balance: 0,
+        profit: false,
+        lastAction: 0,
+
+        dailyStreak: 0,
+        referralProgram: 0,
+
+        usedReferralCode: '',
+        referralCode: user.uid,
       });
 
       return {result: 'success'};

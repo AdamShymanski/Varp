@@ -6,6 +6,8 @@ import {SideDrawer, Card} from '@varp/ui';
 import {useAuth} from '../contexts/AuthContext';
 import {auth} from './../firebase';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 // const cardsHandler = (object: {}) => {
 //number of cards
 //   const number = Object.keys(object);
@@ -14,17 +16,12 @@ import {auth} from './../firebase';
 // };
 
 function MainPage() {
-  const {currentUser, fetchUserData} = useAuth();
+  const {currentUser, userData, loading} = useAuth();
   const [result, setResult] = useState<any>({balance: 0, name: ''});
-  const [loading, setlLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    async function provideAsync() {
-      const data = await fetchUserData(currentUser?.uid);
-      setResult(data);
-      setlLoading(false);
-    }
-    provideAsync();
+    setResult(userData);
+    writeStorage('path', '/');
   }, []);
 
   // const crcCooldown = false;
@@ -116,7 +113,7 @@ function MainPage() {
         reward: 214,
       },
       top: {
-        name: '',
+        name: currentUser ? currentUser.displayName : '',
         balance: 0,
         number: 0,
         profit: false,
@@ -154,7 +151,7 @@ function MainPage() {
         status: 'Start',
       },
       bottom: {
-        referralCode: result.data.referralCode,
+        referralCode: result?.referralCode,
         auth: auth,
       },
       gameCard: {
@@ -165,13 +162,13 @@ function MainPage() {
         reward: 438,
       },
       top: {
-        name: result.data.name,
-        balance: result.data.balance,
-        number: result.data.lastAction,
-        profit: result.data.profit,
-        dailyStreak: result.data.dailyStreak,
-        referral: result.data.referralProgram,
-        surveysFinished: result.data.surveyProgram,
+        name: currentUser?.displayName,
+        balance: result?.balance,
+        number: result?.lastAction,
+        profit: result?.profit,
+        dailyStreak: result?.dailyStreak,
+        referral: result?.referralProgram,
+        surveysFinished: result?.surveyProgram,
       },
     };
 

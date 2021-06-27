@@ -30,11 +30,13 @@ const style = css`
 
     border-radius: 6px;
     font-weight: 500;
-    height: 44px;
+    height: 55px;
+    font-size: 1.3em;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
   .bank {
     display: flex;

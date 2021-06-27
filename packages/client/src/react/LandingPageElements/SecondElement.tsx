@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './../../sass/elements/SecondElement-style.scss';
+import './../../sass/LandingPageElements/SecondElement-style.scss';
 
 import {makeStyles} from '@material-ui/core/styles';
 

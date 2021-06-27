@@ -1,0 +1,131 @@
+@import '../../variables.scss';
+
+.referralWrapper {
+  width: 82.5vw;
+  margin-left: 17.5%;
+  margin-top: 40px;
+  color: $main-text;
+  align-items: flex-start;
+
+  p {
+    font-size: 1.6em;
+  }
+
+  .container {
+    width: 40%;
+    margin: 40px 0;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 0.7em;
+    }
+  }
+
+  .referralCode {
+    margin-bottom: 60px;
+    div {
+      display: inline-flex;
+      align-items: center;
+      background-color: $dark-gray;
+      border-radius: 2px;
+      padding: 0.75em;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      font-family: $poppins-font;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .divider {
+      display: inline-block;
+      border-left: 3px solid $accent;
+      margin: 0 15px 0 30px;
+      height: 35px;
+    }
+
+    .code {
+      font-size: 1.5em;
+      font-family: $roboto-font;
+    }
+  }
+
+  .bonuses {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    h2 {
+      font-size: 1.8em;
+      font-family: $poppins-font;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .card {
+      font-family: $roboto-font;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border-radius: 2px;
+      background-color: $dark-gray;
+      border-radius: 6px;
+
+      &:not(:last-child) {
+        margin-bottom: 25px;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: 1.6em;
+        position: relative;
+        padding-bottom: 20px;
+        img {
+          height: 0.86em;
+        }
+        span {
+          color: $green;
+        }
+
+        &::after {
+          background-color: #0082ff;
+          content: '';
+          display: block;
+          height: 0.125em;
+          width: 1.875em;
+          position: absolute;
+          bottom: 0.312em;
+          border-radius: 1px;
+        }
+      }
+
+      .body {
+        font-size: 1em;
+        width: 90%;
+        padding-bottom: 20px;
+        color: $gray;
+      }
+
+      footer {
+        font-weight: 500;
+        font-size: 0.75em;
+
+        .highlight {
+          color: $accent;
+        }
+
+        Button {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: flex;
+}

@@ -33,6 +33,39 @@ const style = css`
     font-weight: 500;
     margin-top: 8px;
   }
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    button {
+      position: absolute;
+      right: -22%;
+
+      padding: 4px 22px;
+
+      border: none;
+      background: #0082ff;
+      border-radius: 5px;
+
+      font-size: 1em;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+    p {
+      position: absolute;
+      right: 0;
+
+      margin-top: 0.9%;
+
+      padding: 2.5% 20px;
+      background: #161616;
+
+      font-size: 1em;
+      font-family: 'Poppins', sans-serif;
+      color: #7f7f7f;
+    }
+  }
   .input {
     margin: 7px 0 3px 0;
     padding: 0 10px;
@@ -44,13 +77,14 @@ const style = css`
     border: none;
     outline: none;
     border-radius: 1px 4px 4px 1px;
-    border-left: 2px solid #5c5c5c;
+    border-left: 3px solid #5c5c5c;
 
-    background: #121212;
+    background: #161616;
+    border-radius: 2px 0 0 2px;
     transition: 350ms;
   }
   input:focus {
-    border-left: 2px solid #0082ff;
+    border-left: 3px solid #0082ff;
     transition: 350ms;
   }
 
@@ -89,24 +123,53 @@ const style = css`
 export interface Props {
   size: string;
   label: string;
+
   error?: any;
   name?: string;
   type?: string;
   reference?: any;
+  variant?: string;
+  evState?: boolean;
   disabled?: boolean;
+  placeholder?: string;
 }
 
 export function Input(props: Props) {
   const {
+    placeholder,
     label = 'Storybook',
+    variant = 'regular',
     name = 'password',
+    evState,
     size = 'medium',
     disabled = false,
     error,
     reference,
     type = '',
-    ...rest
   } = props;
+  if (variant === 'withButton') {
+    return (
+      <main css={style}>
+        <div className={size}>
+          <p className={`label`}>{label}</p>
+          <div className={'inputWrapper'}>
+            <input
+              name={name}
+              className={`input`}
+              type={type}
+              disabled={disabled}
+              ref={reference}
+              placeholder={placeholder}
+            />
+            {evState && <p>Email isn't verified</p>}
+            {evState && <button>Verify</button>}
+          </div>
+
+          <p className="error-msg">{error && error.message}</p>
+        </div>
+      </main>
+    );
+  }
   return (
     <main css={style}>
       <div className={size}>
@@ -117,6 +180,7 @@ export function Input(props: Props) {
           type={type}
           disabled={disabled}
           ref={reference}
+          placeholder={placeholder}
         />
         <p className="error-msg">{error && error.message}</p>
       </div>

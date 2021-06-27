@@ -9,7 +9,7 @@ import {Button, Answer} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
 import just_logo from './../resources/icons/just-logo.png';
 
-import hamburger from './../resources/icons/hamburger-menu.svg';
+// import hamburger from './../resources/icons/hamburger-menu.svg';
 import search from './../resources/icons/search.svg';
 import plus from './../resources/icons/plus.svg';
 import minus from './../resources/icons/minus.svg';
@@ -27,6 +27,8 @@ import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
 
+import {writeStorage} from '@rehooks/local-storage';
+
 function LandingPage() {
   const history = useHistory();
 
@@ -41,6 +43,10 @@ function LandingPage() {
     second: false,
     third: false,
   });
+
+  useEffect(() => {
+    writeStorage('path', '/home');
+  }, []);
 
   const faqSectionSwitch = (number: string) => {
     if (number == 'first') {
@@ -60,33 +66,32 @@ function LandingPage() {
         <img src={logo} />
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
-            <li>Collaboration</li>
+            <li onClick={pushToSupport}>Support</li>
             <li>Business</li>
-            <li>Contact</li>
-            <Button children={'Contact'} action={pushToContact} />
-            <Button children={'Support'} action={pushToSupport} />
+            <li onClick={pushToContact}>Contact</li>
           </ul>
           <div className="flexRow btnWrapper">
-            <Button children={'Register'} action={pushToRegister} />
+            <Button action={pushToRegister}>Register</Button>
             <p>or</p>
-            <Button children={'Sign In'} action={pushToSignIn} />
+            <Button action={pushToSignIn}>Sign In</Button>
           </div>
         </aside>
       </header>
       <main className="flexColumn poppinsFont mainSection">
         <h1>Earn money for performing simple tasks</h1>
         <p>
-          We're turning the CPA marketing monetization model upside down. We add
-          an element of competition, shorten the time and significantly improve
-          the overall comfort of this way of earning. Even $20 in 15 minutes.
+          We turn the CPA marketing monetization model upside down. We add
+          element of risk, we shorten the time and significantly improve overall
+          comfort of this way of earning. Even $20 in 15 minutes.
         </p>
         <Button
           size="big"
-          children={'Get Started'}
           action={pushToRegister}
           variant="icon"
           icon={longArrow}
-        />
+        >
+          Get Started
+        </Button>
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
           <img src={mockup} />
@@ -159,7 +164,7 @@ function LandingPage() {
           <aside className="flexColumn">
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>Why can I trust you?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -170,16 +175,17 @@ function LandingPage() {
                 </div>
               </div>
               <div className={`content ${faqState.first ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.first ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                <p className={`mainText `}>
+                  We work with a number of large companies that carefully screen
+                  their partners, including us. In addition, you can trust us
+                  because we have already collected thousands of satisfied users
+                  who pay out prizes to their accounts every day.
                 </p>
               </div>
             </section>
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>What do I need to start making money?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -190,16 +196,16 @@ function LandingPage() {
                 </div>
               </div>
               <div className={`content ${faqState.second ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.second ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                <p className={`mainText `}>
+                  All you really need is some free time and a bank account or
+                  PayPal to receive your reward. That's all! We try to make this
+                  as simple as possible.
                 </p>
               </div>
             </section>
             <section className="accordion">
               <div className="flexRow">
-                <h1>Lorem ipsum dolor sit amet, consectetur adipiscing el?</h1>
+                <h1>How much money can I make using Varp?</h1>
                 <div
                   className={'flexRow'}
                   onClick={() => {
@@ -209,11 +215,13 @@ function LandingPage() {
                   <img src={`${faqState.third ? minus : plus}`} alt="Expand" />
                 </div>
               </div>
+              {/* ${faqState.third ? '' : 'invisible'} */}
               <div className={`content ${faqState.third ? 'animated' : ''}`}>
-                <p className={`mainText ${faqState.third ? '' : 'invisible'}`}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing el?Lorem
-                  ipsum dolor sit amet, consectetur adipiscing el?Lorem ipsum
-                  dolor sit amet, consectetur adipiscing el?
+                <p className={`mainText`}>
+                  In fact, the amount of money you can earn is unlimited. The
+                  only factor that influences this is how much free time you
+                  have. In the best case scenario (which isn't all that unusual)
+                  you can make as much as $15 in 20 minutes with Varp.
                 </p>
               </div>
             </section>
@@ -230,10 +238,15 @@ function LandingPage() {
             </div>
           </section>
           <section className="scrBox">
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" />
-            <Answer header="Lorem Ipsum" text="Lorem Ipsum" last={true} />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer header="We're working on it!" text="Give us some time..." />
+            <Answer
+              header="We're working on it!"
+              text="Give us some time..."
+              last={true}
+            />
           </section>
         </aside>
       </article>
