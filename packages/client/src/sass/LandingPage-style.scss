@@ -178,6 +178,12 @@
     padding: 0 25.359%;
 
     background: $background;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+      height: unset;
+      padding: 0 3rem;
+    }
     .textContainer {
       color: $main-text;
       h4 {
@@ -188,10 +194,17 @@
         margin: 10px 0;
         font-size: 3em;
         padding-right: 50px;
+        @media screen and (max-width: 480px) {
+          font-size: 1.5rem;
+          padding-right: 0;
+        }
       }
       p {
         width: 60%;
         color: $back-text;
+        @media screen and (max-width: 480px) {
+          width: 100%;
+        }
         .accentSpan {
           color: $accent;
         }
@@ -203,6 +216,9 @@
     }
     img {
       width: 45%;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
     }
   }
   .faqArt {
