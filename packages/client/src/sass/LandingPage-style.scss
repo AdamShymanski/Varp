@@ -63,7 +63,11 @@
       color: $gray;
       @media screen and (max-width: 480px) {
         width: 100%;
-        
+      }
+    }
+    button.button {
+      .content {
+        content: "s";
       }
     }
     .mockupWrapper {
