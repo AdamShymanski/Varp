@@ -14,7 +14,7 @@ import instagram from './../../resources/icons/instagram.png';
 import linkedIn from './../../resources/icons/linkedin.png';
 
 const AccountItem = () => {
-    return <div className="account__card">
+    return <div className="account__card poppinsFont">
         <h1>Account has been disabled</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel, nisl, massa ultrices ullamcorper. Ullamcorper faucibus nisl lacus, leo molestie pulvinar. Euismod tortor mattis sed amet, lorem sapien facilisis pellentesque.</p>
         <button>View Article</button>
@@ -54,9 +54,9 @@ function AccountPage() {
             <li>Account</li>
         </ul>
         <section className="card__container">
-            {Array.from({length: 4}, (_, i) => i + 1).map(item => {
+            {Array.from({length: 4}, (_, i) => i + 1).map(item => 
                 <AccountItem/>
-            })}
+            )}
         </section>
       </main>
       
