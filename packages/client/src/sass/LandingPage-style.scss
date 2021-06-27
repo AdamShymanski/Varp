@@ -107,38 +107,48 @@
 
     @media screen and (max-width: 480px) {
       width: 100%;
+      height: unset;
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(4, 1fr);
+      grid-template-rows: repeat(4, fit-content);
     }
 
     div {
       align-items: flex-start;
       
       @media screen and (max-width: 480px) {
+        margin-bottom: 40px;
+        height: fit-content;
         &:nth-child(3) {
-          margin-left: 20px;
+          margin-left: 15px;
         }
         &:nth-child(4) {
           margin-left: 10px;
         }
       }
+
+      
       img {
         width: 120px;
       }
-      .shield {
-        width: 100px;
-      }
-      .hand {
+      .shield, .hand, .clock {
         width: 140px;
       }
-      .clock {
-        width: 140px;
+      @media screen and (max-width: 480px) {
+        img {
+          width: 60px;
+        }
+        .shield, .hand, .clock {
+          width: 70px;
+        }
       }
       .featureContent {
         margin-left: 50px;
         color: $main-text;
         h3 {
           font-size: 2.2em;
+          @media screen and (max-width: 480px) {
+            font-size: 1.2rem;
+          }
         }
         span {
           font-weight: 600;
@@ -150,6 +160,7 @@
           color: $back-text;
           @media screen and (max-width: 480px) {
             width: 100%;
+            font-size: 0.95rem;
           }
         }
       }
