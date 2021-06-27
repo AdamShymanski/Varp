@@ -6,6 +6,7 @@
 
   @media screen and (max-width: 480px) {
     padding: 0 3rem;
+    width: 100%;
   }
   header {
     margin-top: 30px;
@@ -48,6 +49,11 @@
 
       width: 962px;
       color: $main-text;
+
+      @media screen and (max-width: 480px) {
+        width: 100%;
+        font-size: 3em;
+      }
     }
     p {
       font-size: 1.2em;
