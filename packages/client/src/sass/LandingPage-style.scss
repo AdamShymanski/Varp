@@ -390,7 +390,9 @@
     width: 100vw;
     height: 560px;
     padding: 0 25.359%;
-
+    @media screen and (min-width:480px) {
+      padding: 0 3rem;
+    }
     background: $background;
     .textContainer {
       color: $main-text;
@@ -401,10 +403,16 @@
       h1 {
         margin: 10px 0;
         font-size: 3em;
+        @media screen and (min-width:480px) {
+          font-size: 2em;
+        }
       }
       p {
         width: 60%;
         color: $back-text;
+        @media screen and (min-width:480px) {
+          width: 100%;
+        }
         .accentSpan {
           color: $accent;
         }
@@ -416,6 +424,11 @@
     }
     img {
       width: 380px;
+      @media screen and (min-width:480px) {
+        position: absolute;
+        opacity: 0.3;  
+        left: -12rem;
+      }
     }
   }
   footer {
