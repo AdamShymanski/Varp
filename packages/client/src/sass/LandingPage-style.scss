@@ -182,7 +182,8 @@
     @media screen and (max-width: 480px) {
       flex-direction: column;
       height: unset;
-      padding: 0 3rem;
+      padding: 2rem 3rem;
+      margin-bottom: 2rem;
     }
     .textContainer {
       color: $main-text;
@@ -311,6 +312,7 @@
       align-items: center;
       @media screen and (max-width: 480px) {
         width: 100%;
+        margin-bottom: 40px;
       }
       .scrHeader {
         width: 100%;
@@ -359,6 +361,12 @@
         padding-right: 10px;
         @media screen and (max-width: 480px) {
           padding: 0;
+          height: 300px
+        }
+        & *:last-child >.last {
+          @media screen and (max-width: 480px) {
+            margin-bottom: 40px;
+          }
         }
       }
       ::-webkit-scrollbar {
