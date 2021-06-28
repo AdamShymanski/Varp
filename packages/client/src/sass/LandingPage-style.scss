@@ -20,6 +20,9 @@
     aside {
       width: 70%;
       justify-content: space-around;
+      @media screen and (max-width:480px){
+        
+      }
       .headerList {
         color: $main-text;
         width: 380px;
