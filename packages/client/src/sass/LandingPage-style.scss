@@ -455,6 +455,9 @@
       width: 400px;
       align-items: flex-start;
       justify-content: space-between;
+      @media screen and (min-width:480px) {
+        width: 100%;
+      }
       li {
         list-style: none;
       }
@@ -470,6 +473,9 @@
       .row {
         width: 380px;
         justify-content: space-between;
+        @media screen and (min-width:480px) {
+          width: 100%;
+        }
         .icons {
           width: 100px;
           justify-content: space-between;
