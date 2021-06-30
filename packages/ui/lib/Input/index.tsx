@@ -1,6 +1,5 @@
 import {css} from '@emotion/react';
 import React from 'react';
-import {Disabled} from '../Button/Button.stories';
 
 const style = css`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -132,10 +131,12 @@ export interface Props {
   evState?: boolean;
   disabled?: boolean;
   placeholder?: string;
+  onChange?: any;
 }
 
 export function Input(props: Props) {
   const {
+    onChange,
     placeholder,
     label = 'Storybook',
     variant = 'regular',
@@ -160,9 +161,10 @@ export function Input(props: Props) {
               disabled={disabled}
               ref={reference}
               placeholder={placeholder}
+              onChange={onChange}
             />
-            {evState && <p>Email isn't verified</p>}
-            {evState && <button>Verify</button>}
+            {evState && <p>Email not verified</p>}
+            {evState && <button type={'button'}>Verify</button>}
           </div>
 
           <p className="error-msg">{error && error.message}</p>

@@ -22,12 +22,7 @@ import {writeStorage} from '@rehooks/local-storage';
 function SettingsPage() {
   const history = useHistory();
   const {currentUser} = useAuth();
-
-  // userData.then(() => {
-  //   console.log('skrtttt');
-  //   console.log(userData);
-  // });
-
+  
   const [elementState, setElement] = useState<number>(0);
   const [subpage, setSubpage] = useState<ReactNode>(
     <Account elementState={0} />,

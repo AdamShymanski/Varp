@@ -32,7 +32,7 @@
       .insideBox {
         position: absolute;
 
-        bottom: 28px;
+        bottom: 26px;
         width: 500px;
         padding-right: 24px;
 
@@ -43,11 +43,9 @@
           color: $gray;
         }
       }
-      .rightBox {
-        position: absolute;
-
-        bottom: 28px;
-        width: 500px;
+      .noteText {
+        font-size: 0.9em;
+        color: $gray;
       }
     }
     .token {
@@ -59,5 +57,14 @@
         color: $gray;
       }
     }
+  }
+  .buttonWrapperA {
+    height: 18vh;
+    margin-top: 76px;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    border-left: 2.5px solid $gray;
+    padding-left: 22px;
   }
 }

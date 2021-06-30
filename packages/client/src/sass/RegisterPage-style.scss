@@ -91,11 +91,9 @@
       background: $input-background;
       border: 0px solid $input-background;
 
-
       transition: 350ms;
     }
     input:focus {
-
       transition: 350ms;
     }
     .errorMessage {
@@ -109,9 +107,9 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      align-items: flex-start;
-      height: 60px;
-      width: 150px;
+      align-items: center;
+      height: 50px;
+      width: 180px;
     }
   }
 }

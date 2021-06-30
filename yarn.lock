@@ -6408,6 +6408,7 @@ cli-width@^3.0.0:
     "@hookform/resolvers" "^1.3.5"
     "@material-ui/core" "^4.11.3"
     "@material-ui/icons" "^4.11.2"
+    "@rehooks/local-storage" "2.4.0"
     "@types/jest" "^26.0.22"
     "@types/node" "^14.14.41"
     "@types/react" "^17.0.3"
@@ -18984,7 +18985,7 @@ yocto-queue@^0.1.0:
 
 yup@^0.32.9:
   version "0.32.9"
-  resolved "https://registry.npmjs.org/yup/-/yup-0.32.9.tgz"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.32.9.tgz#9367bec6b1b0e39211ecbca598702e106019d872"
   integrity sha512-Ci1qN+i2H0XpY7syDQ0k5zKQ/DoxO0LzPg8PAR/X4Mpj6DqaeCoIYEEjDJwhArh3Fa7GWbQQVDZKeXYlSH4JMg==
   dependencies:
     "@babel/runtime" "^7.10.5"

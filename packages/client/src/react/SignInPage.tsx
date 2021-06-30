@@ -11,7 +11,7 @@ import * as yup from 'yup';
 import {useAuth} from '../contexts/AuthContext';
 
 import logo from './../resources/icons/logo.png';
-import PacmanLoader from 'react-spinners/PacmanLoader';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import {writeStorage} from '@rehooks/local-storage';
 
@@ -85,22 +85,11 @@ export default function SignInPage() {
         <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="divider" />
         <div className="buttonWrapper">
-          <Button
-            type="submit"
-            size="medium"
-            children="Submit"
-            variant="primary"
-          />
-          <PacmanLoader color={'#0082FF'} loading={loadingPacman} size={15} />
+          <Button type="submit" size="medium" variant="primary">
+            Submit
+          </Button>
+          <ClipLoader color={'#0082FF'} loading={loadingPacman} size={15} />
         </div>
-
-        {/* <Button
-          type="submit"
-          size="medium"
-          children="Submit"
-          variant="primary"
-        />
-        <p className="errorMessage poppinsFont">{errorState}</p> */}
       </form>
     </div>
   );

@@ -1,9 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 require('firebase/functions');
 
-const app = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: 'AIzaSyCg9wjlkpmjmqNjS56gRFsKpjB9xdSJO-Q',
   authDomain: 'varp-ba7a7.firebaseapp.com',
   projectId: 'varp-ba7a7',
@@ -16,5 +17,7 @@ const app = firebase.initializeApp({
 //EMULATOR - ONLY FOR DEVELOPMENT ENVIREMENT
 // app.functions().useEmulator('localhost', 5001);
 
-export const auth = app.auth();
-export default app;
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+
+export default {db, auth};
