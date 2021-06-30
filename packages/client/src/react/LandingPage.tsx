@@ -82,7 +82,7 @@ function LandingPage() {
         <p>
           We turn the CPA marketing monetization model upside down. We add
           element of risk, we shorten the time and significantly improve overall
-          comfort of this way of earning. Even $20 in 15 minutes.
+          comfort of this way of earning. Even $50 in 15 minutes.
         </p>
         <Button
           size="big"

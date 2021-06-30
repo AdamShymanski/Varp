@@ -1,11 +1,16 @@
 import {css} from '@emotion/react';
 import React, {useState} from 'react';
 
-import tagIcon from './tag.svg';
-import clockIcon from './clock.svg';
-import calendarIcon from './calendar.svg';
-import tokenIcon from './triangle.svg';
+// import tagIcon from './tag.svg';
+// import calendarIcon from './calendar.svg';
+// import tokenIcon from './triangle.svg';
+
+import jackpotIcon from './jackpot.svg';
+
 import dollarSignIcon from './dollar_sign.svg';
+import clockIcon from './clock.svg';
+import usersIcon from './users.svg';
+import eyeIcon from './eye.svg';
 
 import {Button} from './../../Button';
 import {MessageBox} from './../../MessageBox';
@@ -23,6 +28,8 @@ const style = css`
   font-family: 'Poppins', sans-serif;
   color: #f4f4f4;
 
+  margin-top: 15px;
+
   .button {
     position: relative;
 
@@ -32,9 +39,19 @@ const style = css`
     width: 20vw;
     border-left: 3px solid #0082ff;
 
+    border-radius: 1.5px 0 0 1.5px;
+
     padding-left: 15px;
     margin: 10px 0;
     margin-bottom: 12px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    .jackpotIcon {
+      width: 100px;
+      margin-left: 20px;
+    }
   }
   h1 {
     font-weight: 500;
@@ -44,7 +61,7 @@ const style = css`
   }
   .grid {
     display: grid;
-    grid-template-columns: 115px 115px;
+    grid-template-columns: 90px 90px;
     grid-template-rows: 30px 30px;
   }
   .grid div {
@@ -64,27 +81,20 @@ const style = css`
 
 export interface Props {
   title: string;
-  date: string;
   time: string;
-  price: number;
   reward: number;
+  players: number;
+  spectators: number;
 }
 
 export const GameCard = (props: Props) => {
-  const {
-    title = 'End It Fast',
-    date = 'April 2nd',
-    time = '2:30pm',
-    reward = 214,
-    price = 135,
-  } = props;
+  const {title, time, reward, players, spectators} = props;
 
-  // const [message, setMessage] = useState<string>();
   const [toggle, setToggle] = useState<boolean>(false);
 
   const messageBoxProps = {
     toggle: toggle,
-    message: "You don't have enough tokens",
+    message: "This page isn't ready yet",
     setToggle: setToggle,
   };
 
@@ -96,35 +106,38 @@ export const GameCard = (props: Props) => {
     <>
       <main css={style}>
         <div className="card">
-          <h1>{title}</h1>
-          <div className="grid">
-            <div>
-              <img className="icon" src={calendarIcon} />
-              <p>{date}</p>
-            </div>
-            <div>
-              <img className="icon" src={clockIcon} />
-              <p>{time}</p>
-            </div>
-            <div>
-              <img className="icon" src={tagIcon} />
-              <p>{price}</p>
-              <img className="tokenIcon" src={tokenIcon} />
-            </div>
-            <div>
-              <img className="icon" src={dollarSignIcon} />
-              <p>{reward}</p>
+          <div>
+            <h1>{title}</h1>
+            <div className="grid">
+              <div>
+                <img className="icon" src={usersIcon} />
+                <p>{players}</p>
+              </div>
+              <div>
+                <img className="icon" src={clockIcon} />
+                <p>{time}</p>
+              </div>
+              <div>
+                <img className="icon" src={eyeIcon} />
+                <p>{spectators}</p>
+              </div>
+              <div>
+                <img className="icon" src={dollarSignIcon} />
+                <p>{reward}</p>
+              </div>
             </div>
           </div>
+          <img className="jackpotIcon" src={jackpotIcon} alt={'Jackpot Icon'} />
         </div>
         <Button
-          children="Join"
           variant="primary"
           size="small"
           action={() => {
             setMessageBox();
           }}
-        />
+        >
+          Join
+        </Button>
         <div className="divider" />
       </main>
       <MessageBox {...messageBoxProps} />

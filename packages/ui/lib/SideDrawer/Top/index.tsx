@@ -4,7 +4,6 @@ import React from 'react';
 import tokenIcon from './token_icon_circle.svg';
 import litIcon from './lit.svg';
 import referralIcon from './referral_program 1.svg';
-import surveyIcon from './Survey.svg';
 import loseIcon from './lose_icon.svg';
 import profitIcon from './profit_icon.svg';
 
@@ -177,13 +176,10 @@ const style = css`
       background-color: #2cb200;
       border-radius: 4px 0 0 4px;
     }
-    .finishedTask {
-      z-index: 2;
-      background-color: #33cc01;
-    }
     .referral {
       z-index: 1;
-      background-color: #3be601;
+      background-color: #33cc01;
+      /* background-color: #3be601; */
     }
   }
   .bonusInfo {
@@ -260,36 +256,26 @@ export interface Props {
    * Second Source of Bonus
    */
   referral: number;
-  /**
-   * Third Source of Bonus
-   */
-  surveysFinished: number;
 }
 
 export const Top = (props: Props) => {
   const {
-    balance = 666,
+    balance = 0,
     profit = false,
-    name = 'Adam',
+    name = '',
     number = 0,
-    dailyStreak = 5,
-    referral = 5,
-    surveysFinished = 5,
-    ...rest
+    dailyStreak = 0,
+    referral = 0,
   } = props;
 
-  // const getWidth = (value: number, maximum: number) => {
-  //
-  //   if (width < 0.16) {
-  //     return '16%';
-  //   }
-  //   return `calc(100% * ${width.toString()}`;
-  // };
-
-  const getWidth = (value: number) => {
-    const width = (1 / 3) * value;
-
-    return '70px';
+  const getWidth = (value: number, bonusType?: string) => {
+    let result;
+    if (bonusType == 'referralProgram') {
+      result = (66 * value) / 5;
+      return `${result}%`;
+    }
+    result = (33 * value) / 5;
+    return `${result}%`;
   };
 
   return (
@@ -314,7 +300,7 @@ export const Top = (props: Props) => {
         <div className="bonus">
           <p
             className="tooltip"
-            data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code and completing surveys from Varp."
+            data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code."
           >
             Bonuses
           </p>
@@ -322,17 +308,17 @@ export const Top = (props: Props) => {
             <div className="scoreBar">
               <div
                 className="bar dailyStreak tooltip"
-                data-text={`Bonus by daily streak: ${dailyStreak}%`}
-                style={{width: getWidth(dailyStreak)}}
+                data-text={`Bonus by daily streak: ${dailyStreak * 2}%`}
+                style={{minWidth: '70px', width: getWidth(dailyStreak)}}
               >
                 <div className="info">
                   <img className="dailyStreak" src={litIcon} alt="Lit Icon" />
-                  <p className="">{dailyStreak}</p>
+                  <p className="">{dailyStreak * 2}</p>
                   <p className="">%</p>
                 </div>
                 <div className="expander"></div>
               </div>
-              <div
+              {/* <div
                 className="bar finishedTask tooltip"
                 data-text={`Bonus by survey: ${surveysFinished}%`}
                 style={{width: getWidth(surveysFinished)}}
@@ -347,11 +333,11 @@ export const Top = (props: Props) => {
                   <p className="percentage">%</p>
                 </div>
                 <div className="expander"></div>
-              </div>
+              </div> */}
               <div
                 className="bar referral tooltip"
-                data-text={`Bonus by referral: ${referral}%`}
-                style={{width: getWidth(referral)}}
+                data-text={`Bonus by referral: ${referral * 4}%`}
+                style={{width: getWidth(referral, 'referralProgram')}}
               >
                 <div className="info">
                   <img
@@ -359,7 +345,7 @@ export const Top = (props: Props) => {
                     src={referralIcon}
                     alt="Referral Icon"
                   />
-                  <p>{referral}</p>
+                  <p>{referral * 4}</p>
                   <p className="percentage">%</p>
                 </div>
                 <div className="expander"></div>

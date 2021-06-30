@@ -81,11 +81,13 @@
         font-size: 1.6em;
         position: relative;
         padding-bottom: 20px;
+
         img {
           height: 0.86em;
         }
         span {
           color: $green;
+          margin-left: 6px;
         }
 
         &::after {
