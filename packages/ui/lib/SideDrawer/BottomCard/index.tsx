@@ -38,6 +38,37 @@ const style = css`
     justify-content: space-evenly;
 
     border-radius: 6px;
+    .tooltip {
+      position: relative; /* making the .tooltip span a container for the tooltip text */
+      &:hover {
+        span::before {
+          font-size: 1rem;
+          content: attr(data-text); /* here's the magic */
+          position: absolute;
+          z-index: 99;
+          /* vertically center */
+          top: 50%;
+          transform: translateY(-50%);
+    
+          /* move to right */
+          left: 50%;
+          margin-left: 15px; /* and add a small left margin */
+    
+          /* basic styles */
+          padding: 10px;
+          border-radius: 6px;
+          background: #000;
+          opacity: 80%;
+          color: #fff;
+          text-align: center;
+          width: 100px;
+          display: block;
+        }
+        span:hover {
+          display: none;
+        }
+      }
+    }
     img {
       width: 30px;
     }
@@ -81,37 +112,56 @@ export const Bottom: React.FC<Props> = (props) => {
     <>
       <main css={style}>
         <div className="card">
-          <img
-            src={settingsIcon}
-            onClick={() => {
-              history.push('/settings');
-            }}
-          />
-          <img
-            src={logOutIcon}
-            onClick={() => {
-              // eslint-disable-next-line react/prop-types
-              auth.signOut();
-              writeStorage('path', '/home');
-              history.push('/home');
-            }}
-          />
-
-          <CopyToClipboard text={referralCode}>
+          <div
+            className="tooltip"
+          >
+            <span data-text="Setting"></span>
             <img
-              src={copyReferralCodeIcon}
+              src={settingsIcon}
               onClick={() => {
-                setMessageBox('Referral code copied to clipboard');
+                history.push('/settings');
               }}
             />
-          </CopyToClipboard>
-
-          <img
-            src={playIcon}
-            onClick={() => {
-              setMessageBox("You haven't joined any games yet");
-            }}
-          />
+          </div>
+          <div
+            className="tooltip"
+            >
+              <span data-text="Log Out"></span>
+            <img
+              src={logOutIcon}
+              onClick={() => {
+                // eslint-disable-next-line react/prop-types
+                auth.signOut();
+                writeStorage('path', '/home');
+                history.push('/home');
+              }}
+              />
+          </div>
+          <div
+            className="tooltip"
+          >
+            <span data-text="Copy Referral Code"></span>
+            <CopyToClipboard
+              text={referralCode}>
+              <img
+                src={copyReferralCodeIcon}
+                onClick={() => {
+                  setMessageBox('Referral code copied to clipboard');
+                }}
+              />
+            </CopyToClipboard>
+          </div>
+          <div
+            className="tooltip"
+          >
+            <span data-text="Go to Jackpot"></span>
+            <img
+              src={playIcon}
+              onClick={() => {
+                setMessageBox("You haven't joined any games yet");
+              }}
+            />
+          </div>
         </div>
       </main>
       <MessageBox {...messageBoxProps} />

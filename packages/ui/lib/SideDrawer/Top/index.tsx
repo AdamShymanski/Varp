@@ -1,4 +1,4 @@
-import {css} from '@emotion/react';
+ import {css} from '@emotion/react';
 import React from 'react';
 
 import tokenIcon from './token_icon_circle.svg';
@@ -193,33 +193,33 @@ const style = css`
   }
   .tooltip {
     position: relative; /* making the .tooltip span a container for the tooltip text */
-    &:before {
-      font-size: 1rem;
-      content: attr(data-text); /* here's the magic */
-      position: absolute;
-      z-index: 99;
-      /* vertically center */
-      top: 50%;
-      transform: translateY(-50%);
-
-      /* move to right */
-      left: 100%;
-      margin-left: 15px; /* and add a small left margin */
-
-      /* basic styles */
-      width: 200px;
-      padding: 10px;
-      border-radius: 6px;
-      background: #000;
-      opacity: 80%;
-      color: #fff;
-      text-align: center;
-
-      display: none; /* hide by default */
-    }
-    &:hover:before {
-      display: block;
-      width: 220px;
+    &:hover {
+      span::before {
+        font-size: 1rem;
+        content: attr(data-text); /* here's the magic */
+        position: absolute;
+        z-index: 99;
+        /* vertically center */
+        top: 50%;
+        transform: translateY(-50%);
+  
+        /* move to right */
+        left: 50%;
+        margin-left: 15px; /* and add a small left margin */
+  
+        /* basic styles */
+        padding: 10px;
+        border-radius: 6px;
+        background: #000;
+        opacity: 80%;
+        color: #fff;
+        text-align: center;
+        width: 220px;
+        display: block;
+      }
+      span:hover {
+        display: none;
+      }
     }
   }
 
@@ -300,17 +300,17 @@ export const Top = (props: Props) => {
         <div className="bonus">
           <p
             className="tooltip"
-            data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code."
           >
+            <span data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code."></span>
             Bonuses
           </p>
           <div className="bonusInfo">
             <div className="scoreBar">
               <div
                 className="bar dailyStreak tooltip"
-                data-text={`Bonus by daily streak: ${dailyStreak * 2}%`}
                 style={{minWidth: '70px', width: getWidth(dailyStreak)}}
               >
+                <span data-text={`Bonus by daily streak: ${dailyStreak * 2}%`}></span>
                 <div className="info">
                   <img className="dailyStreak" src={litIcon} alt="Lit Icon" />
                   <p className="">{dailyStreak * 2}</p>
@@ -336,9 +336,9 @@ export const Top = (props: Props) => {
               </div> */}
               <div
                 className="bar referral tooltip"
-                data-text={`Bonus by referral: ${referral * 4}%`}
                 style={{width: getWidth(referral, 'referralProgram')}}
               >
+                <span data-text={`Bonus by referral: ${referral * 4}%`}></span>
                 <div className="info">
                   <img
                     className="referralIcon"
