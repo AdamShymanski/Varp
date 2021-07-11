@@ -70,7 +70,7 @@ function RegisterPage() {
 
   writeStorage('path', '/register');
 
-  return currentUser == null && loading == false ? (
+  return (
     <div className="reWrapper flexColumn">
       <div className="logoWrapper">
         <img
@@ -143,8 +143,6 @@ function RegisterPage() {
         </div>
       </form>
     </div>
-  ) : (
-    <div></div>
   );
 }
 export default RegisterPage;

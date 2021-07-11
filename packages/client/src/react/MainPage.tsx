@@ -48,7 +48,7 @@ function MainPage() {
       spectators: globalData?.spectators,
     },
     top: {
-      name: currentUser?.displayName,
+      name: userData?.name,
       balance: userData?.balance,
       number: userData?.lastAction,
       profit: userData?.profit,

@@ -18,11 +18,10 @@ import {ReactNode} from 'react';
 
 import {writeStorage} from '@rehooks/local-storage';
 
-
 function SettingsPage() {
   const history = useHistory();
-  const {currentUser} = useAuth();
-  
+  const {userData} = useAuth();
+
   const [elementState, setElement] = useState<number>(0);
   const [subpage, setSubpage] = useState<ReactNode>(
     <Account elementState={0} />,
@@ -32,14 +31,11 @@ function SettingsPage() {
 
   writeStorage('path', '/settings');
 
-
   return (
     <main className="flexRow">
       <aside className="sideDrawer flexColumn">
         <div className="top flexColumn">
-          <p className="poppinsFont">
-            {currentUser ? currentUser.displayName : ''}
-          </p>
+          <p className="poppinsFont">{userData?.name}</p>
         </div>
         <ul>
           <li

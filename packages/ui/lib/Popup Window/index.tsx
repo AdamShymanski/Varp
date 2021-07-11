@@ -107,6 +107,7 @@ export interface Props {
     referralCode: string;
   };
   updateProfile: Function;
+  handleReferralCodeUse: Function;
 }
 
 export function Popup(props: Props) {
@@ -117,6 +118,7 @@ export function Popup(props: Props) {
     changeEmail,
     newCredentials,
     updateProfile,
+    handleReferralCodeUse,
   } = props;
   const [errorState, setErrorState] = useState<string>();
   const [loadingSpinner, setLoadingSpinner] = useState<boolean>(false);
@@ -136,11 +138,16 @@ export function Popup(props: Props) {
       if (newCredentials.email !== '') {
         await changeEmail(newCredentials.email);
       }
+      if (newCredentials.referralCode !== '') {
+        await handleReferralCodeUse(newCredentials.referralCode);
+        //add 1 point to referralPorgram
+      }
+
       await updateProfile(newCredentials);
 
       setLoadingSpinner(false);
-      setState(false);
       window.location.reload();
+      setState(false);
     } catch (error) {
       setErrorState(error);
     }

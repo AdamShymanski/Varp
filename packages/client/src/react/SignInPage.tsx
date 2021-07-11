@@ -88,7 +88,7 @@ export default function SignInPage() {
           <Button type="submit" size="medium" variant="primary">
             Submit
           </Button>
-          <ClipLoader color={'#0082FF'} loading={loadingPacman} size={15} />
+          <ClipLoader color={'#0082FF'} loading={loadingPacman} />
         </div>
       </form>
     </div>
