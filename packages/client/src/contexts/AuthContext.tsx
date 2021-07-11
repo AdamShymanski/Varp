@@ -29,6 +29,8 @@ interface ContextProps {
   changePassword: Function;
   deleteAccount: Function;
   updateProfile: Function;
+  handleReferralCodeUse: Function;
+  checkReferralCode: Function;
 }
 
 const AuthContext = React.createContext({} as ContextProps);
@@ -77,16 +79,47 @@ export const AuthProvider: React.FC = ({children}) => {
   }, []);
 
   async function callRegister(data: RegisterProps) {
-    const register = firebase.functions().httpsCallable('createUser');
+    // const register = firebase.functions().httpsCallable('createUser');
     const {email, password, age, name, country} = data;
 
-    try {
-      await register({email, password, age, name, country});
-      await auth.signInWithEmailAndPassword(data.email, data.password);
-      history.push('/');
-    } catch (error) {
-      return error.message;
-    }
+    await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+        await db.collection('users').doc(user?.uid).set({
+          age: age,
+          name: name,
+          country: country,
+
+          balance: 0,
+          profit: false,
+          lastAction: 0,
+
+          dailyStreak: 0,
+          referralProgram: 0,
+
+          utilizedReferralCode: '',
+          referralCode: user?.uid,
+        });
+        history.push('/');
+        // await auth.signInWithEmailAndPassword(data.email, data.password);
+        return 'Success';
+      })
+      .catch((error) => {
+        return error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // ..
+      });
+
+    // try {
+    //   await register({email, password, age, name, country});
+    //   await auth.signInWithEmailAndPassword(data.email, data.password);
+    //   history.push('/');
+    // } catch (error) {
+    //   return error.message;
+    // }
   }
 
   async function fetchUserData(uid: string) {
@@ -110,9 +143,49 @@ export const AuthProvider: React.FC = ({children}) => {
         if (value !== '' && key !== 'email') {
           updateObject[key] = value;
         }
+        if (value !== '' && key === 'referralCode') {
+          updateObject['utilizedReferralCode'] = value;
+          const currentValue = await (await userDoc.get()).data()!.balance;
+          console.log(currentValue);
+          await userDoc.update({balance: currentValue + 100});
+          const cc = await (await userDoc.get()).data()!.balance;
+          console.log(cc);
+        }
       }
 
       await userDoc.update(updateObject);
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+
+  async function handleReferralCodeUse(referralCode: string) {
+    try {
+      const doc = await db.collection('users').doc(referralCode).get();
+
+      if (doc.exists) {
+        const currentValue = await doc.data()!.referralProgram;
+        await db
+          .collection('users')
+          .doc(referralCode)
+          .update({referralProgram: currentValue + 1});
+      }
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+
+  async function checkReferralCode(referralCode: string) {
+    try {
+      const doc = await db.collection('users').doc(referralCode).get();
+
+      if (!doc.exists) {
+        return false;
+      } else {
+        return true;
+      }
     } catch (error) {
       console.log(error.message);
       throw error;
@@ -133,7 +206,8 @@ export const AuthProvider: React.FC = ({children}) => {
 
   async function signIn(email: string, password: string) {
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const t = await auth.signInWithEmailAndPassword(email, password);
+      console.log(t)
       history.push('/');
     } catch (error) {
       return true;
@@ -215,6 +289,8 @@ export const AuthProvider: React.FC = ({children}) => {
         updateProfile,
         changePassword,
         reauthenticate,
+        checkReferralCode,
+        handleReferralCodeUse,
       }}
     >
       {children}

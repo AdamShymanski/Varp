@@ -25,6 +25,8 @@ function Account(params) {
     changeEmail,
     reauthenticate,
     updateProfile,
+    handleReferralCodeUse,
+    checkReferralCode,
   } = useAuth();
 
   const [loadingPacman, setLoading] = useState<boolean>(false);
@@ -38,24 +40,31 @@ function Account(params) {
     name: string;
     email: string;
     country: string;
-    referral: string;
+    referralCode: string;
   }
   const onSubmit = async (data: FormProps) => {
+    console.log('submit');
     setNewCredentials(data);
     setPopupState(true);
-    // for (const [key, value] of Object.entries(data)) {
-    //   if (value !== '' && key === 'email') {
-    //   }
-    // }
   };
 
-  const testScheme = (value: any, type: string) => {
+  const testScheme = async (value: any, type: string) => {
     if (type === 'string') {
       if (value === '' || value.match(onlyLettersRegEx)) return true;
       return false;
     }
     if (type === 'number') {
       if (value === '' || value.type(number)) return true;
+      return false;
+    }
+    if (type === 'referralCode') {
+      var queryResult: boolean | string;
+      if (value == '' || null) {
+        queryResult = await checkReferralCode('empty');
+      } else {
+        queryResult = await checkReferralCode(value);
+      }
+      if (queryResult === true) return true;
       return false;
     }
     if (value === '' || value.match(exceptSpecialCharactersRegEx)) return true;
@@ -81,8 +90,8 @@ function Account(params) {
       ),
     referralCode: yup
       .mixed()
-      .test('correct', 'No symbol or number allowed!', (value) =>
-        testScheme(value, 'mixed'),
+      .test('correct', 'Wrong Referral Code!', (value) =>
+        testScheme(value, 'referralCode'),
       ),
   });
 
@@ -148,10 +157,16 @@ function Account(params) {
             reference={register}
             size="big"
             name="referralCode"
+            error={errors.referralCode}
             placeholder={userData?.utilizedReferralCode}
+            disabled={userData?.utilizedReferralCode}
           />
-          <div className="insideBox">
-            {userData?.utilizedReferralCode != null ? (
+          <div
+            className={`insideBox ${
+              userData?.utilizedReferralCode ? 'exist' : 'absent'
+            }`}
+          >
+            {userData?.utilizedReferralCode !== '' ? (
               <FontAwesomeIcon icon={faCheck} color="green" />
             ) : (
               <FontAwesomeIcon icon={faTimes} color="red" />
@@ -159,7 +174,7 @@ function Account(params) {
           </div>
           <p className={'poppinsFont noteText'}>
             {userData?.utilizedReferralCode &&
-              '120 tokens have already been added to your account.'}
+              '100 tokens have already been added to your account.'}
           </p>
         </div>
         <p className="errorMessage poppinsFont">{errorState}</p>
@@ -180,6 +195,7 @@ function Account(params) {
         changeEmail={changeEmail}
         updateProfile={updateProfile}
         newCredentials={newCredentials}
+        handleReferralCodeUse={handleReferralCodeUse}
       />
       <MessageBox />
     </main>

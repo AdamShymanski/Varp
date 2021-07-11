@@ -43,6 +43,9 @@
           color: $gray;
         }
       }
+      .exist {
+        bottom: 46px;
+      }
       .noteText {
         font-size: 0.9em;
         color: $gray;
@@ -59,12 +62,13 @@
     }
   }
   .buttonWrapperA {
-    height: 18vh;
+    height: 12vh;
     margin-top: 76px;
     justify-content: space-between;
     align-items: flex-start;
 
     border-left: 2.5px solid $gray;
+    padding: 8px 0;
     padding-left: 22px;
   }
 }

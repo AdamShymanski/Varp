@@ -221,7 +221,7 @@ function LandingPage() {
                   In fact, the amount of money you can earn is unlimited. The
                   only factor that influences this is how much free time you
                   have. In the best case scenario (which isn't all that unusual)
-                  you can make as much as $15 in 20 minutes with Varp.
+                  you can make as much as $50 in 20 minutes with Varp.
                 </p>
               </div>
             </section>
