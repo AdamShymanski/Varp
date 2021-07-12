@@ -68,11 +68,15 @@ export const AuthProvider: React.FC = ({children}) => {
     });
 
     if (path) {
-      if (currentUser && !(path === '/' || '/settings' || '/support')) {
-        history.push('/');
-      }
-      if (!currentUser && !(path !== '/' || '/settings' || '/support'))
+      if (currentUser) {
+        if (path !== '/' || '/settings' || '/support') {
+          history.push('/');
+        }
         history.push(path);
+      }
+      if (!currentUser && (path !== '/home' || '/settings')) {
+        history.push(path);
+      }
     }
 
     return unsubscribe;
@@ -146,10 +150,7 @@ export const AuthProvider: React.FC = ({children}) => {
         if (value !== '' && key === 'referralCode') {
           updateObject['utilizedReferralCode'] = value;
           const currentValue = await (await userDoc.get()).data()!.balance;
-          console.log(currentValue);
           await userDoc.update({balance: currentValue + 100});
-          const cc = await (await userDoc.get()).data()!.balance;
-          console.log(cc);
         }
       }
 
@@ -207,7 +208,6 @@ export const AuthProvider: React.FC = ({children}) => {
   async function signIn(email: string, password: string) {
     try {
       const t = await auth.signInWithEmailAndPassword(email, password);
-      console.log(t)
       history.push('/');
     } catch (error) {
       return true;
@@ -262,8 +262,8 @@ export const AuthProvider: React.FC = ({children}) => {
   async function deleteAccount() {
     try {
       if (currentUser) {
-        writeStorage('path', '/home');
         await db.collection('users').doc(currentUser.uid).delete();
+        writeStorage('path', '/home');
         await currentUser.delete();
         logout();
         history.push('/home');
