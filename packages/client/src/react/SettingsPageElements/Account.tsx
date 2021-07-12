@@ -29,7 +29,6 @@ function Account(params) {
     checkReferralCode,
   } = useAuth();
 
-  const [loadingPacman, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line
   const [errorState, setError] = useState<string>('');
   const [popupState, setPopupState] = useState<boolean>(false);
@@ -58,6 +57,7 @@ function Account(params) {
       return false;
     }
     if (type === 'referralCode') {
+      if (value === currentUser?.uid) return false;
       var queryResult: boolean | string;
       if (value == '' || null) {
         queryResult = await checkReferralCode('empty');
