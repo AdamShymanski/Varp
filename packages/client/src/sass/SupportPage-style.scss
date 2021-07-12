@@ -1,4 +1,4 @@
-@import "../variables.scss";
+@import '../variables.scss';
 
 .spWrapper {
   background: #0d0d0d;
@@ -19,17 +19,25 @@
         list-style: none;
       }
     }
-    img {
+    .logoWrapper {
       height: 100%;
+      align-items: flex-end;
+      img {
+        height: 100%;
+      }
+      p {
+        margin-bottom: 1.2%;
+        font-size: 1.2em;
+      }
     }
     aside {
       width: 100%;
       justify-content: flex-end;
       .headerList {
         color: $main-text;
-        width: 380px;
         justify-content: space-evenly;
         li {
+          margin-left: 20px;
           font-weight: 500;
           list-style: none;
         }
@@ -88,18 +96,18 @@
         flex: 0 0 calc(100% / 3 - 1.5rem);
         flex-direction: column;
         margin: $margin_item;
-        &:nth-child(3n+2) {
+        &:nth-child(3n + 2) {
           img {
             width: calc(1920px * 0.0525);
             position: relative;
-            top: 15px
+            top: 15px;
           }
           p {
             position: relative;
-            top: -20px
+            top: -20px;
           }
         }
-        &:nth-child(3n+3) {
+        &:nth-child(3n + 3) {
           img {
             width: calc(1920px * 0.0425);
           }
@@ -122,7 +130,6 @@
       width: 900px;
       color: $gray;
     }
-
   }
   footer {
     width: 100%;
