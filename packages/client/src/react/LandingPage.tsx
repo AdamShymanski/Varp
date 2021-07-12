@@ -86,7 +86,7 @@ function LandingPage() {
         <p>
           We turn the CPA marketing monetization model upside down. We add
           element of risk, we shorten the time and significantly improve overall
-          comfort of this way of earning. Even $20 in 15 minutes.
+          comfort of this way of earning. Even $50 in 15 minutes.
         </p>
         <Button
           size="big"
@@ -225,7 +225,7 @@ function LandingPage() {
                   In fact, the amount of money you can earn is unlimited. The
                   only factor that influences this is how much free time you
                   have. In the best case scenario (which isn't all that unusual)
-                  you can make as much as $15 in 20 minutes with Varp.
+                  you can make as much as $50 in 20 minutes with Varp.
                 </p>
               </div>
             </section>

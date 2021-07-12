@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './../sass/RegisterPage-style.scss';
 
 import {writeStorage} from '@rehooks/local-storage';
 
 import {Button, Input} from '@varp/ui';
 import logo from './../resources/icons/logo.png';
-import PacmanLoader from 'react-spinners/PacmanLoader';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import {useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/AuthContext';
@@ -53,7 +53,7 @@ interface FormProps {
 function RegisterPage() {
   const {callRegister, currentUser, loading} = useAuth();
   const [errorState, setError] = useState<string>('');
-  const [loadingPacman, setLoading] = useState<boolean>(false);
+  const [loadingSpinner, setLoading] = useState<boolean>(false);
 
   const history = useHistory();
 
@@ -68,10 +68,9 @@ function RegisterPage() {
     setLoading(false);
   };
 
-  // useEffect(() => {}, []);
   writeStorage('path', '/register');
 
-  return currentUser == null && loading == false ? (
+  return (
     <div className="reWrapper flexColumn">
       <div className="logoWrapper">
         <img
@@ -137,18 +136,13 @@ function RegisterPage() {
 
         <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="buttonWrapper">
-          <Button
-            type="submit"
-            size="medium"
-            children="Submit"
-            variant="primary"
-          />
-          <PacmanLoader color={'#0082FF'} loading={loadingPacman} size={15} />
+          <Button type="submit" size="medium" variant="primary">
+            Submit
+          </Button>
+          <ClipLoader color={'#0082FF'} loading={loadingSpinner} />
         </div>
       </form>
     </div>
-  ) : (
-    <div></div>
   );
 }
 export default RegisterPage;

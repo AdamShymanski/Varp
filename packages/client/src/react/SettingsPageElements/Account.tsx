@@ -2,103 +2,116 @@ import React, {useState} from 'react';
 
 import './../../sass/SettingsPageElements/Account-style.scss';
 
-import {Button, Input} from '@varp/ui';
+import {Button, Input, Popup, MessageBox} from '@varp/ui';
 
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-import PacmanLoader from 'react-spinners/PacmanLoader';
-
 import {useAuth} from '../../contexts/AuthContext';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {number} from 'yup/lib/locale';
 
 function Account(params) {
-  const onlyLettersRegEx = /^[A-Za-z\s]+$/;
-  // const onlyLetterNumberRegEx = /^[A-Za-z0-9]+$/;
-  const strongPasswordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&].{8,}$/;
+  const onlyLettersRegEx = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
+  const exceptSpecialCharactersRegEx = /^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/g;
 
-  const schema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required!'),
-    name: yup
-      .string()
-      .required('Name is required!')
-      .matches(onlyLettersRegEx, 'No symbol or number allowed!'),
-    password: yup
-      .string()
-      .min(8, 'Too Short!')
-      .matches(
-        strongPasswordRegEx,
-        'At least one number, one capital letter, one lower letter, and one symbol',
-      )
-      .required(),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match'),
-    age: yup
-      .number()
-      .typeError('Please enter numerical value only!')
-      .required('Please fill your age!'),
-    country: yup.string().required('Please fill your country'),
-  });
-
-  const {currentUser, userData} = useAuth();
-
-  interface FormProps {
-    email: string;
-    name: string;
-    password: string;
-    repeatPassword: string;
-    age: number;
-    country: string;
-  }
+  const {
+    currentUser,
+    userData,
+    deleteAccount,
+    resetPassword,
+    changeEmail,
+    reauthenticate,
+    updateProfile,
+    handleReferralCodeUse,
+    checkReferralCode,
+  } = useAuth();
 
   const [loadingPacman, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line
   const [errorState, setError] = useState<string>('');
-  // eslint-disable-next-line
-  const [tokenAmount, setTokenAmount] = useState<number>();
-  // eslint-disable-next-line
-  const [isCodeValid, setIsCodeValid] = useState<boolean>(true);
-  const [email, setEmail] = useState<string>('');
+  const [popupState, setPopupState] = useState<boolean>(false);
+  const [newCredentials, setNewCredentials] = useState<any>({});
+
+  interface FormProps {
+    age: number;
+    name: string;
+    email: string;
+    country: string;
+    referralCode: string;
+  }
   const onSubmit = async (data: FormProps) => {
-    setLoading(true);
-    console.log(data);
-    setLoading(false);
+    console.log('submit');
+    setNewCredentials(data);
+    setPopupState(true);
   };
-  // const onEmailVerify = async () => {
-  //   setLoading(true);
-  //   console.log(email);
-  //   setLoading(false);
-  // };
+
+  const testScheme = async (value: any, type: string) => {
+    if (type === 'string') {
+      if (value === '' || value.match(onlyLettersRegEx)) return true;
+      return false;
+    }
+    if (type === 'number') {
+      if (value === '' || value.type(number)) return true;
+      return false;
+    }
+    if (type === 'referralCode') {
+      var queryResult: boolean | string;
+      if (value == '' || null) {
+        queryResult = await checkReferralCode('empty');
+      } else {
+        queryResult = await checkReferralCode(value);
+      }
+      if (queryResult === true) return true;
+      return false;
+    }
+    if (value === '' || value.match(exceptSpecialCharactersRegEx)) return true;
+    return false;
+  };
+
+  const schema = yup.object().shape({
+    email: yup.string().email('Invalid email'),
+    name: yup
+      .string()
+      .test('correct', 'No symbol or number allowed!', (value) =>
+        testScheme(value, 'string'),
+      ),
+    age: yup
+      .mixed()
+      .test('correct', 'Please enter numerical value only!', (value) =>
+        testScheme(value, 'number'),
+      ),
+    country: yup
+      .string()
+      .test('correct', 'No symbol or number allowed!', (value) =>
+        testScheme(value, 'string'),
+      ),
+    referralCode: yup
+      .mixed()
+      .test('correct', 'Wrong Referral Code!', (value) =>
+        testScheme(value, 'referralCode'),
+      ),
+  });
+
   const {handleSubmit, register, errors} = useForm({
     resolver: yupResolver(schema),
   });
 
   //Email Verification Indicator
   // eslint-disable-next-line
-  function EVI(props: number) {
-    //if props = 1 it means EVI will return boolean for elements which will be used to toggle between hide and show classes
-
-    if (props === 1) {
-      if (currentUser) {
-        if (currentUser.emailVerified) return true;
-        return false;
-      }
-    }
-
+  function EVI() {
     if (currentUser) {
-      if (currentUser.emailVerified) return 'Email Verified';
-      return 'Email not verified';
-    } else {
-      return 'Account not found';
+      if (currentUser.emailVerified) return true;
+      return false;
     }
+    return false;
   }
 
   return (
     <main
-      className={`accountWrapper columnFlex ${
+      className={`accountWrapper  ${
         params.elementState === 0 ? 'show' : 'hide'
       }`}
     >
@@ -106,15 +119,12 @@ function Account(params) {
         <Input
           label="Email"
           reference={register}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
           size="big"
           name="email"
           error={errors.email}
           variant="withButton"
-          evState={true}
-          placeholder={currentUser ? currentUser.email : ''}
+          evState={EVI}
+          placeholder={currentUser ? currentUser?.email : ''}
         />
         <Input
           label="Full Name"
@@ -122,7 +132,7 @@ function Account(params) {
           size="big"
           name="name"
           error={errors.name}
-          placeholder={userData.name}
+          placeholder={userData?.name}
         />
         <Input
           label="Age"
@@ -131,7 +141,7 @@ function Account(params) {
           name="age"
           type="number"
           error={errors.age}
-          placeholder={userData.age}
+          placeholder={userData?.age}
         />
         <Input
           label="Country"
@@ -139,39 +149,55 @@ function Account(params) {
           size="big"
           name="country"
           error={errors.country}
-          placeholder={userData.country}
+          placeholder={userData?.country}
         />
         <div className="inputBoxWrapper">
           <Input
             label="Referral Code"
             reference={register}
             size="big"
-            name="referral"
+            name="referralCode"
+            error={errors.referralCode}
+            placeholder={userData?.utilizedReferralCode}
+            disabled={userData?.utilizedReferralCode}
           />
-          <div className="insideBox">
-            {isCodeValid === true ? (
+          <div
+            className={`insideBox ${
+              userData?.utilizedReferralCode ? 'exist' : 'absent'
+            }`}
+          >
+            {userData?.utilizedReferralCode !== '' ? (
               <FontAwesomeIcon icon={faCheck} color="green" />
-            ) : isCodeValid === false ? (
+            ) : (
               <FontAwesomeIcon icon={faTimes} color="red" />
-            ) : null}
+            )}
           </div>
+          <p className={'poppinsFont noteText'}>
+            {userData?.utilizedReferralCode &&
+              '100 tokens have already been added to your account.'}
+          </p>
         </div>
-        {tokenAmount && (
-          <div className="token">
-            <p>
-              <span>{tokenAmount}</span> tokens have been added to your account
-            </p>
-          </div>
-        )}
-
         <p className="errorMessage poppinsFont">{errorState}</p>
         <div className="buttonWrapper">
           <Button type="submit" size="medium" variant="primary">
-            Submit
+            Submit Changes
           </Button>
-          <PacmanLoader color={'#0082FF'} loading={loadingPacman} size={15} />
         </div>
       </form>
+      <aside className="flexColumn buttonWrapperA">
+        <Button action={deleteAccount}>Delete Account</Button>
+        <Button action={resetPassword}>Change Password</Button>
+      </aside>
+      <Popup
+        show={popupState}
+        setState={setPopupState}
+        reauth={reauthenticate}
+        changeEmail={changeEmail}
+        updateProfile={updateProfile}
+        newCredentials={newCredentials}
+        handleReferralCodeUse={handleReferralCodeUse}
+      />
+      <MessageBox />
     </main>
   );
 }

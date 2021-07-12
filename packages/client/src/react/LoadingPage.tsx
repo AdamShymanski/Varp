@@ -9,19 +9,23 @@ import {useAuth} from '../contexts/AuthContext';
 import {writeStorage} from '@rehooks/local-storage';
 import {useLocalStorage} from '@rehooks/local-storage';
 
-export default function LoadingPage() {
+export interface Props {
+  loadingState?: boolean;
+}
+
+const LoadingPage: React.FC<Props> = (props) => {
   const {currentUser, loading} = useAuth();
   let [path] = useLocalStorage<string>('path');
 
-  if (!loading) {
-    console.log('redirect');
+  let {loadingState} = props;
 
+  // const [innerLoading, setInnerLoading] = useState<boolean>(true);
+
+  if (!loading) {
     if (currentUser) {
-      console.log('redirect x');
       if (!path) writeStorage('path', '/');
       return <Redirect to={path || '/'} />;
     } else {
-      console.log('redirect z');
       if (!path) {
         writeStorage('path', '/home');
         path = '/home';
@@ -31,7 +35,6 @@ export default function LoadingPage() {
   }
 
   if (loading) {
-    console.log('loading page dispaly');
     return (
       <div className="loWrapper flexColumn">
         <img src={logo} alt="Image" />
@@ -41,4 +44,6 @@ export default function LoadingPage() {
   }
 
   return <div />;
-}
+};
+
+export default LoadingPage;

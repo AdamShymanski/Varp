@@ -56,7 +56,7 @@ export const createUser = functions.https.onCall(
         dailyStreak: 0,
         referralProgram: 0,
 
-        usedReferralCode: '',
+        utilizedReferralCode: '',
         referralCode: user.uid,
       });
 
