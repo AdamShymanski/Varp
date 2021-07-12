@@ -163,32 +163,17 @@ export function Popup(props: Props) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Reauthenticate</h1>
           <div className="divLine" />
-          {/* <Input
-            label="Email"
-            reference={register}
-            size="big"
-            name="email"
-            error={errors.email}
-            type={'email'}
-          /> */}
           <Input
             label="Password"
             reference={register}
             size="big"
             name="password"
             error={errors.password}
-            // type={'password'}
+            type={'password'}
           />
           <aside className="buttonWrapperPW">
             <div className="placeHolder" />
-            <ClipLoader
-              color={'#0082FF'}
-              loading={loadingSpinner}
-              // width={20}
-              // height={35}
-              // margin={80}
-              // radius={20}
-            />
+            <ClipLoader color={'#0082FF'} loading={loadingSpinner} />
             <Button variant={'primary'} size={'medium'} type="submit">
               Submit
             </Button>
