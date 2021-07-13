@@ -17,29 +17,80 @@
     img, picture {
       height: 100%;
     }
+    #hamburger {
+      display: none;
+      @media screen and (max-width:480px){ 
+        display: flex;
+        position: fixed;
+        z-index: 10;
+        justify-self: flex-end;
+        right: 3rem;
+        cursor: pointer;
+      }
+    }
     aside {
       width: 70%;
       justify-content: space-around;
       @media screen and (max-width:480px){
-        display: flex;
-        position: absolute;
+        display: none;
+        &.active {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          flex-direction: column;
+          background-color: black;
+          z-index: 5;
+          justify-content: center;
+        }
       }
       .headerList {
         color: $main-text;
         width: 380px;
         justify-content: space-evenly;
+        
+        @media screen and (max-width:480px){
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
         li {
           font-weight: 500;
           list-style: none;
+          @media screen and (max-width: 480px) {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 5px 25px;
+            width: 100%;
+          }
         }
       }
       .btnWrapper {
         align-items: center;
         justify-content: center;
+
+        @media screen and (max-width:480px){
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          & main {
+            width: inherit;
+          }
+          & main > button {
+            width: 100%;
+            background-color: transparent;
+            color: white;
+          }
+        }
         p {
           margin: 0 20px;
           font-family: $poppins-font;
           color: $back-text;
+          @media screen and (max-width:480px){
+            display: none;
+          }
         }
       }
     }
