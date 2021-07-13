@@ -263,7 +263,7 @@
       flex-direction: column;
       height: unset;
       padding: 2rem 3rem;
-      margin-bottom: 2rem;
+      margin-bottom: 50px;
     }
     .textContainer {
       color: $main-text;
@@ -277,7 +277,7 @@
         padding-right: 50px;
         @media screen and (max-width: 480px) {
           font-size: 1.5rem;
-          padding-right: 0;
+          padding-right: 0; 
         }
       }
       p {
@@ -321,6 +321,11 @@
         margin: 10px 0;
         font-size: 3em;
         padding-right: 50px;
+        @media screen and (max-width: 480px) {
+          font-size: 1.8em;
+          padding-right: 0px;
+          margin: 5px 0
+        }
       }
       p {
         width: 45%;
@@ -336,7 +341,9 @@
       aside {
         min-height: 320px;
         margin-top: 30px;
-
+        @media screen and (max-width: 480px) {
+          margin-top: 0px;
+        }
         align-items: flex-start;
         
         section {
@@ -567,10 +574,36 @@
 
 .accordion {
   margin-bottom: 10px;
+  @media screen and (max-width: 480px) {
+    min-height: unset !important;
+  }
+  .flexRow {
+    @media screen and (max-width: 480px) {
+      min-height: 35px;
+      padding:unset !important;
+      padding-left: 10px !important;
+    }
+    .flexRow {
+      @media screen and (max-width: 480px) {
+        height: 35px !important;
+        width: 35px;
+      }
+      img {
+        @media screen and (max-width: 480px) {
+          width: 14px !important;
+        }
+      }
+    }
+  }
   .content {
     // opacity: 0;
     max-height: 0;
     overflow: hidden;
+    @media screen and (max-width: 480px) {
+      & p {
+        width: inherit !important;
+      }
+    }
     // transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
 
     &.animated {
