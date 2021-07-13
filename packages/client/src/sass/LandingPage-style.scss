@@ -3,7 +3,11 @@
 .lpWrapper {
   background: #0d0d0d;
   padding: 0 16.825%;
-
+  @media screen and (max-width: 480px) {
+    &.stick {
+      height: 100vh;
+    }
+  }
   @media screen and (max-width: 480px) {
     padding: 0 3rem;
     width: 100%;
@@ -21,7 +25,7 @@
       display: none;
       @media screen and (max-width:480px){ 
         display: flex;
-        position: fixed;
+        position: sticky;
         z-index: 10;
         justify-self: flex-end;
         right: 3rem;

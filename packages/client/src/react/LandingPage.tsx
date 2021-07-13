@@ -63,7 +63,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="lpWrapper flexColumn">
+    <div className={`lpWrapper flexColumn ${hamburger && "stick"}`}>
       <header className="flexRow">
         <picture>
             <source media="(min-width: 481px)" srcSet={logo}/>
