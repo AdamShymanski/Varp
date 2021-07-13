@@ -533,6 +533,49 @@
     flex-direction: column;
     justify-content: space-evenly;
     color: $main-text;
+
+    @media screen and (max-width: 480px) {
+      display: grid;
+      height: unset;
+      margin-top: 80px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3,1fr);
+      grid-template-areas: 'site site' 'logo hotlink';
+      & > div {
+        grid-area : logo;
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        align-items: center !important;
+        img {
+          width: 80px !important;
+        }
+      }
+
+      & > main {
+        grid-area: site;
+      }
+
+      & > aside {
+        grid-area: hotlink;
+        display: flex;
+        flex-direction: column;
+        .row {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 100%;
+          main {
+            // align-self: flex-end;
+            justify-self: flex-end;
+            button {
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
     .top {
       align-items: flex-start;
       justify-content: center;
@@ -549,7 +592,7 @@
       width: 400px;
       align-items: flex-start;
       justify-content: space-between;
-      @media screen and (min-width:480px) {
+      @media screen and (max-width:480px) {
         width: 100%;
       }
       li {
@@ -567,7 +610,7 @@
       .row {
         width: 380px;
         justify-content: space-between;
-        @media screen and (min-width:480px) {
+        @media screen and (max-width:480px) {
           width: 100%;
         }
         .icons {
