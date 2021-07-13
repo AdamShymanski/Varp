@@ -103,6 +103,13 @@ function LandingPage() {
         >
           Get Started
         </Button>
+
+        <Button
+          size="big"
+          action={pushToRegister}
+        >
+          Start Now
+        </Button>
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
           <img src={mockup} />
