@@ -3,35 +3,99 @@
 .lpWrapper {
   background: #0d0d0d;
   padding: 0 16.825%;
+  @media screen and (max-width: 480px) {
+    &.stick {
+      height: 100vh;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0 3rem;
+    width: 100%;
+  }
   header {
     margin-top: 30px;
     width: 100%;
     height: 80px;
     justify-content: space-between;
 
-    img {
+    img,
+    picture {
       height: 100%;
+    }
+    #hamburger {
+      display: none;
+      @media screen and (max-width: 480px) {
+        display: flex;
+        position: sticky;
+        z-index: 10;
+        justify-self: flex-end;
+        right: 3rem;
+        cursor: pointer;
+      }
     }
     aside {
       width: 70%;
       justify-content: space-around;
+      @media screen and (max-width: 480px) {
+        display: none;
+        &.active {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          flex-direction: column;
+          background-color: black;
+          z-index: 5;
+          justify-content: center;
+        }
+      }
       .headerList {
         color: $main-text;
         width: 380px;
         justify-content: space-evenly;
+
+        @media screen and (max-width: 480px) {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
         li {
           font-weight: 500;
           list-style: none;
-          cursor: pointer;
+          @media screen and (max-width: 480px) {
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 5px 25px;
+            width: 100%;
+          }
         }
       }
       .btnWrapper {
         align-items: center;
         justify-content: center;
+
+        @media screen and (max-width: 480px) {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          & main {
+            width: inherit;
+          }
+          & main > button {
+            width: 100%;
+            background-color: transparent;
+            color: white;
+          }
+        }
         p {
           margin: 0 20px;
           font-family: $poppins-font;
           color: $back-text;
+          @media screen and (max-width: 480px) {
+            display: none;
+          }
         }
       }
     }
@@ -45,6 +109,11 @@
 
       width: 962px;
       color: $main-text;
+
+      @media screen and (max-width: 480px) {
+        width: 100%;
+        font-size: 3em;
+      }
     }
     p {
       font-size: 1.2em;
@@ -52,9 +121,34 @@
       margin: 30px 0 70px;
       width: 770px;
       color: $gray;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+        margin: 30px 0;
+      }
     }
+
+    & main:nth-of-type(2) {
+      display: none;
+    }
+
+    @media screen and (max-width: 480px) {
+      text-align: left;
+      align-items: flex-start;
+      margin-bottom: 140px;
+      & main:nth-of-type(1) {
+        display: none;
+      }
+
+      & main:nth-of-type(2) {
+        display: block;
+      }
+    }
+
     .mockupWrapper {
       position: relative;
+      @media screen and (max-width: 480px) {
+        display: none;
+      }
       div {
         height: 45%;
         position: absolute;
@@ -92,25 +186,53 @@
     justify-items: center;
     color: $main-text;
 
+    @media screen and (max-width: 480px) {
+      width: 100%;
+      height: unset;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, fit-content);
+    }
+
     div {
       align-items: flex-start;
+
+      @media screen and (max-width: 480px) {
+        margin-bottom: 40px;
+        height: fit-content;
+        &:nth-child(3) {
+          margin-left: 15px;
+        }
+        &:nth-child(4) {
+          margin-left: 10px;
+        }
+      }
+
       img {
         width: 120px;
       }
-      .shield {
-        width: 100px;
-      }
-      .hand {
-        width: 140px;
-      }
+      .shield,
+      .hand,
       .clock {
         width: 140px;
+      }
+      @media screen and (max-width: 480px) {
+        img {
+          width: 60px;
+        }
+        .shield,
+        .hand,
+        .clock {
+          width: 70px;
+        }
       }
       .featureContent {
         margin-left: 50px;
         color: $main-text;
         h3 {
           font-size: 2.2em;
+          @media screen and (max-width: 480px) {
+            font-size: 1.2rem;
+          }
         }
         span {
           font-weight: 600;
@@ -120,11 +242,18 @@
           margin-top: 12px;
           width: 280px;
           color: $back-text;
+          @media screen and (max-width: 480px) {
+            width: 100%;
+            font-size: 0.95rem;
+          }
         }
       }
     }
     .shieldDiv {
       margin-left: 68px;
+      @media screen and (max-width: 480px) {
+        margin-left: 0;
+      }
     }
   }
   .nrpArt {
@@ -133,6 +262,13 @@
     padding: 0 25.359%;
 
     background: $background;
+
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+      height: unset;
+      padding: 2rem 3rem;
+      margin-bottom: 50px;
+    }
     .textContainer {
       color: $main-text;
       h4 {
@@ -143,10 +279,17 @@
         margin: 10px 0;
         font-size: 3em;
         padding-right: 50px;
+        @media screen and (max-width: 480px) {
+          font-size: 1.5rem;
+          padding-right: 0;
+        }
       }
       p {
         width: 60%;
         color: $back-text;
+        @media screen and (max-width: 480px) {
+          width: 100%;
+        }
         .accentSpan {
           color: $accent;
         }
@@ -158,12 +301,20 @@
     }
     img {
       width: 45%;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
     }
   }
   .faqArt {
     height: 650px;
     justify-content: space-between;
     width: 100%;
+    @media screen and (max-width: 480px) {
+      flex-direction: column;
+      align-items: unset;
+      height: unset;
+    }
     .textContainer {
       color: $main-text;
       h4 {
@@ -174,6 +325,11 @@
         margin: 10px 0;
         font-size: 3em;
         padding-right: 50px;
+        @media screen and (max-width: 480px) {
+          font-size: 1.8em;
+          padding-right: 0px;
+          margin: 5px 0;
+        }
       }
       p {
         width: 45%;
@@ -189,12 +345,17 @@
       aside {
         min-height: 320px;
         margin-top: 30px;
-
+        @media screen and (max-width: 480px) {
+          margin-top: 0px;
+        }
         align-items: flex-start;
+
         section {
           min-height: 90px;
           width: 600px;
-
+          @media screen and (max-width: 480px) {
+            width: 100%;
+          }
           div {
             padding: 6px 20px 6px 15px;
 
@@ -240,6 +401,11 @@
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
+      @media screen and (max-width: 480px) {
+        display: none;
+        width: 100%;
+        margin-bottom: 40px;
+      }
       .scrHeader {
         width: 100%;
         height: 10%;
@@ -254,6 +420,10 @@
           align-items: center;
 
           position: relative;
+
+          @media screen and (max-width: 480px) {
+            margin: 20px 0;
+          }
 
           input {
             width: 100%;
@@ -281,6 +451,15 @@
 
         overflow-y: scroll;
         padding-right: 10px;
+        @media screen and (max-width: 480px) {
+          padding: 0;
+          height: 300px;
+        }
+        & *:last-child > .last {
+          @media screen and (max-width: 480px) {
+            margin-bottom: 40px;
+          }
+        }
       }
       ::-webkit-scrollbar {
         width: 6px;
@@ -303,10 +482,17 @@
     width: 100vw;
     height: 560px;
     padding: 0 25.359%;
-
+    @media screen and (max-width: 480px) {
+      padding: 0 3rem;
+      height: 300px;
+    }
     background: $background;
     .textContainer {
       color: $main-text;
+      @media screen and (max-width: 480px) {
+        font-weight: 600;
+        z-index: 1;
+      }
       h4 {
         font-weight: 600;
         color: $accent;
@@ -314,10 +500,16 @@
       h1 {
         margin: 10px 0;
         font-size: 3em;
+        @media screen and (max-width: 480px) {
+          font-size: 2em;
+        }
       }
       p {
         width: 60%;
         color: $back-text;
+        @media screen and (max-width: 480px) {
+          width: 100%;
+        }
         .accentSpan {
           color: $accent;
         }
@@ -329,6 +521,13 @@
     }
     img {
       width: 380px;
+      @media screen and (max-width: 480px) {
+        width: 250px;
+        position: absolute;
+        opacity: 0.3;
+        left: -7rem;
+        z-index: 0;
+      }
     }
   }
   footer {
@@ -339,6 +538,49 @@
     flex-direction: column;
     justify-content: space-evenly;
     color: $main-text;
+
+    @media screen and (max-width: 480px) {
+      display: grid;
+      height: unset;
+      margin-top: 80px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: 'site site' 'logo hotlink';
+      & > div {
+        grid-area: logo;
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        align-items: center !important;
+        img {
+          width: 80px !important;
+        }
+      }
+
+      & > main {
+        grid-area: site;
+      }
+
+      & > aside {
+        grid-area: hotlink;
+        display: flex;
+        flex-direction: column;
+        .row {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          height: 100%;
+          main {
+            // align-self: flex-end;
+            justify-self: flex-end;
+            button {
+              font-size: 0.75rem;
+            }
+          }
+        }
+      }
+    }
     .top {
       align-items: flex-start;
       justify-content: center;
@@ -355,9 +597,11 @@
       width: 400px;
       align-items: flex-start;
       justify-content: space-between;
+      @media screen and (max-width: 480px) {
+        width: 100%;
+      }
       li {
         list-style: none;
-        cursor: pointer;
       }
       .bold {
         font-weight: 600;
@@ -371,6 +615,9 @@
       .row {
         width: 380px;
         justify-content: space-between;
+        @media screen and (max-width: 480px) {
+          width: 100%;
+        }
         .icons {
           width: 100px;
           justify-content: space-between;
@@ -382,10 +629,36 @@
 
 .accordion {
   margin-bottom: 10px;
+  @media screen and (max-width: 480px) {
+    min-height: unset !important;
+  }
+  .flexRow {
+    @media screen and (max-width: 480px) {
+      min-height: 35px;
+      padding: unset !important;
+      padding-left: 10px !important;
+    }
+    .flexRow {
+      @media screen and (max-width: 480px) {
+        height: 35px !important;
+        width: 35px;
+      }
+      img {
+        @media screen and (max-width: 480px) {
+          width: 14px !important;
+        }
+      }
+    }
+  }
   .content {
     // opacity: 0;
     max-height: 0;
     overflow: hidden;
+    @media screen and (max-width: 480px) {
+      & p {
+        width: inherit !important;
+      }
+    }
     // transition: opacity 0.4s ease-out, max-height 0.7s ease-in-out;
 
     &.animated {
