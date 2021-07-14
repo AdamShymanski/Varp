@@ -22,7 +22,7 @@ interface ContextProps {
   loading: boolean;
   signIn: Function;
   callRegister: Function;
-  logout: Function;
+  signOut: Function;
   reauthenticate: Function;
   resetPassword: Function;
   changeEmail: Function;
@@ -214,7 +214,7 @@ export const AuthProvider: React.FC = ({children}) => {
     }
   }
 
-  function logout() {
+  function signOut() {
     auth.signOut();
   }
 
@@ -265,7 +265,7 @@ export const AuthProvider: React.FC = ({children}) => {
         await db.collection('users').doc(currentUser.uid).delete();
         writeStorage('path', '/home');
         await currentUser.delete();
-        logout();
+        signOut();
         history.push('/home');
       }
     } catch (error) {
@@ -281,7 +281,7 @@ export const AuthProvider: React.FC = ({children}) => {
         currentUser,
         globalData,
         signIn,
-        logout,
+        signOut,
         changeEmail,
         callRegister,
         resetPassword,

@@ -1,5 +1,5 @@
 import {useHistory} from 'react-router-dom';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import './../sass/LandingPage-style.scss';
 
@@ -44,9 +44,7 @@ function LandingPage() {
     third: false,
   });
 
-  useEffect(() => {
-    writeStorage('path', '/home');
-  }, []);
+  writeStorage('path', '/home');
 
   const faqSectionSwitch = (number: string) => {
     if (number == 'first') {
