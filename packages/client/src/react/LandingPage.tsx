@@ -38,6 +38,8 @@ function LandingPage() {
   const pushToLinkedIn = () => history.push('/linkedIn');
   const pushToSupport = () => history.push('/support');
 
+  const [hamburger, setHamburger] = useState(false);
+
   const [faqState, setFaq] = useState({
     first: false,
     second: false,
@@ -61,10 +63,19 @@ function LandingPage() {
   };
 
   return (
-    <div className="lpWrapper flexColumn">
+    <div className={`lpWrapper flexColumn ${hamburger && "stick"}`}>
       <header className="flexRow">
-        <img src={logo} />
-        <aside className="flexRow">
+        <picture>
+            <source media="(min-width: 481px)" srcSet={logo}/>
+            <source media="(max-width: 480px)" srcSet={just_logo}/>
+            <img src={logo} /> 
+        </picture>
+        <svg id="hamburger" width="25" height="18" viewBox="0 0 25 18" fill="none" onClick={() => setHamburger(!hamburger)}>
+          <path d="M1 1H25" stroke="white" fill="white"/>
+          <path d="M0 17H25" stroke="white"/>
+          <path d="M0 9H25" stroke="white"/>
+        </svg>
+        <aside className={`flexRow ${hamburger && "active"}`}>
           <ul className="headerList flexRow poppinsFont">
             <li onClick={pushToSupport}>Support</li>
             <li>Business</li>
@@ -91,6 +102,13 @@ function LandingPage() {
           icon={longArrow}
         >
           Get Started
+        </Button>
+
+        <Button
+          size="big"
+          action={pushToRegister}
+        >
+          Start Now
         </Button>
         <div className="mockupWrapper flexRow">
           <div className="shadowHandler1" />
