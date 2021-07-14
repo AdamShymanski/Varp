@@ -27,12 +27,13 @@ function Account(params) {
     updateProfile,
     handleReferralCodeUse,
     checkReferralCode,
+    signOut,
   } = useAuth();
 
-  const [loadingPacman, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line
   const [errorState, setError] = useState<string>('');
   const [popupState, setPopupState] = useState<boolean>(false);
+  const [typeState, setTypeState] = useState<string>();
   const [newCredentials, setNewCredentials] = useState<any>({});
 
   interface FormProps {
@@ -45,6 +46,7 @@ function Account(params) {
   const onSubmit = async (data: FormProps) => {
     console.log('submit');
     setNewCredentials(data);
+    setTypeState('accountUpdate');
     setPopupState(true);
   };
 
@@ -58,6 +60,7 @@ function Account(params) {
       return false;
     }
     if (type === 'referralCode') {
+      if (value === currentUser?.uid) return false;
       var queryResult: boolean | string;
       if (value == '' || null) {
         queryResult = await checkReferralCode('empty');
@@ -108,6 +111,10 @@ function Account(params) {
     }
     return false;
   }
+  const xds = () => {
+    setTypeState('accountDelete');
+    setPopupState(true);
+  };
 
   return (
     <main
@@ -185,7 +192,7 @@ function Account(params) {
         </div>
       </form>
       <aside className="flexColumn buttonWrapperA">
-        <Button action={deleteAccount}>Delete Account</Button>
+        <Button action={xds}>Delete Account</Button>
         <Button action={resetPassword}>Change Password</Button>
       </aside>
       <Popup
@@ -196,6 +203,9 @@ function Account(params) {
         updateProfile={updateProfile}
         newCredentials={newCredentials}
         handleReferralCodeUse={handleReferralCodeUse}
+        deleteAccount={deleteAccount}
+        signOut={signOut}
+        type={typeState}
       />
       <MessageBox />
     </main>

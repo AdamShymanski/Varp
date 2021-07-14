@@ -1,29 +1,187 @@
 @import '../variables.scss';
 
-.contactWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.ctWrapper {
+  background: #0d0d0d;
+  padding: 0 16.825%;
+  min-height: 100vh;
+  header {
+    margin-top: 30px;
+    width: 100%;
+    height: 80px;
+    justify-content: space-between;
 
-  height: 100vh;
-  article {
-    span {
-      color: $accent;
-      font-weight: 600;
-    }
-    p {
-      margin-bottom: 10px;
-      font-weight: 400;
-      font-size: 1.6em;
+    .site__section__title {
       color: $main-text;
-      padding-left: 8px;
-      border-left: 2px solid $accent;
+      width: 380px;
+      justify-content: flex-start;
+      margin: 0 1rem;
+      li {
+        font-weight: 500;
+        list-style: none;
+      }
+    }
+    .logoWrapper {
+      height: 100%;
+      align-items: flex-end;
+      img {
+        height: 100%;
+      }
+      p {
+        margin-bottom: 1.2%;
+        font-size: 1.2em;
+      }
+    }
+
+    aside {
+      width: 100%;
+      justify-content: flex-end;
+      .headerList {
+        color: $main-text;
+        justify-content: space-evenly;
+        li {
+          font-weight: 500;
+          list-style: none;
+          margin-left: 20px;
+        }
+      }
+      .btnWrapper {
+        align-items: center;
+        justify-content: center;
+        p {
+          margin: 0 20px;
+          font-family: $poppins-font;
+          color: $back-text;
+        }
+      }
     }
   }
-  .logoWrapper {
-    position: absolute;
-    top: 12.1px;
-    left: 0px;
+  .mainSection {
+    width: 100%;
+    margin-top: 80px;
+
+    display: flex;
+    justify-content: space-between;
+    .members {
+      li {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr 20px;
+        margin-bottom: 24px;
+        column-gap: 18px;
+        img {
+          grid-column: 1;
+          grid-row: 1;
+        }
+        .accentLine {
+          width: 100%;
+          height: 3px;
+          margin-top: 9px;
+
+          border-radius: 2px;
+          background-color: $accent;
+
+          grid-column: 1;
+          grid-row: 2;
+        }
+        .textWrapper {
+          grid-column: 2;
+          grid-row: 1;
+        }
+        h1 {
+          color: $main-text;
+          font-size: 1.3em;
+        }
+        p {
+          color: $back-text;
+
+          align-self: start;
+        }
+      }
+    }
+
+    aside {
+      width: 50%;
+      .contactInfoContainer {
+        width: 100%;
+        height: 350px;
+
+        align-items: flex-start;
+        justify-content: space-evenly;
+        padding-left: 25px;
+
+        border-radius: 5px;
+        background-color: $background;
+        .title {
+          width: 70%;
+          padding: 12px 30px;
+
+          display: flex;
+          align-items: center;
+
+          background: $dark-gray;
+          color: $main-text;
+          font-size: 1.2em;
+          img {
+            margin-right: 10px;
+          }
+        }
+        .emailAdress {
+          color: $main-text;
+          margin-left: 50px;
+          img {
+            margin-right: 10px;
+          }
+        }
+      }
+      footer {
+        width: 100%;
+        height: 320px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: $main-text;
+        .top {
+          align-items: flex-start;
+          justify-content: center;
+          img {
+            width: 9%;
+            margin-bottom: 25px;
+          }
+          p {
+            font-weight: 500;
+            font-size: 1.1em;
+          }
+        }
+        .body {
+          width: 400px;
+          align-items: flex-start;
+          justify-content: space-between;
+          li {
+            list-style: none;
+          }
+          .bold {
+            font-weight: 600;
+          }
+        }
+        aside {
+          p {
+            font-weight: 600;
+            margin-bottom: 8px;
+          }
+          .row {
+            width: 520px;
+            justify-content: space-between;
+            .icons {
+              width: 100px;
+              justify-content: space-between;
+            }
+            p {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
   }
 }

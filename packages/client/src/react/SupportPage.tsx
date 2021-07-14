@@ -1,9 +1,11 @@
-import {useHistory} from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 
 import './../sass/SupportPage-style.scss';
 
-import {Button, Answer} from '@varp/ui';
+import {Button} from '@varp/ui';
+
+import {writeStorage} from '@rehooks/local-storage';
 
 //resources
 import logo from './../resources/icons/logo.png';
@@ -13,13 +15,15 @@ import twitter from './../resources/icons/twitter.png';
 import instagram from './../resources/icons/instagram.png';
 import linkedIn from './../resources/icons/linkedin.png';
 
-import varpuser from './../resources/icons/varp-user.svg'
-import varplock from './../resources/icons/varp-lock.svg'
-import varpcard from './../resources/icons/varp-card.svg'
-import varpsearch from './../resources/icons/varp-search.svg'
+import varpuser from './../resources/icons/varp-user.svg';
+import varplock from './../resources/icons/varp-lock.svg';
+import varpcard from './../resources/icons/varp-card.svg';
+import varpsearch from './../resources/icons/varp-search.svg';
 
-function LandingPage() {
+function SupportPage() {
   const history = useHistory();
+
+  writeStorage('path', '/support');
 
   const pushToLinkedIn = () => history.push('/linkedIn');
   const pushToAccount = () => history.push('/support/account');
@@ -29,12 +33,18 @@ function LandingPage() {
   return (
     <div className="spWrapper flexColumn">
       <header className="flexRow">
-        <img src={logo} />
+        <div className="logoWrapper flexRow">
+          <img
+            src={logo}
+            onClick={() => {
+              history.push('/home');
+            }}
+          />
+          <p className="site__section__title flexRow poppinsFont">Support</p>
+        </div>
 
-        <p className="site__section__title flexRow poppinsFont">
-            Support
-          </p>
-        
+        <div className="logoWrapper flexRow"></div>
+
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
             <li>Collaboration</li>
@@ -50,37 +60,41 @@ function LandingPage() {
       </header>
       <main className="flexColumn poppinsFont mainSection">
         <div className="search__area">
-          <input type="search" className="poppinsFont" placeholder="Search for articles"/>
+          <input
+            type="search"
+            className="poppinsFont"
+            placeholder="Search for articles"
+          />
           <img src={varpsearch} />
         </div>
         <div className="help__center__content">
           <div className="item" onClick={pushToPayment}>
-            <img src={varpcard} alt="payment and billing"/>
+            <img src={varpcard} alt="payment and billing" />
             <p>Payment and Billing</p>
           </div>
           <div className="item" onClick={pushToAccount}>
-          <img src={varpuser} alt="account"/>
+            <img src={varpuser} alt="account" />
             <p>Account</p>
           </div>
           <div className="item" onClick={pushToSecurity}>
-          <img src={varplock} alt="security"/>
+            <img src={varplock} alt="security" />
             <p>Security</p>
           </div>
           <div className="item" onClick={pushToPayment}>
-            <img src={varpcard} alt="payment and billing"/>
+            <img src={varpcard} alt="payment and billing" />
             <p>Payment and Billing</p>
           </div>
           <div className="item" onClick={pushToAccount}>
-          <img src={varpuser} alt="account"/>
+            <img src={varpuser} alt="account" />
             <p>Account</p>
           </div>
           <div className="item" onClick={pushToSecurity}>
-          <img src={varplock} alt="security"/>
+            <img src={varplock} alt="security" />
             <p>Security</p>
           </div>
         </div>
       </main>
-      
+
       <footer>
         <div className="top poppinsFont flexColumn">
           <img src={just_logo} />
@@ -122,4 +136,4 @@ function LandingPage() {
     </div>
   );
 }
-export default LandingPage;
+export default SupportPage;

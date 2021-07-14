@@ -7,6 +7,7 @@ import settingsIcon from './settings.svg';
 import copyReferralCodeIcon from './copy_referral_code.svg';
 
 import {MessageBox} from './../../MessageBox';
+import {Popup} from './../../Popup Window';
 
 import {useHistory} from 'react-router-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -49,11 +50,11 @@ const style = css`
           /* vertically center */
           top: 50%;
           transform: translateY(-50%);
-    
+
           /* move to right */
           left: 50%;
           margin-left: 15px; /* and add a small left margin */
-    
+
           /* basic styles */
           padding: 10px;
           border-radius: 6px;
@@ -89,18 +90,33 @@ export interface Props {
 }
 
 export const Bottom: React.FC<Props> = (props) => {
-  const {referralCode, auth, ...rest} = props;
+  // eslint-disable-next-line react/prop-types
+  const {referralCode, auth} = props;
   const history = useHistory();
 
   const [message, setMessage] = useState<string>(
     'Referral something something',
   );
   const [toggle, setToggle] = useState<boolean>(false);
+  const [popupState, setPopupState] = useState<boolean>(false);
+
+  function signOutFnc() {
+    auth.signOut();
+    writeStorage('path', '/home');
+    history.push('/home');
+  }
 
   const messageBoxProps = {
     toggle: toggle,
     message: message,
     setToggle: setToggle,
+  };
+
+  const popupProps = {
+    show: popupState,
+    setState: setPopupState,
+    type: 'signOut',
+    signOut: signOutFnc,
   };
 
   const setMessageBox = (msg: string) => {
@@ -112,9 +128,7 @@ export const Bottom: React.FC<Props> = (props) => {
     <>
       <main css={style}>
         <div className="card">
-          <div
-            className="tooltip"
-          >
+          <div className="tooltip">
             <span data-text="Setting"></span>
             <img
               src={settingsIcon}
@@ -123,26 +137,21 @@ export const Bottom: React.FC<Props> = (props) => {
               }}
             />
           </div>
-          <div
-            className="tooltip"
-            >
-              <span data-text="Log Out"></span>
+          <div className="tooltip">
+            <span data-text="Log Out"></span>
             <img
               src={logOutIcon}
               onClick={() => {
-                // eslint-disable-next-line react/prop-types
-                auth.signOut();
-                writeStorage('path', '/home');
-                history.push('/home');
+                // auth.signOut();
+                // writeStorage('path', '/home');
+                // history.push('/home');
+                setPopupState(true);
               }}
-              />
+            />
           </div>
-          <div
-            className="tooltip"
-          >
+          <div className="tooltip">
             <span data-text="Copy Referral Code"></span>
-            <CopyToClipboard
-              text={referralCode}>
+            <CopyToClipboard text={referralCode}>
               <img
                 src={copyReferralCodeIcon}
                 onClick={() => {
@@ -151,9 +160,7 @@ export const Bottom: React.FC<Props> = (props) => {
               />
             </CopyToClipboard>
           </div>
-          <div
-            className="tooltip"
-          >
+          <div className="tooltip">
             <span data-text="Go to Jackpot"></span>
             <img
               src={playIcon}
@@ -165,6 +172,7 @@ export const Bottom: React.FC<Props> = (props) => {
         </div>
       </main>
       <MessageBox {...messageBoxProps} />
+      <Popup {...popupProps} />
     </>
   );
 };
