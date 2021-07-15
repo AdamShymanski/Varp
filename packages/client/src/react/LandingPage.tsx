@@ -61,19 +61,26 @@ function LandingPage() {
   };
 
   return (
-    <div className={`lpWrapper flexColumn ${hamburger && "stick"}`}>
+    <div className={`lpWrapper flexColumn ${hamburger && 'stick'}`}>
       <header className="flexRow">
         <picture>
-            <source media="(min-width: 481px)" srcSet={logo}/>
-            <source media="(max-width: 480px)" srcSet={just_logo}/>
-            <img src={logo} /> 
+          <source media="(min-width: 481px)" srcSet={logo} />
+          <source media="(max-width: 480px)" srcSet={just_logo} />
+          <img src={logo} />
         </picture>
-        <svg id="hamburger" width="25" height="18" viewBox="0 0 25 18" fill="none" onClick={() => setHamburger(!hamburger)}>
-          <path d="M1 1H25" stroke="white" fill="white"/>
-          <path d="M0 17H25" stroke="white"/>
-          <path d="M0 9H25" stroke="white"/>
+        <svg
+          id="hamburger"
+          width="25"
+          height="18"
+          viewBox="0 0 25 18"
+          fill="none"
+          onClick={() => setHamburger(!hamburger)}
+        >
+          <path d="M1 1H25" stroke="white" fill="white" />
+          <path d="M0 17H25" stroke="white" />
+          <path d="M0 9H25" stroke="white" />
         </svg>
-        <aside className={`flexRow ${hamburger && "active"}`}>
+        <aside className={`flexRow ${hamburger && 'active'}`}>
           <ul className="headerList flexRow poppinsFont">
             <li onClick={pushToSupport}>Support</li>
             <li>Business</li>
@@ -89,9 +96,10 @@ function LandingPage() {
       <main className="flexColumn poppinsFont mainSection">
         <h1>Earn money for performing simple tasks</h1>
         <p>
-          We turn the CPA marketing monetization model upside down. We add
-          element of risk, we shorten the time and significantly improve overall
-          comfort of this way of earning. Even $50 in 15 minutes.
+          No repeated questions. With payouts in real cash. With respect for
+          your privacy. With a nearly 40% reduction in the time it takes to
+          complete tasks compared to the competition. With variety, and
+          excitement.
         </p>
         <Button
           size="big"
@@ -102,10 +110,7 @@ function LandingPage() {
           Get Started
         </Button>
 
-        <Button
-          size="big"
-          action={pushToRegister}
-        >
+        <Button size="big" action={pushToRegister}>
           Start Now
         </Button>
         <div className="mockupWrapper flexRow">

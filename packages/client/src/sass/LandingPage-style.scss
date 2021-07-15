@@ -65,8 +65,9 @@
           font-weight: 500;
           list-style: none;
           @media screen and (max-width: 480px) {
-            font-size: 1rem;
-            font-weight: 600;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
             padding: 5px 25px;
             width: 100%;
           }
@@ -86,7 +87,10 @@
           & main > button {
             width: 100%;
             background-color: transparent;
-            color: white;
+            color: $main-text;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
           }
         }
         p {
@@ -602,7 +606,6 @@
       }
       li {
         list-style: none;
-        cursor: pointer;
       }
       .bold {
         font-weight: 600;
