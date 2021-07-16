@@ -5,4 +5,17 @@
   height: 100vh;
   justify-content: center;
   padding-bottom: 120px;
+  @media screen and (max-width: 800px) {
+    img {
+      width: 400px;
+    }
+  }
+  @media screen and (max-width: 430px) {
+    img {
+      width: 200px;
+    }
+    span {
+      width: 200px;
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
 import './../sass/LoadingPage-style.scss';
 import logo from './../resources/icons/logo.png';
@@ -9,15 +9,9 @@ import {useAuth} from '../contexts/AuthContext';
 import {writeStorage} from '@rehooks/local-storage';
 import {useLocalStorage} from '@rehooks/local-storage';
 
-export interface Props {
-  loadingState?: boolean;
-}
-
-const LoadingPage: React.FC<Props> = (props) => {
+const LoadingPage: React.FC = () => {
   const {currentUser, loading} = useAuth();
   let [path] = useLocalStorage<string>('path');
-
-  let {loadingState} = props;
 
   // const [innerLoading, setInnerLoading] = useState<boolean>(true);
 
