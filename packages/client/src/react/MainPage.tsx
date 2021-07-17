@@ -60,7 +60,12 @@ function MainPage() {
   return (
     <div className="mpWrapper poppinsFont">
       <SideDrawer {...props} />
-      <div className="cardsContainer"></div>
+      <div className="cardsContainer">
+        <Card {...props} />
+        <Card {...props} />
+        <Card {...props} />
+        <Card {...props} />
+      </div>
     </div>
   );
 
