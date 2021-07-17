@@ -40,7 +40,6 @@ const style = css`
     justify-content: center;
     @media screen and (max-width: 860px) {
       min-width: none;
-      max-width: 400px;
 
       width: 90vw;
     }
@@ -60,7 +59,6 @@ const style = css`
 
     @media screen and (max-width: 860px) {
       min-width: none;
-      max-width: 400px;
 
       width: 90vw;
     }

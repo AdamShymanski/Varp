@@ -1,13 +1,14 @@
-import { css } from "@emotion/react";
-import React from "react";
-import { Header, Props as HeaderProps } from "./Header";
-import { Details, Props as DetailsProps } from "./Details";
-import { Description, Props as DescriptionProps } from "./Description";
-import { ActionBar, Props as ActionBarProps } from "./ActionBar";
+import {css} from '@emotion/react';
+import React from 'react';
+import {Header, Props as HeaderProps} from './Header';
+import {Details, Props as DetailsProps} from './Details';
+import {Description, Props as DescriptionProps} from './Description';
+import {ActionBar, Props as ActionBarProps} from './ActionBar';
 
 const style = css`
   display: flex;
   max-width: 500px;
+  padding: 30px;
   .border {
     width: 7px;
     border-radius: 8px;
@@ -31,7 +32,7 @@ export interface Props {
   actionBar: ActionBarProps;
 }
 
-export const Container = ({ children }: PropsPreview) => {
+export const Container = ({children}: PropsPreview) => {
   return (
     <div css={style}>
       <div className="border" />
@@ -45,7 +46,7 @@ export const CardElemets = {
   Header,
   Details,
   Description,
-  ActionBar
+  ActionBar,
 };
 export const Card = (props: Props) => {
   return (
