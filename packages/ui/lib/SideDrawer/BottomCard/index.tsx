@@ -5,6 +5,8 @@ import playIcon from './play.svg';
 import logOutIcon from './log_out.svg';
 import settingsIcon from './settings.svg';
 import copyReferralCodeIcon from './copy_referral_code.svg';
+import walletIconW from './wallet-white.svg';
+import walletIconB from './wallet-blue.svg';
 
 import {MessageBox} from './../../MessageBox';
 import {Popup} from './../../Popup Window';
@@ -28,9 +30,15 @@ const style = css`
   width: 20vw;
   bottom: 20px;
   position: absolute;
+  min-width: 327px;
+
+  font-family: 'Poppins', sans-serif;
+
+  color: #f4f4f4;
 
   .card {
     padding: 20px 15px;
+
     background: #1b1b1b;
 
     display: flex;
@@ -39,6 +47,7 @@ const style = css`
     justify-content: space-evenly;
 
     border-radius: 6px;
+
     .tooltip {
       position: relative; /* making the .tooltip span a container for the tooltip text */
       &:hover {
@@ -70,14 +79,48 @@ const style = css`
         }
       }
     }
+    .walletIcon {
+      display: none;
+    }
+
     img {
       width: 30px;
     }
+
+    @media screen and (max-width: 860px) {
+      width: 300px;
+      .tooltip {
+        position: relative; /* making the .tooltip span a container for the tooltip text */
+        &:hover {
+          span::before {
+            display: none;
+          }
+          span:hover {
+            display: none;
+          }
+        }
+      }
+      .walletIcon {
+        display: block;
+      }
+      .playIcon {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 470px) {
+      width: 250px;
+    }
   }
 
-  font-family: 'Poppins', sans-serif;
-  background: #121212;
-  color: #f4f4f4;
+  @media screen and (max-width: 860px) {
+    order: 0;
+    position: static;
+    top: auto;
+    bottom: auto;
+    width: auto;
+    min-width: 0;
+  }
 `;
 
 export interface Props {
@@ -86,12 +129,15 @@ export interface Props {
    */
   referralCode: string;
 
+  bankState?: boolean;
+  setBankState?: Function;
+
   auth: any;
 }
 
-export const Bottom: React.FC<Props> = (props) => {
+export const Bottom = (props: Props) => {
   // eslint-disable-next-line react/prop-types
-  const {referralCode, auth} = props;
+  const {referralCode, auth, bankState, setBankState} = props;
   const history = useHistory();
 
   const [message, setMessage] = useState<string>(
@@ -128,7 +174,16 @@ export const Bottom: React.FC<Props> = (props) => {
     <>
       <main css={style}>
         <div className="card">
-          <div className="tooltip">
+          <div className="tooltip walletIcon">
+            <span data-text="Bank"></span>
+            <img
+              src={`${bankState ? walletIconB : walletIconW}`}
+              onClick={() => {
+                setBankState(!bankState);
+              }}
+            />
+          </div>
+          <div className="tooltip settingsIcon">
             <span data-text="Setting"></span>
             <img
               src={settingsIcon}
@@ -137,8 +192,8 @@ export const Bottom: React.FC<Props> = (props) => {
               }}
             />
           </div>
-          <div className="tooltip">
-            <span data-text="Log Out"></span>
+          <div className="tooltip signOutIcon">
+            <span data-text="Sign Out"></span>
             <img
               src={logOutIcon}
               onClick={() => {
@@ -149,7 +204,7 @@ export const Bottom: React.FC<Props> = (props) => {
               }}
             />
           </div>
-          <div className="tooltip">
+          <div className="tooltip copyReferralCodeIcon">
             <span data-text="Copy Referral Code"></span>
             <CopyToClipboard text={referralCode}>
               <img
@@ -160,7 +215,7 @@ export const Bottom: React.FC<Props> = (props) => {
               />
             </CopyToClipboard>
           </div>
-          <div className="tooltip">
+          <div className="tooltip playIcon">
             <span data-text="Go to Jackpot"></span>
             <img
               src={playIcon}

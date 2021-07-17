@@ -18,6 +18,8 @@ const style = css`
   bottom: 30px;
   right: 30px;
 
+  z-index: 5;
+
   .messageBox {
     display: flex;
     flex-direction: row;

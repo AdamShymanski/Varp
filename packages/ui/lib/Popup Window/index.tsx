@@ -42,6 +42,8 @@ const styleShow = css`
   justify-content: center;
   align-items: center;
 
+  z-index: 5;
+
   h1 {
     color: #f4f4f4;
     font-weight: 600;
@@ -63,6 +65,7 @@ const styleShow = css`
     padding: 30px;
     border-radius: 8px;
     position: relative;
+
     svg {
       position: absolute;
 
@@ -114,6 +117,8 @@ const styleShowSO = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  z-index: 5;
 
   h1 {
     color: #f4f4f4;
@@ -170,20 +175,20 @@ const styleShowSO = css`
 export interface Props {
   show: boolean;
   setState: Function;
-  reauth: Function;
-  signOut: Function;
-  changeEmail: Function;
-  newCredentials: {
+  reauth?: Function;
+  signOut?: Function;
+  changeEmail?: Function;
+  newCredentials?: {
     email: string;
     name: string;
     age: string;
     country: string;
     referralCode: string;
   };
-  updateProfile: Function;
-  handleReferralCodeUse: Function;
-  deleteAccount: Function;
-  type: string;
+  updateProfile?: Function;
+  handleReferralCodeUse?: Function;
+  deleteAccount?: Function;
+  type?: string;
 }
 
 export function Popup(props: Props) {

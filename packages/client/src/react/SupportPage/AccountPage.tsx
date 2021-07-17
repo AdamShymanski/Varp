@@ -14,26 +14,36 @@ import instagram from './../../resources/icons/instagram.png';
 import linkedIn from './../../resources/icons/linkedin.png';
 
 const AccountItem = () => {
-    return <div className="account__card poppinsFont">
-        <h1>Account has been disabled</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel, nisl, massa ultrices ullamcorper. Ullamcorper faucibus nisl lacus, leo molestie pulvinar. Euismod tortor mattis sed amet, lorem sapien facilisis pellentesque.</p>
-        <button>View Article</button>
+  return (
+    <div className="account__card poppinsFont">
+      <h1>Account has been disabled</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel, nisl,
+        massa ultrices ullamcorper. Ullamcorper faucibus nisl lacus, leo
+        molestie pulvinar. Euismod tortor mattis sed amet, lorem sapien
+        facilisis pellentesque.
+      </p>
+      <button>View Article</button>
     </div>
-}
+  );
+};
 function AccountPage() {
   const history = useHistory();
 
   const pushToLinkedIn = () => history.push('/linkedIn');
 
   return (
-    <div className="spWrapper flexColumn">
+    <div className="apWrapper flexColumn">
       <header className="flexRow">
-        <img src={logo} />
+        <img
+          src={logo}
+          onClick={() => {
+            history.push('/home');
+          }}
+        />
 
-          <p className="site__section__title flexRow poppinsFont">
-            Support
-          </p>
-        
+        <p className="site__section__title flexRow poppinsFont">Support</p>
+
         <aside className="flexRow">
           <ul className="headerList flexRow poppinsFont">
             <li>Collaboration</li>
@@ -50,16 +60,16 @@ function AccountPage() {
       <main className="flexColumn poppinsFont mainSection">
         <h1 className="mainSection__title">Help Center</h1>
         <ul className="breadcump flexRow poppinsFont">
-            <li>Support</li>
-            <li>Account</li>
+          <li>Support</li>
+          <li>Account</li>
         </ul>
         <section className="card__container">
-            {Array.from({length: 4}, (_, i) => i + 1).map(item => 
-                <AccountItem/>
-            )}
+          {Array.from({length: 4}, (_, i) => i + 1).map((item) => (
+            <AccountItem />
+          ))}
         </section>
       </main>
-      
+
       <footer>
         <div className="top poppinsFont flexColumn">
           <img src={just_logo} />
