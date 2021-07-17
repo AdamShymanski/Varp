@@ -39,6 +39,8 @@ const style = css`
     width: 20vw;
     border-left: 3px solid #0082ff;
 
+    min-width: 327px;
+
     border-radius: 1.5px 0 0 1.5px;
 
     padding-left: 15px;

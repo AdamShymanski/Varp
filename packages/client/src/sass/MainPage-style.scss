@@ -4,17 +4,36 @@
   display: flex;
   flex-direction: row;
 
+  @media screen and (max-width: 860px) {
+    flex-direction: column;
+  }
+
   .cardsContainer {
     width: 78vw;
-    height: 100vh;
+    min-height: 100vh;
 
     background: #1b1b1b;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: start;
+
+    margin-left: 22vw;
+    padding: 20px;
+
+    @media screen and (max-width: 1650px) {
+      margin-left: 360px;
+    }
+
+    @media screen and (max-width: 860px) {
+      margin-left: 0;
+      padding-top: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
 
     .mpInfo {
       font-family: $poppins-font;

@@ -106,8 +106,8 @@ export const AuthProvider: React.FC = ({children}) => {
           utilizedReferralCode: '',
           referralCode: user?.uid,
         });
+        await auth.signInWithEmailAndPassword(email, password);
         history.push('/');
-        // await auth.signInWithEmailAndPassword(data.email, data.password);
         return 'Success';
       })
       .catch((error) => {

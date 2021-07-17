@@ -64,7 +64,7 @@ export default function SignInPage() {
       <h1 className="robotoFont">Sign In</h1>
       <p className="robotoFont description-s">
         Welcome back. It's nice to see you again, check out our new changes
-        we've made for you.
+        we've made for you.2
       </p>
       <form className="flexColumn" onSubmit={handleSubmit(onSubmit)}>
         <Input

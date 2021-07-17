@@ -17,54 +17,11 @@
     }
   }
 
-  @media screen and (max-width: 425px) {
-    .logoWrapper {
-      position: absolute;
-      top: 12.1px;
-      left: 0px;
-      display: flex;
-      justify-content: center;
-      width: 100%;
-
-      .logo {
-        left: 0 !important;
-      }
-    }
-
-    h1 {
-      font-size: 3em !important;
-    }
-
-    form {
-      margin: 2vh 0.25rem;
-      align-items: flex-start;
-      width: 100%;
-
-      main {
-        margin: 0 1rem;
-        width: calc(100% - 2rem);
-
-        button {
-          width: 100%;
-        }
-
-        div.big {
-          width: 100%;
-        }
-      }
-
-      input.input {
-        width: 100% !important;
-      }
-    }
-  }
-
   h1 {
     font-size: 5em;
     margin-bottom: 1vh;
   }
   .description-s {
-    width: 25vw;
     margin-top: 20px;
 
     width: 480px;
@@ -93,5 +50,74 @@
     align-items: center;
     height: 50px;
     width: 180px;
+  }
+  @media screen and (max-width: 1700px) {
+    .logoWrapper {
+      position: absolute;
+      top: 12.1px;
+      left: 0px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 60px;
+
+      .logo {
+        left: 0 !important;
+      }
+    }
+    main {
+      .error-msg {
+        font-size: 1em;
+      }
+    }
+  }
+  @media screen and (max-height: 830 px) {
+    justify-content: flex-end;
+    padding-bottom: 10%;
+  }
+  @media screen and (max-width: 600px) {
+    form {
+      margin: 2vh 0.25rem;
+      align-items: flex-start;
+      width: 100%;
+
+      main {
+        margin: 20px 1rem;
+        width: calc(100% - 2rem);
+
+        button {
+          width: 100%;
+        }
+
+        div.big {
+          width: 100%;
+        }
+      }
+
+      input.input {
+        width: 100% !important;
+      }
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+    .logoWrapper {
+      position: absolute;
+      top: 12.1px;
+
+      h1 {
+        font-size: 3em !important;
+      }
+    }
+    .description-s {
+      font-size: 0.9em;
+      margin: 0 16px;
+      width: auto;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    h1 {
+      font-size: 3em !important;
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './../sass/MainPage-style.scss';
 
-import {SideDrawer} from '@varp/ui';
+import {SideDrawer, Card} from '@varp/ui';
 import LoadingPage from './LoadingPage';
 
 import {useAuth} from '../contexts/AuthContext';
@@ -60,12 +60,19 @@ function MainPage() {
   return (
     <div className="mpWrapper poppinsFont">
       <SideDrawer {...props} />
-      <div className="cardsContainer">
-        <div className="mpInfo">We are starting soon...</div>
-        {/* <Card {...props} /> */}
-      </div>
+      <div className="cardsContainer"></div>
     </div>
   );
+
+  // return (
+  //   <div className="mpWrapper poppinsFont">
+  //     <SideDrawer {...props} />
+  //     <div className="cardsContainer">
+  //       <div className="mpInfo">We are starting soon...</div>
+  //       <Card {...props} />
+  //     </div>
+  //   </div>
+  // );
 }
 
 export default MainPage;

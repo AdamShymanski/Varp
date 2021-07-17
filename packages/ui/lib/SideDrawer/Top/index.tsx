@@ -1,4 +1,4 @@
- import {css} from '@emotion/react';
+import {css} from '@emotion/react';
 import React from 'react';
 
 import tokenIcon from './token_icon_circle.svg';
@@ -27,6 +27,8 @@ const style = css`
     padding: 10px 20px;
     margin-top: 20px;
 
+    min-width: 327px;
+
     border-radius: 6px;
     font-weight: 500;
     height: 55px;
@@ -36,6 +38,12 @@ const style = css`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: 860px) {
+      min-width: none;
+      max-width: 400px;
+
+      width: 90vw;
+    }
   }
   .bank {
     display: flex;
@@ -45,8 +53,17 @@ const style = css`
     background: #1b1b1b;
 
     width: 20vw;
+    min-width: 327px;
+
     margin: 10px 0;
     padding: 6px 0 20px 20px;
+
+    @media screen and (max-width: 860px) {
+      min-width: none;
+      max-width: 400px;
+
+      width: 90vw;
+    }
 
     .bTitle {
       font-weight: 600;
@@ -202,11 +219,11 @@ const style = css`
         /* vertically center */
         top: 50%;
         transform: translateY(-50%);
-  
+
         /* move to right */
         left: 50%;
         margin-left: 15px; /* and add a small left margin */
-  
+
         /* basic styles */
         padding: 10px;
         border-radius: 6px;
@@ -298,9 +315,7 @@ export const Top = (props: Props) => {
           </div>
         </div>
         <div className="bonus">
-          <p
-            className="tooltip"
-          >
+          <p className="tooltip">
             <span data-text="Bonuses increase the amount of tokens you receive after completing a task. Keep your bonuses up by being active every day, inviting your friends to play by sharing your referral code."></span>
             Bonuses
           </p>
@@ -310,7 +325,9 @@ export const Top = (props: Props) => {
                 className="bar dailyStreak tooltip"
                 style={{minWidth: '70px', width: getWidth(dailyStreak)}}
               >
-                <span data-text={`Bonus by daily streak: ${dailyStreak * 2}%`}></span>
+                <span
+                  data-text={`Bonus by daily streak: ${dailyStreak * 2}%`}
+                ></span>
                 <div className="info">
                   <img className="dailyStreak" src={litIcon} alt="Lit Icon" />
                   <p className="">{dailyStreak * 2}</p>
