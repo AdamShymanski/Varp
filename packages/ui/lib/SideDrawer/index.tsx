@@ -57,6 +57,21 @@ const style = css`
 
       width: 100vw;
       height: auto;
+
+      align-items: flex-start;
+      padding-left: 25px;
+    }
+    @media screen and (max-width: 480px) {
+      order: 2;
+      position: static;
+      min-width: none;
+      max-width: none;
+
+      width: 100vw;
+      height: auto;
+
+      align-items: center;
+      padding-left: 0;
     }
     .sdInfo {
       margin-top: 50px;
