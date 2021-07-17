@@ -9,6 +9,8 @@ import {auth} from './../firebase';
 
 import {writeStorage} from '@rehooks/local-storage';
 
+import grammarly from './../resources/illustrations/grammarly-logo.jpg';
+
 function MainPage() {
   const {currentUser, userData, globalData, loading} = useAuth();
 
@@ -20,18 +22,16 @@ function MainPage() {
 
   const props = {
     header: {
-      title: 'Card Title',
-      thumbnail: 'https://placehold.co/65x65/orange/white',
+      title: 'Grammarly',
+      thumbnail: grammarly,
     },
     details: {
-      minutes: 15,
-      type: 'Watching video ad',
-      reward: 150,
+      minutes: 2,
+      type: 'Sign Up',
+      reward: 15,
     },
     description: {
-      children: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Nam repellendus similique ab, ad sint labore voluptatibus doloribus aliquam aperiam a, 
-                accusamus dolorem odio quis quod id, cupiditate vero sapiente est.`,
+      children: `Grammarly’s AI-powered applications help people communicate more effectively. Millions of users rely on Grammarly every day to make their messages, documents, and social media posts clear, mistake-free, and impactful. Grammarly’s sophisticated AI not only corrects your grammatical mistakes but also makes your writing more understandable and helps you make the right impression on the reader based on your audience and goals.`,
     },
     actionBar: {
       status: 'Start',
@@ -61,9 +61,6 @@ function MainPage() {
     <div className="mpWrapper poppinsFont">
       <SideDrawer {...props} />
       <div className="cardsContainer">
-        <Card {...props} />
-        <Card {...props} />
-        <Card {...props} />
         <Card {...props} />
       </div>
     </div>
