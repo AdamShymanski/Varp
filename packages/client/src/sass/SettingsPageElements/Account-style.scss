@@ -97,13 +97,17 @@
   }
 
   .buttonWrapperA {
-    height: 12vh;
-    margin-top: 76px;
-    justify-content: space-between;
+    margin: 30px 0;
+    justify-content: flex-start;
     align-items: flex-start;
 
     border-left: 2.5px solid $gray;
     padding: 8px 0;
     padding-left: 22px;
+    margin-left: 22px;
+
+    button {
+      margin: 12px 0;
+    }
   }
 }
