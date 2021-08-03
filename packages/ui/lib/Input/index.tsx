@@ -32,6 +32,10 @@ const style = css`
     font-weight: 500;
     margin-top: 8px;
   }
+  .inputRowWrapper {
+    display: flex;
+    align-items: center;
+  }
   .inputWrapper {
     position: relative;
     display: flex;
@@ -150,21 +154,23 @@ export function Input(props: Props) {
     <main css={style}>
       <div className={size}>
         <p className={`label`}>{label}</p>
-        <div className={'inputWrapper'}>
-          <input
-            name={name}
-            className={`input`}
-            type={type}
-            disabled={disabled}
-            ref={reference}
-            placeholder={placeholder}
-            onChange={onChange}
-          />
-          {inputChildren}
+        <div className="inputRowWrapper">
+          <div className={'inputWrapper'}>
+            <input
+              name={name}
+              className={`input`}
+              type={type}
+              disabled={disabled}
+              ref={reference}
+              placeholder={placeholder}
+              onChange={onChange}
+            />
+            {inputChildren}
+          </div>
+          {containerChildren}
         </div>
         <p className="error-msg">{error && error.message}</p>
       </div>
-      {containerChildren}
     </main>
   );
 }
