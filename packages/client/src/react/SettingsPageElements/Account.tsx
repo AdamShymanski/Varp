@@ -129,9 +129,17 @@ function Account(params) {
           size="big"
           name="email"
           error={errors.email}
-          variant="withButton"
-          evState={EVI}
           placeholder={currentUser ? currentUser?.email : ''}
+          inputChildren={
+            !EVI() && <p className="validationInfo">Email not verified</p>
+          }
+          containerChildren={
+            !EVI() && (
+              <button className="validateButton" type={'button'}>
+                Verify
+              </button>
+            )
+          }
         />
         <Input
           label="Full Name"

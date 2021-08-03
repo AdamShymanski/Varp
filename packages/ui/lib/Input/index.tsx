@@ -1,6 +1,6 @@
 import {css} from '@emotion/react';
 import React from 'react';
-
+//
 const style = css`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
@@ -36,34 +36,6 @@ const style = css`
     position: relative;
     display: flex;
     align-items: center;
-
-    button {
-      position: absolute;
-      right: -22%;
-
-      padding: 4px 22px;
-
-      border: none;
-      background: #0082ff;
-      border-radius: 5px;
-
-      font-size: 1em;
-      font-weight: 600;
-      font-family: 'Poppins', sans-serif;
-    }
-    p {
-      position: absolute;
-      right: 0;
-
-      margin-top: 0.9%;
-
-      padding: 2.5% 20px;
-      background: #161616;
-
-      font-size: 1em;
-      font-family: 'Poppins', sans-serif;
-      color: #7f7f7f;
-    }
   }
   .input {
     margin: 7px 0 3px 0;
@@ -127,11 +99,11 @@ export interface Props {
   name?: string;
   type?: string;
   reference?: any;
-  variant?: string;
-  evState?: boolean;
   disabled?: boolean;
   placeholder?: string;
   onChange?: any;
+  inputChildren?: React.ReactNode;
+  containerChildren?: React.ReactNode;
 }
 
 export function Input(props: Props) {
@@ -139,53 +111,60 @@ export function Input(props: Props) {
     onChange,
     placeholder,
     label = 'Storybook',
-    variant = 'regular',
     name = 'password',
-    evState,
     size = 'medium',
     disabled = false,
     error,
     reference,
     type = '',
+    inputChildren,
+    containerChildren,
   } = props;
-  if (variant === 'withButton') {
-    return (
-      <main css={style}>
-        <div className={size}>
-          <p className={`label`}>{label}</p>
-          <div className={'inputWrapper'}>
-            <input
-              name={name}
-              className={`input`}
-              type={type}
-              disabled={disabled}
-              ref={reference}
-              placeholder={placeholder}
-              onChange={onChange}
-            />
-            {evState && <p>Email not verified</p>}
-            {evState && <button type={'button'}>Verify</button>}
-          </div>
+  // if (variant === 'withButton') {
+  //   return (
+  //     <main css={style}>
+  //       <div className={size}>
+  //         <p className={`label`}>{label}</p>
+  //         <div className={'inputWrapper'}>
+  //           <input
+  //             name={name}
+  //             className={`input`}
+  //             type={type}
+  //             disabled={disabled}
+  //             ref={reference}
+  //             placeholder={placeholder}
+  //             onChange={onChange}
+  //           />
+  //           {inputChildren}
+  //           {/* {evState && <p>Email not verified</p>} */}
+  //         </div>
 
-          <p className="error-msg">{error && error.message}</p>
-        </div>
-      </main>
-    );
-  }
+  //         <p className="error-msg">{error && error.message}</p>
+  //       </div>
+  //       {containerChildren}
+  //       {/* {evState && <button type={'button'}>Verify</button>} */}
+  //     </main>
+  //   );
+  // }
   return (
     <main css={style}>
       <div className={size}>
         <p className={`label`}>{label}</p>
-        <input
-          name={name}
-          className={`input`}
-          type={type}
-          disabled={disabled}
-          ref={reference}
-          placeholder={placeholder}
-        />
+        <div className={'inputWrapper'}>
+          <input
+            name={name}
+            className={`input`}
+            type={type}
+            disabled={disabled}
+            ref={reference}
+            placeholder={placeholder}
+            onChange={onChange}
+          />
+          {inputChildren}
+        </div>
         <p className="error-msg">{error && error.message}</p>
       </div>
+      {containerChildren}
     </main>
   );
 }
