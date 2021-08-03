@@ -9,6 +9,7 @@
   top: 0;
   left: 0;
   position: fixed;
+
   .top {
     margin-top: 30px;
     width: 85%;
@@ -16,12 +17,14 @@
     background: $background;
     border-radius: 5px;
     justify-content: center;
+
     p {
       font-size: 1.2em;
       color: $main-text;
       font-weight: 500;
     }
   }
+
   ul {
     list-style: none;
     margin-top: 30px;
@@ -31,10 +34,11 @@
       padding: 15px 0;
     }
 
-    button > img {
+    button>img {
       margin-right: 20px;
       width: 1.2em;
     }
+
     button {
       color: $main-text;
       font-size: 1.3em;
@@ -42,24 +46,29 @@
       border: none;
       font-family: $roboto-font;
       letter-spacing: 0.7px;
+
       .payoutIcon {
         width: 1.38em;
       }
+
       .accountIcon {
         width: 1.18em;
       }
     }
+
     .selected {
       width: 17.5vw;
       background: $background;
       border-right: $accent 4px solid;
     }
   }
+
   .buttonWrapper {
     position: absolute;
     bottom: 20px;
   }
 }
+
 .subPageContainer {
   min-height: 100vh;
   background-color: $background;
