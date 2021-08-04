@@ -1,8 +1,20 @@
 @import '../variables.scss';
 
+@media screen and (max-width: 860px) {
+  .m-centered {
+    justify-content: flex-start !important;
+  }
+}
+
 .sideDrawer {
   width: 17.5%;
   height: 100vh;
+
+  @media screen and (max-width: 860px) {
+    &.m-hide {
+      display: none;
+    }
+  }
 
   background: $dark-gray;
 
@@ -72,4 +84,20 @@
 .subPageContainer {
   min-height: 100vh;
   background-color: $background;
+}
+
+.headerWrapper {
+  display: flex;
+  width: 100vw;
+  padding: 20px 6vw 25px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #121212;
+  order: 1;
+
+  .justLogo {
+    display: inherit;
+    height: 60px;
+  }
 }
