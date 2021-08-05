@@ -4,7 +4,10 @@
   .m-centered {
     justify-content: flex-start !important;
   }
+
 }
+
+
 
 .sideDrawer {
   width: 17.5%;
@@ -95,6 +98,17 @@
   justify-content: space-between;
   background: #121212;
   order: 1;
+
+  &.m-show {
+    display: none;
+  }
+
+  @media screen and (max-width: 860px) {
+    &.m-show {
+      display: flex;
+    }
+
+  }
 
   .justLogo {
     display: inherit;

@@ -40,7 +40,7 @@ function SettingsPage() {
   );
   return (
     <div>
-      <div className={'headerWrapper'}>
+      <div className={'headerWrapper m-show'}>
         <img src={just_logo} className={'justLogo'} />
         <BackButton />
       </div>
