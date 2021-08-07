@@ -8,16 +8,16 @@
 }
 
 
+@media screen and (max-width: 860px) {
+  main>.sideDrawer {
+    display: none;
+  }
+}
 
 .sideDrawer {
   width: 17.5%;
   height: 100vh;
 
-  @media screen and (max-width: 860px) {
-    &.m-hide {
-      display: none;
-    }
-  }
 
   background: $dark-gray;
 
@@ -87,6 +87,19 @@
 .subPageContainer {
   min-height: 100vh;
   background-color: $background;
+
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
+
+  &.mobile {
+    display: none;
+
+    @media screen and (max-width: 860px) {
+      display: flex;
+    }
+  }
+
 }
 
 .headerWrapper {
@@ -98,16 +111,10 @@
   justify-content: space-between;
   background: #121212;
   order: 1;
-
-  &.m-show {
-    display: none;
-  }
+  display: none;
 
   @media screen and (max-width: 860px) {
-    &.m-show {
-      display: flex;
-    }
-
+    display: flex;
   }
 
   .justLogo {

@@ -11,7 +11,6 @@ import {useAuth} from '../../contexts/AuthContext';
 
 function Referrals(params) {
   const {userData} = useAuth();
-
   const [message, setMessage] = useState<string>('');
   const [toggle, setToggle] = useState<boolean>(false);
 
@@ -25,6 +24,9 @@ function Referrals(params) {
     setMessage(msg);
     setToggle(true);
   };
+  if (userData === null) {
+    return <></>;
+  }
 
   return (
     <>

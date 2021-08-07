@@ -22,7 +22,6 @@ import just_logo from '../resources/icons/just-logo.png';
 function SettingsPage() {
   const history = useHistory();
   const {userData} = useAuth();
-
   const [elementState, setElement] = useState<number>(0);
   const [subpage, setSubpage] = useState<ReactNode>(
     <Account elementState={0} />,
@@ -40,12 +39,12 @@ function SettingsPage() {
   );
   return (
     <div>
-      <div className={'headerWrapper m-show'}>
+      <div className={'headerWrapper'}>
         <img src={just_logo} className={'justLogo'} />
         <BackButton />
       </div>
       <main className="m-centered flexRow ">
-        <aside className="sideDrawer flexColumn m-hide">
+        <aside className="sideDrawer flexColumn">
           <div className="top flexColumn">
             <p className="poppinsFont">{userData?.name}</p>
           </div>
@@ -90,6 +89,11 @@ function SettingsPage() {
           <BackButton />
         </aside>
         <article className="subPageContainer">{subpage}</article>
+        <article className="subPageContainer flexColumn mobile">
+          <Account elementState={0} />
+          <Referrals elementState={1} />
+          <Payout elementState={2} />
+        </article>
       </main>
     </div>
   );
