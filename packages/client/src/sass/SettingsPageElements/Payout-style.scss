@@ -15,7 +15,10 @@
 
   width: 82.5vw;
   margin-left: 17.5%;
-
+  @media screen and (max-width: 860px) {
+    margin-left: 0;
+    margin-bottom: 80px;
+  }
   font-family: Roboto;
   .flexRow {
     justify-content: flex-start;

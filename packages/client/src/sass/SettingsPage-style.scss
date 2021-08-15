@@ -1,8 +1,9 @@
 @import '../variables.scss';
 
 @media screen and (max-width: 860px) {
-  .m-centered {
-    justify-content: flex-start !important;
+  .m-centered.flexRow {
+    justify-content: center;
+    width: 100%;
   }
 
 }
@@ -95,6 +96,19 @@
   &.mobile {
     display: none;
 
+    .tab {
+      background: #121212;
+      width: 82.5vw;
+      height: 60px;
+      margin-top: 40px;
+      justify-content: center;
+      p {
+        color: $main-text;
+        font-family: $poppins-font;
+        font-size: 1.2em;
+        font-weight: 500;
+      }
+    }
     @media screen and (max-width: 860px) {
       display: flex;
     }
