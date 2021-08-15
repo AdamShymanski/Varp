@@ -99,15 +99,19 @@
     .tab {
       background: #121212;
       width: 82.5vw;
-      height: 60px;
+      height: 72px;
       margin-top: 40px;
       justify-content: center;
       p {
         color: $main-text;
         font-family: $poppins-font;
-        font-size: 1.2em;
+        font-size: 1.5em;
         font-weight: 500;
       }
+    }
+    .icon {
+      width: 2em;
+      margin-right: 16px;
     }
     @media screen and (max-width: 860px) {
       display: flex;

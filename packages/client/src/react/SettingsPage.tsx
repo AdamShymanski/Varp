@@ -90,15 +90,18 @@ function SettingsPage() {
         </aside>
         <article className="subPageContainer">{subpage}</article>
         <article className="subPageContainer flexColumn mobile">
-          <div className="flexColumn tab">
+          <div className="flexRow tab">
+            <img src={AccountIcon} className="icon" />
             <p>Account</p>
           </div>
           <Account elementState={0} />
-          <div className="flexColumn tab">
+          <div className="flexRow tab">
+            <img src={ReferralIcon} className="icon" />
             <p>Referrals</p>
           </div>
           <Referrals elementState={1} />
-          <div className="flexColumn tab">
+          <div className="flexRow tab">
+            <img src={PayoutIcon} className="icon" />
             <p>Payout</p>
           </div>
           <Payout elementState={2} />
