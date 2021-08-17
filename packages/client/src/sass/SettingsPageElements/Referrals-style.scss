@@ -26,7 +26,7 @@
   .referralCode {
     margin-bottom: 60px;
     div {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       background-color: $dark-gray;
       border-radius: 2px;
@@ -50,6 +50,7 @@
     .code {
       font-size: 1.5em;
       font-family: $roboto-font;
+      overflow: hidden;
     }
   }
 

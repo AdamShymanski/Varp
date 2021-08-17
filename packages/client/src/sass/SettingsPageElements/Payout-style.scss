@@ -22,12 +22,32 @@
   font-family: Roboto;
   .flexRow {
     justify-content: flex-start;
+    .big {
+      .input {
+        @media screen and (max-width: 768px) {
+          width: 400px;
+        }
+        @media screen and (max-width: 576px) {
+          width: 300px;
+        }
+      }
+
+    }
+    
+    
 
     &.payoutInformation {
       flex-direction: column;
       align-items: flex-start;
+      text-align: justify;
       width: 77%;
       margin: 2.5rem 0;
+      @media screen and (max-width: 860px) {
+        width: 100%;
+        > p {
+          width: 100%;
+        }
+      }
       h4 {
         display: flex;
         margin-bottom: 15px;
