@@ -133,6 +133,7 @@ function Account(params) {
           inputChildren={
             !EVI() && <p className="validationInfo">Email not verified</p>
           }
+          containerClass="m-left"
           containerChildren={
             !EVI() && (
               <button className="validateButton" type={'button'}>
@@ -197,6 +198,10 @@ function Account(params) {
           <Button type="submit" size="medium" variant="primary">
             Submit Changes
           </Button>
+          <aside className="flexRow buttonWrapperA mobile">
+            <Button action={xds}>Delete Account</Button>
+            <Button action={resetPassword}>Change Password</Button>
+          </aside>
         </div>
       </form>
       <aside className="flexColumn buttonWrapperA">
