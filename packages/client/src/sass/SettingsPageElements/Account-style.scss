@@ -74,14 +74,14 @@
 
       .insideBox {
         position: absolute;
-
         bottom: 26px;
         width: 500px;
         padding-right: 24px;
-
         text-align: right;
         pointer-events: none;
-
+        @media screen and (max-width: 540px) {
+          width: 400px;
+        }
         >p {
           font-size: 1em;
           color: $gray;
