@@ -24,6 +24,9 @@ const style = css`
     cursor: pointer;
     outline: none;
     border: none;
+    @media screen and (max-width: 480px) {
+      padding: 0px 15px;
+    }
   }
 
   .ripple {
@@ -161,10 +164,6 @@ export interface Props {
    */
   visibility?: boolean;
   /**
-   * Type of Button
-   */
-  type?: string;
-  /**
    * Icon on the left side of Button
    */
   icon?: any;
@@ -181,9 +180,8 @@ export function Button(props: Props) {
     children = 'Primary',
     visibility = true,
     size = 'medium',
-    type = '',
     font = 'poppinsFont',
-    action = (e: React.MouseEvent) => {},
+    action = (e: React.MouseEvent) => {}, // eslint-disable-line no-unused-vars
     icon,
     ...rest
   } = props;
