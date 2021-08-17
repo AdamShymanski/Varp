@@ -35,6 +35,9 @@ const style = css`
   .inputRowWrapper {
     display: flex;
     align-items: center;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
   .inputWrapper {
     position: relative;
@@ -92,6 +95,15 @@ const style = css`
       height: 50px;
       font-size: 1.1em;
     }
+    @media screen and (max-width: 540px) {
+      .label {
+        font-size: 1em;
+      }
+      .input {
+        width: 400px;
+        font-size: 0.9em;
+      }
+    }
   }
 `;
 
@@ -108,6 +120,7 @@ export interface Props {
   onChange?: any;
   inputChildren?: React.ReactNode;
   containerChildren?: React.ReactNode;
+  containerClass?: string;
 }
 
 export function Input(props: Props) {
@@ -123,6 +136,7 @@ export function Input(props: Props) {
     type = '',
     inputChildren,
     containerChildren,
+    containerClass = '',
   } = props;
   // if (variant === 'withButton') {
   //   return (
@@ -154,7 +168,7 @@ export function Input(props: Props) {
     <main css={style}>
       <div className={size}>
         <p className={`label`}>{label}</p>
-        <div className="inputRowWrapper">
+        <div className={`inputRowWrapper ${containerClass}`}>
           <div className={'inputWrapper'}>
             <input
               name={name}
