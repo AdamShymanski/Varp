@@ -1,14 +1,31 @@
 @import '../variables.scss';
 
+@media screen and (max-width: 860px) {
+  .m-centered.flexRow {
+    justify-content: center;
+    width: 100%;
+  }
+
+}
+
+
+@media screen and (max-width: 860px) {
+  main>.sideDrawer {
+    display: none;
+  }
+}
+
 .sideDrawer {
   width: 17.5%;
   height: 100vh;
+
 
   background: $dark-gray;
 
   top: 0;
   left: 0;
   position: fixed;
+
   .top {
     margin-top: 30px;
     width: 85%;
@@ -16,12 +33,14 @@
     background: $background;
     border-radius: 5px;
     justify-content: center;
+
     p {
       font-size: 1.2em;
       color: $main-text;
       font-weight: 500;
     }
   }
+
   ul {
     list-style: none;
     margin-top: 30px;
@@ -31,10 +50,11 @@
       padding: 15px 0;
     }
 
-    button > img {
+    button>img {
       margin-right: 20px;
       width: 1.2em;
     }
+
     button {
       color: $main-text;
       font-size: 1.3em;
@@ -42,25 +62,81 @@
       border: none;
       font-family: $roboto-font;
       letter-spacing: 0.7px;
+
       .payoutIcon {
         width: 1.38em;
       }
+
       .accountIcon {
         width: 1.18em;
       }
     }
+
     .selected {
       width: 17.5vw;
       background: $background;
       border-right: $accent 4px solid;
     }
   }
+
   .buttonWrapper {
     position: absolute;
     bottom: 20px;
   }
 }
+
 .subPageContainer {
   min-height: 100vh;
   background-color: $background;
+
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
+
+  &.mobile {
+    display: none;
+
+    .tab {
+      background: #121212;
+      width: 82.5vw;
+      height: 72px;
+      margin-top: 40px;
+      justify-content: center;
+      p {
+        color: $main-text;
+        font-family: $poppins-font;
+        font-size: 1.5em;
+        font-weight: 500;
+      }
+    }
+    .icon {
+      width: 2em;
+      margin-right: 16px;
+    }
+    @media screen and (max-width: 860px) {
+      display: flex;
+    }
+  }
+
+}
+
+.headerWrapper {
+  display: flex;
+  width: 100vw;
+  padding: 20px 6vw 25px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #121212;
+  order: 1;
+  display: none;
+
+  @media screen and (max-width: 860px) {
+    display: flex;
+  }
+
+  .justLogo {
+    display: inherit;
+    height: 60px;
+  }
 }

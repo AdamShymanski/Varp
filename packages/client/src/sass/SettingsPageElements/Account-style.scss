@@ -3,6 +3,7 @@
 .accountWrapper.hide {
   display: none;
 }
+
 .accountWrapper.show {
   display: flex;
 }
@@ -12,63 +13,127 @@
   margin-left: 17.5%;
   margin-top: 40px;
 
+  @media screen and (max-width: 860px) {
+    margin: 0;
+  }
   p {
     font-size: 8em;
     color: $main-text;
   }
+
   .formWrapper {
     min-width: 50%;
+
     @media screen and (max-width: 768px) {
       min-width: 80%;
     }
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .m-left {
+      @media screen and (max-width: 768px) {
+        align-items: flex-start;
+      }
+    }
+    .validateButton {
+      margin-left: 12px;
+      padding: 6px 22px;
+      border: none;
+      background: #0082ff;
+      border-radius: 5px;
+      font-size: 1em;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      @media screen and (max-width: 768px) {
+        margin: 12px 0 0 0;
+      }
+    }
+
+    .validationInfo {
+      position: absolute;
+      right: 0;
+      margin-top: 0.9%;
+      padding: 2.5% 20px;
+      background: #161616;
+      font-size: 1em;
+      font-family: 'Poppins', sans-serif;
+      color: #7f7f7f;
+      @media screen and (max-width: 540px) {
+        font-size: 0.9em;
+      }
+    }
+
     .buttonWrapper {
       margin: 40px 0px;
+      display: flex;
     }
+
     .inputBoxWrapper {
       position: relative;
+
       .insideBox {
         position: absolute;
-
         bottom: 26px;
         width: 500px;
         padding-right: 24px;
-
         text-align: right;
         pointer-events: none;
-        > p {
+        @media screen and (max-width: 540px) {
+          width: 400px;
+        }
+        >p {
           font-size: 1em;
           color: $gray;
         }
       }
+
       .exist {
         bottom: 46px;
       }
+
       .noteText {
         font-size: 0.9em;
         color: $gray;
       }
     }
+
     .token {
       text-align: left;
       width: 500px;
       margin-left: 48px;
-      > p {
+
+      >p {
         font-size: 1em;
         color: $gray;
       }
     }
   }
+
   .buttonWrapperA {
-    height: 12vh;
-    margin-top: 76px;
-    justify-content: space-between;
+    @media screen and (max-width: 1200px) {
+      display: none;
+      // padding-left: 0;
+    }
+    &.mobile {
+      display: flex;
+      margin: 0 30px;
+      padding: 0;
+      button {
+        margin: 0 12px;
+      }
+    }
+    margin: 30px 0;
+    justify-content: flex-start;
     align-items: flex-start;
 
     border-left: 2.5px solid $gray;
     padding: 8px 0;
     padding-left: 22px;
+    margin-left: 22px;
+
+    button {
+      margin: 12px 0;
+    }
   }
 }

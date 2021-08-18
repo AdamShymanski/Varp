@@ -6,7 +6,9 @@
   margin-top: 40px;
   color: $main-text;
   align-items: flex-start;
-
+  @media screen and (max-width: 860px) {
+    margin: 0;
+  }
   p {
     font-size: 1.6em;
   }
@@ -15,7 +17,7 @@
     width: 40%;
     margin: 40px 0;
 
-    @media (max-width: 768px) {
+    @media (max-width: 860px) {
       width: 100%;
       padding: 0.7em;
     }
@@ -24,7 +26,7 @@
   .referralCode {
     margin-bottom: 60px;
     div {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       background-color: $dark-gray;
       border-radius: 2px;
@@ -48,6 +50,7 @@
     .code {
       font-size: 1.5em;
       font-family: $roboto-font;
+      overflow: hidden;
     }
   }
 
